@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8">
+<title>Finance Application</title>
+
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet"
+          href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css" />
+</head>
+<body>
+
+<div class="container">
+
+
+  <h4>Überblick</h2>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Monat</th>
+        <th>Fixe Kosten</th>
+        <th>Sonder Kosten</th>
+        <th>Saldo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="entry : ${entries}">
+        <td th:text="${entry.displayMonth}"></td>
+        <td th:text="${entry.fixedAmount}"></td>
+        <td th:text="${entry.specialAmount}"></td>
+        <td th:text="${entry.displayCurrentAmount}"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+</body>
+</html>

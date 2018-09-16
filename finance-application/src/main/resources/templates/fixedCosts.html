@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8">
+<title>Finance Application</title>
+
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet"
+          href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css" />
+</head>
+<body>
+
+<div class="container">
+
+
+	<h4>Monatliche Ausgaben</h4>
+	
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th>Bezeichnung</th>
+	      <th>Betrag</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="cost : ${monthlyFixedCosts}">
+	      <td th:text="${cost.name}"></td>
+	      <td th:text="${cost.displayAmount}"></td>
+      </tr>
+	  </tbody>
+	</table>
+	<div class="container"><p>Gesamte Ausgaben: [[${monthlyAmount}]]<p></div>
+	
+</div>
+
+<div class="container">
+  <h4>Jährliche Ausgaben</h4>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Bezeichnung</th>
+        <th>Fällig im</th>
+        <th>Betrag</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="cost : ${yearlyFixedCosts}">
+        <td th:text="${cost.name}"></td>
+        <td th:text="${cost.displayMonth}"></td>
+        <td th:text="${cost.displayAmount}"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</body>
+</html>
