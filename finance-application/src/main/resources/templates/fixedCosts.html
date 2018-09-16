@@ -5,10 +5,9 @@
 <meta charset="UTF-8">
 <title>Finance Application</title>
 
-<script src="/webjars/jquery/jquery.min.js"></script>
-<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-        <link rel="stylesheet"
-          href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css" />
 </head>
 <body>
 
@@ -17,20 +16,35 @@
 
 	<h4>Monatliche Ausgaben</h4>
 	
+  <form method="post" th:action="@{/fixedcosts/monthly}">
 	<table class="table table-striped">
 	  <thead>
 	    <tr>
 	      <th>Bezeichnung</th>
 	      <th>Betrag</th>
+	      <th></th>
 	    </tr>
 	  </thead>
 	  <tbody>
 	    <tr th:each="cost : ${monthlyFixedCosts}">
 	      <td th:text="${cost.name}"></td>
 	      <td th:text="${cost.displayAmount}"></td>
+	      <td><a th:href="@{/fixedcosts/delete(id=${cost.id})}">
+	         <span class="glyphicon glyphicon-trash"></span>
+	       </a></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="name"/></td>
+        <td><input type="number" name="amount"/></td>
+        <td>
+        <button type="submit">
+				   <span class="glyphicon glyphicon-plus"></span>
+				</button>
+				</td>
       </tr>
 	  </tbody>
 	</table>
+  </form>
 	<div class="container"><p>Gesamte Ausgaben: [[${monthlyAmount}]]<p></div>
 	
 </div>

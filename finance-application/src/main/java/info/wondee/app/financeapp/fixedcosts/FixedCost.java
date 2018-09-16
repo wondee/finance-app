@@ -14,6 +14,8 @@ import lombok.ToString;
 @ToString
 public abstract class FixedCost {
 
+  private Integer id;
+  
   private String name;
   private int amount;
   
@@ -22,6 +24,10 @@ public abstract class FixedCost {
     int amount = fixedCosts.stream().map(cost -> cost.getAmount()).reduce(0, Integer::sum);
     
     return displayAmount(amount);
+  }
+  
+  public void setId(Integer id) {
+    this.id = id;
   }
   
   

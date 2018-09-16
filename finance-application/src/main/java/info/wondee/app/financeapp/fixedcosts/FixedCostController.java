@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/fixedcosts")
@@ -25,12 +28,24 @@ public class FixedCostController {
     model.addAttribute("monthyAmount", FixedCost.sumList(monthlyCosts));
     
     model.addAttribute("yearlyFixedCosts", filter(all, YearlyFixedCost.class));
-    
-    
 
     return "fixedCosts";
   }
 
+  @PostMapping("/monthly")
+  public String postFixedCost(@ModelAttribute("name") String name, @ModelAttribute("amount") int amount) {
+    repository.add(new MonthlyFixedCost(null, name, amount));
+    
+    return "redirect:/fixedcosts";
+  }
+  
+  @GetMapping("/delete")
+  public String deleteFixedCost(@RequestParam("id") int id) {
+    repository.delete(id);
+    
+    return "redirect:/fixedcosts";
+  }
+  
   private <S, T extends S> List<T> filter(List<S> list, Class<T> type) {
     return list.stream()
           .filter(type::isInstance)

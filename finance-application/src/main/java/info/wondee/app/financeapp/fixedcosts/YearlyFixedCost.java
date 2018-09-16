@@ -15,8 +15,8 @@ public class YearlyFixedCost extends FixedCost {
 
   private Month month;
 
-  public YearlyFixedCost(String name, int amount, Month month) {
-    super(name, amount);
+  public YearlyFixedCost(Integer id, String name, int amount, Month month) {
+    super(id, name, amount);
     Preconditions.checkNotNull(month);
     this.month = month;
   }

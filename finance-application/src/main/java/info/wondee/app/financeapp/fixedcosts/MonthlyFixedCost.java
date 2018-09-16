@@ -7,8 +7,8 @@ import lombok.ToString;
 @ToString
 public class MonthlyFixedCost extends FixedCost {
 	
-	public MonthlyFixedCost(String name, int amount) {
-		super(name, amount);
+	public MonthlyFixedCost(Integer id, String name, int amount) {
+		super(id, name, amount);
 	}
 
 }

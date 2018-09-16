@@ -12,9 +12,8 @@ public class SpecialCost extends FixedCost {
   private Month month;
   private Year year;
   
-  public SpecialCost(String name, int amount) {
-    super(name, amount);
-    // TODO Auto-generated constructor stub
+  public SpecialCost(Integer id, String name, int amount) {
+    super(id, name, amount);
   }
   
 }
