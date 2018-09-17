@@ -1,5 +1,6 @@
 package info.wondee.app.financeapp.fixedcosts;
 
+import java.time.Month;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,8 +34,15 @@ public class FixedCostController {
   }
 
   @PostMapping("/monthly")
-  public String postFixedCost(@ModelAttribute("name") String name, @ModelAttribute("amount") int amount) {
+  public String postMonthlyFixedCost(@ModelAttribute("name") String name, @ModelAttribute("amount") int amount) {
     repository.add(new MonthlyFixedCost(null, name, amount));
+    
+    return "redirect:/fixedcosts";
+  }
+
+  @PostMapping("/yearly")
+  public String postYearlyFixedCost(@ModelAttribute("name") String name, @ModelAttribute("amount") int amount, @ModelAttribute("month") int month) {
+    repository.add(new YearlyFixedCost(null, name, amount, Month.values()[month]));
     
     return "redirect:/fixedcosts";
   }
