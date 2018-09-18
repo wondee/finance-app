@@ -2,6 +2,7 @@ package info.wondee.app.financeapp.overview;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.YearMonth;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +15,20 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
-import info.wondee.app.financeapp.fixedcosts.FixedCost;
+import info.wondee.app.financeapp.fixedcosts.Cost;
 import info.wondee.app.financeapp.fixedcosts.FixedCostRepository;
+import info.wondee.app.financeapp.specialcosts.SpecialCost;
+import info.wondee.app.financeapp.specialcosts.SpecialCostRepository;
 
 @Controller
-@RequestMapping("/overview")
+@RequestMapping({"/", "/overview"})
 public class OverviewController {
 
   @Autowired
-  private FixedCostRepository fixedCostPRepository;
+  private FixedCostRepository fixedCostRepository;
+  
+  @Autowired
+  private SpecialCostRepository specialCostRepository;
   
   @GetMapping
   public String getOverview(Model model) {
@@ -34,21 +40,8 @@ public class OverviewController {
 
   private List<OverviewEntry> createOverviewEntries(int currentAmount, int maxEntries) {
     
-    Multimap<Month, FixedCost> costMap = HashMultimap.create();
-    
-    List<FixedCost> allFixedCosts = fixedCostPRepository.findAllFixedCosts();
-    
-    for (Month month : Month.values()) {
-      for (FixedCost fixedCost : allFixedCosts) {
-        
-        if (fixedCost.appliesAt(month)) {
-          costMap.put(month, fixedCost);
-        }
-        
-      }
-    }
-    
-    System.out.println(costMap);
+    Multimap<Month, Cost> costMap = createFixedCostMap();
+    Multimap<YearMonth, Cost> specialCostMap = createSpecialCostMap();
     
     LocalDate entryDate = LocalDate.now();
 
@@ -57,8 +50,10 @@ public class OverviewController {
     int tmpAmount = currentAmount;
     
     for (int entryIndex = 0; entryIndex < maxEntries; entryIndex++) {
-      OverviewEntry entry = new OverviewEntry(entryDate, tmpAmount, costMap.get(entryDate.getMonth()), Lists.<FixedCost>newArrayList());
-      
+      OverviewEntry entry = new OverviewEntry(entryDate, tmpAmount, 
+            costMap.get(entryDate.getMonth()), 
+            specialCostMap.get(YearMonth.from(entryDate))
+          );
       
       tmpAmount = entry.getCurrentAmount();
       overviewEntries.add(entry);
@@ -68,5 +63,35 @@ public class OverviewController {
     
     return overviewEntries;
   }
+
+
+  private Multimap<Month, Cost> createFixedCostMap() {
+    Multimap<Month, Cost> costMap = HashMultimap.create();
+    
+    List<Cost> allFixedCosts = fixedCostRepository.findAllFixedCosts();
+    
+    for (Month month : Month.values()) {
+      for (Cost fixedCost : allFixedCosts) {
+        
+        if (fixedCost.appliesAt(month)) {
+          costMap.put(month, fixedCost);
+        }
+        
+      }
+    }
+    return costMap;
+  }
   
+  private Multimap<YearMonth, Cost> createSpecialCostMap() {
+    
+    List<SpecialCost> allSpecialCosts = specialCostRepository.findAllSpecialCosts();
+    
+    Multimap<YearMonth, Cost> specialCostMap = HashMultimap.create();
+    
+    for (SpecialCost specialCost : allSpecialCosts) {
+      specialCostMap.put(specialCost.getDueDate(), specialCost);
+    }
+    
+    return specialCostMap;
+  }
 }

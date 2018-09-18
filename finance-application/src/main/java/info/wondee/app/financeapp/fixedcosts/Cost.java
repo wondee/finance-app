@@ -1,8 +1,8 @@
 package info.wondee.app.financeapp.fixedcosts;
 
 import java.time.Month;
+import java.util.Collection;
 import java.util.Currency;
-import java.util.List;
 import java.util.Locale;
 
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @ToString
-public abstract class FixedCost {
+public abstract class Cost {
 
   private Integer id;
   
@@ -20,10 +20,12 @@ public abstract class FixedCost {
   private int amount;
   
 
-  public static String sumList(List<? extends FixedCost> fixedCosts) {
-    int amount = fixedCosts.stream().map(cost -> cost.getAmount()).reduce(0, Integer::sum);
-    
-    return displayAmount(amount);
+  public static int sumList(Collection<? extends Cost> fixedCosts) {
+    return fixedCosts.stream().map(cost -> cost.getAmount()).reduce(0, Integer::sum);
+  }
+  
+  public static String sumListDisplay(Collection<? extends Cost> fixedCosts) {
+    return displayAmount(sumList(fixedCosts));
   }
   
   public void setId(Integer id) {

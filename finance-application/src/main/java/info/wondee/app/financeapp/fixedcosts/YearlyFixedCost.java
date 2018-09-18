@@ -11,7 +11,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class YearlyFixedCost extends FixedCost {
+public class YearlyFixedCost extends Cost {
 
   private Month month;
 

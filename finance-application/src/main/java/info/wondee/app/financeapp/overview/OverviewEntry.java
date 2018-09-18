@@ -1,63 +1,49 @@
 package info.wondee.app.financeapp.overview;
 
 import java.time.LocalDate;
-import java.time.Month;
+import java.time.YearMonth;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Stream;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Streams;
 
-import info.wondee.app.financeapp.fixedcosts.FixedCost;
+import info.wondee.app.financeapp.DisplayUtil;
+import info.wondee.app.financeapp.fixedcosts.Cost;
 import lombok.Getter;
 
 @Getter
 public class OverviewEntry {
 
-  private Month month;
-  private int year;
+  private YearMonth yearMonth;
   private int currentAmount;
   
-  private List<FixedCost> fixedCosts;
+  private List<Cost> fixedCosts;
   
-  private List<FixedCost> specialCosts;
+  private List<Cost> specialCosts;
   
-  public OverviewEntry(LocalDate date, int lastAmount, Collection<FixedCost> fixedCosts, Collection<FixedCost> specialCosts) {
-    this.month = date.getMonth();
-    this.year = date.getYear();
+  public OverviewEntry(LocalDate date, int lastAmount, Collection<Cost> fixedCosts, Collection<Cost> specialCosts) {
+    yearMonth = YearMonth.from(date);    
     
     this.fixedCosts = Lists.newArrayList(fixedCosts);
     this.specialCosts = Lists.newArrayList(specialCosts);
     
-    currentAmount = calculateCurrentAmount(lastAmount, Streams.concat(fixedCosts.stream(), specialCosts.stream()));
-  }
-
-  private int calculateCurrentAmount(int lastAmount, Stream<FixedCost> concat) {
-    
-    int tmpAmount = lastAmount;
-    
-    for (FixedCost fixedCost : fixedCosts) {
-      tmpAmount += fixedCost.getAmount();
-    }
-    
-    return tmpAmount;
+    currentAmount = lastAmount + Cost.sumList(fixedCosts) + Cost.sumList(specialCosts);
   }
 
   public String getDisplayMonth() {
-    return month.getValue() + " / " + year;
+    return DisplayUtil.createDisplayMonthAndYear(yearMonth);
   }
   
   public String getFixedAmount() {
-    return FixedCost.sumList(fixedCosts);
+    return Cost.sumListDisplay(fixedCosts);
   }
   
   public String getSpecialAmount() {
-    return FixedCost.sumList(specialCosts);
+    return Cost.sumListDisplay(specialCosts);
   }
   
   public String getDisplayCurrentAmount() {
-    return FixedCost.displayAmount(currentAmount);
+    return Cost.displayAmount(currentAmount);
   }
 
 }

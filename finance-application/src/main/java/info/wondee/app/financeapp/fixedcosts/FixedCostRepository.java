@@ -11,7 +11,7 @@ import com.google.common.collect.Lists;
 @Component
 public class FixedCostRepository {
 
-  private static List<FixedCost> allCosts = Lists.newArrayList(
+  private static List<Cost> allCosts = Lists.newArrayList(
               new MonthlyFixedCost(1, "Gehalt Markus", 2000),
               new MonthlyFixedCost(2, "Lebenmittel", -400),
               
@@ -19,11 +19,11 @@ public class FixedCostRepository {
               new YearlyFixedCost(4, "Auto Versicherung", -600, Month.MARCH)
           );
 
-  public List<FixedCost> findAllFixedCosts() {
+  public List<Cost> findAllFixedCosts() {
     return allCosts;
   }
 
-  public void add(FixedCost newFixedCost) {
+  public void add(Cost newFixedCost) {
     
     Optional<Integer> max = allCosts.stream().map(cost -> cost.getId()).max(Integer::compare);
     

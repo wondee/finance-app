@@ -22,15 +22,15 @@ public class FixedCostController {
 
   @GetMapping
   public String getFixedCosts(Model model) {
-    List<FixedCost> all = repository.findAllFixedCosts();
+    List<Cost> all = repository.findAllFixedCosts();
 
     List<MonthlyFixedCost> monthlyCosts = filter(all, MonthlyFixedCost.class);
     model.addAttribute("monthlyFixedCosts", monthlyCosts);
-    model.addAttribute("monthyAmount", FixedCost.sumList(monthlyCosts));
+    model.addAttribute("monthyAmount", Cost.sumList(monthlyCosts));
     
     model.addAttribute("yearlyFixedCosts", filter(all, YearlyFixedCost.class));
 
-    return "fixedCosts";
+    return "fixedcosts";
   }
 
   @PostMapping("/monthly")
