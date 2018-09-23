@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.Currency;
 import java.util.Locale;
 
+import org.springframework.data.annotation.Id;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
@@ -14,6 +16,7 @@ import lombok.ToString;
 @ToString
 public abstract class Cost {
 
+  @Id
   private Integer id;
   
   private String name;

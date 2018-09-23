@@ -16,19 +16,16 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
 import info.wondee.app.financeapp.fixedcosts.Cost;
-import info.wondee.app.financeapp.fixedcosts.FixedCostRepository;
 import info.wondee.app.financeapp.specialcosts.SpecialCost;
-import info.wondee.app.financeapp.specialcosts.SpecialCostRepository;
+import info.wondee.app.financeapp.user.FinanceUserRepository;
 
 @Controller
 @RequestMapping({"/", "/overview"})
 public class OverviewController {
 
   @Autowired
-  private FixedCostRepository fixedCostRepository;
-  
-  @Autowired
-  private SpecialCostRepository specialCostRepository;
+  private FinanceUserRepository repository;
+
   
   @GetMapping
   public String getOverview(Model model) {
@@ -68,7 +65,7 @@ public class OverviewController {
   private Multimap<Month, Cost> createFixedCostMap() {
     Multimap<Month, Cost> costMap = HashMultimap.create();
     
-    List<Cost> allFixedCosts = fixedCostRepository.findAllFixedCosts();
+    List<Cost> allFixedCosts = repository.findAllFixedCosts();
     
     for (Month month : Month.values()) {
       for (Cost fixedCost : allFixedCosts) {
@@ -84,7 +81,7 @@ public class OverviewController {
   
   private Multimap<YearMonth, Cost> createSpecialCostMap() {
     
-    List<SpecialCost> allSpecialCosts = specialCostRepository.findAllSpecialCosts();
+    List<SpecialCost> allSpecialCosts = repository.findSpecialCosts();
     
     Multimap<YearMonth, Cost> specialCostMap = HashMultimap.create();
     

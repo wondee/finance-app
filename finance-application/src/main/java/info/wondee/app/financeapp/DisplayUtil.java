@@ -9,7 +9,7 @@ public class DisplayUtil {
   public static String createDisplayMonth(Month month) {
     
     DateFormatSymbols dfs = new DateFormatSymbols();
-    return dfs.getMonths()[month.getValue()];
+    return dfs.getMonths()[month.getValue() - 1];
     
   }
 

@@ -7,9 +7,10 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan("info.wondee.app.financeapp")
 public class FinanceApplication {
+  
+  public static void main(String[] args) {
+    SpringApplication.run(FinanceApplication.class, args);
 
-	public static void main(String[] args) {
-		SpringApplication.run(FinanceApplication.class, args);
-	
-	}
+  }
+
 }

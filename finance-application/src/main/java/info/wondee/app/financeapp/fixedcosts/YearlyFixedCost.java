@@ -11,7 +11,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class YearlyFixedCost extends Cost {
+public class YearlyFixedCost extends Cost implements Comparable<YearlyFixedCost> {
 
   private Month month;
 
@@ -29,5 +29,15 @@ public class YearlyFixedCost extends Cost {
   public boolean appliesAt(Month month) {
     return Objects.equals(this.month, month);
   }
+
+  @Override
+  public int compareTo(YearlyFixedCost o) {
+    int result = month.compareTo(o.month);
+    
+    if (result != 0) return result;
+    
+    return getName().compareTo(o.getName());
+  }
+  
   
 }

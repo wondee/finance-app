@@ -1,8 +1,6 @@
 package info.wondee.app.financeapp.fixedcosts;
 
 import java.time.Month;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,22 +11,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import info.wondee.app.financeapp.user.FinanceUserRepository;
+
 @Controller
 @RequestMapping("/fixedcosts")
 public class FixedCostController {
 
   @Autowired
-  private FixedCostRepository repository;
+  private FinanceUserRepository repository;
 
   @GetMapping
   public String getFixedCosts(Model model) {
-    List<Cost> all = repository.findAllFixedCosts();
 
-    List<MonthlyFixedCost> monthlyCosts = filter(all, MonthlyFixedCost.class);
-    model.addAttribute("monthlyFixedCosts", monthlyCosts);
-    model.addAttribute("monthyAmount", Cost.sumList(monthlyCosts));
+    model.addAttribute("monthlyFixedCosts", repository.findMonthlyFixedCosts());
+//    model.addAttribute("monthyAmount", Cost.sumList(monthlyCosts));
     
-    model.addAttribute("yearlyFixedCosts", filter(all, YearlyFixedCost.class));
+    model.addAttribute("yearlyFixedCosts", repository.findYearlyFixedCosts());
 
     return "fixedcosts";
   }
@@ -48,17 +46,18 @@ public class FixedCostController {
   }
   
   @GetMapping("/delete")
-  public String deleteFixedCost(@RequestParam("id") int id) {
-    repository.delete(id);
+  public String deleteFixedCost(@RequestParam("id") int id, @RequestParam("type") String type) {
+    switch (type) {
+    case "monthly":
+      repository.deleteMonthlyFixedCost(id); break;
+    case "yearly":
+      repository.deleteYearlyFixedCost(id); break;
+
+    default:
+      throw new IllegalArgumentException("type '" + type + "' is not supported for deletion");
+    }
     
     return "redirect:/fixedcosts";
-  }
-  
-  private <S, T extends S> List<T> filter(List<S> list, Class<T> type) {
-    return list.stream()
-          .filter(type::isInstance)
-          .map(type::cast)
-        .collect(Collectors.toList());
   }
 
 }
