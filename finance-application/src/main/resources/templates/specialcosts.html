@@ -21,11 +21,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr th:each="cost : ${specialCosts}">
+      <tr th:each="cost, iter : ${specialCosts}">
         <td th:text="${cost.name}"></td>
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayDueDate}"></td>
-        <td><a th:href="@{/specialcosts/delete(id=${cost.id})}" class="btn">
+        <td><a th:href="@{/specialcosts/delete(id=${iter.index})}" class="btn">
            <i class="fas fa-trash-alt" style="font-size: 12px;"></i>
          </a></td>
       </tr>

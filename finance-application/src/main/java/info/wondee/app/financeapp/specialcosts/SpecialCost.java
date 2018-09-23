@@ -8,18 +8,33 @@ import info.wondee.app.financeapp.fixedcosts.Cost;
 import lombok.Getter;
 
 @Getter
-public class SpecialCost extends Cost {
+public class SpecialCost extends Cost implements Comparable<SpecialCost> {
 
-  private YearMonth dueDate;
+  private int dueYear;
+  private Month dueMonth;
   
   public SpecialCost(Integer id, String name, int amount, Month dueMonth, int dueYear) {
     super(id, name, amount);
     
-    dueDate = YearMonth.of(dueYear, dueMonth);
+    this.dueYear = dueYear;
+    this.dueMonth = dueMonth;
   }
 
   public String getDisplayDueDate() {
-    return DisplayUtil.createDisplayMonthAndYear(dueDate);
+    return DisplayUtil.createDisplayMonthAndYear(getDueDate());
+  }
+
+  public YearMonth getDueDate() {
+    return YearMonth.of(dueYear, dueMonth);
+  }
+  
+  @Override
+  public int compareTo(SpecialCost o) {
+    int result = getDueDate().compareTo(o.getDueDate());
+    
+    if (result != 0) return result;
+    
+    return getName().compareTo(o.getName());
   }
   
 }

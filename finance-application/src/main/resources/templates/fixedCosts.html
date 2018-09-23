@@ -20,10 +20,10 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	    <tr th:each="cost : ${monthlyFixedCosts}">
+	    <tr th:each="cost, iter : ${monthlyFixedCosts}">
 	      <td th:text="${cost.name}"></td>
 	      <td th:text="${cost.displayAmount}"></td>
-	      <td><a th:href="@{/fixedcosts/delete(id=${cost.id})}" class="btn">
+	      <td><a th:href="@{/fixedcosts/delete(id=${iter.index},type='monthly')}" class="btn">
 	         <i class="fas fa-trash-alt" style="font-size: 12px;"></i>
 	       </a></td>
       </tr>
@@ -54,11 +54,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr th:each="cost : ${yearlyFixedCosts}">
+      <tr th:each="cost, iter : ${yearlyFixedCosts}">
         <td th:text="${cost.name}"></td>
         <td th:text="${cost.displayMonth}"></td>
         <td th:text="${cost.displayAmount}"></td>
-        <td><a th:href="@{/fixedcosts/delete(id=${cost.id})}" class="btn">
+        <td><a th:href="@{/fixedcosts/delete(id=${iter.index},type='yearly')}" class="btn">
           <i class="fas fa-trash" style="font-size: 12px;"></i>
         </a></td>
       </tr>
