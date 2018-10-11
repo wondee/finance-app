@@ -86,8 +86,8 @@ public class FinanceUserRepositoryImpl implements FinanceUserCustomRespository {
     repository.save(currentUser);
   }
 
-  
-  private FinanceUser findCurrentUser() {
+  @Override
+  public FinanceUser findCurrentUser() {
     String userName = SecurityContextHolder.getContext().getAuthentication().getName();
     
     return repository.findByName(userName).orElseThrow(() -> new IllegalStateException("User not found in DB"));

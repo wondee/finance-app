@@ -38,7 +38,7 @@ public class OverviewController {
   @GetMapping
   public String getOverview(Model model) {
     
-    model.addAttribute("entries", createOverviewEntries(10000, 100));
+    model.addAttribute("entries", createOverviewEntries(13000, 100));
     return "overview";
     
   }
