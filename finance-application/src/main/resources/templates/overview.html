@@ -21,8 +21,8 @@
     <tbody>
       <tr th:each="entry : ${entries}">
         <td th:text="${entry.displayMonth}"></td>
-        <td th:text="${entry.fixedAmount}"></td>
-        <td th:text="${entry.specialAmount}"></td>
+        <td th:text="${entry.displayFixedAmount}"></td>
+        <td th:text="${entry.displaySpecialAmount}"></td>
         <td th:text="${entry.displayCurrentAmount}"></td>
       </tr>
     </tbody>

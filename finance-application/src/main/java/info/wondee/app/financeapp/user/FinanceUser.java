@@ -34,31 +34,37 @@ public class FinanceUser {
   
   private int currentAmount;
   
-  private List<MonthlyFixedCost> monthlyFixedCosts;
+  private List<MonthlyFixedCost> monthlyFixedCosts = Lists.newArrayList();
   
-  private List<YearlyFixedCost> yearlyFixedCosts;
+  private List<YearlyFixedCost> yearlyFixedCosts = Lists.newArrayList();
   
-  private List<SpecialCost> specialCosts;
+  private List<SpecialCost> specialCosts = Lists.newArrayList();
   
   public FinanceUser(String name, String password) {
     this(null, name, password, 0, Lists.newArrayList(), Lists.newArrayList(), Lists.newArrayList());
   }
 
-  public void add(MonthlyFixedCost cost) {
-    monthlyFixedCosts.add(cost);
-    Collections.sort(monthlyFixedCosts);
+  public void add(MonthlyFixedCost cost, Integer id) {
+    addOrReplace(cost, monthlyFixedCosts, id);
   }
   
-  public void add(YearlyFixedCost cost) {
-    yearlyFixedCosts.add(cost);
-    Collections.sort(monthlyFixedCosts);
+  public void add(YearlyFixedCost cost, Integer id) {
+    addOrReplace(cost, yearlyFixedCosts, id);
   }
   
-  public void add(SpecialCost cost) {
-    specialCosts.add(cost);
-    Collections.sort(monthlyFixedCosts);
+  public void add(SpecialCost cost, Integer id) {
+    addOrReplace(cost, specialCosts, id);
   }
 
+  private <T extends Cost & Comparable<T>> void addOrReplace(T cost, List<T> coll, Integer id) {
+    if (id == null) {
+      coll.add(cost);
+    } else {
+      coll.set(id, cost);
+    }
+    Collections.sort(coll);
+  }
+  
   public void removeIfFound(int id) {
     removeIfFound(id, monthlyFixedCosts);
     removeIfFound(id, yearlyFixedCosts);

@@ -10,7 +10,7 @@
 
   <h4>Sonderausgaben</h4>
   
-  <form method="post" th:action="@{/specialcosts}">
+  <form method="post" th:action="@{/specialcosts}" th:object="${model}">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -25,10 +25,16 @@
         <td th:text="${cost.name}"></td>
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayDueDate}"></td>
-        <td><a th:href="@{/specialcosts/delete(id=${iter.index})}" class="btn">
-           <i class="fas fa-trash-alt" style="font-size: 12px;"></i>
-         </a></td>
+        <td>
+          <a th:href="@{/specialcosts/delete(id=${iter.index})}" class="btn">
+            <i class="fas fa-trash-alt" style="font-size: 12px;"></i>
+          </a>
+          <a th:href="@{/fixedcosts/edit(id=${iter.index}, type='special')}" class="btn">
+            <i class="fas fa-edit" style="font-size: 12px;"></i>
+         </a>
+        </td>
       </tr>
+      <!-- 
       <tr>
         <td><input type="text" name="name"/></td>
         <td><input type="number" name="amount"/></td>
@@ -55,8 +61,10 @@
         </button>
         </td>
       </tr>
+       -->
     </tbody>
   </table>
+  <a th:href="@{/fixedcosts/edit(type='special')}">Neue Sonderkosten erfassen</a>
   </form>
   
 </div>

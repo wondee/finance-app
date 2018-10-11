@@ -1,33 +1,28 @@
 package info.wondee.app.financeapp.specialcosts;
 
-import java.time.Month;
-import java.time.YearMonth;
+import org.springframework.data.annotation.PersistenceConstructor;
 
-import info.wondee.app.financeapp.DisplayUtil;
+import info.wondee.app.financeapp.FinanceMonth;
 import info.wondee.app.financeapp.fixedcosts.Cost;
+import info.wondee.app.financeapp.fixedcosts.CostType;
 import lombok.Getter;
 
 @Getter
 public class SpecialCost extends Cost implements Comparable<SpecialCost> {
 
-  private int dueYear;
-  private Month dueMonth;
+  private FinanceMonth dueDate;
   
-  public SpecialCost(Integer id, String name, int amount, Month dueMonth, int dueYear) {
+  @PersistenceConstructor
+  public SpecialCost(Integer id, String name, int amount, FinanceMonth dueDate) {
     super(id, name, amount);
     
-    this.dueYear = dueYear;
-    this.dueMonth = dueMonth;
+    this.dueDate = dueDate;
   }
 
-  public String getDisplayDueDate() {
-    return DisplayUtil.createDisplayMonthAndYear(getDueDate());
+  public SpecialCost(String name, int amount, FinanceMonth dueDate) {
+    this(null, name, amount, dueDate);
   }
 
-  public YearMonth getDueDate() {
-    return YearMonth.of(dueYear, dueMonth);
-  }
-  
   @Override
   public int compareTo(SpecialCost o) {
     int result = getDueDate().compareTo(o.getDueDate());
@@ -35,6 +30,11 @@ public class SpecialCost extends Cost implements Comparable<SpecialCost> {
     if (result != 0) return result;
     
     return getName().compareTo(o.getName());
+  }
+  
+  @Override
+  public CostType getType() {
+    return CostType.SPECIAL;
   }
   
 }
