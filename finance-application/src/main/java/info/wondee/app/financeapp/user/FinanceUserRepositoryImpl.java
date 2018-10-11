@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.google.common.collect.Lists;
 
-import info.wondee.app.financeapp.fixedcosts.Cost;
+import info.wondee.app.financeapp.fixedcosts.FixedCost;
 import info.wondee.app.financeapp.fixedcosts.MonthlyFixedCost;
 import info.wondee.app.financeapp.fixedcosts.YearlyFixedCost;
 import info.wondee.app.financeapp.specialcosts.SpecialCost;
@@ -18,28 +18,29 @@ public class FinanceUserRepositoryImpl implements FinanceUserCustomRespository {
   private FinanceUserRepository repository;
   
   @Override
-  public void add(MonthlyFixedCost cost) {
+  public void save(MonthlyFixedCost cost, Integer id) {
     FinanceUser financeUser = findCurrentUser();
-    financeUser.add(cost);
+    financeUser.add(cost, id);
     repository.save(financeUser);
   }
 
   @Override
-  public void add(YearlyFixedCost cost) {
+  public void save(YearlyFixedCost cost, Integer id) {
     FinanceUser financeUser = findCurrentUser();
-    financeUser.add(cost);
-    repository.save(financeUser);  }
+    financeUser.add(cost, id);
+    repository.save(financeUser);  
+  }
 
   @Override
-  public void add(SpecialCost cost) {
+  public void save(SpecialCost cost, Integer id) {
     FinanceUser financeUser = findCurrentUser();
-    financeUser.add(cost);
+    financeUser.add(cost, id);
     repository.save(financeUser);
   }
   
   @Override
-  public List<Cost> findAllFixedCosts() {
-    List<Cost> costs = Lists.newArrayList();
+  public List<FixedCost> findAllFixedCosts() {
+    List<FixedCost> costs = Lists.newArrayList();
     
     FinanceUser currentUser = findCurrentUser();
 

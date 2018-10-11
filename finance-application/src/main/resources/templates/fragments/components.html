@@ -1,0 +1,35 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+  <body>
+    <div th:fragment="month">
+      <label for="dueMonth" th:text="${monthTitle} + ':'"></label>
+         <select class="form-control" th:attr="id=${prefix + 'Month'}, name=${prefix + 'Month'}" th:field="*{__${prefix + 'Month'}__}">
+           <option value="0">Januar</option>
+           <option value="1">Februar</option>
+           <option value="2">März</option>
+           <option value="3">April</option>
+           <option value="4">Mai</option>
+           <option value="5">Juni</option>
+           <option value="6">Juli</option>
+           <option value="7">August</option>
+           <option value="8">September</option>
+           <option value="9">Oktober</option>
+           <option value="10">November</option>
+           <option value="11">Dezember</option>
+         </select>
+      
+    
+    </div>
+    <div th:fragment="yearmonth">
+         <div  th:include="fragments/components :: month(prefix=${prefix}, monthTitle=${monthTitle})"></div>
+         <label for="deuYear" th:text="${yearTitle} + ':'"></label>
+         <input type="number" class="form-control" th:attr="id=${prefix + 'Year'}, name=${prefix + 'Year'}" th:field="*{__${prefix + 'Year'}__}" aria-describedby="dueYearHelp" placeholder="z.B. 2019">
+         <small id="dueYearHelp" class="form-text text-muted">Wählen Sie einen Monat / Jahr in der Zukunft aus.</small>
+    </div>
+  
+  </body>
+  
+</html>

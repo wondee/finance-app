@@ -1,49 +1,45 @@
 package info.wondee.app.financeapp.overview;
 
-import java.time.LocalDate;
 import java.time.YearMonth;
-import java.util.Collection;
 import java.util.List;
-
-import com.google.common.collect.Lists;
 
 import info.wondee.app.financeapp.DisplayUtil;
 import info.wondee.app.financeapp.fixedcosts.Cost;
+import info.wondee.app.financeapp.fixedcosts.CostPresenter;
+import info.wondee.app.financeapp.fixedcosts.FixedCost;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
+@AllArgsConstructor
 public class OverviewEntry {
 
   private YearMonth yearMonth;
   private int currentAmount;
   
-  private List<Cost> fixedCosts;
+  private List<CostPresenter<FixedCost>> fixedCosts;
   
-  private List<Cost> specialCosts;
+  private int sumFixedCosts;
   
-  public OverviewEntry(LocalDate date, int lastAmount, Collection<Cost> fixedCosts, Collection<Cost> specialCosts) {
-    yearMonth = YearMonth.from(date);    
-    
-    this.fixedCosts = Lists.newArrayList(fixedCosts);
-    this.specialCosts = Lists.newArrayList(specialCosts);
-    
-    currentAmount = lastAmount + Cost.sumList(fixedCosts) + Cost.sumList(specialCosts);
-  }
+  private List<CostPresenter<Cost>> specialCosts;
+  
+  private int sumSpecialCosts;
+
 
   public String getDisplayMonth() {
     return DisplayUtil.createDisplayMonthAndYear(yearMonth);
   }
   
-  public String getFixedAmount() {
-    return Cost.sumListDisplay(fixedCosts);
+  public String getDisplayFixedAmount() {
+    return CostPresenter.displayAmount(sumFixedCosts);
   }
   
-  public String getSpecialAmount() {
-    return Cost.sumListDisplay(specialCosts);
+  public String getDisplaySpecialAmount() {
+    return CostPresenter.displayAmount(sumSpecialCosts);
   }
   
   public String getDisplayCurrentAmount() {
-    return Cost.displayAmount(currentAmount);
+    return CostPresenter.displayAmount(currentAmount);
   }
 
 }
