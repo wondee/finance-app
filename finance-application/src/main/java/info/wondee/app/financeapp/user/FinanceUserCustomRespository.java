@@ -9,6 +9,8 @@ import info.wondee.app.financeapp.specialcosts.SpecialCost;
 
 public interface FinanceUserCustomRespository {
 
+  FinanceUser findCurrentUser();
+  
   List<MonthlyFixedCost> findMonthlyFixedCosts();
   List<YearlyFixedCost> findYearlyFixedCosts();
   List<SpecialCost> findSpecialCosts();

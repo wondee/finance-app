@@ -29,7 +29,7 @@ public class DisplayUtil {
   }
 
   public static Month toMonth(int month) {
-    return Month.values()[month];
+    return Month.values()[month - 1];
   }
 
   public static FinanceMonth toDate(int month, int year) {
