@@ -18,6 +18,7 @@ import info.wondee.app.financeapp.specialcosts.SpecialCost;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Document
 @Getter
@@ -31,7 +32,8 @@ public class FinanceUser {
   private String name;
   
   private String password;
-  
+
+  @Setter
   private int currentAmount;
   
   private List<MonthlyFixedCost> monthlyFixedCosts = Lists.newArrayList();

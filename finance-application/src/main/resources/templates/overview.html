@@ -9,6 +9,18 @@
 
   <h4>Überblick</h4>
   
+  <div class="card card-body">
+    <form method="post" th:action="@{/overview/currentamount}">
+      <div class="form-group">
+        <label for="currentamount">Aktueller Betrag</label>
+        <input type="number" class="form-control" id="currentamount" name="currentamount" 
+          aria-describedby="nameHelp" th:value="${currentamount}"/>
+        <small id="currentamountHelp" class="form-text text-muted">Der aktuell vorhandene Geldbetrag.</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Aktualisieren</button>
+    </form>
+  </div>
+  
   <table class="table table-striped">
     <thead>
       <tr>

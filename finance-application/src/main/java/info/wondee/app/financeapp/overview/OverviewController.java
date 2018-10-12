@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Lists;
@@ -23,6 +25,7 @@ import info.wondee.app.financeapp.DisplayUtil;
 import info.wondee.app.financeapp.fixedcosts.Cost;
 import info.wondee.app.financeapp.fixedcosts.FixedCost;
 import info.wondee.app.financeapp.specialcosts.SpecialCost;
+import info.wondee.app.financeapp.user.FinanceUser;
 import info.wondee.app.financeapp.user.FinanceUserRepository;
 
 @Controller
@@ -38,11 +41,27 @@ public class OverviewController {
   @GetMapping
   public String getOverview(Model model) {
     
-    model.addAttribute("entries", createOverviewEntries(13000, 100));
+    FinanceUser user = repository.findCurrentUser();
+    
+    int currentAmount = user.getCurrentAmount();
+    
+    model.addAttribute("entries", createOverviewEntries(currentAmount, 100));
+    model.addAttribute("currentamount", currentAmount);
+    
     return "overview";
     
   }
 
+  @PostMapping("/currentamount")
+  public String postCurrentAmount(@RequestParam("currentamount") int newAmount) {
+    
+    FinanceUser user = repository.findCurrentUser();
+    user.setCurrentAmount(newAmount);
+    repository.save(user);
+    
+    return "redirect:/overview";
+  }
+  
   private List<OverviewEntry> createOverviewEntries(int currentAmount, int maxEntries) {
     
     Multimap<Month, FixedCost> fixedCostMap = createFixedCostMap();
