@@ -27,6 +27,8 @@ public class ExportImportController {
     FinanceUser currentUser = repository.findCurrentUser();
     
     try (OutputStream os = response.getOutputStream()) {
+      
+      response.setHeader("Content-Disposition", "attachment; filename=export.json"); 
       response.setContentType("application/json");
       
       new ObjectMapper().writeValue(os, currentUser);
