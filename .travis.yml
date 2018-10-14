@@ -1,2 +1,5 @@
 language: java
-before_script: cd finance-application
+jdk: openjdk8
+ 
+script:
+- mvn clean install -B
