@@ -5,4 +5,4 @@
 A simple financial planning application. 
 
 
-Production Link: https://finance.wondee.info
+Production Link: https://finance.wondee.info  (Demo Credentials: Demo/Demo) 
