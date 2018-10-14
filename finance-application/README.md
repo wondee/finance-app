@@ -19,3 +19,5 @@ Production Logfiles under:
 ftp://waws-prod-dm1-023.ftp.azurewebsites.windows.net/LogFiles/
 
 Username/Password found under "publish profile"
+
+Certificate is created by 
