@@ -7,10 +7,10 @@ script:
 - mvn clean install -B
 
 after_success:
-  - docker build -t $DOCKER_USERNAME/finance-application .
+  - docker build -t wondee/finance-application .
 
 deploy:
   provider: script
-  script: bash finance-application/docker_push
+  script: bash docker_push
   on:
     branch: master
