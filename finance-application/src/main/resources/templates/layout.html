@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-  
+    <title>Die ultimative Finanzapp!</title>
   <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" ></link>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
@@ -58,6 +58,9 @@
             <a class="nav-link" th:href="@{/specialcosts}">Sonderkosten</a>
           </li>
         </ul>
+         <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
+			     <button class="btn btn-link my-2 my-sm-0" type="submit">logout</button>
+			   </form>
       </div>
     </nav>
 

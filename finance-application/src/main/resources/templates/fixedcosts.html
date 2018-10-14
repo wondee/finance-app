@@ -6,35 +6,52 @@
 <body>
 
 <div layout:fragment="content" class="container" >
-<div class="container">
 
-	<h4>Monatliche Ausgaben</h4>
-	
-  <form method="post" th:action="@{/fixedcosts/monthly}">
-	<table class="table table-striped">
-	  <thead>
-	    <tr>
-	      <th>Bezeichnung</th>
-	      <th>Betrag</th>
-	      <th>Gültig ab</th>
-	      <th>Gültig bis</th>
-	      <th></th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <tr th:each="cost, iter : ${monthlyFixedCosts}">
-	      <td th:text="${cost.name}"></td>
-	      <td th:text="${cost.displayAmount}"></td>
-	      <td th:text="${cost.displayFromDate}"></td>
-	      <td th:text="${cost.displayToDate}"></td>
-	      <td>
-	        <a th:href="@{/fixedcosts/delete(id=${iter.index},type='monthly')}" class="btn">
-	         <i class="fas fa-trash" style="font-size: 12px;"></i>
-	        </a>
-	        <a th:href="@{/fixedcosts/edit(id=${iter.index},type='monthly')}" class="btn">
+<ul class="nav nav-tabs" id="fixedcostsTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="monthly-tab" data-toggle="tab" href="#monthly" role="tab" aria-controls="home" aria-selected="true">Monatliche Kosten</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="quaterly-tab" data-toggle="tab" href="#quaterly" role="tab" aria-controls="profile" aria-selected="false">Vierteljährliche Kosten</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="yearly-tab" data-toggle="tab" href="#yearly" role="tab" aria-controls="contact" aria-selected="false">Jährliche Kosten</a>
+  </li>
+</ul>
+
+
+<div class="tab-content" id="myTabContent">
+
+  <div class="tab-pane fade show active" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">
+  
+  <div class="container">
+
+  
+<!--   <form method="post" th:action="@{/fixedcosts/monthly}"> -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Bezeichnung</th>
+        <th>Betrag</th>
+        <th>Gültig ab</th>
+        <th>Gültig bis</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="cost, iter : ${monthlyFixedCosts}">
+        <td th:text="${cost.name}"></td>
+        <td th:text="${cost.displayAmount}"></td>
+        <td th:text="${cost.displayFromDate}"></td>
+        <td th:text="${cost.displayToDate}"></td>
+        <td>
+          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='monthly')}" class="btn">
+           <i class="fas fa-trash" style="font-size: 12px;"></i>
+          </a>
+          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='monthly')}" class="btn">
            <i class="fas fa-edit" style="font-size: 12px;"></i>
           </a>
-	      </td>
+        </td>
       </tr>
       <!-- 
       <tr>
@@ -42,22 +59,25 @@
         <td><input type="number" name="amount"/></td>
         <td>
         <button type="submit" class="btn">
-				   <i class="fas fa-plus-square" style="font-size: 12px;"></i>
-				</button>
-				</td>
+           <i class="fas fa-plus-square" style="font-size: 12px;"></i>
+        </button>
+        </td>
       </tr>
        -->
-	  </tbody>
-	</table>
-	<a th:href="@{/fixedcosts/edit(type='monthly')}">Neue monatliche Fixkosten erfassen</a>
-	
-  </form>
-	
+    </tbody>
+  </table>
+  <a th:href="@{/fixedcosts/edit(type='monthly')}">Neue monatliche Fixkosten erfassen</a>
+  
+<!--   </form> -->
+  
 </div>
-
-<div class="container">
-  <h4>Jährliche Ausgaben</h4>
-  <form method="post" th:action="@{/fixedcosts/yearly}">
+  
+  </div>
+  <div class="tab-pane fade" id="quaterly" role="tabpanel" aria-labelledby="quaterly-tab">...</div>
+  <div class="tab-pane fade" id="yearly" role="tabpanel" aria-labelledby="yearly-tab">
+  
+  <div class="container">
+<!--   <form method="post" th:action="@{/fixedcosts/yearly}"> -->
   <table class="table table-striped">
     <thead>
       <tr>
@@ -88,19 +108,19 @@
       <tr>
         <td><input type="text" name="name"/></td>
         <td><select name="month">
-				    <option value="0">Januar</option>
-				    <option value="1">Februar</option>
-				    <option value="2">März</option>
-				    <option value="3">April</option>
-				    <option value="4">Mai</option>
-				    <option value="5">Juni</option>
-				    <option value="6">Juli</option>
-				    <option value="7">August</option>
-				    <option value="8">September</option>
-				    <option value="9">Oktober</option>
-				    <option value="10">November</option>
-				    <option value="11">Dezember</option>
-				</select></td>
+            <option value="0">Januar</option>
+            <option value="1">Februar</option>
+            <option value="2">März</option>
+            <option value="3">April</option>
+            <option value="4">Mai</option>
+            <option value="5">Juni</option>
+            <option value="6">Juli</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">Oktober</option>
+            <option value="10">November</option>
+            <option value="11">Dezember</option>
+        </select></td>
         <td><input type="number" name="amount"/></td>
         <td>
         <button type="submit" class="btn">
@@ -112,8 +132,12 @@
     </tbody>
   </table>
   <a th:href="@{/fixedcosts/edit(type='yearly')}">Neue jährliche Fixkosten erfassen</a>
-  </form>
+<!--   </form> -->
 </div>
+  </div>
+</div>
+
+
 </div>
 
 </body>

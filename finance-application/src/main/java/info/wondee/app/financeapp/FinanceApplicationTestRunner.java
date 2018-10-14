@@ -24,12 +24,12 @@ public class FinanceApplicationTestRunner implements CommandLineRunner{
    
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    String encode = encoder.encode("$Lakers11");
+    String encode = encoder.encode("Demo");
     
-    FinanceUser entity = new FinanceUser("Wondrak", encode);
+    FinanceUser entity = new FinanceUser("Demo", encode);
     repository.insert(entity );
     
-    Optional<FinanceUser> findByName = repository.findByName("Wondrak");
+    Optional<FinanceUser> findByName = repository.findByName("Demo");
     System.out.println(findByName);
   }
 
