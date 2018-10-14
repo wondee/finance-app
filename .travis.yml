@@ -5,3 +5,12 @@ before_script: cd finance-application
 
 script:
 - mvn clean install -B
+
+after_success:
+  - docker build -t $DOCKER_USERNAME/finance-application .
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
