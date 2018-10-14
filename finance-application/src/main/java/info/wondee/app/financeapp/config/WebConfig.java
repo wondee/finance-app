@@ -30,6 +30,10 @@ public class WebConfig implements WebMvcConfigurer {
         .addResourceHandler("/webjars/**")
         .addResourceLocations("/webjars/");
       
+      registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/static/");
+      
+      registry.addResourceHandler("/.well-known/acme-challenge/**").addResourceLocations("classpath:/static/");
+      
   }
   
   public void addViewControllers(ViewControllerRegistry registry) {
