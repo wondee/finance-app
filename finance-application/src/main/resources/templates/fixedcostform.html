@@ -52,6 +52,15 @@
 				    </select>
 				    <small id="dueMonthHelp" class="form-text text-muted">Monat in dem diese Zahlung fällig ist.</small>
 	    </div>
+	    <div th:case="'quaterly'" class="form-group">
+	        <label for="dueMonth">Ist fällig in den Monaten:</label>
+            <select class="form-control" id="dueMonth" name="dueMonth" aria-describedby="dueMonthHelp" th:field="*{dueMonth}">
+              <option value="0">Januar, April, Juli, Oktober</option>
+              <option value="1">Februar, Mai, August, November</option>
+              <option value="2">März, Juni, September, Dezember</option>
+            </select>
+            <small id="dueMonthHelp" class="form-text text-muted">Monate in denen diese Zahlung fällig ist.</small>
+	    </div>
 	    <div th:case="'special'" th:include="fragments/components :: yearmonth(prefix='due', monthTitle='Ist fällig in Monat', yearTitle='Ist fällig im Jahr')" class="form-group"></div>
 		</th:block>
 		

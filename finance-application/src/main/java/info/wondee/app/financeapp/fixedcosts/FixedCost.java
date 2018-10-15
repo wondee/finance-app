@@ -42,6 +42,6 @@ public abstract class FixedCost extends Cost {
     return (month != null) ? month.toDate() : defaultIfNull;
   }
 
-
+  public abstract boolean appliesAt(Month month);
   
 }

@@ -11,6 +11,7 @@ public enum CostType {
 
     SPECIAL(SpecialCostPresenter.class), 
     MONTHLY(MonthlyFixedCostPresenter.class), 
+    QUATERLY(QuaterlyFixedCostPresenter.class),
     YEARLY(YearlyFixedCostPresenter.class)
   
   ;

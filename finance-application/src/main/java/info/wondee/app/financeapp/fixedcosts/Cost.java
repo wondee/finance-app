@@ -19,9 +19,5 @@ public abstract class Cost {
   private String name;
   private int amount;
   
-  public boolean appliesAt(Month month) {
-    return true;
-  }
-  
   public abstract CostType getType();
 }

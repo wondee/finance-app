@@ -1,5 +1,7 @@
 package info.wondee.app.financeapp.fixedcosts;
 
+import java.time.Month;
+
 import org.springframework.data.annotation.PersistenceConstructor;
 
 import info.wondee.app.financeapp.FinanceMonth;
@@ -27,6 +29,11 @@ public class MonthlyFixedCost extends FixedCost implements Comparable<MonthlyFix
   @Override
   public CostType getType() {
     return CostType.MONTHLY;
+  }
+
+  @Override
+  public boolean appliesAt(Month month) {
+    return true;
   }
 
 }

@@ -13,6 +13,7 @@ import com.google.common.collect.Lists;
 
 import info.wondee.app.financeapp.fixedcosts.Cost;
 import info.wondee.app.financeapp.fixedcosts.MonthlyFixedCost;
+import info.wondee.app.financeapp.fixedcosts.QuaterlyFixedCost;
 import info.wondee.app.financeapp.fixedcosts.YearlyFixedCost;
 import info.wondee.app.financeapp.specialcosts.SpecialCost;
 import lombok.AllArgsConstructor;
@@ -38,16 +39,22 @@ public class FinanceUser {
   
   private List<MonthlyFixedCost> monthlyFixedCosts = Lists.newArrayList();
   
+  private List<QuaterlyFixedCost> quaterlyFixedCosts = Lists.newArrayList();
+  
   private List<YearlyFixedCost> yearlyFixedCosts = Lists.newArrayList();
   
   private List<SpecialCost> specialCosts = Lists.newArrayList();
   
   public FinanceUser(String name, String password) {
-    this(null, name, password, 0, Lists.newArrayList(), Lists.newArrayList(), Lists.newArrayList());
+    this(null, name, password, 0, Lists.newArrayList(), Lists.newArrayList(), Lists.newArrayList(), Lists.newArrayList());
   }
 
   public void add(MonthlyFixedCost cost, Integer id) {
     addOrReplace(cost, monthlyFixedCosts, id);
+  }
+  
+  public void add(QuaterlyFixedCost cost, Integer id) {
+    addOrReplace(cost, quaterlyFixedCosts, id);
   }
   
   public void add(YearlyFixedCost cost, Integer id) {
