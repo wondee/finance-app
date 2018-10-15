@@ -52,6 +52,8 @@ public class FixedCostController {
       return repository.findMonthlyFixedCosts();
     case YEARLY:
       return repository.findYearlyFixedCosts();
+    case QUATERLY:
+      return repository.findQuaterlyFixedCosts();
     case SPECIAL:
       return repository.findSpecialCosts();
     default:
@@ -63,9 +65,7 @@ public class FixedCostController {
   public String getFixedCosts(Model model) {
 
     model.addAttribute("monthlyFixedCosts", DisplayUtil.toPresenter(repository.findMonthlyFixedCosts()));
-    // TODO print total
-//    model.addAttribute("monthyAmount", Cost.sumList(monthlyCosts));
-    
+    model.addAttribute("quaterlyFixedCosts", DisplayUtil.toPresenter(repository.findQuaterlyFixedCosts()));
     model.addAttribute("yearlyFixedCosts", DisplayUtil.toPresenter(repository.findYearlyFixedCosts()));
 
     return "fixedcosts";
@@ -78,6 +78,13 @@ public class FixedCostController {
     return "redirect:/fixedcosts";
   }
 
+  @PostMapping("/quaterly")
+  public String postQuaterlyFixedCost(@ModelAttribute QuaterlyFixedCostPresenter presenter) {
+    repository.save(presenter.toPersistentObject(), presenter.getId());
+    
+    return "redirect:/fixedcosts";
+  }
+  
   @PostMapping("/yearly")
   public String postYearlyFixedCost(@ModelAttribute YearlyFixedCostPresenter presenter) {
     repository.save(presenter.toPersistentObject(), presenter.getId());

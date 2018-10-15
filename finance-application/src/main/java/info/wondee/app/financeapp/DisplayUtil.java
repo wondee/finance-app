@@ -41,5 +41,5 @@ public class DisplayUtil {
   public static <T extends Cost> List<CostPresenter<T>> toPresenter(Collection<T> costs) {
     return costs.stream().map(cost -> FixedCostPresenter.from(cost)).collect(Collectors.toList());
   }
-
+  
 }

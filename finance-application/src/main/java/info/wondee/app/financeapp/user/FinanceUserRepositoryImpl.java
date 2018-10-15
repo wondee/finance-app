@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 
 import info.wondee.app.financeapp.fixedcosts.FixedCost;
 import info.wondee.app.financeapp.fixedcosts.MonthlyFixedCost;
+import info.wondee.app.financeapp.fixedcosts.QuaterlyFixedCost;
 import info.wondee.app.financeapp.fixedcosts.YearlyFixedCost;
 import info.wondee.app.financeapp.specialcosts.SpecialCost;
 
@@ -24,6 +25,15 @@ public class FinanceUserRepositoryImpl implements FinanceUserCustomRespository {
     repository.save(financeUser);
   }
 
+
+  @Override
+  public void save(QuaterlyFixedCost cost, Integer id) {
+    FinanceUser financeUser = findCurrentUser();
+    financeUser.add(cost, id);
+    repository.save(financeUser);  
+  }
+
+  
   @Override
   public void save(YearlyFixedCost cost, Integer id) {
     FinanceUser financeUser = findCurrentUser();
@@ -45,6 +55,7 @@ public class FinanceUserRepositoryImpl implements FinanceUserCustomRespository {
     FinanceUser currentUser = findCurrentUser();
 
     costs.addAll(currentUser.getMonthlyFixedCosts());
+    costs.addAll(currentUser.getQuaterlyFixedCosts());
     costs.addAll(currentUser.getYearlyFixedCosts());
     
     return costs;
@@ -55,6 +66,11 @@ public class FinanceUserRepositoryImpl implements FinanceUserCustomRespository {
     return findCurrentUser().getMonthlyFixedCosts();
   }
 
+  @Override
+  public List<QuaterlyFixedCost> findQuaterlyFixedCosts() {
+    return findCurrentUser().getQuaterlyFixedCosts();
+  }
+  
   @Override
   public List<YearlyFixedCost> findYearlyFixedCosts() {
     return findCurrentUser().getYearlyFixedCosts();
@@ -72,6 +88,13 @@ public class FinanceUserRepositoryImpl implements FinanceUserCustomRespository {
     repository.save(currentUser);
   }
 
+  @Override
+  public void deleteQuaterlyFixedCost(int id) {
+    FinanceUser currentUser = findCurrentUser();
+    currentUser.getQuaterlyFixedCosts().remove(id);
+    repository.save(currentUser);
+  }
+  
   @Override
   public void deleteYearlyFixedCost(int id) {
     FinanceUser currentUser = findCurrentUser();
@@ -92,6 +115,7 @@ public class FinanceUserRepositoryImpl implements FinanceUserCustomRespository {
     
     return repository.findByName(userName).orElseThrow(() -> new IllegalStateException("User not found in DB"));
   }
+
 
   
 }

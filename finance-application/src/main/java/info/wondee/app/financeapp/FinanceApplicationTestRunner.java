@@ -12,6 +12,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import info.wondee.app.financeapp.user.FinanceUser;
 import info.wondee.app.financeapp.user.FinanceUserRepository;
 
+
+// uncomment and run for adding a new user to the DB
 //@SpringBootApplication
 @ComponentScan("info.wondee.app.financeapp")
 public class FinanceApplicationTestRunner implements CommandLineRunner{
