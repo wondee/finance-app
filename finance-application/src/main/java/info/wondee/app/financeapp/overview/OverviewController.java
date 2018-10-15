@@ -45,7 +45,7 @@ public class OverviewController {
     
     int currentAmount = user.getCurrentAmount();
     
-    model.addAttribute("entries", createOverviewEntries(currentAmount, 100));
+    model.addAttribute("entries", createOverviewEntries(currentAmount, 50));
     model.addAttribute("currentamount", currentAmount);
     
     return "overview";
@@ -61,6 +61,8 @@ public class OverviewController {
     
     return "redirect:/overview";
   }
+  
+  
   
   private List<OverviewEntry> createOverviewEntries(int currentAmount, int maxEntries) {
     
