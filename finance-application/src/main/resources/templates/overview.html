@@ -35,7 +35,7 @@
         <td th:text="${entry.displayMonth}"></td>
         <td th:text="${entry.displayFixedAmount}"></td>
         <td th:text="${entry.displaySpecialAmount}"></td>
-        <td th:text="${entry.displayCurrentAmount}"></td>
+        <td th:text="${entry.displayCurrentAmount}" th:style="'font-weight: bold;' + (${entry.negative} ? 'color:red;' : '')"></td>
       </tr>
     </tbody>
   </table>

@@ -42,4 +42,7 @@ public class OverviewEntry {
     return CostPresenter.displayAmount(currentAmount);
   }
 
+  public boolean isNegative() {
+    return currentAmount < 0;
+  }
 }

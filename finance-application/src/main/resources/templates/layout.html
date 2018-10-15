@@ -40,9 +40,10 @@
 		.btn:hover {
 		    background-color: RoyalBlue;
 		}
-	a.btn {
-		padding: 7px 10px; 
+		a.btn {
+			padding: 7px 10px; 
 	  }
+	  
   </style>
   </head>
   <body>
@@ -65,6 +66,17 @@
           <li class="nav-item" sec:authorize="isAuthenticated()">
             <a class="nav-link" th:href="@{/specialcosts}">Sonderkosten</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Anderes
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" th:href="@{/public/changelog}">Changelog</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" th:href="@{/legal/impressum}">Impressum</a>
+              <a class="dropdown-item" th:href="@{/legal/datenschutz}">Datenschutzerklärung</a>
+            </div>
+          </li>
         </ul>
          <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" sec:authorize="isAuthenticated()" method="post">
 			     <button class="btn btn-link my-2 my-sm-0" type="submit">logout</button>
@@ -86,13 +98,6 @@
     <div class="footer-copyright text-center py-3">© 2018 Copyright:
       <a href="https://www.wondee.info"> wondee.info</a>
       
-      <ul class="list-unstyled">
-        <li>
-          <a th:href="@{/changelog}">Changelog</a>
-          <a th:href="@{/legal/impressum}">Impressum</a>
-          <a th:href="@{/legal/datenschutz}">Datenschutzerklärung</a>
-        </li>
-      </ul>
     </div>
     <!-- Copyright -->
 

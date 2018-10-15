@@ -43,7 +43,7 @@
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayFromDate}"></td>
         <td th:text="${cost.displayToDate}"></td>
-        <td>
+        <td class="action-column">
           <a th:href="@{/fixedcosts/delete(id=${iter.index},type='monthly')}" class="btn">
            <i class="fas fa-trash" style="font-size: 12px;"></i>
           </a>
@@ -78,7 +78,7 @@
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayFromDate}"></td>
         <td th:text="${cost.displayToDate}"></td>
-        <td>
+        <td class="action-column">
           <a th:href="@{/fixedcosts/delete(id=${iter.index},type='quaterly')}" class="btn">
             <i class="fas fa-trash" style="font-size: 12px;"></i>
           </a> 
@@ -113,7 +113,7 @@
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayFromDate}"></td>
         <td th:text="${cost.displayToDate}"></td>
-        <td>
+        <td class="action-column">
           <a th:href="@{/fixedcosts/delete(id=${iter.index},type='yearly')}" class="btn">
             <i class="fas fa-trash" style="font-size: 12px;"></i>
           </a> 
