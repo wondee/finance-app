@@ -26,42 +26,15 @@
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayDueDate}"></td>
         <td>
-          <a th:href="@{/specialcosts/delete(id=${iter.index})}" class="btn">
+          <a th:href="@{/specialcosts/delete(id=${iter.index})}">
             <i class="fas fa-trash-alt" style="font-size: 12px;"></i>
           </a>
-          <a th:href="@{/fixedcosts/edit(id=${iter.index}, type='special')}" class="btn">
+          <a th:href="@{/fixedcosts/edit(id=${iter.index}, type='special')}">
             <i class="fas fa-edit" style="font-size: 12px;"></i>
          </a>
         </td>
       </tr>
-      <!-- 
-      <tr>
-        <td><input type="text" name="name"/></td>
-        <td><input type="number" name="amount"/></td>
-        <td>
-          <select name="month">
-	            <option value="0">Januar</option>
-	            <option value="1">Februar</option>
-	            <option value="2">März</option>
-	            <option value="3">April</option>
-	            <option value="4">Mai</option>
-	            <option value="5">Juni</option>
-	            <option value="6">Juli</option>
-	            <option value="7">August</option>
-	            <option value="8">September</option>
-	            <option value="9">Oktober</option>
-	            <option value="10">November</option>
-	            <option value="11">Dezember</option>
-	        </select>
-	        <input type="number" name="year"/>
-        </td>
-        <td>
-        <button type="submit" class="btn">
-           <i class="fas fa-plus-square" style="font-size: 12px;"></i>
-        </button>
-        </td>
-      </tr>
-       -->
+     
     </tbody>
   </table>
   <a th:href="@{/fixedcosts/edit(type='special')}">Neue Sonderkosten erfassen</a>
