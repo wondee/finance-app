@@ -10,6 +10,7 @@ after_success:
   - docker build -t wondee/finance-application .
 
 deploy:
+  skip_cleanup: true
   provider: script
   script: bash docker_push.sh
   on:
