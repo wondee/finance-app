@@ -31,6 +31,12 @@
 	      padding: .3rem;
     		vertical-align: center;
 	  }
+	  .btn-link .nav-link {
+		color: rgba(255,255,255,.5);
+	  }
+	  .btn-link .nav-link:hover {
+		color: rgba(255,255,255,.75);
+	  }
 	  
   </style>
   </head>
@@ -67,7 +73,7 @@
           </li>
         </ul>
          <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" sec:authorize="isAuthenticated()" method="post">
-			     <button class="btn btn-link my-2 my-sm-0" type="submit">logout</button>
+			     <button class="btn btn-link nav-link" type="submit">logout</button>
 			   </form>
       </div>
       </div>
