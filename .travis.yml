@@ -4,7 +4,7 @@ jdk: openjdk8
 before_script: cd finance-application
 
 script:
-- mvn clean install -B
+- mvn package
 
 after_success:
   - docker build -t wondee/finance-application .
