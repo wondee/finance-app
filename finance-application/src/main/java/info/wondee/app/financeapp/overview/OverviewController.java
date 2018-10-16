@@ -51,7 +51,7 @@ public class OverviewController {
     return "overview";
     
   }
-
+  
   @PostMapping("/currentamount")
   public String postCurrentAmount(@RequestParam("currentamount") int newAmount) {
     

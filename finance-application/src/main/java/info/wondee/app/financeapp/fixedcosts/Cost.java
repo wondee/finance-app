@@ -1,7 +1,5 @@
 package info.wondee.app.financeapp.fixedcosts;
 
-import java.time.Month;
-
 import org.springframework.data.annotation.Id;
 
 import lombok.AllArgsConstructor;

@@ -3,6 +3,7 @@ package info.wondee.app.financeapp.fixedcosts;
 import java.util.Currency;
 import java.util.Locale;
 
+import info.wondee.app.financeapp.DisplayUtil;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,10 +18,13 @@ public abstract class CostPresenter<T extends Cost> {
   private int amount;
   private boolean incoming;
   
+  private String type;
+  
   public CostPresenter(T object) {
     amount = Math.abs(object.getAmount());
     name = object.getName();
     incoming = object.getAmount() > 0;
+    type = DisplayUtil.toDisplayString(object.getType());
   }
   
   public abstract T toPersistentObject();
