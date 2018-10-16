@@ -1,21 +1,21 @@
 package info.wondee.app.financeapp.overview;
 
 import java.time.YearMonth;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 import info.wondee.app.financeapp.DisplayUtil;
 import info.wondee.app.financeapp.fixedcosts.Cost;
 import info.wondee.app.financeapp.fixedcosts.CostPresenter;
 import info.wondee.app.financeapp.fixedcosts.FixedCost;
-import info.wondee.app.financeapp.fixedcosts.MonthlyFixedCostPresenter;
 import lombok.Getter;
 
 @Getter
 public class OverviewEntry {
+
+  private static final Comparator<CostPresenter<? extends Cost>> amountComparator 
+        = ((o1, o2) -> Integer.compare(o2.getAmount(), o1.getAmount()));
 
   private YearMonth yearMonth;
   private int currentAmount;
@@ -27,7 +27,6 @@ public class OverviewEntry {
   private List<CostPresenter<Cost>> specialCosts;
   
   private int sumSpecialCosts;
-  private List<CostPresenter<? extends Cost>> nonMonthlyCosts;
 
 
   public OverviewEntry(YearMonth yearMonth, int currentAmount, List<CostPresenter<FixedCost>> fixedCosts,
@@ -39,14 +38,9 @@ public class OverviewEntry {
     this.specialCosts = specialCosts;
     this.sumSpecialCosts = sumSpecialCosts;
     
-    nonMonthlyCosts = Lists.newArrayList(Iterables.concat(
-        fixedCosts.stream().filter(c -> isMonthly(c)).collect(Collectors.toList()),
-        specialCosts));
-  }
-  
-
-  private boolean isMonthly(@SuppressWarnings("rawtypes") CostPresenter c) {
-    return !(c instanceof MonthlyFixedCostPresenter);
+    Collections.sort(fixedCosts, amountComparator);
+    Collections.sort(specialCosts, amountComparator);
+    
   }
 
 
@@ -65,11 +59,13 @@ public class OverviewEntry {
   public String getDisplayCurrentAmount() {
     return CostPresenter.displayAmount(currentAmount);
   }
-
-  public String getDisplayNumberOfNonMonthCosts() {
-    int number = nonMonthlyCosts.size();
-    
-    return (number < 1) ? "-" : String.valueOf(number);
+  
+  public int getCountOfSpecialcosts() {
+    return specialCosts.size();
+  }
+  
+  public int getCountOfFixedcosts() {
+    return fixedCosts.size();
   }
   
   public boolean isNegative() {

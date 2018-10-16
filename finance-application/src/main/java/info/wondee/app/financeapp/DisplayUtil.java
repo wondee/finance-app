@@ -5,10 +5,14 @@ import java.time.Month;
 import java.time.YearMonth;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+
+import com.google.common.collect.ImmutableMap;
 
 import info.wondee.app.financeapp.fixedcosts.Cost;
 import info.wondee.app.financeapp.fixedcosts.CostPresenter;
+import info.wondee.app.financeapp.fixedcosts.CostType;
 import info.wondee.app.financeapp.fixedcosts.FixedCostPresenter;
 
 public class DisplayUtil {
@@ -40,6 +44,18 @@ public class DisplayUtil {
 
   public static <T extends Cost> List<CostPresenter<T>> toPresenter(Collection<T> costs) {
     return costs.stream().map(cost -> FixedCostPresenter.from(cost)).collect(Collectors.toList());
+  }
+
+  private static Map<CostType, String> costTypeMap = ImmutableMap.of(
+      CostType.MONTHLY, "monatlich",
+
+      CostType.QUATERLY, "vierteljährlich",
+      CostType.YEARLY, "jährlich"
+      );
+  
+  public static String toDisplayString(CostType type) {
+    
+    return costTypeMap.get(type);
   }
   
 }
