@@ -26,10 +26,12 @@
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayDueDate}"></td>
         <td>
-          <a th:href="@{/fixedcosts/edit(id=${iter.index}, type='special')}">
+          <a th:href="@{/fixedcosts/edit(id=${iter.index}, type='special')}" class="icon-link">
             <i class="fas fa-edit"></i>
           </a>
-          <a th:href="@{/specialcosts/delete(id=${iter.index})}">
+         </td>
+         <td class="action-column">          
+          <a th:href="@{/specialcosts/delete(id=${iter.index})}" class="icon-link">
             <i class="fas fa-trash-alt"></i>
           </a>
         </td>
