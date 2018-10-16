@@ -44,10 +44,12 @@
         <td th:text="${cost.displayFromDate}"></td>
         <td th:text="${cost.displayToDate}"></td>
         <td class="action-column">
-          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='monthly')}">
+          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='monthly')}" class="icon-link">
            <i class="fas fa-edit"></i>
           </a>
-          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='monthly')}">
+         </td>
+         <td class="action-column">
+          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='monthly')}" class="icon-link">
            <i class="fas fa-trash-alt"></i>
           </a>
         </td>
@@ -79,10 +81,12 @@
         <td th:text="${cost.displayFromDate}"></td>
         <td th:text="${cost.displayToDate}"></td>
         <td class="action-column">
-          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='quaterly')}">
+          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='quaterly')}" class="icon-link">
            <i class="fas fa-edit"></i>
           </a>
-          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='quaterly')}">
+         </td>
+         <td class="action-column">
+          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='quaterly')}" class="icon-link">
             <i class="fas fa-trash-alt"></i>
           </a> 
         </td>
@@ -114,10 +118,12 @@
         <td th:text="${cost.displayFromDate}"></td>
         <td th:text="${cost.displayToDate}"></td>
         <td class="action-column">
-          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='yearly')}">
+          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='yearly')}" class="icon-link">
            <i class="fas fa-edit"></i>
           </a>
-          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='yearly')}">
+         </td>
+         <td class="action-column">              
+          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='yearly')}" class="icon-link">
             <i class="fas fa-trash-alt"></i>
           </a> 
         </td>
