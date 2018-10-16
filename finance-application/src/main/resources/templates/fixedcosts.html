@@ -44,11 +44,11 @@
         <td th:text="${cost.displayFromDate}"></td>
         <td th:text="${cost.displayToDate}"></td>
         <td class="action-column">
-          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='monthly')}">
-           <i class="fas fa-trash" style="font-size: 12px;"></i>
-          </a>
           <a th:href="@{/fixedcosts/edit(id=${iter.index},type='monthly')}">
            <i class="fas fa-edit" style="font-size: 12px;"></i>
+          </a>
+          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='monthly')}">
+           <i class="fas fa-trash-alt" style="font-size: 12px;"></i>
           </a>
         </td>
       </tr>
@@ -79,12 +79,12 @@
         <td th:text="${cost.displayFromDate}"></td>
         <td th:text="${cost.displayToDate}"></td>
         <td class="action-column">
-          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='quaterly')}">
-            <i class="fas fa-trash" style="font-size: 12px;"></i>
-          </a> 
           <a th:href="@{/fixedcosts/edit(id=${iter.index},type='quaterly')}">
            <i class="fas fa-edit" style="font-size: 12px;"></i>
-         </a>
+          </a>
+          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='quaterly')}">
+            <i class="fas fa-trash-alt" style="font-size: 12px;"></i>
+          </a> 
         </td>
       </tr>
     </tbody>
@@ -114,12 +114,12 @@
         <td th:text="${cost.displayFromDate}"></td>
         <td th:text="${cost.displayToDate}"></td>
         <td class="action-column">
-          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='yearly')}">
-            <i class="fas fa-trash" style="font-size: 12px;"></i>
-          </a> 
           <a th:href="@{/fixedcosts/edit(id=${iter.index},type='yearly')}">
            <i class="fas fa-edit" style="font-size: 12px;"></i>
-         </a>
+          </a>
+          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='yearly')}">
+            <i class="fas fa-trash-alt" style="font-size: 12px;"></i>
+          </a> 
         </td>
       </tr>
     </tbody>
