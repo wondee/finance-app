@@ -39,7 +39,7 @@
         <td th:text="${entry.displayCurrentAmount}" th:style="'font-weight: bold;' + (${entry.negative} ? 'color:red;' : '')"></td>
         <td>
           <a href="#" data-toggle="modal" th:attr="data-target=${'#detailsModal' + iter.index}" class="icon-link">
-            <i class="fas fa-info-circle"></i>
+            <i class="fas fa-file-invoice"></i>
           </a>
 				  <div class="modal fade" th:id="'detailsModal' + ${iter.index}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				    <div class="modal-dialog" role="document">
