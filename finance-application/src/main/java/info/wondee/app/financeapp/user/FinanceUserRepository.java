@@ -1,6 +1,5 @@
 package info.wondee.app.financeapp.user;
 
-import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.cache.annotation.CacheEvict;
@@ -12,7 +11,7 @@ public interface FinanceUserRepository extends MongoRepository<FinanceUser, Stri
   @Cacheable(cacheNames="userCache", key="#name")
   Optional<FinanceUser> findByName(String name);
 
-  @CacheEvict(cacheNames="userCache", key="#user.name")
+  @CacheEvict(cacheNames= {"userCache", "overviewCache"}, key="#user.name")
   <S extends FinanceUser> S save(S user);
 
   

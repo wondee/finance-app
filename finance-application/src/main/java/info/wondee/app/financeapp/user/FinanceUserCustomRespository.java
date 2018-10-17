@@ -2,7 +2,6 @@ package info.wondee.app.financeapp.user;
 
 import java.util.List;
 
-import info.wondee.app.financeapp.fixedcosts.FixedCost;
 import info.wondee.app.financeapp.fixedcosts.MonthlyFixedCost;
 import info.wondee.app.financeapp.fixedcosts.QuaterlyFixedCost;
 import info.wondee.app.financeapp.fixedcosts.YearlyFixedCost;
@@ -16,9 +15,6 @@ public interface FinanceUserCustomRespository {
   List<QuaterlyFixedCost> findQuaterlyFixedCosts();
   List<YearlyFixedCost> findYearlyFixedCosts();
   List<SpecialCost> findSpecialCosts();
-
-  List<FixedCost> findAllFixedCosts();
-
   
   void save(MonthlyFixedCost cost, Integer id);
   void save(QuaterlyFixedCost cost, Integer id);
