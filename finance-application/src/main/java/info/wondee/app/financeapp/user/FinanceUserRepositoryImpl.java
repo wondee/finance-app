@@ -5,9 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.google.common.collect.Lists;
-
-import info.wondee.app.financeapp.fixedcosts.FixedCost;
 import info.wondee.app.financeapp.fixedcosts.MonthlyFixedCost;
 import info.wondee.app.financeapp.fixedcosts.QuaterlyFixedCost;
 import info.wondee.app.financeapp.fixedcosts.YearlyFixedCost;
@@ -46,19 +43,6 @@ public class FinanceUserRepositoryImpl implements FinanceUserCustomRespository {
     FinanceUser financeUser = findCurrentUser();
     financeUser.add(cost, id);
     repository.save(financeUser);
-  }
-  
-  @Override
-  public List<FixedCost> findAllFixedCosts() {
-    List<FixedCost> costs = Lists.newArrayList();
-    
-    FinanceUser currentUser = findCurrentUser();
-
-    costs.addAll(currentUser.getMonthlyFixedCosts());
-    costs.addAll(currentUser.getQuaterlyFixedCosts());
-    costs.addAll(currentUser.getYearlyFixedCosts());
-    
-    return costs;
   }
 
   @Override

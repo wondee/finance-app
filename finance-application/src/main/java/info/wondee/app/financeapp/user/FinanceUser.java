@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.google.common.collect.Lists;
 
 import info.wondee.app.financeapp.fixedcosts.Cost;
+import info.wondee.app.financeapp.fixedcosts.FixedCost;
 import info.wondee.app.financeapp.fixedcosts.MonthlyFixedCost;
 import info.wondee.app.financeapp.fixedcosts.QuaterlyFixedCost;
 import info.wondee.app.financeapp.fixedcosts.YearlyFixedCost;
@@ -90,5 +91,15 @@ public class FinanceUser {
         break;
       }
     }
+  }
+
+  public List<FixedCost> getAllFixedCosts() {
+    List<FixedCost> costs = Lists.newArrayList();
+    
+    costs.addAll(getMonthlyFixedCosts());
+    costs.addAll(getQuaterlyFixedCosts());
+    costs.addAll(getYearlyFixedCosts());
+    
+    return costs;
   }
 }
