@@ -1,6 +1,10 @@
 package info.wondee.app.financeapp.overview;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +25,7 @@ public class OverviewController {
   @Autowired
   private OverviewService service;
   
+  private static final int MAX_ENTRIES = 50;
   
   @GetMapping
   public String getOverview(Model model) {
@@ -29,12 +34,24 @@ public class OverviewController {
     
     int currentAmount = user.getCurrentAmount();
     
-    model.addAttribute("entries", service.createOverviewEntries(user, currentAmount, 50));
+    model.addAttribute("entries", service.createOverviewEntries(user, MAX_ENTRIES));
     model.addAttribute("currentamount", currentAmount);
     
     return "overview";
     
   }
+
+  @GetMapping(path = "/detail", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+  public HttpEntity<OverviewEntry> getOverviewDetail(@RequestParam("index") int index) {
+    
+    FinanceUser user = repository.findCurrentUser();
+    
+    List<OverviewEntry> entries = service.createOverviewEntries(user, MAX_ENTRIES);
+    
+    return new HttpEntity<>(entries.get(index));
+    
+  }
+  
   
   @PostMapping("/currentamount")
   public String postCurrentAmount(@RequestParam("currentamount") int newAmount) {

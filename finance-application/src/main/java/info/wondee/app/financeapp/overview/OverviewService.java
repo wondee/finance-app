@@ -29,7 +29,7 @@ public class OverviewService {
 
   
   @Cacheable(cacheNames="overviewCache", key="#user.name")
-  public List<OverviewEntry> createOverviewEntries(FinanceUser user, int currentAmount, int maxEntries) {
+  public List<OverviewEntry> createOverviewEntries(FinanceUser user, int maxEntries) {
     
     Multimap<Month, FixedCost> fixedCostMap = createFixedCostMap(user);
     Multimap<YearMonth, Cost> specialCostMap = createSpecialCostMap(user);
@@ -38,7 +38,7 @@ public class OverviewService {
 
     List<OverviewEntry> overviewEntries = Lists.newLinkedList();
     
-    int tmpAmount = currentAmount;
+    int tmpAmount = user.getCurrentAmount();
     
     for (int entryIndex = 0; entryIndex < maxEntries; entryIndex++) {
       YearMonth currentMonth = YearMonth.from(entryDate);
