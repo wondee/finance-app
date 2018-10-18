@@ -21,6 +21,9 @@ var app = new Vue(
 			  $('#details-modal').modal('show');
 			  $('#load_indicator').show();
 			  
+			  this.specialCosts = Array();
+	                  this.fixedCosts = Array();
+			  
 			  // GET /someUrl
 			  this.$http.get('/overview/detail', {params: {'index': index}}).then(
 				function(response) {
