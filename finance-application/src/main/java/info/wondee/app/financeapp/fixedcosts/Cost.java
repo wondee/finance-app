@@ -1,7 +1,5 @@
 package info.wondee.app.financeapp.fixedcosts;
 
-import org.springframework.data.annotation.Id;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
@@ -11,8 +9,7 @@ import lombok.ToString;
 @ToString
 public abstract class Cost {
 
-  @Id
-  private Integer id;
+  protected Integer id;
   
   private String name;
   private int amount;

@@ -110,6 +110,10 @@ public class OverviewService {
     
     List<SpecialCost> allSpecialCosts = user.getSpecialCosts();
     
+    for (int i = 0; i < allSpecialCosts.size(); i++) {
+      allSpecialCosts.get(i).setId(i);
+    }
+    
     Multimap<YearMonth, Cost> specialCostMap = HashMultimap.create();
     
     for (SpecialCost specialCost : allSpecialCosts) {

@@ -8,6 +8,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import info.wondee.app.financeapp.DisplayUtil;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,6 +36,7 @@ public abstract class CostPresenter<T extends Cost> {
     amount = Math.abs(object.getAmount());
     name = object.getName();
     incoming = object.getAmount() > 0;
+    id = object.getId();
   }
   
   public abstract T toPersistentObject();
@@ -51,6 +55,11 @@ public abstract class CostPresenter<T extends Cost> {
   }
 
   public abstract String getType();
+  
+  @JsonProperty
+  public String getDisplayType() {
+    return DisplayUtil.toDisplayString(CostType.valueOf(getType().toUpperCase()));
+  }
   
   public static <T extends Cost> CostPresenter<T> from(T cost) {
     return cost.getType().toPresenter(cost);

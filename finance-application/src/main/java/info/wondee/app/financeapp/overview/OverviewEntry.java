@@ -68,6 +68,10 @@ public class OverviewEntry {
     return fixedCosts.size();
   }
   
+  public boolean isEmpty() {
+    return fixedCosts.isEmpty() && specialCosts.isEmpty();
+  }
+  
   public boolean isNegative() {
     return currentAmount < 0;
   }

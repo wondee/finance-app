@@ -36,5 +36,9 @@ public class SpecialCost extends Cost implements Comparable<SpecialCost> {
   public CostType getType() {
     return CostType.SPECIAL;
   }
+
+  public void setId(int id) {
+    this.id = id;
+  }
   
 }
