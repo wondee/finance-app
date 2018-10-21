@@ -36,6 +36,20 @@ public class SpecialCostController {
     return "specialcosts";
   }
   
+  @GetMapping("/add")
+  public String addSpecialCosts(Model model, @RequestParam("month") int month, @RequestParam("year") int year) {
+    
+    SpecialCostPresenter presenter = new SpecialCostPresenter();
+    
+    presenter.setDueMonth(month);
+    presenter.setDueYear(year);
+    
+    model.addAttribute("type", presenter.getType());
+    model.addAttribute("model", presenter);
+    
+    return "fixedcostform";
+  }
+  
   @PostMapping
   public String postSpecialCosts(Model model, 
       @Valid @ModelAttribute("model") SpecialCostPresenter presenter, 

@@ -29,6 +29,7 @@
         <th>Sonder Kosten</th>
         <th>Saldo</th>
         <th/>
+        <th/>
       </tr>
     </thead>
     <tbody>
@@ -40,6 +41,12 @@
         <td>
           <a href="#" class="icon-link" th:attr="index=${iter.index}, month=${entry.displayMonth}" v-on:click="showModal($event)">
             <i class="fas fa-file-alt"></i>
+          </a>
+        </td>
+        <td>
+          <a th:href="@{/specialcosts/add(month=${entry.yearMonth.monthValue}, year=${entry.yearMonth.year})}" class="icon-link" 
+                th:attr="index=${iter.index}, month=${entry.displayMonth}">
+	          <i class="fas fa-plus-square"></i>
           </a>
         </td>
       </tr>
