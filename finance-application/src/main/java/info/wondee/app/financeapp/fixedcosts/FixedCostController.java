@@ -1,16 +1,21 @@
 package info.wondee.app.financeapp.fixedcosts;
 
+import static info.wondee.app.financeapp.DisplayUtil.*;
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import info.wondee.app.financeapp.DisplayUtil;
 import info.wondee.app.financeapp.user.FinanceUserRepository;
@@ -21,7 +26,7 @@ public class FixedCostController {
 
   @Autowired
   private FinanceUserRepository repository;
-
+  
   @GetMapping("/edit")
   public String editFixedCost(Model model, @RequestParam("type") String type, @RequestParam("id") Optional<Integer> optionalId) {
     
@@ -34,7 +39,7 @@ public class FixedCostController {
     model.addAttribute("type", type);
     model.addAttribute("model", presenter);
     
-    return "fixedcostform.html";
+    return "fixedcostform";
   }
 
 
@@ -71,26 +76,51 @@ public class FixedCostController {
     return "fixedcosts";
   }
 
-  @PostMapping("/monthly")
-  public String postMonthlyFixedCost(@ModelAttribute MonthlyFixedCostPresenter presenter) {
-    repository.save(presenter.toPersistentObject(), presenter.getId());
-    
-    return "redirect:/fixedcosts";
+  @GetMapping("/monthly")
+  public String postMonthlyFixedCost(Model model, RedirectAttributes redirectAttributes) {
+    redirectAttributes.addAttribute("type", "monthly");
+    return "redirect:/fixedcosts/edit";
   }
-
-  @PostMapping("/quaterly")
-  public String postQuaterlyFixedCost(@ModelAttribute QuaterlyFixedCostPresenter presenter) {
-    repository.save(presenter.toPersistentObject(), presenter.getId());
+  
+  @PostMapping("/monthly")
+  public String postMonthlyFixedCost(Model model, 
+      @Valid @ModelAttribute("model") MonthlyFixedCostPresenter presenter, 
+      BindingResult bindingResult) {
     
-    return "redirect:/fixedcosts";
+    return processSaving(model, presenter, bindingResult, "monthly", "fixedcosts",
+        (() -> repository.save(presenter.toPersistentObject(), presenter.getId())));
+  }
+  
+  @GetMapping("/quaterly")
+  public String postQuaterlyFixedCost(Model model, RedirectAttributes redirectAttributes) {
+    redirectAttributes.addAttribute("type", "quaterly");
+    return "redirect:/fixedcosts/edit";
+  }
+  
+  @PostMapping("/quaterly")
+  public String postQuaterlyFixedCost(Model model, 
+      @Valid @ModelAttribute("model") QuaterlyFixedCostPresenter presenter, 
+      BindingResult bindingResult) {
+    
+    return processSaving(model, presenter, bindingResult, "quaterly", "fixedcosts",
+        (() -> repository.save(presenter.toPersistentObject(), presenter.getId())));
+  }
+  
+  @GetMapping("/yearly")
+  public String postYearlyFixedCost(Model model, RedirectAttributes redirectAttributes) {
+    redirectAttributes.addAttribute("type", "yearly");
+    return "redirect:/fixedcosts/edit";
   }
   
   @PostMapping("/yearly")
-  public String postYearlyFixedCost(@ModelAttribute YearlyFixedCostPresenter presenter) {
-    repository.save(presenter.toPersistentObject(), presenter.getId());
+  public String postYearlyFixedCost(Model model, 
+      @Valid @ModelAttribute("model") YearlyFixedCostPresenter presenter, 
+      BindingResult bindingResult) {
     
-    return "redirect:/fixedcosts";
+    return processSaving(model, presenter, bindingResult, "yearly", "fixedcosts",
+        (() -> repository.save(presenter.toPersistentObject(), presenter.getId())));
   }
+  
   
   @GetMapping("/delete")
   public String deleteFixedCost(@RequestParam("id") int id, @RequestParam("type") String type) {

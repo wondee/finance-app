@@ -1,5 +1,8 @@
 package info.wondee.app.financeapp.fixedcosts;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 import info.wondee.app.financeapp.DisplayUtil;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +13,8 @@ import lombok.Setter;
 @Setter
 public class YearlyFixedCostPresenter extends FixedCostPresenter<YearlyFixedCost> {
 
+  @Min(1)
+  @Max(12)
   private int dueMonth;
 
   public YearlyFixedCostPresenter(YearlyFixedCost object) {
@@ -29,6 +34,11 @@ public class YearlyFixedCostPresenter extends FixedCostPresenter<YearlyFixedCost
           DisplayUtil.toDate(getFromMonth(), getFromYear()), 
           DisplayUtil.toDate(getToMonth(), getToYear())
         );
+  }
+
+  @Override
+  public String getType() {
+    return "yearly";
   }
   
 }

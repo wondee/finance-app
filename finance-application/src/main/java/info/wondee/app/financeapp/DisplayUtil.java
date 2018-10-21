@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+
 import com.google.common.collect.ImmutableMap;
 
 import info.wondee.app.financeapp.fixedcosts.Cost;
@@ -36,8 +39,8 @@ public class DisplayUtil {
     return Month.values()[month - 1];
   }
 
-  public static FinanceMonth toDate(int month, int year) {
-    if (year == 0) return null;
+  public static FinanceMonth toDate(int month, Integer year) {
+    if (year == null) return null;
     
     return new FinanceMonth(toMonth(month), year);
   }
@@ -56,6 +59,25 @@ public class DisplayUtil {
   public static String toDisplayString(CostType type) {
     
     return costTypeMap.get(type);
+  }
+  
+
+  public static String processSaving(Model model, CostPresenter<?> presenter, 
+      BindingResult bindingResult, String type, String successPage, Runnable action) {
+    
+    if (bindingResult.hasErrors()) {
+      
+      bindingResult.getAllErrors().forEach(System.out::println);
+      
+      model.addAttribute("model", presenter);
+      model.addAttribute("type", type);
+      
+      return "fixedcostform";
+    }
+    
+    action.run();
+    
+    return "redirect:/" + successPage;
   }
   
 }

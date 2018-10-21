@@ -1,10 +1,15 @@
 package info.wondee.app.financeapp.specialcosts;
 
+import static info.wondee.app.financeapp.DisplayUtil.processSaving;
+
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,10 +37,12 @@ public class SpecialCostController {
   }
   
   @PostMapping
-  public String postSpecialCosts(@ModelAttribute SpecialCostPresenter presenter) {
-    repository.save(presenter.toPersistentObject(), presenter.getId());
-     
-    return "redirect:/specialcosts";
+  public String postSpecialCosts(Model model, 
+      @Valid @ModelAttribute("model") SpecialCostPresenter presenter, 
+      BindingResult bindingResult) {
+    
+    return processSaving(model, presenter, bindingResult, "special", "specialcosts",
+        (() -> repository.save(presenter.toPersistentObject(), presenter.getId())));
   }
   
   @GetMapping("/delete")

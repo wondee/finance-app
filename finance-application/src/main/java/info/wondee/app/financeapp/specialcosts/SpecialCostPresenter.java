@@ -2,6 +2,9 @@ package info.wondee.app.financeapp.specialcosts;
 
 import java.time.YearMonth;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 import info.wondee.app.financeapp.DisplayUtil;
 import info.wondee.app.financeapp.fixedcosts.CostPresenter;
 import lombok.Getter;
@@ -13,9 +16,13 @@ import lombok.Setter;
 @Setter
 public class SpecialCostPresenter extends CostPresenter<SpecialCost> {
 
+  @Min(1)
+  @Max(12)
   private int dueMonth;
   
-  private int dueYear;
+  @Min(2000)
+  @Max(2199)
+  private int dueYear = 2019;
 
   public SpecialCostPresenter(SpecialCost object) {
     super(object);
@@ -30,6 +37,11 @@ public class SpecialCostPresenter extends CostPresenter<SpecialCost> {
   @Override
   public SpecialCost toPersistentObject() {
     return new SpecialCost(getName(), getRealAmount(), DisplayUtil.toDate(dueMonth, dueYear));
+  }
+
+  @Override
+  public String getType() {
+    return "special";
   }
   
 }

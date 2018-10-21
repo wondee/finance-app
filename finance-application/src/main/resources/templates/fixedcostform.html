@@ -10,22 +10,35 @@
 
   <th:block th:switch="${type}">
     <h4 th:case="'monthly'">Monatliche Fixkosten hinzufügen</h4>
+    <h4 th:case="'quaterly'">Vierteljährliche Fixkosten hinzufügen</h4>
     <h4 th:case="'yearly'">Jährliche Fixkosten hinzufügen</h4>
     <h4 th:case="'special'">Sonderkosten hinzufügen</h4>
   </th:block>
   
   <form method="post" th:action="@{/fixedcosts/{path}(path=${type})}" th:object="${model}">
+    <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger">
+      Das Ab-Datum mus vor dem Bis-Datum liegen
+    </div>
+    
 		<div class="form-group">
 		   <label for="name">Bezeichnung</label>
-		   <input type="text" class="form-control" id="name" name="name" th:field="*{name}"
-		      aria-describedby="nameHelp" placeholder="z.B. Miete" required="required">
-		   <small id="nameHelp" class="form-text text-muted">Der Name des zu erfassenden Kosten.</small>
+		   <input id="name" name="name" th:field="*{name}" 
+		      type="text" maxlength="100" required="required"
+		      class="form-control" th:classappend="${#fields.hasErrors('name')} ? 'is-invalid': ''" 
+		      aria-describedby="nameHelp" placeholder="z.B. Miete">
+		   <small id="nameHelp" class="form-text text-muted" 
+		        th:if="${!#fields.hasErrors('name')}">Der Name des zu erfassenden Kosten.</small>
+		   <div class="invalid-feedback">Name darf nicht leer sein.</div>
 		</div>
 		<div class="form-group">
        <label for="amount">Betrag</label>
-       <input type="number" class="form-control" id="amount" name="amount" th:field="*{amount}" 
-          aria-describedby="amountHelp" placeholder="z.B. 100" required="required">
-       <small id="amountHelp" class="form-text text-muted">Der Betrag des zu erfassenden Kosten. Bitte immer nur positive Zahlen eingeben.</small>
+       <input id="amount" name="amount" th:field="*{amount}" 
+          type="number" min="1" required="required"
+          class="form-control" th:classappend="${#fields.hasErrors('amount')} ? 'is-invalid': ''" 
+          aria-describedby="amountHelp" placeholder="z.B. 100" >
+       <small id="amountHelp" class="form-text text-muted"
+          th:if="${!#fields.hasErrors('amount')}">Der Betrag des zu erfassenden Kosten. Bitte immer nur positive Zahlen eingeben.</small>
+       <div class="invalid-feedback">Der Betrag muss größer als 0 sein.</div>
     </div>
 		<div class="form-group form-check">
 		  <input type="checkbox" class="form-check-input" id="incoming" th:field="*{incoming}">
@@ -64,7 +77,7 @@
 	    <div th:case="'special'" th:include="fragments/components :: yearmonth(prefix='due', monthTitle='Ist fällig in Monat', yearTitle='Ist fällig im Jahr')" class="form-group"></div>
 		</th:block>
 		
-		<div th:if="${type == 'monthly' || type == 'yearly'}">
+		<div th:if="${type == 'monthly' || type == 'quaterly' || type == 'yearly'}">
 		
 		    <a class="btn btn-primary" data-toggle="collapse" href="#extendedOptions" role="button" aria-expanded="false" aria-controls="extendedOptions">
 			    Erweiterte Optionen
