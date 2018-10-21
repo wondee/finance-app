@@ -10,15 +10,13 @@
   <h4>Überblick</h4>
 
   <div class="card card-body">
-    <form method="post" th:action="@{/overview/currentamount}">
-      <div class="form-group">
-        <label for="currentamount">Aktueller Betrag</label>
-        <input type="number" class="form-control" id="currentamount" name="currentamount" 
-          aria-describedby="nameHelp" th:value="${currentamount}"/>
-        <small id="currentamountHelp" class="form-text text-muted">Der aktuell vorhandene Geldbetrag.</small>
-      </div>
-      <button type="submit" class="btn btn-primary">Aktualisieren</button>
-    </form>
+  <p>
+    Aktueller Betrag: [[${currentamount}]] 
+    <a href="#" data-toggle="modal" data-target="#exampleModalCenter" class="icon-link" >
+      <i class="fas fa-edit"></i>
+    </a>
+  </p>
+  
   </div>
   
   <table class="table table-striped">
@@ -46,13 +44,39 @@
         <td>
           <a th:href="@{/specialcosts/add(month=${entry.yearMonth.monthValue}, year=${entry.yearMonth.year})}" class="icon-link" 
                 th:attr="index=${iter.index}, month=${entry.displayMonth}">
-	          <i class="fas fa-plus-square"></i>
+            <i class="fas fa-plus-square"></i>
           </a>
         </td>
       </tr>
     </tbody>
   </table>
-  
+
+
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLongTitle">Aktuellen Betrag ändern</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+			    <form method="post" th:action="@{/overview/currentamount}">
+		        <div class="modal-body">
+				      <div class="form-group">
+				        <label for="currentamount">Aktueller Betrag</label>
+				        <input type="number" class="form-control" id="currentamount" name="currentamount" 
+				          aria-describedby="nameHelp" th:value="${currentamount}"/>
+				        <small id="currentamountHelp" class="form-text text-muted">Der aktuell vorhandene Geldbetrag.</small>
+				      </div>
+			      </div>
+			      <div class="modal-footer">
+				      <button type="submit" class="btn btn-primary">Aktualisieren</button>
+			      </div>
+		      </form>      
+		    </div>
+		  </div>
+		</div>
   
           <div class="modal fade" id="details-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
