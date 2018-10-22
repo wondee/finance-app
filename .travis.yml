@@ -6,7 +6,6 @@ before_script: cd finance-application
 script:
 - mvn package
 
-
 after_success:
   - docker build -t wondee/finance-application .
 
