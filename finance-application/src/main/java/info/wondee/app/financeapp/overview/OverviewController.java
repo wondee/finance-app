@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import info.wondee.app.financeapp.fixedcosts.CostPresenter;
 import info.wondee.app.financeapp.user.FinanceUser;
 import info.wondee.app.financeapp.user.FinanceUserRepository;
 
@@ -27,6 +28,16 @@ public class OverviewController {
   
   private static final int MAX_ENTRIES = 50;
   
+  @GetMapping("/all")
+  public HttpEntity<List<OverviewEntry>> getOverview() {
+    FinanceUser user = repository.findCurrentUser();
+
+    List<OverviewEntry> allEntries = service.createOverviewEntries(user, MAX_ENTRIES);
+    
+    return new HttpEntity<List<OverviewEntry>>(allEntries);
+  }
+  
+  
   @GetMapping
   public String getOverview(Model model) {
     
@@ -35,7 +46,7 @@ public class OverviewController {
     int currentAmount = user.getCurrentAmount();
     
     model.addAttribute("entries", service.createOverviewEntries(user, MAX_ENTRIES));
-    model.addAttribute("currentamount", currentAmount);
+    model.addAttribute("currentamount", CostPresenter.displayAmount(currentAmount));
     
     return "overview";
     

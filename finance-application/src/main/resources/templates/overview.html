@@ -10,6 +10,9 @@
   <h3>Überblick</h3>
 
   <div class="card card-body">
+  <img class="load_indicator" alt="" v-if="!loaded" th:src="@{/resources/load_indicator.gif}">
+  
+  <line-chart v-if="loaded" :data="chartData"></line-chart>
   <p>
     Aktueller Betrag: [[${currentamount}]]
     <a href="#" data-toggle="modal" data-target="#changeAmountModal" class="icon-link" >
@@ -93,7 +96,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <img id="load_indicator" alt="" th:src="@{/resources/load_indicator.gif}">
+                  <img id="modal_load_indicator" class="load_indicator" alt="" th:src="@{/resources/load_indicator.gif}">
                   <div v-if="specialCosts.length > 0">
                     <h6>Sonderkosten:</h6>
                     <table class="table table-striped">
@@ -141,7 +144,15 @@
 </div>
 
 <div layout:fragment="script">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+    <script type="text/javascript">
+    
+    </script>
+    
     <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/overview.js')}"></script>
+    
+    
 </div>
 </body>
 </html>

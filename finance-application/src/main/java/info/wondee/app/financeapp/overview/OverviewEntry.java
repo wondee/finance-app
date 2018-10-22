@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import info.wondee.app.financeapp.DisplayUtil;
 import info.wondee.app.financeapp.fixedcosts.Cost;
 import info.wondee.app.financeapp.fixedcosts.CostPresenter;
@@ -43,7 +45,7 @@ public class OverviewEntry {
     
   }
 
-
+  @JsonProperty
   public String getDisplayMonth() {
     return DisplayUtil.createDisplayMonthAndYear(yearMonth);
   }
