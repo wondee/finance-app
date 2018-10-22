@@ -3,6 +3,7 @@ package info.wondee.app.financeapp.fixedcosts;
 import static info.wondee.app.financeapp.DisplayUtil.*;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.validation.Valid;
 
@@ -27,6 +28,36 @@ public class FixedCostController {
   @Autowired
   private FinanceUserRepository repository;
   
+  @GetMapping
+  public String getFixedCosts(Model model) {
+
+    List<MonthlyFixedCost> monthly = repository.findMonthlyFixedCosts();
+    List<QuaterlyFixedCost> quaterly = repository.findQuaterlyFixedCosts();
+    List<YearlyFixedCost> yearly = repository.findYearlyFixedCosts();
+
+    model.addAttribute("monthlyFixedCosts", DisplayUtil.toPresenter(monthly));
+    model.addAttribute("quaterlyFixedCosts", DisplayUtil.toPresenter(quaterly));
+    model.addAttribute("yearlyFixedCosts", DisplayUtil.toPresenter(yearly));
+
+    model.addAttribute("currentBalance", CostPresenter.displayAmount(calculateCurrentBalance(monthly, quaterly, yearly)));
+    
+    return "fixedcosts";
+  }
+  
+  private int calculateCurrentBalance(
+      List<MonthlyFixedCost> monthly, 
+      List<QuaterlyFixedCost> quaterly,
+      List<YearlyFixedCost> yearly) {
+    
+    AtomicInteger sum = new AtomicInteger(0);
+    
+    monthly.forEach(cost -> sum.addAndGet(cost.getAmount()));
+    quaterly.forEach(cost -> sum.addAndGet(cost.getAmount() * 4 / 12));
+    yearly.forEach(cost -> sum.addAndGet(cost.getAmount() / 12));
+    
+    return sum.get();
+  }
+
   @GetMapping("/edit")
   public String editFixedCost(Model model, @RequestParam("type") String type, @RequestParam("id") Optional<Integer> optionalId) {
     
@@ -64,16 +95,6 @@ public class FixedCostController {
     default:
       throw new IllegalArgumentException();
     }
-  }
-  
-  @GetMapping
-  public String getFixedCosts(Model model) {
-
-    model.addAttribute("monthlyFixedCosts", DisplayUtil.toPresenter(repository.findMonthlyFixedCosts()));
-    model.addAttribute("quaterlyFixedCosts", DisplayUtil.toPresenter(repository.findQuaterlyFixedCosts()));
-    model.addAttribute("yearlyFixedCosts", DisplayUtil.toPresenter(repository.findYearlyFixedCosts()));
-
-    return "fixedcosts";
   }
 
   @GetMapping("/monthly")

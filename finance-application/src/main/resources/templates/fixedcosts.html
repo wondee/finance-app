@@ -9,6 +9,11 @@
 
 <h3>Fixkosten Verwaltung</h3>
 
+<div class="card card-body">
+  <p>Aktuelle Bilanz: <span th:style="'font-weight: bold;' + (${currentBalance.startsWith('-')} ? 'color:red;' : '')">[[${currentBalance}]]</span></p>
+
+</div>
+
 <ul class="nav nav-tabs" id="fixedcostsTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="monthly-tab" data-toggle="tab" href="#monthly" role="tab" aria-controls="home" aria-selected="true">Monatliche Kosten</a>
