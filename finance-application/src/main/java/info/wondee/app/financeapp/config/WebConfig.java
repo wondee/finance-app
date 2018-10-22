@@ -13,6 +13,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
+import org.springframework.web.servlet.resource.ContentVersionStrategy;
+import org.springframework.web.servlet.resource.VersionResourceResolver;
 
 @Configuration
 @EnableWebMvc
@@ -30,14 +32,13 @@ public class WebConfig implements WebMvcConfigurer {
   @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-//    VersionResourceResolver versionResourceResolver = new VersionResourceResolver()
-//        .addVersionStrategy(new ContentVersionStrategy(), "/**");
+    VersionResourceResolver versionResourceResolver = new VersionResourceResolver()
+        .addVersionStrategy(new ContentVersionStrategy(), "/**");
  
-      // TODO add cache control
     registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/static/")
-      .setCacheControl(CacheControl.maxAge(5, TimeUnit.DAYS));
-//      .resourceChain(true)
-//      .addResolver(versionResourceResolver);
+      .setCacheControl(CacheControl.maxAge(5, TimeUnit.DAYS))
+      .resourceChain(true)
+      .addResolver(versionResourceResolver);
     
     registry.addResourceHandler("/.well-known/acme-challenge/**").addResourceLocations("classpath:/static/");
     

@@ -141,7 +141,7 @@
 </div>
 
 <div layout:fragment="script">
-    <script th:src="@{/resources/overview.js}"></script>
+    <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/overview.js')}"></script>
 </div>
 </body>
 </html>
