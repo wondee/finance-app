@@ -1,4 +1,8 @@
 
+function toCurrency(string) {
+  return string.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " €";
+}
+
 Vue.component('line-chart', {
   extends: VueChartJs.Line,
   props: ["data", "options"],
@@ -21,9 +25,18 @@ Vue.component('line-chart', {
                 {
                     ticks: {
                         callback: function(label, index, labels) {
-                            return label.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " €";
+                           return toCurrency(label);
                         }
-                    }}]}
+                    }}]},
+	  tooltips: {
+                enabled: true,
+                mode: 'single',
+                callbacks: {
+                    label: function(tooltipItems, data) { 
+                        return toCurrency(tooltipItems.yLabel);
+                    }
+                }
+            }
       })
   }
 })
