@@ -7,10 +7,10 @@
 <body>
 <div layout:fragment="content" class="container" >
   <h4>Login</h4>
-   <div th:if="${param.error}">
+   <div th:if="${param.error}" class="alert alert-danger" role="alert">
        Invalid username and password.
    </div>
-   <div th:if="${param.logout}">
+   <div th:if="${param.logout}" class="alert alert-success" role="alert">
        You have been logged out.
    </div>
    <form th:action="@{/login}" method="post">

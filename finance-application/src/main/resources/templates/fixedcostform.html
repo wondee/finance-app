@@ -16,8 +16,11 @@
   </th:block>
 
   <form method="post" th:action="@{/fixedcosts/{path}(path=${type})}" th:object="${model}">
-    <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger">
+    <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger" role="alert">
       Das Ab-Datum mus vor dem Bis-Datum liegen
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
 
 		<div class="form-group">
