@@ -85,6 +85,24 @@ var app = new Vue(
 			  this.month = this.entries[index].displayMonth;
 
 			  $('#details-modal').modal('show');
+			  $('#load_indicator').show();
+			  
+			  this.specialCosts = Array();
+	          this.fixedCosts = Array();
+			  
+			  // GET /someUrl
+			  this.$http.get('/overview/detail', {params: {'index': index}}).then(
+				function(response) {
+				  
+				  this.specialCosts = response.data.specialCosts;
+				  this.fixedCosts = response.data.fixedCosts;
+				  
+				  $('#modal_load_indicator').hide();
+				  
+			  }, function(response) {
+			    // error callback
+			  });
+			  
 			  
 			  this.specialCosts = this.entries[index].specialCosts;
 	          this.fixedCosts = this.entries[index].fixedCosts;

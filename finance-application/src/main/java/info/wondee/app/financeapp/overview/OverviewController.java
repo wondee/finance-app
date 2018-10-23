@@ -1,6 +1,7 @@
 package info.wondee.app.financeapp.overview;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.common.collect.ImmutableMap;
+
+import info.wondee.app.financeapp.fixedcosts.Cost;
 import info.wondee.app.financeapp.fixedcosts.CostPresenter;
 import info.wondee.app.financeapp.user.FinanceUser;
 import info.wondee.app.financeapp.user.FinanceUserRepository;
@@ -34,6 +38,7 @@ public class OverviewController {
 
     List<OverviewEntry> allEntries = service.createOverviewEntries(user, MAX_ENTRIES);
     
+    
     return new HttpEntity<List<OverviewEntry>>(allEntries);
   }
   
@@ -45,7 +50,6 @@ public class OverviewController {
     
     int currentAmount = user.getCurrentAmount();
     
-    model.addAttribute("entries", service.createOverviewEntries(user, MAX_ENTRIES));
     model.addAttribute("currentamount", currentAmount);
     model.addAttribute("displayCurrentamount", CostPresenter.displayAmount(currentAmount));
     
@@ -54,13 +58,17 @@ public class OverviewController {
   }
 
   @GetMapping(path = "/detail", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  public HttpEntity<OverviewEntry> getOverviewDetail(@RequestParam("index") int index) {
+  public HttpEntity<Map<String, List<? extends CostPresenter<? extends Cost>>>> getOverviewDetail(@RequestParam("index") int index) {
     
     FinanceUser user = repository.findCurrentUser();
     
     List<OverviewEntry> entries = service.createOverviewEntries(user, MAX_ENTRIES);
+    OverviewEntry entry = entries.get(index);
     
-    return new HttpEntity<>(entries.get(index));
+    ImmutableMap<String, List<? extends CostPresenter<? extends Cost>>> result = 
+        ImmutableMap.of("fixedCosts", entry.getFixedCosts(), "specialCosts", entry.getSpecialCosts());
+    
+    return new HttpEntity<>(result);
     
   }
   
