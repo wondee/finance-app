@@ -1,9 +1,12 @@
 package info.wondee.app.financeapp.fixedcosts;
 
 import static info.wondee.app.financeapp.DisplayUtil.*;
+
+import java.time.YearMonth;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Predicate;
 
 import javax.validation.Valid;
 
@@ -52,9 +55,13 @@ public class FixedCostController {
     
     AtomicInteger sum = new AtomicInteger(0);
     
-    monthly.forEach(cost -> sum.addAndGet(cost.getAmount()));
-    quaterly.forEach(cost -> sum.addAndGet(cost.getAmount() * 4 / 12));
-    yearly.forEach(cost -> sum.addAndGet(cost.getAmount() / 12));
+    YearMonth now = YearMonth.now();
+    
+    Predicate<FixedCost> appliable= cost -> cost.isActive(now);
+    
+    monthly.stream().filter(appliable).forEach(cost -> sum.addAndGet(cost.getAmount()));
+    quaterly.stream().filter(appliable).forEach(cost -> sum.addAndGet(cost.getAmount() * 4 / 12));
+    yearly.stream().filter(appliable).forEach(cost -> sum.addAndGet(cost.getAmount() / 12));
     
     return sum.get();
   }
