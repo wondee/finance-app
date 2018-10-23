@@ -50,14 +50,17 @@ public class OverviewEntry {
     return DisplayUtil.createDisplayMonthAndYear(yearMonth);
   }
   
+  @JsonProperty
   public String getDisplayFixedAmount() {
     return CostPresenter.displayAmount(sumFixedCosts);
   }
   
+  @JsonProperty
   public String getDisplaySpecialAmount() {
     return CostPresenter.displayAmount(sumSpecialCosts);
   }
   
+  @JsonProperty
   public String getDisplayCurrentAmount() {
     return CostPresenter.displayAmount(currentAmount);
   }
@@ -70,11 +73,9 @@ public class OverviewEntry {
     return fixedCosts.size();
   }
   
+  @JsonProperty
   public boolean isEmpty() {
     return fixedCosts.isEmpty() && specialCosts.isEmpty();
   }
   
-  public boolean isNegative() {
-    return currentAmount < 0;
-  }
 }

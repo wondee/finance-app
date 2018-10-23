@@ -1,6 +1,3 @@
-/**
- * 
- */
 
 Vue.component('line-chart', {
   extends: VueChartJs.Line,
@@ -41,6 +38,8 @@ var app = new Vue(
 	    specialCosts: Array(),
 	    fixedCosts: Array(),
 	    
+	    entries: [],
+	    
 	    chartData: { 
 	    	labels: [], 
 	    	data: [] 
@@ -50,49 +49,35 @@ var app = new Vue(
 	  created: function() {
 		  this.$http.get('/overview/all').then(
 			function(response) {
-			    // success callback
-				  console.log(response.data);
-				  
-				  this.chartData = { labels : [], data : [] };
-				  var ctx = this;
-				  
-				  response.data.forEach(function(entry) {
-					  ctx.chartData.data.push(entry.currentAmount);
-					  ctx.chartData.labels.push(entry.displayMonth);
-				  });
-				  
-				  this.loaded = true;
+				
+			  this.entries = response.data;
+				
+			  this.chartData = { labels : [], data : [] };
+			  var ctx = this;
+			  
+			  response.data.forEach(function(entry) {
+				  ctx.chartData.data.push(entry.currentAmount);
+				  ctx.chartData.labels.push(entry.displayMonth);
+			  });
+			  
+			  this.loaded = true;
 				  
 			  }, function(response) {
 			    // error callback
 			  })
 	  	},
 	  methods: {
-		  showModal: function(event) {
+		  showModal: function(event, index) {
 			  var link = event.target.parentElement;
-			  var index = link.getAttribute('index');
-			  this.month = link.getAttribute('month');
+			  this.month = this.entries[index].displayMonth;
 
 			  $('#details-modal').modal('show');
-			  $('#load_indicator').show();
 			  
-			  this.specialCosts = Array();
-	                  this.fixedCosts = Array();
+			  this.specialCosts = this.entries[index].specialCosts;
+	          this.fixedCosts = this.entries[index].fixedCosts;
 			  
-			  // GET /someUrl
-			  this.$http.get('/overview/detail', {params: {'index': index}}).then(
-				function(response) {
-				  
-				  this.specialCosts = response.data.specialCosts;
-				  this.fixedCosts = response.data.fixedCosts;
-				  
-				  $('#modal_load_indicator').hide();
-				  
-			  }, function(response) {
-			    // error callback
-			  });
-			  
-		  }
+		  },
+		  isNegative: function(value) { return value < 0; }
 	  }
 	}
 
