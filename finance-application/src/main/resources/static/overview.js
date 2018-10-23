@@ -53,13 +53,25 @@ var app = new Vue(
 	    
 	    entries: [],
 	    
+	    config: { showChart: true },
+	    
 	    chartData: { 
 	    	labels: [], 
 	    	data: [] 
 	    },
 	    loaded: false
 	  },
+	  computed: {
+		  showChart: function() {
+			  return this.loaded && this.config.showChart;
+		  }
+	  },
 	  created: function() {
+		  
+		  var storageShowChart = localStorage.getItem('finance-config.showChart');
+		  
+		  this.config.showChart = storageShowChart == 'true';
+		  
 		  this.$http.get('/overview/all').then(
 			function(response) {
 				
@@ -77,9 +89,19 @@ var app = new Vue(
 				  
 			  }, function(response) {
 			    // error callback
-			  })
+			  }
+			);
 	  	},
 	  methods: {
+		  
+		  showGraphic: function() {
+			  this.config.showChart = true;
+			  localStorage.setItem('finance-config.showChart', 'true');
+		  },
+		  hideGraphic: function() {
+			  this.config.showChart = false;
+			  localStorage.setItem('finance-config.showChart', 'false');
+		  },
 		  showModal: function(event, index) {
 			  var link = event.target.parentElement;
 			  this.month = this.entries[index].displayMonth;
@@ -107,8 +129,7 @@ var app = new Vue(
 			  this.specialCosts = this.entries[index].specialCosts;
 	          this.fixedCosts = this.entries[index].fixedCosts;
 			  
-		  },
-		  isNegative: function(value) { return value < 0; }
+		  }
 	  }
 	}
 
