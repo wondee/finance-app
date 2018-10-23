@@ -14,7 +14,7 @@
   
   <line-chart v-if="loaded" :data="chartData"></line-chart>
   <p v-if="loaded" >
-    Aktueller Betrag: [[${currentamount}]]
+    Aktueller Betrag: [[${displayCurrentamount}]]
     <a href="#" data-toggle="modal" data-target="#changeAmountModal" class="icon-link" >
       <i class="fas fa-edit"></i>
     </a>

@@ -46,7 +46,8 @@ public class OverviewController {
     int currentAmount = user.getCurrentAmount();
     
     model.addAttribute("entries", service.createOverviewEntries(user, MAX_ENTRIES));
-    model.addAttribute("currentamount", CostPresenter.displayAmount(currentAmount));
+    model.addAttribute("currentamount", currentAmount);
+    model.addAttribute("displayCurrentamount", CostPresenter.displayAmount(currentAmount));
     
     return "overview";
     

@@ -1,8 +1,5 @@
 package info.wondee.app.financeapp.fixedcosts;
 
-import java.util.Currency;
-import java.util.Locale;
-
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -42,7 +39,7 @@ public abstract class CostPresenter<T extends Cost> {
   public abstract T toPersistentObject();
   
   public static String displayAmount(int amount) {
-    return String.format("%,d", amount) + Currency.getInstance(Locale.GERMANY).getSymbol();
+    return String.format("%,d", amount) + " €";
   }
 
   public String getDisplayAmount() {
