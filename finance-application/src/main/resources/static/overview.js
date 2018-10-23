@@ -85,7 +85,7 @@ var app = new Vue(
 			  this.month = this.entries[index].displayMonth;
 
 			  $('#details-modal').modal('show');
-			  $('#load_indicator').show();
+			  $('#modal_load_indicator').show();
 			  
 			  this.specialCosts = Array();
 	          this.fixedCosts = Array();

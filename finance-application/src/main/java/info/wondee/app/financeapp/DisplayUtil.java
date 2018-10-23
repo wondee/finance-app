@@ -63,7 +63,7 @@ public class DisplayUtil {
   
 
   public static String processSaving(Model model, CostPresenter<?> presenter, 
-      BindingResult bindingResult, String type, String successPage, Runnable action) {
+      BindingResult bindingResult, String type, Runnable action) {
     
     if (bindingResult.hasErrors()) {
       
@@ -77,7 +77,28 @@ public class DisplayUtil {
     
     action.run();
     
-    return "redirect:/" + successPage;
+    return "redirect:/" + presenter.getTargetUri();
+  }
+
+  
+  public static enum Target {
+    OVERVIEW("overview"), 
+    SPECIAL("specialcosts"),
+    FIXED("fixedcosts");
+    
+    public String uri;
+    
+    Target(String uri) {
+      this.uri = uri;
+    }
+    
+    public String getUri() {
+      return uri;
+    }
+
+    public static String getUri(String target) {
+      return Target.valueOf(target.toUpperCase()).getUri();
+    }
   }
   
 }

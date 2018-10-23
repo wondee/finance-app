@@ -45,7 +45,7 @@
           </a>
         </td>
         <td>
-          <a :href="'/specialcosts/add?month=' + entry.yearMonth[1] + '&year=' + entry.yearMonth[0]" class="icon-link">
+          <a :href="'/specialcosts/add?target=overview&month=' + entry.yearMonth[1] + '&year=' + entry.yearMonth[0]" class="icon-link">
             <i class="fas fa-plus-square"></i>
           </a>
         </td>
@@ -105,12 +105,12 @@
                          <td>{{ cost.name }}</td>
                          <td>{{ cost.displayAmount }}</td>
                          <td>
-	                         <a v-bind:href="'/fixedcosts/edit?id=' + cost.id + '&type=special'" class="icon-link">
+	                         <a v-bind:href="'/fixedcosts/edit?target=overview&id=' + cost.id + '&type=special'" class="icon-link">
 	                           <i class="fas fa-edit"></i>
 	                         </a>
 	                       </td>
 	                       <td>
-	                         <a v-bind:href="'/specialcosts/delete?id=' + cost.id" class="icon-link">
+	                         <a v-bind:href="'/specialcosts/delete?target=overview&id=' + cost.id" class="icon-link">
                              <i class="fas fa-trash-alt"></i>
                            </a>
                          </td>

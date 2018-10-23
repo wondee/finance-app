@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import info.wondee.app.financeapp.DisplayUtil;
+import info.wondee.app.financeapp.DisplayUtil.Target;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,6 +29,8 @@ public abstract class CostPresenter<T extends Cost> {
   @Min(1)
   private int amount;
   private boolean incoming;
+  
+  private Target target;
   
   public CostPresenter(T object) {
     amount = Math.abs(object.getAmount());
@@ -60,6 +63,14 @@ public abstract class CostPresenter<T extends Cost> {
   
   public static <T extends Cost> CostPresenter<T> from(T cost) {
     return cost.getType().toPresenter(cost);
+  }
+
+  public String getTargetUri() {
+    return target != null ? target.getUri() : "overview";
+  }
+
+  public void setTargetAsString(String target) {
+    this.target = (target != null) ? Target.valueOf(target.toUpperCase()) : Target.OVERVIEW;
   }
   
 }

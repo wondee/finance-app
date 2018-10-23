@@ -51,19 +51,19 @@
         <td th:text="${cost.displayFromDate}"></td>
         <td th:text="${cost.displayToDate}"></td>
         <td class="action-column">
-          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='monthly')}" class="icon-link">
+          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='monthly', target='fixed')}" class="icon-link">
            <i class="fas fa-edit"></i>
           </a>
          </td>
          <td class="action-column">
-          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='monthly')}" class="icon-link">
+          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='monthly', target='fixed')}" class="icon-link">
            <i class="fas fa-trash-alt"></i>
           </a>
         </td>
       </tr>
     </tbody>
   </table>
-  <a th:href="@{/fixedcosts/edit(type='monthly')}">Neue monatliche Fixkosten erfassen</a>
+  <a th:href="@{/fixedcosts/edit(type='monthly', target='fixed')}">Neue monatliche Fixkosten erfassen</a>
 </div>
   
   </div>
@@ -88,19 +88,19 @@
         <td th:text="${cost.displayFromDate}"></td>
         <td th:text="${cost.displayToDate}"></td>
         <td class="action-column">
-          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='quaterly')}" class="icon-link">
+          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='quaterly', target='fixed')}" class="icon-link">
            <i class="fas fa-edit"></i>
           </a>
          </td>
          <td class="action-column">
-          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='quaterly')}" class="icon-link">
+          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='quaterly', target='fixed')}" class="icon-link">
             <i class="fas fa-trash-alt"></i>
           </a> 
         </td>
       </tr>
     </tbody>
   </table>
-  <a th:href="@{/fixedcosts/edit(type='quaterly')}">Neue jährliche Fixkosten erfassen</a>
+  <a th:href="@{/fixedcosts/edit(type='quaterly', target='fixed')}">Neue jährliche Fixkosten erfassen</a>
 </div>
   
   </div>
@@ -127,19 +127,19 @@
         <td th:text="${cost.displayFromDate}"></td>
         <td th:text="${cost.displayToDate}"></td>
         <td class="action-column">
-          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='yearly')}" class="icon-link">
+          <a th:href="@{/fixedcosts/edit(id=${iter.index},type='yearly', target='fixed')}" class="icon-link">
            <i class="fas fa-edit"></i>
           </a>
          </td>
          <td class="action-column">              
-          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='yearly')}" class="icon-link">
+          <a th:href="@{/fixedcosts/delete(id=${iter.index},type='yearly', target='fixed')}" class="icon-link">
             <i class="fas fa-trash-alt"></i>
           </a> 
         </td>
       </tr>
     </tbody>
   </table>
-  <a th:href="@{/fixedcosts/edit(type='yearly')}">Neue jährliche Fixkosten erfassen</a>
+  <a th:href="@{/fixedcosts/edit(type='yearly', target='fixed')}">Neue jährliche Fixkosten erfassen</a>
 </div>
   </div>
 </div>
