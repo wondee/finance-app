@@ -1,9 +1,6 @@
 language: java
 jdk: openjdk8
  
-before_script: cd finance-application
-
-
 script:
 - mvn package
 
