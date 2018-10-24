@@ -11,7 +11,7 @@ public interface FinanceUserRepository extends MongoRepository<FinanceUser, Stri
   @Cacheable(cacheNames="userCache", key="#name")
   Optional<FinanceUser> findByName(String name);
 
-  @CacheEvict(cacheNames= {"userCache", "overviewCache"}, key="#user.name")
+  @CacheEvict(cacheNames={"userCache", "overviewCache"}, key="#user.name")
   <S extends FinanceUser> S save(S user);
 
   

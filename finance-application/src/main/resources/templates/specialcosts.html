@@ -27,12 +27,12 @@
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayDueDate}"></td>
         <td>
-          <a th:href="@{/fixedcosts/edit(id=${iter.index}, type='special')}" class="icon-link">
+          <a th:href="@{/fixedcosts/edit(id=${iter.index}, type='special', target='special')}" class="icon-link">
             <i class="fas fa-edit"></i>
           </a>
          </td>
          <td>          
-          <a th:href="@{/specialcosts/delete(id=${iter.index})}" class="icon-link">
+          <a th:href="@{/specialcosts/delete(id=${iter.index}, target='special')}" class="icon-link">
             <i class="fas fa-trash-alt"></i>
           </a>
         </td>
@@ -40,7 +40,7 @@
      
     </tbody>
   </table>
-  <a th:href="@{/fixedcosts/edit(type='special')}">Neue Sonderkosten erfassen</a>
+  <a th:href="@{/fixedcosts/edit(type='special', target='special')}">Neue Sonderkosten erfassen</a>
   </form>
   
 </div>

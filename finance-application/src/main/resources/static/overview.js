@@ -1,6 +1,3 @@
-/**
- * 
- */
 
 function toCurrency(string) {
   return string.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " €";
@@ -54,43 +51,66 @@ var app = new Vue(
 	    specialCosts: Array(),
 	    fixedCosts: Array(),
 	    
+	    entries: [],
+	    
+	    config: { showChart: true },
+	    
 	    chartData: { 
 	    	labels: [], 
 	    	data: [] 
 	    },
 	    loaded: false
 	  },
+	  computed: {
+		  showChart: function() {
+			  return this.loaded && this.config.showChart;
+		  }
+	  },
 	  created: function() {
+		  
+		  var storageShowChart = localStorage.getItem('finance-config.showChart');
+		  
+		  this.config.showChart = storageShowChart == 'true';
+		  
 		  this.$http.get('/overview/all').then(
 			function(response) {
-			    // success callback
-				  console.log(response.data);
-				  
-				  this.chartData = { labels : [], data : [] };
-				  var ctx = this;
-				  
-				  response.data.forEach(function(entry) {
-					  ctx.chartData.data.push(entry.currentAmount);
-					  ctx.chartData.labels.push(entry.displayMonth);
-				  });
-				  
-				  this.loaded = true;
+				
+			  this.entries = response.data;
+				
+			  this.chartData = { labels : [], data : [] };
+			  var ctx = this;
+			  
+			  response.data.forEach(function(entry) {
+				  ctx.chartData.data.push(entry.currentAmount);
+				  ctx.chartData.labels.push(entry.displayMonth);
+			  });
+			  
+			  this.loaded = true;
 				  
 			  }, function(response) {
 			    // error callback
-			  })
+			  }
+			);
 	  	},
 	  methods: {
-		  showModal: function(event) {
+		  
+		  showGraphic: function() {
+			  this.config.showChart = true;
+			  localStorage.setItem('finance-config.showChart', 'true');
+		  },
+		  hideGraphic: function() {
+			  this.config.showChart = false;
+			  localStorage.setItem('finance-config.showChart', 'false');
+		  },
+		  showModal: function(event, index) {
 			  var link = event.target.parentElement;
-			  var index = link.getAttribute('index');
-			  this.month = link.getAttribute('month');
+			  this.month = this.entries[index].displayMonth;
 
 			  $('#details-modal').modal('show');
-			  $('#load_indicator').show();
+			  $('#modal_load_indicator').show();
 			  
 			  this.specialCosts = Array();
-	                  this.fixedCosts = Array();
+	          this.fixedCosts = Array();
 			  
 			  // GET /someUrl
 			  this.$http.get('/overview/detail', {params: {'index': index}}).then(
@@ -104,6 +124,10 @@ var app = new Vue(
 			  }, function(response) {
 			    // error callback
 			  });
+			  
+			  
+			  this.specialCosts = this.entries[index].specialCosts;
+	          this.fixedCosts = this.entries[index].fixedCosts;
 			  
 		  }
 	  }

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import info.wondee.app.financeapp.DisplayUtil;
@@ -22,10 +23,12 @@ public class OverviewEntry {
   private YearMonth yearMonth;
   private int currentAmount;
   
+  @JsonIgnore
   private List<CostPresenter<FixedCost>> fixedCosts;
   
   private int sumFixedCosts;
   
+  @JsonIgnore
   private List<CostPresenter<Cost>> specialCosts;
   
   private int sumSpecialCosts;
@@ -50,14 +53,17 @@ public class OverviewEntry {
     return DisplayUtil.createDisplayMonthAndYear(yearMonth);
   }
   
+  @JsonProperty
   public String getDisplayFixedAmount() {
     return CostPresenter.displayAmount(sumFixedCosts);
   }
   
+  @JsonProperty
   public String getDisplaySpecialAmount() {
     return CostPresenter.displayAmount(sumSpecialCosts);
   }
   
+  @JsonProperty
   public String getDisplayCurrentAmount() {
     return CostPresenter.displayAmount(currentAmount);
   }
@@ -70,11 +76,9 @@ public class OverviewEntry {
     return fixedCosts.size();
   }
   
+  @JsonProperty
   public boolean isEmpty() {
     return fixedCosts.isEmpty() && specialCosts.isEmpty();
   }
   
-  public boolean isNegative() {
-    return currentAmount < 0;
-  }
 }

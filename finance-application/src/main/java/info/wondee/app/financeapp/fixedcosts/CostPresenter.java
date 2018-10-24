@@ -1,8 +1,5 @@
 package info.wondee.app.financeapp.fixedcosts;
 
-import java.util.Currency;
-import java.util.Locale;
-
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -11,6 +8,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import info.wondee.app.financeapp.DisplayUtil;
+import info.wondee.app.financeapp.DisplayUtil.Target;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +30,8 @@ public abstract class CostPresenter<T extends Cost> {
   private int amount;
   private boolean incoming;
   
+  private Target target;
+  
   public CostPresenter(T object) {
     amount = Math.abs(object.getAmount());
     name = object.getName();
@@ -42,7 +42,7 @@ public abstract class CostPresenter<T extends Cost> {
   public abstract T toPersistentObject();
   
   public static String displayAmount(int amount) {
-    return String.format("%,d", amount) + Currency.getInstance(Locale.GERMANY).getSymbol();
+    return String.format("%,d", amount) + " €";
   }
 
   public String getDisplayAmount() {
@@ -63,6 +63,14 @@ public abstract class CostPresenter<T extends Cost> {
   
   public static <T extends Cost> CostPresenter<T> from(T cost) {
     return cost.getType().toPresenter(cost);
+  }
+
+  public String getTargetUri() {
+    return target != null ? target.getUri() : "overview";
+  }
+
+  public void setTargetAsString(String target) {
+    this.target = (target != null) ? Target.valueOf(target.toUpperCase()) : Target.OVERVIEW;
   }
   
 }

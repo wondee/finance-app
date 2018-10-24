@@ -1,9 +1,12 @@
 package info.wondee.app.financeapp.fixedcosts;
 
 import static info.wondee.app.financeapp.DisplayUtil.*;
+
+import java.time.YearMonth;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Predicate;
 
 import javax.validation.Valid;
 
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import info.wondee.app.financeapp.DisplayUtil;
+import info.wondee.app.financeapp.DisplayUtil.Target;
 import info.wondee.app.financeapp.user.FinanceUserRepository;
 
 @Controller
@@ -51,21 +55,28 @@ public class FixedCostController {
     
     AtomicInteger sum = new AtomicInteger(0);
     
-    monthly.forEach(cost -> sum.addAndGet(cost.getAmount()));
-    quaterly.forEach(cost -> sum.addAndGet(cost.getAmount() * 4 / 12));
-    yearly.forEach(cost -> sum.addAndGet(cost.getAmount() / 12));
+    YearMonth now = YearMonth.now();
+    
+    Predicate<FixedCost> appliable= cost -> cost.isActive(now);
+    
+    monthly.stream().filter(appliable).forEach(cost -> sum.addAndGet(cost.getAmount()));
+    quaterly.stream().filter(appliable).forEach(cost -> sum.addAndGet(cost.getAmount() * 4 / 12));
+    yearly.stream().filter(appliable).forEach(cost -> sum.addAndGet(cost.getAmount() / 12));
     
     return sum.get();
   }
 
   @GetMapping("/edit")
-  public String editFixedCost(Model model, @RequestParam("type") String type, @RequestParam("id") Optional<Integer> optionalId) {
+  public String editFixedCost(Model model, @RequestParam("type") String type, @RequestParam("id") Optional<Integer> optionalId,
+      @RequestParam(value = "target", defaultValue="manage") String target) {
     
     CostType costType = CostType.valueOf(type.toUpperCase());
     
     CostPresenter<? extends Cost> presenter = optionalId
         .map(id -> retrieveExistingPresenter(costType, id))
         .orElse(costType.createInstance());
+
+    presenter.setTargetAsString(target);
     
     model.addAttribute("type", type);
     model.addAttribute("model", presenter);
@@ -108,7 +119,7 @@ public class FixedCostController {
       @Valid @ModelAttribute("model") MonthlyFixedCostPresenter presenter, 
       BindingResult bindingResult) {
     
-    return processSaving(model, presenter, bindingResult, "monthly", "fixedcosts",
+    return processSaving(model, presenter, bindingResult, "monthly", 
         (() -> repository.save(presenter.toPersistentObject(), presenter.getId())));
   }
   
@@ -123,7 +134,7 @@ public class FixedCostController {
       @Valid @ModelAttribute("model") QuaterlyFixedCostPresenter presenter, 
       BindingResult bindingResult) {
     
-    return processSaving(model, presenter, bindingResult, "quaterly", "fixedcosts",
+    return processSaving(model, presenter, bindingResult, "quaterly", 
         (() -> repository.save(presenter.toPersistentObject(), presenter.getId())));
   }
   
@@ -138,24 +149,27 @@ public class FixedCostController {
       @Valid @ModelAttribute("model") YearlyFixedCostPresenter presenter, 
       BindingResult bindingResult) {
     
-    return processSaving(model, presenter, bindingResult, "yearly", "fixedcosts",
+    return processSaving(model, presenter, bindingResult, "yearly", 
         (() -> repository.save(presenter.toPersistentObject(), presenter.getId())));
   }
   
   
   @GetMapping("/delete")
-  public String deleteFixedCost(@RequestParam("id") int id, @RequestParam("type") String type) {
+  public String deleteFixedCost(@RequestParam("id") int id, @RequestParam("type") String type,
+      @RequestParam(value = "target", defaultValue="manage") String target) {
+    
     switch (type) {
     case "monthly":
       repository.deleteMonthlyFixedCost(id); break;
     case "yearly":
       repository.deleteYearlyFixedCost(id); break;
-
+    case "quterly":
+      repository.deleteQuaterlyFixedCost(id); break;
     default:
       throw new IllegalArgumentException("type '" + type + "' is not supported for deletion");
     }
     
-    return "redirect:/fixedcosts";
+    return "redirect:/" + Target.getUri(target);
   }
 
 }
