@@ -31,8 +31,6 @@
 
   <div class="tab-pane fade show active" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">
 
-  <div class="card card-body">
-
 
   <table class="table table-striped">
     <thead>
@@ -64,12 +62,10 @@
     </tbody>
   </table>
   <a th:href="@{/fixedcosts/edit(type='monthly', target='fixed')}">Neue monatliche Fixkosten erfassen</a>
-</div>
+
 
   </div>
   <div class="tab-pane fade" id="quaterly" role="tabpanel" aria-labelledby="quaterly-tab">
-
-    <div class="card card-body">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -101,12 +97,8 @@
     </tbody>
   </table>
   <a th:href="@{/fixedcosts/edit(type='quaterly', target='fixed')}">Neue jährliche Fixkosten erfassen</a>
-</div>
-
   </div>
   <div class="tab-pane fade" id="yearly" role="tabpanel" aria-labelledby="yearly-tab">
-
-  <div class="card card-body">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -140,7 +132,6 @@
     </tbody>
   </table>
   <a th:href="@{/fixedcosts/edit(type='yearly', target='fixed')}">Neue jährliche Fixkosten erfassen</a>
-</div>
   </div>
 </div>
 

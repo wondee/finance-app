@@ -6,12 +6,10 @@
 <body>
 
 <div layout:fragment="content" class="container" >
-<div class="container">
 
   <h3>Sonderausgaben Verwaltung</h3>
 
   <form method="post" th:action="@{/specialcosts}" th:object="${model}">
-  <div class="card card-body">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -42,10 +40,8 @@
     </tbody>
   </table>
   <a th:href="@{/fixedcosts/edit(type='special', target='special')}">Neue Sonderkosten erfassen</a>
-  </div>
   </form>
 
-</div>
 </div>
 </body>
 </html>
