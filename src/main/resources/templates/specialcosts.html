@@ -9,8 +9,9 @@
 <div class="container">
 
   <h3>Sonderausgaben Verwaltung</h3>
-  
+
   <form method="post" th:action="@{/specialcosts}" th:object="${model}">
+  <div class="card card-body">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -31,18 +32,19 @@
             <i class="fas fa-edit"></i>
           </a>
          </td>
-         <td>          
+         <td>
           <a th:href="@{/specialcosts/delete(id=${iter.index}, target='special')}" class="icon-link">
             <i class="fas fa-trash-alt"></i>
           </a>
         </td>
       </tr>
-     
+
     </tbody>
   </table>
   <a th:href="@{/fixedcosts/edit(type='special', target='special')}">Neue Sonderkosten erfassen</a>
+  </div>
   </form>
-  
+
 </div>
 </div>
 </body>

@@ -1,0 +1,48 @@
+    body {
+      padding-top: 5rem;
+    }
+    .starter-template {
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+	  .table td, .table th {
+	      padding: .3rem;
+    		vertical-align: center;
+	  }
+	  button.btn.btn-link.nav-link {
+		color: rgba(255,255,255,.5);
+	  }
+	  button.btn.btn-link.nav-link:hover {
+		color: rgba(255,255,255,.75);
+	  }
+	  a.icon-link:hover {
+	    text-decoration: none;
+	    color: black;
+	  }
+	  a.icon-link {
+	    color: #6c757d;
+	  }
+
+	  .load_indicator {
+		  display: block;
+			margin: 0 auto;
+		}
+
+	  .amount { font-weight: bold; }
+	  .negative-amount { color:red; }
+
+	  [v-cloak] { display: none; }
+
+	  .card.card-body {
+	    margin-bottom: 20px;
+
+    }
+
+	  h3 {
+	   margin-top: 10px;
+       margin-bottom: 10px;
+	  }
+      .btn.btn-primary {
+        margin-top: 10px;
+      }

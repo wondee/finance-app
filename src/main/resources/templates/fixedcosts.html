@@ -30,10 +30,10 @@
 <div class="tab-content" id="myTabContent">
 
   <div class="tab-pane fade show active" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">
-  
-  <div class="container">
 
-  
+  <div class="card card-body">
+
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -65,11 +65,11 @@
   </table>
   <a th:href="@{/fixedcosts/edit(type='monthly', target='fixed')}">Neue monatliche Fixkosten erfassen</a>
 </div>
-  
+
   </div>
   <div class="tab-pane fade" id="quaterly" role="tabpanel" aria-labelledby="quaterly-tab">
-  
-    <div class="container">
+
+    <div class="card card-body">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -95,18 +95,18 @@
          <td class="action-column">
           <a th:href="@{/fixedcosts/delete(id=${iter.index},type='quaterly', target='fixed')}" class="icon-link">
             <i class="fas fa-trash-alt"></i>
-          </a> 
+          </a>
         </td>
       </tr>
     </tbody>
   </table>
   <a th:href="@{/fixedcosts/edit(type='quaterly', target='fixed')}">Neue jährliche Fixkosten erfassen</a>
 </div>
-  
+
   </div>
   <div class="tab-pane fade" id="yearly" role="tabpanel" aria-labelledby="yearly-tab">
-  
-  <div class="container">
+
+  <div class="card card-body">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -131,10 +131,10 @@
            <i class="fas fa-edit"></i>
           </a>
          </td>
-         <td class="action-column">              
+         <td class="action-column">
           <a th:href="@{/fixedcosts/delete(id=${iter.index},type='yearly', target='fixed')}" class="icon-link">
             <i class="fas fa-trash-alt"></i>
-          </a> 
+          </a>
         </td>
       </tr>
     </tbody>
