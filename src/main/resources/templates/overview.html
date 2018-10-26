@@ -37,7 +37,7 @@
     </thead>
     <tbody>
       <tr v-for="(entry, index) in entries">
-        <td>{{ entry.displayMonth }}</td>
+        <td>{{ entry | displayMonth }}</td>
         <td>{{ entry.displayFixedAmount }}</td>
         <td>{{ entry.displaySpecialAmount | responsive }}</td>
         <td class="amount" :class="{ 'negative-amount': entry.currentAmount < 0}">{{ entry.displayCurrentAmount | responsive }}</td>

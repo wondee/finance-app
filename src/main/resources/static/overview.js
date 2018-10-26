@@ -51,6 +51,14 @@ Vue.filter('responsive', function(value) {
     }
 });
 
+Vue.filter('displayMonth', function(entry) {
+    if ($(window).width() < 768) {
+      return entry.yearMonth[1] + " / " + entry.yearMonth[0];
+    } else {
+      return entry.displayMonth;
+    }
+});
+
 var app = new Vue(
 
 	{

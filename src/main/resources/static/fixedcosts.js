@@ -1,24 +1,49 @@
+function getRow(tableId, index) {
+    var row = document.getElementById(tableId).rows[index + 1];
+    return row.cells;
+}
+
 var app = new Vue(
 
 	{
 	  el: '#fixedcosts-app',
 	  data: {
-	    name: "No Name",
-
+	    entryName: "No Name",
+	    
+	    index: -1,
+	    type: null,
+	    
 	    from: "-",
 	    to: "-"
+	    
       },
 
       methods: {
-          showModal(index, tableId) {
+          showModal: function(index, tableId) {
 
-            var row = document.getElementById(tableId).rows[index + 1];
+            var row =  getRow(tableId, index);
 
-            this.name = row.cells[0].innerHTML;
-            this.from = row.cells[2].innerHTML;
-            this.to = row.cells[3].innerHTML;
+            this.entryName = row[0].innerHTML;
+            
+            // dirty hack... future me will hate me for that!
+            var adjustment = 1;
+            if (tableId.startsWith('monthly')) adjustment = 0;
+            
+            this.from = row[2 + adjustment].innerHTML;
+            this.to = row[3 + adjustment].innerHTML;
 
             $('#limited-modal').modal('show');
+          },
+          
+          showConfirmDelete: function(index, type) {
+            
+            var row =  getRow(type + '-table', index);
+            this.index = index;
+            this.type = type;
+            this.entryName = row[0].innerHTML;
+            
+            $('#confirm-delete').modal('show');
+            
           }
       }
   }

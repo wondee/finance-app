@@ -163,7 +163,7 @@ public class FixedCostController {
       repository.deleteMonthlyFixedCost(id); break;
     case "yearly":
       repository.deleteYearlyFixedCost(id); break;
-    case "quterly":
+    case "quaterly":
       repository.deleteQuaterlyFixedCost(id); break;
     default:
       throw new IllegalArgumentException("type '" + type + "' is not supported for deletion");
