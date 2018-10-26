@@ -44,7 +44,7 @@ Vue.component('line-chart', {
 Vue.filter('responsive', function(value) {
     if (value.length > 5 && $(window).width() < 768) {
       var tmp = value.split(' ');
-      var rest = tmp[0].substring(0, tmp[0].length - 4);
+      var rest = tmp[0].substring(0, tmp[0].length - 2);
       return rest + " T" + tmp[1];
     } else {
         return value;
