@@ -51,7 +51,9 @@
         <td th:text="${cost.displayFromDate}" class="d-none d-md-table-cell"></td>
         <td th:text="${cost.displayToDate}" class="d-none d-md-table-cell"></td>
         <td class="d-table-cell d-md-none">
-          <a href="#" class="icon-link" th:if="${cost.bounded}" th:attr="'v-on:click'=|showModal(${iter.index}, 'monthly-table')|"><i class="far fa-calendar-alt"></i></a>
+          <a href="#" class="icon-link" th:if="${cost.bounded}" th:attr="'v-on:click'=|showModal(${iter.index}, 'monthly-table')|">
+              <i class="far fa-calendar-alt"></i>
+          </a>
         </td>
         <td class="action-column">
           <a th:href="@{/fixedcosts/edit(id=${iter.index},type='monthly', target='fixed')}" class="icon-link">
@@ -71,7 +73,7 @@
 
   </div>
   <div class="tab-pane fade" id="quaterly" role="tabpanel" aria-labelledby="quaterly-tab">
-  <table class="table table-striped">
+  <table class="table table-striped" id="quaterly-table">
     <thead>
       <tr>
         <th>Bezeichnung</th>
@@ -91,7 +93,11 @@
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayFromDate}" class="d-none d-md-table-cell"></td>
         <td th:text="${cost.displayToDate}" class="d-none d-md-table-cell"></td>
-        <td class="d-table-cell d-md-none"><a href="#" class="icon-link" th:if="${cost.bounded}"><i class="far fa-calendar-alt"></i></a></td>
+        <td class="d-table-cell d-md-none"><a href="#" class="icon-link" th:if="${cost.bounded}">
+          <a href="#" class="icon-link" th:if="${cost.bounded}" th:attr="'v-on:click'=|showModal(${iter.index}, 'quaterly-table')|">
+              <i class="far fa-calendar-alt"></i>
+          </a>
+        </td>
         <td class="action-column">
           <a th:href="@{/fixedcosts/edit(id=${iter.index},type='quaterly', target='fixed')}" class="icon-link">
            <i class="fas fa-edit"></i>
@@ -108,7 +114,7 @@
   <a th:href="@{/fixedcosts/edit(type='quaterly', target='fixed')}">Neue jährliche Fixkosten erfassen</a>
   </div>
   <div class="tab-pane fade" id="yearly" role="tabpanel" aria-labelledby="yearly-tab">
-  <table class="table table-striped">
+  <table class="table table-striped" id="yearly-table">
     <thead>
       <tr>
         <th>Bezeichnung</th>
@@ -128,7 +134,11 @@
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayFromDate}" class="d-none d-md-table-cell"></td>
         <td th:text="${cost.displayToDate}" class="d-none d-md-table-cell"></td>
-        <td class="d-table-cell d-md-none"><a href="#" class="icon-link" th:if="${cost.bounded}"><i class="far fa-calendar-alt"></i></a></td>
+        <td class="d-table-cell d-md-none">
+          <a href="#" class="icon-link" th:if="${cost.bounded}" th:attr="'v-on:click'=|showModal(${iter.index}, 'yearly-table')|">
+              <i class="far fa-calendar-alt"></i>
+          </a>
+        </td>
         <td class="action-column">
           <a th:href="@{/fixedcosts/edit(id=${iter.index},type='yearly', target='fixed')}" class="icon-link">
            <i class="fas fa-edit"></i>
@@ -157,8 +167,13 @@
         </button>
       </div>
       <div class="modal-body">
-        Gültig von {{ from }}
-        Gültig bis {{ to }}
+<ul class="list-group">
+  <li class="list-group-item" v-if="from != '-'">Gültig von <strong>{{ from }}</strong></li>
+  <li class="list-group-item" v-if="to != '-'">Gültig bis <strong>{{ to }}</strong></li>
+</ul>
+
+
+
       </div>
     </div>
             </div>
