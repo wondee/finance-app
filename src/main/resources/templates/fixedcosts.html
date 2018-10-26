@@ -37,8 +37,9 @@
       <tr>
         <th>Bezeichnung</th>
         <th>Betrag</th>
-        <th>Gültig ab</th>
-        <th>Gültig bis</th>
+        <th class="d-none d-md-block">Gültig ab</th>
+        <th class="d-none d-md-block">Gültig bis</th>
+        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -46,8 +47,8 @@
       <tr th:each="cost, iter : ${monthlyFixedCosts}">
         <td th:text="${cost.name}"></td>
         <td th:text="${cost.displayAmount}"></td>
-        <td th:text="${cost.displayFromDate}"></td>
-        <td th:text="${cost.displayToDate}"></td>
+        <td th:text="${cost.displayFromDate}" class="d-none d-md-block"></td>
+        <td th:text="${cost.displayToDate}" class="d-none d-md-block"></td>
         <td class="action-column">
           <a th:href="@{/fixedcosts/edit(id=${iter.index},type='monthly', target='fixed')}" class="icon-link">
            <i class="fas fa-edit"></i>
@@ -72,8 +73,10 @@
         <th>Bezeichnung</th>
         <th>Fällig in</th>
         <th>Betrag</th>
-        <th>Gültig ab</th>
-        <th>Gültig bis</th>
+        <th class="d-none d-md-block">Gültig ab</th>
+        <th class="d-none d-md-block">Gültig bis</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -81,8 +84,8 @@
         <td th:text="${cost.name}"></td>
         <td th:text="${cost.displayDueMonths}"></td>
         <td th:text="${cost.displayAmount}"></td>
-        <td th:text="${cost.displayFromDate}"></td>
-        <td th:text="${cost.displayToDate}"></td>
+        <td th:text="${cost.displayFromDate}" class="d-none d-md-block"></td>
+        <td th:text="${cost.displayToDate}" class="d-none d-md-block"></td>
         <td class="action-column">
           <a th:href="@{/fixedcosts/edit(id=${iter.index},type='quaterly', target='fixed')}" class="icon-link">
            <i class="fas fa-edit"></i>
@@ -105,8 +108,8 @@
         <th>Bezeichnung</th>
         <th>Fällig im</th>
         <th>Betrag</th>
-        <th>Gültig ab</th>
-        <th>Gültig bis</th>
+        <th class="d-none d-md-block">Gültig ab</th>
+        <th class="d-none d-md-block">Gültig bis</th>
         <th></th>
         <th></th>
       </tr>
@@ -116,8 +119,8 @@
         <td th:text="${cost.name}"></td>
         <td th:text="${cost.displayMonth}"></td>
         <td th:text="${cost.displayAmount}"></td>
-        <td th:text="${cost.displayFromDate}"></td>
-        <td th:text="${cost.displayToDate}"></td>
+        <td th:text="${cost.displayFromDate}" class="d-none d-md-block"></td>
+        <td th:text="${cost.displayToDate}" class="d-none d-md-block"></td>
         <td class="action-column">
           <a th:href="@{/fixedcosts/edit(id=${iter.index},type='yearly', target='fixed')}" class="icon-link">
            <i class="fas fa-edit"></i>
