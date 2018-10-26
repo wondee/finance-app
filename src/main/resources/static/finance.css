@@ -8,25 +8,29 @@ body {
 
 .table td, .table th {
   padding: .3rem;
-vertical-align: center;
+  vertical-align: center;
 }
+.table td {
+  word-break: break-all;
+}
+
 button.btn.btn-link.nav-link {
-color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.5);
 }
 button.btn.btn-link.nav-link:hover {
-color: rgba(255,255,255,.75);
+  color: rgba(255,255,255,.75);
 }
 a.icon-link:hover {
-text-decoration: none;
-color: black;
+  text-decoration: none;
+  color: black;
 }
 a.icon-link {
-color: #6c757d;
+  color: #6c757d;
 }
 
 .load_indicator {
-display: block;
-margin: 0 auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .amount { font-weight: bold; }
