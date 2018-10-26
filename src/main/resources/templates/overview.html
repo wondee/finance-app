@@ -40,7 +40,7 @@
         <td>{{ entry.displayMonth }}</td>
         <td>{{ entry.displayFixedAmount }}</td>
         <td>{{ entry.displaySpecialAmount }}</td>
-        <td class="amount" :class="{ 'negative-amount': entry.currentAmount < 0}">{{ entry.displayCurrentAmount }}</td>
+        <td class="amount" :class="{ 'negative-amount': entry.currentAmount < 0}">{{ entry.displayCurrentAmount | responsive }}</td>
         <td>
           <a href="#" class="icon-link" v-if="!entry.empty" v-on:click="showModal($event, index)">
             <i class="fas fa-file-alt"></i>
