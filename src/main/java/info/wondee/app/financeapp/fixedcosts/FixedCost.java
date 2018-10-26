@@ -10,23 +10,23 @@ import lombok.Getter;
 
 @Getter
 public abstract class FixedCost extends Cost {
-  
+
   private FinanceMonth from;
   private FinanceMonth to;
-  
+
 
   public FixedCost(Integer id, String name, int amount, FinanceMonth from, FinanceMonth to) {
     super(id, name, amount);
-    
+
     this.from = from;
     this.to = to;
 
-    Preconditions.checkArgument(getFromDateAsDate().isBefore(getToDateAsDate()), 
+    Preconditions.checkArgument(getFromDateAsDate().isBefore(getToDateAsDate()),
         "from date must be before to date! (from: %s, to: %s)", from, to);
   }
-  
+
   public boolean isActive(YearMonth month) {
-    return month.isAfter(getFromDateAsDate().minusMonths(1)) && 
+    return month.isAfter(getFromDateAsDate().minusMonths(1)) &&
         month.isBefore(getToDateAsDate().plusMonths(1));
   }
 
@@ -43,5 +43,5 @@ public abstract class FixedCost extends Cost {
   }
 
   public abstract boolean appliesAt(Month month);
-  
+
 }

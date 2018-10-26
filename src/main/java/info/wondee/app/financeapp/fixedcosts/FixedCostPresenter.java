@@ -20,37 +20,37 @@ public abstract class FixedCostPresenter<T extends FixedCost> extends CostPresen
   @Min(1)
   @Max(12)
   private int fromMonth;
-  
+
   @Min(2000)
   @Max(2199)
   private Integer fromYear;
-  
+
   @Min(1)
   @Max(12)
   private int toMonth;
-  
+
   @Min(2000)
   @Max(2199)
   private Integer toYear;
- 
+
   public FixedCostPresenter(T object) {
     super(object);
     FinanceMonth from = object.getFrom();
-    
+
     if (from != null) {
       fromMonth = from.getMonth().getValue();
       fromYear = from.getYear();
     }
-    
+
     FinanceMonth to = object.getTo();
-    
+
     if (to != null) {
       toMonth = to.getMonth().getValue();
       toYear = to.getYear();
     }
-   
+
   }
-  
+
 
   private String getDisplayDate(Integer year, int month) {
     return (year == null) ? "-" : DisplayUtil.createDisplayMonthAndYear(YearMonth.of(year, month));
@@ -59,9 +59,13 @@ public abstract class FixedCostPresenter<T extends FixedCost> extends CostPresen
   public String getDisplayFromDate() {
     return getDisplayDate(fromYear, fromMonth);
   }
-  
+
   public String getDisplayToDate() {
     return getDisplayDate(toYear, toMonth);
   }
-  
+
+  public boolean isBounded() {
+    return fromYear != null || toYear != null;
+  }
+
 }
