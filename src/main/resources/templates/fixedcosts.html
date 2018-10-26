@@ -51,7 +51,7 @@
         <td th:text="${cost.displayFromDate}" class="d-none d-md-table-cell"></td>
         <td th:text="${cost.displayToDate}" class="d-none d-md-table-cell"></td>
         <td class="d-table-cell d-md-none">
-          <a href="#" class="icon-link" th:if="${cost.bounded}" th:attr="v-on:click=${'showModal(' + index + ', ''monthly-table'')'}"><i class="far fa-calendar-alt"></i></a>
+          <a href="#" class="icon-link" th:if="${cost.bounded}" th:attr="v-on:click=${'showModal(' + ${index} + ', ''monthly-table'')'"><i class="far fa-calendar-alt"></i></a>
         </td>
         <td class="action-column">
           <a th:href="@{/fixedcosts/edit(id=${iter.index},type='monthly', target='fixed')}" class="icon-link">
