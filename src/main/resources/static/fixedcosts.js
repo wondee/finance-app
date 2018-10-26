@@ -12,11 +12,11 @@ var app = new Vue(
       methods: {
           showModal(index, tableId) {
 
-            var row = getElmentById(tableId).rows[index];
+            var row = document.getElementById(tableId).rows[index + 1];
 
-            this.name = row.cells[0].text();
-            this.from = row.cells[2].text();
-            this.to = row.cells[3].text();
+            this.name = row.cells[0].innerHTML;
+            this.from = row.cells[2].innerHTML;
+            this.to = row.cells[3].innerHTML;
 
             $('#limited-modal').modal('show');
           }
