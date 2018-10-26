@@ -22,7 +22,7 @@
     </thead>
     <tbody>
       <tr th:each="cost, iter : ${specialCosts}">
-        <td th:text="${cost.name}"></td>
+        <td th:text="${cost.name}" class="wrap"></td>
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayDueDate}"></td>
         <td>

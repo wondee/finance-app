@@ -10,7 +10,7 @@ body {
   padding: .3rem;
   vertical-align: center;
 }
-.table td {
+.table td.wrap {
   word-break: break-all;
 }
 

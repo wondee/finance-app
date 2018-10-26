@@ -46,7 +46,7 @@
     </thead>
     <tbody>
       <tr th:each="cost, iter : ${monthlyFixedCosts}">
-        <td th:text="${cost.name}"></td>
+        <td th:text="${cost.name}" class="wrap"></td>
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayFromDate}" class="d-none d-md-table-cell"></td>
         <td th:text="${cost.displayToDate}" class="d-none d-md-table-cell"></td>
@@ -88,7 +88,7 @@
     </thead>
     <tbody>
       <tr th:each="cost, iter : ${quaterlyFixedCosts}">
-        <td th:text="${cost.name}"></td>
+        <td th:text="${cost.name}" class="wrap"></td>
         <td th:text="${cost.displayDueMonths}"></td>
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayFromDate}" class="d-none d-md-table-cell"></td>
@@ -129,7 +129,7 @@
     </thead>
     <tbody>
       <tr th:each="cost, iter : ${yearlyFixedCosts}">
-        <td th:text="${cost.name}"></td>
+        <td th:text="${cost.name}" class="wrap"></td>
         <td th:text="${cost.displayMonth}"></td>
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayFromDate}" class="d-none d-md-table-cell"></td>
