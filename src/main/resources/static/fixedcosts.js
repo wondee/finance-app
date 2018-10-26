@@ -1,17 +1,12 @@
-function getRow(tableId, index) {
-    var row = document.getElementById(tableId).rows[index + 1];
-    return row.cells;
-}
-
-var app = new Vue(
-
-	{
+var app = new Vue({
 	  el: '#fixedcosts-app',
 	  data: {
 	    entryName: "No Name",
 	    
-	    index: -1,
-	    type: null,
+	    deletionDialogConfig: {
+	    	entryName: "No Name",
+	    	href: ""
+	    },
 	    
 	    from: "-",
 	    to: "-"
@@ -36,14 +31,8 @@ var app = new Vue(
           },
           
           showConfirmDelete: function(index, type) {
-            
-            var row =  getRow(type + '-table', index);
-            this.index = index;
-            this.type = type;
-            this.entryName = row[0].innerHTML;
-            
-            $('#confirm-delete').modal('show');
-            
+        	this.deletionDialogConfig = initDeletionDialog(type + '-table', index, 
+        			'/fixedcosts/delete?type=' + type + '&target=fixed&id=' + index);
           }
       }
   }

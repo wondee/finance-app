@@ -5,12 +5,12 @@
       layout:decorator="layout">
 <body>
 
-<div layout:fragment="content" class="container" >
+<div layout:fragment="content" class="container" id="specialcosts-app">
 
   <h3>Sonderausgaben Verwaltung</h3>
 
   <form method="post" th:action="@{/specialcosts}" th:object="${model}">
-  <table class="table table-striped">
+  <table class="table table-striped" id="special-table">
     <thead>
       <tr>
         <th>Bezeichnung</th>
@@ -31,7 +31,7 @@
           </a>
          </td>
          <td>
-          <a th:href="@{/specialcosts/delete(id=${iter.index}, target='special')}" class="icon-link">
+          <a href="#" th:attr="'v-on:click'=|showConfirmDelete(${iter.index})|" class="icon-link">
             <i class="fas fa-trash-alt"></i>
           </a>
         </td>
@@ -41,7 +41,11 @@
   </table>
   <a th:href="@{/fixedcosts/edit(type='special', target='special')}">Neue Sonderkosten erfassen</a>
   </form>
-
+  <div th:include="fragments/components :: deletionDialog"></div>
+</div>
+<div layout:fragment="script">
+    <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/deletionDialog.js')}"></script>
+    <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/specialcosts.js')}"></script>
 </div>
 </body>
 </html>

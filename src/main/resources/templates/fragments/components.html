@@ -33,6 +33,31 @@
          <div class="invalid-feedback">Das Jahr muss zwischen 2018 und 2199 liegen.</div>
     </div>
   
+    <div th:fragment="deletionDialog">
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			    <div class="modal-dialog">
+			      <div class="modal-content">
+			          <div class="modal-header">
+			            <h5 class="modal-title" id="limitedModalLabel">'{{ deletionDialogConfig.entryName }}' Löschen</h5>
+			              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			               <span aria-hidden="true">×</span>
+			             </button>
+			           </div>
+			           <div class="modal-body">
+			             <p>Kosten <strong>{{ deletionDialogConfig.entryName }}</strong> wird unwiderruflich gelöscht.</p>
+			             <p>Sind Sie sicher?</p>
+			           </div>
+			           
+			           <div class="modal-footer">
+			             <a class="btn btn-secondary" href="#" data-dismiss="modal">Abbrechen</a>
+			             <a class="btn btn-danger" :href="deletionDialogConfig.href">Löschen</a>
+			           </div>
+			          </div>
+			      </div>
+			  </div>
+    
+    </div>
+  
   </body>
   
 </html>

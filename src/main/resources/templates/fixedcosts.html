@@ -154,29 +154,8 @@
   </table>
   <a th:href="@{/fixedcosts/edit(type='yearly', target='fixed')}">Neue jährliche Fixkosten erfassen</a>
   </div>
-  <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="limitedModalLabel">'{{ entryName }}' Löschen</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">×</span>
-             </button>
-           </div>
-           <div class="modal-body">
-             <p>Kosten <strong>{{ entryName }}</strong> wird unwiderruflich gelöscht.</p>
-             <p>Sind Sie sicher?</p>
-           </div>
-           
-           <div class="modal-footer">
-             <a class="btn btn-secondary" href="#" data-dismiss="modal">Abbrechen</a>
-             <a class="btn btn-danger" :href="'/fixedcosts/delete?type=' + type + '&target=fixed&id=' + index">Löschen</a>
-           </div>
-          </div>
-      </div>
-  </div>
 
-
+  <div th:include="fragments/components :: deletionDialog"></div>
 
   <div class="modal fade" id="limited-modal" tabindex="-1" role="dialog" aria-labelledby="limitedModalLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -200,6 +179,7 @@
 </div>
 </div>
 <div layout:fragment="script">
+    <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/deletionDialog.js')}"></script>
     <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/fixedcosts.js')}"></script>
 </div>
 </body>
