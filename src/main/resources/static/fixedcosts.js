@@ -21,4 +21,5 @@ var app = new Vue(
             $('#limited-modal').modal('show');
           }
       }
-     });
+  }
+);
