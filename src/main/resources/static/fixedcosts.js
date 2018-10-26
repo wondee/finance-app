@@ -10,9 +10,9 @@ var app = new Vue(
       },
 
       methods: {
-          showModal(index, elementId) {
+          showModal(index) {
 
-            var row = getElmentById(elementId).rows[index];
+            var row = getElmentById('monthly-table').rows[index];
 
             this.name = row.cells[0].text();
             this.from = row.cells[2].text();
