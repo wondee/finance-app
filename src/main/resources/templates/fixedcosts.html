@@ -5,7 +5,7 @@
       layout:decorator="layout">
 <body>
 
-<div layout:fragment="content" class="container" >
+<div id="fixedcosts-app" layout:fragment="content" class="container" >
 
 <h3>Fixkosten Verwaltung</h3>
 
@@ -32,7 +32,7 @@
   <div class="tab-pane fade show active" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">
 
 
-  <table class="table table-striped">
+  <table class="table table-striped" id="monthly-table">
     <thead>
       <tr>
         <th>Bezeichnung</th>
@@ -50,7 +50,9 @@
         <td th:text="${cost.displayAmount}"></td>
         <td th:text="${cost.displayFromDate}" class="d-none d-md-table-cell"></td>
         <td th:text="${cost.displayToDate}" class="d-none d-md-table-cell"></td>
-        <td class="d-table-cell d-md-none"><a href="#" class="icon-link" th:if="${cost.bounded}"><i class="far fa-calendar-alt"></i></a></td>
+        <td class="d-table-cell d-md-none">
+          <a href="#" class="icon-link" th:if="${cost.bounded}" th:attr="v-on:click=${'showModal(' + index + ', ''monthly-table'')'"><i class="far fa-calendar-alt"></i></a>
+        </td>
         <td class="action-column">
           <a th:href="@{/fixedcosts/edit(id=${iter.index},type='monthly', target='fixed')}" class="icon-link">
            <i class="fas fa-edit"></i>
@@ -145,7 +147,27 @@
 </div>
 
 
+          <div class="modal fade" id="limited-modal" tabindex="-1" role="dialog" aria-labelledby="limitedModalLabel" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+        <h5 class="modal-title" id="limitedModalLabel">{{ name }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Gültig von {{ from }}
+        Gültig bis {{ to }}
+      </div>
+    </div>
+            </div>
+          </div>
+
 </div>
 
+<div layout:fragment="script">
+    <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/fixedcosts.js')}"></script>
+</div>
 </body>
 </html>
