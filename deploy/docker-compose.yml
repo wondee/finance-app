@@ -8,8 +8,16 @@ services:
       - 443:443
     
   web:
-    image: "wondee/finance-application:latest"
+    image: wondee/finance-application
     environment:
      - SPRING_DATA_MONGODB_URI=mongodb://mongo/financeapp
+
+  mongo-seed: 
+    links: 
+      - mongo 
+    image: wondee/finance-mongo-seed
+    environment:
+      WAIT_HOSTS: mongo:27017
+
   mongo:
-    image: "mongo:latest"
+    image: mongo

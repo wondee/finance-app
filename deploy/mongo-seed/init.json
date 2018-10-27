@@ -1,0 +1,109 @@
+[
+    {
+        "name" : "Demo",
+        "password" : "$2a$10$oOHUcaD2lrdftN6ANUBYjebTnTi5XLMBQV2plz8DcBviwEfsW2NRq",
+        "currentAmount" : 3000,
+        "monthlyFixedCosts" : [ 
+            {
+                "name" : "Gehalt",
+                "amount" : 1200
+            }, 
+            {
+                "name" : "Miete",
+                "amount" : -800
+            }, 
+            {
+                "from" : {
+                    "month" : "JANUARY",
+                    "year" : 2019
+                },
+                "to" : {
+                    "month" : "JANUARY",
+                    "year" : 2020
+                },
+                "name" : "Some Test",
+                "amount" : 200
+            }
+        ],
+        "quaterlyFixedCosts" : [ 
+            {
+                "dueMonth" : 0,
+                "to" : {
+                    "month" : "JANUARY",
+                    "year" : 2020
+                },
+                "name" : "Test Quaterly",
+                "amount" : 200
+            }
+        ],
+        "yearlyFixedCosts" : [],
+        "specialCosts" : [ 
+            {
+                "_id" : 0,
+                "dueDate" : {
+                    "month" : "OCTOBER",
+                    "year" : 2018
+                },
+                "name" : "Geschenk",
+                "amount" : 300
+            }, 
+            {
+                "_id" : 2,
+                "dueDate" : {
+                    "month" : "OCTOBER",
+                    "year" : 2018
+                },
+                "name" : "Test2",
+                "amount" : -500
+            }, 
+            {
+                "_id" : 3,
+                "dueDate" : {
+                    "month" : "FEBRUARY",
+                    "year" : 2019
+                },
+                "name" : "Richtigr TEst",
+                "amount" : -12000
+            }, 
+            {
+                "_id" : 4,
+                "dueDate" : {
+                    "month" : "MARCH",
+                    "year" : 2019
+                },
+                "name" : "Teure Anschaffung",
+                "amount" : -1500
+            }, 
+            {
+                "_id" : 5,
+                "dueDate" : {
+                    "month" : "MAY",
+                    "year" : 2019
+                },
+                "name" : "Geschenk von Oma",
+                "amount" : 5000
+            }, 
+            {
+                "_id" : 6,
+                "dueDate" : {
+                    "month" : "JANUARY",
+                    "year" : 2020
+                },
+                "name" : "Test2",
+                "amount" : -1750
+            }, 
+            {
+                "_id" : 7,
+                "dueDate" : {
+                    "month" : "MAY",
+                    "year" : 2021
+                },
+                "name" : "Test",
+                "amount" : -2100
+            }
+        ],
+        "_class" : "info.wondee.app.financeapp.user.FinanceUser"
+    }
+
+
+]
