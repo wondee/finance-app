@@ -35,3 +35,5 @@ docker run -p 80:8080 -e "SPRING_DATA_MONGODB_URI=mongodb://[local mongo db host
 Certificate is created by 
 
 https://www.sslforfree.com 
+
+For Windows to able to moiunt local drives: `set COMPOSE_CONVERT_WINDOWS_PATHS=1`
