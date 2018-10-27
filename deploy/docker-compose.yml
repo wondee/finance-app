@@ -1,0 +1,15 @@
+version: '2'
+services:
+  nginx:
+    image: wondee/finance-frontproxy
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    
+  web:
+    image: "wondee/finance-application:latest"
+    environment:
+     - SPRING_DATA_MONGODB_URI=mongodb://mongo/financeapp
+  mongo:
+    image: "mongo:latest"
