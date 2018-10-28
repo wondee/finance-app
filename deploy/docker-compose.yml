@@ -13,13 +13,6 @@ services:
     networks:
       - app
 
-  letsencrypt:
-    image: wondee/finance-letsencrypt
-    command: /bin/true
-    volumes:
-      - letsencrypt_certs:/etc/letsencrypt
-      - letsencrypt_www:/var/www/letsencrypt
-
   web:
     image: wondee/finance-application
     environment:
@@ -34,8 +27,7 @@ services:
     networks:
       - app
       - mongo_import
-
-
+      
 volumes:
   mongodata:          
     driver: local
