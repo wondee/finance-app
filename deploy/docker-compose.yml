@@ -1,4 +1,5 @@
 version: '2'
+
 services:
   nginx:
     image: wondee/finance-frontproxy
@@ -6,22 +7,25 @@ services:
     ports:
       - 80:80
       - 443:443
+    volumes:
+      - letsencrypt_certs:/etc/nginx/certs
+      - letsencrypt_www:/var/www/letsencrypt
     networks:
       - app
-    
+
+  letsencrypt:
+    image: wondee/finance-letsencrypt
+    command: /bin/true
+    volumes:
+      - letsencrypt_certs:/etc/letsencrypt
+      - letsencrypt_www:/var/www/letsencrypt
+
   web:
     image: wondee/finance-application
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongo/financeapp
     networks:
       - app
-
-  #mongo-seed: 
-  #  links: 
-  #    - mongo 
-  #  image: wondee/finance-mongo-seed
-  #  environment:
-  #    WAIT_HOSTS: mongo:27017
 
   mongo:
     image: mongo
@@ -31,13 +35,17 @@ services:
       - app
       - mongo_import
 
+
 volumes:
-  mongodata:
+  mongodata:          
+    driver: local
+  letsencrypt_certs:  
+    driver: local
+  letsencrypt_www:    
     driver: local
 
 networks:
-    app:
+    app:          
       driver: bridge
-    mongo_import:
+    mongo_import: 
       driver: bridge
-
