@@ -6,18 +6,38 @@ services:
     ports:
       - 80:80
       - 443:443
+    networks:
+      - app
     
   web:
     image: wondee/finance-application
     environment:
-     - SPRING_DATA_MONGODB_URI=mongodb://mongo/financeapp
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo/financeapp
+    networks:
+      - app
 
-  mongo-seed: 
-    links: 
-      - mongo 
-    image: wondee/finance-mongo-seed
-    environment:
-      WAIT_HOSTS: mongo:27017
+  #mongo-seed: 
+  #  links: 
+  #    - mongo 
+  #  image: wondee/finance-mongo-seed
+  #  environment:
+  #    WAIT_HOSTS: mongo:27017
 
   mongo:
     image: mongo
+    volumes: 
+      - mongodata:/data/db
+    networks:
+      - app
+      - mongo_import
+
+volumes:
+  mongodata:
+    driver: local
+
+networks:
+    app:
+      driver: bridge
+    mongo_import:
+      driver: bridge
+
