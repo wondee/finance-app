@@ -11,6 +11,9 @@ RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${
                  -C /usr/local/bin docker/docker \
   && rm docker-${DOCKERVERSION}.tgz
 
-RUN usermod -aG docker jenkins
+RUN apt-get update && \
+    apt-get --no-install-recommends -y install sudo && \
+    echo "jenkins ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    rm -rf /var/lib/apt/lists/*
 
 USER jenkins
