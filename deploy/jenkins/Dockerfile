@@ -11,4 +11,6 @@ RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${
                  -C /usr/local/bin docker/docker \
   && rm docker-${DOCKERVERSION}.tgz
 
+RUN usermod -aG docker jenkins
+
 USER jenkins
