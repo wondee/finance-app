@@ -1,6 +1,6 @@
 # finance-app
 
-[![Build Status](https://travis-ci.org/wondee/finance-app.svg?branch=master)](https://travis-ci.org/wondee/finance-app)
+[![Build Status](https://jenkins.wondee.info/job/finance-application/badge/icon)](https://jenkins.wondee.info/job/finance-application/)
 
 A simple financial planning application. Manage your fixed costs and see a forecast of you finances in a nice overview.
 
