@@ -1,6 +1,6 @@
 # finance-app
 
-[![Build Status](https://jenkins.wondee.info/job/finance-application/badge/icon)](https://jenkins.wondee.info/job/finance-application/)
+[![Build Status](https://jenkins.wondee.info/buildStatus/icon?job=finance-application)](https://jenkins.wondee.info/job/finance-application/)
 
 A simple financial planning application. Manage your fixed costs and see a forecast of you finances in a nice overview.
 
