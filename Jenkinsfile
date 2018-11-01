@@ -2,7 +2,6 @@ def findChanged(build) {
   def nginxChanged = false
   def appChanged = false
 
-  build = currentBuild
   while(build != null && build.result != 'SUCCESS') {
     //changes += "In ${build.id}:\n"
     for (changeLog in build.changeSets) {
@@ -28,15 +27,16 @@ node {
   def mvnHome
 
 
-  stage('Preparation') { 
-
+  stage('Pull Repository') { 
     git 'https://github.com/wondee/finance-app.git'
-
-    mvnHome = tool 'M3'
   }
   stage('Build Maven') {
+    mvnHome = tool 'M3'
+
+    def changes = findChanged(currentBuild)
+
     // Run the maven build only if application changed
-    if (appChanged) {
+    if (changes.app) {
       dir ("application") {
         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
       }
@@ -45,14 +45,15 @@ node {
     }
   }
   stage('Build Docker') {
-  
-    if (appChanged) {
+    
+    def changes = findChanged(currentBuild)
+    if (changes.app) {
       sh "sudo docker build -t wondee/finance-application application"
     } else {
       echo "skipping application docker build"
     }
     
-    if (nginxChanged) {
+    if (changes.nginx) {
       sh "sudo docker build -t wondee/finance-frontproxy deploy/nginx" 
     } else {
       echo "skipping application docker build"
