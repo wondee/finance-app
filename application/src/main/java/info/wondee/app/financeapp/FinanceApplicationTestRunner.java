@@ -23,7 +23,8 @@ public class FinanceApplicationTestRunner implements CommandLineRunner{
 
   @Override
   public void run(String... args) throws Exception {
-   
+    
+    
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     String encode = encoder.encode("Demo");

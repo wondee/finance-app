@@ -1,17 +1,14 @@
-node {
-  def mvnHome
-
+def findChanged(build) {
   def nginxChanged = false
   def appChanged = false
 
-  def changes = "Changes:\n"
   build = currentBuild
   while(build != null && build.result != 'SUCCESS') {
-    changes += "In ${build.id}:\n"
+    //changes += "In ${build.id}:\n"
     for (changeLog in build.changeSets) {
       for(entry in changeLog.items) {
         for(file in entry.affectedFiles) {
-          changes += "* ${file.path}\n"
+      
 
           if (file.path.startsWith("deploy/nginx")) {
             nginxChanged = true
@@ -23,7 +20,13 @@ node {
     }
     build = build.previousBuild
   }
-  echo changes
+
+  return [nginx: nginxChanged, app: appChanged]
+}
+
+node {
+  def mvnHome
+
 
   stage('Preparation') { 
 
@@ -37,19 +40,27 @@ node {
       dir ("application") {
         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
       }
+    } else {
+      echo "skipping maven build"
     }
   }
   stage('Build Docker') {
   
     if (appChanged) {
       sh "sudo docker build -t wondee/finance-application application"
-    } 
+    } else {
+      echo "skipping application docker build"
+    }
     
     if (nginxChanged) {
       sh "sudo docker build -t wondee/finance-frontproxy deploy/nginx" 
+    } else {
+      echo "skipping application docker build"
     }
   }
   stage('Deployment') {
+    echo "deploying application"
+
     dir ("deploy") {
       sh "sudo docker-compose up -d"
     }
