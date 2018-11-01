@@ -17,10 +17,10 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
 import info.wondee.app.financeapp.DisplayUtil;
+import info.wondee.app.financeapp.financedata.FinanceData;
 import info.wondee.app.financeapp.fixedcosts.Cost;
 import info.wondee.app.financeapp.fixedcosts.FixedCost;
 import info.wondee.app.financeapp.specialcosts.SpecialCost;
-import info.wondee.app.financeapp.user.FinanceUser;
 
 @Service
 public class OverviewService {
@@ -28,17 +28,17 @@ public class OverviewService {
   private static final Logger LOG = LoggerFactory.getLogger(OverviewService.class);
 
   
-  @Cacheable(cacheNames="overviewCache", key="#user.name")
-  public List<OverviewEntry> createOverviewEntries(FinanceUser user, int maxEntries) {
+  @Cacheable(cacheNames="overviewCache", key="#data.id")
+  public List<OverviewEntry> createOverviewEntries(FinanceData data, int maxEntries) {
     
-    Multimap<Month, FixedCost> fixedCostMap = createFixedCostMap(user);
-    Multimap<YearMonth, Cost> specialCostMap = createSpecialCostMap(user);
+    Multimap<Month, FixedCost> fixedCostMap = createFixedCostMap(data);
+    Multimap<YearMonth, Cost> specialCostMap = createSpecialCostMap(data);
     
     LocalDate entryDate = LocalDate.now();
 
     List<OverviewEntry> overviewEntries = Lists.newLinkedList();
     
-    int tmpAmount = user.getCurrentAmount();
+    int tmpAmount = data.getCurrentAmount();
     
     for (int entryIndex = 0; entryIndex < maxEntries; entryIndex++) {
       YearMonth currentMonth = YearMonth.from(entryDate);
@@ -89,10 +89,10 @@ public class OverviewService {
     return result;
   }
 
-  private Multimap<Month, FixedCost> createFixedCostMap(FinanceUser user) {
+  private Multimap<Month, FixedCost> createFixedCostMap(FinanceData data) {
     Multimap<Month, FixedCost> costMap = HashMultimap.create();
     
-    List<FixedCost> allFixedCosts = user.getAllFixedCosts();
+    List<FixedCost> allFixedCosts = data.getAllFixedCosts();
     
     for (Month month : Month.values()) {
       for (FixedCost fixedCost : allFixedCosts) {
@@ -106,9 +106,9 @@ public class OverviewService {
     return costMap;
   }
   
-  private Multimap<YearMonth, Cost> createSpecialCostMap(FinanceUser user) {
+  private Multimap<YearMonth, Cost> createSpecialCostMap(FinanceData data) {
     
-    List<SpecialCost> allSpecialCosts = user.getSpecialCosts();
+    List<SpecialCost> allSpecialCosts = data.getSpecialCosts();
     
     for (int i = 0; i < allSpecialCosts.size(); i++) {
       allSpecialCosts.get(i).setId(i);

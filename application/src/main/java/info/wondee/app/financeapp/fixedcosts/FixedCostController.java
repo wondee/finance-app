@@ -1,6 +1,6 @@
 package info.wondee.app.financeapp.fixedcosts;
 
-import static info.wondee.app.financeapp.DisplayUtil.*;
+import static info.wondee.app.financeapp.DisplayUtil.processSaving;
 
 import java.time.YearMonth;
 import java.util.List;
@@ -23,21 +23,28 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import info.wondee.app.financeapp.DisplayUtil;
 import info.wondee.app.financeapp.DisplayUtil.Target;
-import info.wondee.app.financeapp.user.FinanceUserRepository;
+import info.wondee.app.financeapp.financedata.FinanceData;
+import info.wondee.app.financeapp.financedata.FinanceDataRepository;
+import info.wondee.app.financeapp.user.UserService;
 
 @Controller
 @RequestMapping("/fixedcosts")
 public class FixedCostController {
 
   @Autowired
-  private FinanceUserRepository repository;
+  private UserService userService;
+  
+  @Autowired
+  private FinanceDataRepository financeDataRepository;
   
   @GetMapping
   public String getFixedCosts(Model model) {
 
-    List<MonthlyFixedCost> monthly = repository.findMonthlyFixedCosts();
-    List<QuaterlyFixedCost> quaterly = repository.findQuaterlyFixedCosts();
-    List<YearlyFixedCost> yearly = repository.findYearlyFixedCosts();
+    FinanceData financeData = userService.findFinanceData();
+    
+    List<MonthlyFixedCost> monthly = financeData.getMonthlyFixedCosts();
+    List<QuaterlyFixedCost> quaterly = financeData.getQuaterlyFixedCosts();
+    List<YearlyFixedCost> yearly = financeData.getYearlyFixedCosts();
 
     model.addAttribute("monthlyFixedCosts", DisplayUtil.toPresenter(monthly));
     model.addAttribute("quaterlyFixedCosts", DisplayUtil.toPresenter(quaterly));
@@ -94,15 +101,17 @@ public class FixedCostController {
   }
 
   private List<? extends Cost>  findCostsByType(CostType costType) {
+    FinanceData financeData = userService.findFinanceData();
+    
     switch (costType) {
     case MONTHLY:
-      return repository.findMonthlyFixedCosts();
+      return financeData.getMonthlyFixedCosts();
     case YEARLY:
-      return repository.findYearlyFixedCosts();
+      return financeData.getYearlyFixedCosts();
     case QUATERLY:
-      return repository.findQuaterlyFixedCosts();
+      return financeData.getQuaterlyFixedCosts();
     case SPECIAL:
-      return repository.findSpecialCosts();
+      return financeData.getSpecialCosts();
     default:
       throw new IllegalArgumentException();
     }
@@ -120,7 +129,7 @@ public class FixedCostController {
       BindingResult bindingResult) {
     
     return processSaving(model, presenter, bindingResult, "monthly", 
-        (() -> repository.save(presenter.toPersistentObject(), presenter.getId())));
+        (() -> financeDataRepository.save(userService.findFinanceData(), presenter.toPersistentObject(), presenter.getId())));
   }
   
   @GetMapping("/quaterly")
@@ -135,7 +144,7 @@ public class FixedCostController {
       BindingResult bindingResult) {
     
     return processSaving(model, presenter, bindingResult, "quaterly", 
-        (() -> repository.save(presenter.toPersistentObject(), presenter.getId())));
+        (() -> financeDataRepository.save(userService.findFinanceData(), presenter.toPersistentObject(), presenter.getId())));
   }
   
   @GetMapping("/yearly")
@@ -150,7 +159,7 @@ public class FixedCostController {
       BindingResult bindingResult) {
     
     return processSaving(model, presenter, bindingResult, "yearly", 
-        (() -> repository.save(presenter.toPersistentObject(), presenter.getId())));
+        (() -> financeDataRepository.save(userService.findFinanceData(), presenter.toPersistentObject(), presenter.getId())));
   }
   
   
@@ -158,13 +167,15 @@ public class FixedCostController {
   public String deleteFixedCost(@RequestParam("id") int id, @RequestParam("type") String type,
       @RequestParam(value = "target", defaultValue="manage") String target) {
     
+    FinanceData financeData = userService.findFinanceData();
+    
     switch (type) {
     case "monthly":
-      repository.deleteMonthlyFixedCost(id); break;
+      financeDataRepository.deleteMonthlyFixedCost(financeData, id); break;
     case "yearly":
-      repository.deleteYearlyFixedCost(id); break;
+      financeDataRepository.deleteYearlyFixedCost(financeData, id); break;
     case "quaterly":
-      repository.deleteQuaterlyFixedCost(id); break;
+      financeDataRepository.deleteQuaterlyFixedCost(financeData, id); break;
     default:
       throw new IllegalArgumentException("type '" + type + "' is not supported for deletion");
     }

@@ -18,19 +18,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import info.wondee.app.financeapp.DisplayUtil;
 import info.wondee.app.financeapp.DisplayUtil.Target;
-import info.wondee.app.financeapp.user.FinanceUserRepository;
+import info.wondee.app.financeapp.financedata.FinanceDataRepository;
+import info.wondee.app.financeapp.user.UserService;
 
 @Controller
 @RequestMapping({"/specialcosts", "/fixedcosts/special"})
 public class SpecialCostController {
 
   @Autowired
-  private FinanceUserRepository repository;
+  private UserService service;
+  
+  @Autowired
+  private FinanceDataRepository repository;
   
   @GetMapping
   public String getSpecialCosts(Model model) {
     
-    List<SpecialCost> all = repository.findSpecialCosts();
+    List<SpecialCost> all = service.findFinanceData().getSpecialCosts();
     
     model.addAttribute("specialCosts", DisplayUtil.toPresenter(all));
     
@@ -62,7 +66,7 @@ public class SpecialCostController {
       BindingResult bindingResult) {
     
     return processSaving(model, presenter, bindingResult, "special", 
-        (() -> repository.save(presenter.toPersistentObject(), presenter.getId())));
+        (() -> repository.save(service.findFinanceData(), presenter.toPersistentObject(), presenter.getId())));
   }
   
   @GetMapping("/delete")
@@ -70,7 +74,7 @@ public class SpecialCostController {
       @RequestParam(value = "target", defaultValue="special") String target, 
       @RequestParam("id") int id) {
     
-    repository.deleteSpecialCost(id);
+    repository.deleteSpecialCost(service.findFinanceData(), id);
     return "redirect:/" + Target.getUri(target);
   }
   

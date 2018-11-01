@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import info.wondee.app.financeapp.user.FinanceUser;
 import info.wondee.app.financeapp.user.FinanceUserRepository;
+import info.wondee.app.financeapp.user.UserAccount;
+import info.wondee.app.financeapp.user.UserAccountRepository;
 
 
 // uncomment and run for adding a new user to the DB
@@ -19,7 +21,7 @@ import info.wondee.app.financeapp.user.FinanceUserRepository;
 public class FinanceApplicationTestRunner implements CommandLineRunner{
   
   @Autowired
-  private FinanceUserRepository repository;
+  private UserAccountRepository repository;
 
   @Override
   public void run(String... args) throws Exception {
@@ -29,10 +31,10 @@ public class FinanceApplicationTestRunner implements CommandLineRunner{
 
     String encode = encoder.encode("Demo");
     
-    FinanceUser entity = new FinanceUser("Demo", encode);
+    UserAccount entity = new UserAccount(null, "Demo", encode, null);
     repository.insert(entity );
     
-    Optional<FinanceUser> findByName = repository.findByName("Demo");
+    Optional<UserAccount> findByName = repository.findByName("Demo");
     System.out.println(findByName);
   }
 

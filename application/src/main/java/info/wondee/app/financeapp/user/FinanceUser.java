@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.google.common.collect.Lists;
@@ -17,23 +15,12 @@ import info.wondee.app.financeapp.fixedcosts.MonthlyFixedCost;
 import info.wondee.app.financeapp.fixedcosts.QuaterlyFixedCost;
 import info.wondee.app.financeapp.fixedcosts.YearlyFixedCost;
 import info.wondee.app.financeapp.specialcosts.SpecialCost;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Document
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
-public class FinanceUser {
-  @Id
-  private String id;
-  
-  @Indexed(unique=true)
-  private String name;
-  
-  private String password;
+public class FinanceUser extends UserLogin {
 
   @Setter
   private int currentAmount;
@@ -47,7 +34,12 @@ public class FinanceUser {
   private List<SpecialCost> specialCosts = Lists.newArrayList();
   
   public FinanceUser(String name, String password) {
-    this(null, name, password, 0, Lists.newArrayList(), Lists.newArrayList(), Lists.newArrayList(), Lists.newArrayList());
+    super(null, name, password);
+    currentAmount = 0;
+    monthlyFixedCosts = Lists.newArrayList();
+    quaterlyFixedCosts = Lists.newArrayList();
+    yearlyFixedCosts = Lists.newArrayList();
+    specialCosts = Lists.newArrayList();
   }
 
   public void add(MonthlyFixedCost cost, Integer id) {

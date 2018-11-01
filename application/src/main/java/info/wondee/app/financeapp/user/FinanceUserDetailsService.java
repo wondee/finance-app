@@ -14,12 +14,12 @@ import org.springframework.stereotype.Component;
 public class FinanceUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private FinanceUserRepository userRepository;
+    private UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        return userRepository.findByName(username).map(
+        return userService.findByName(username).map(
               user ->
               new User(
                       user.getName(), 
