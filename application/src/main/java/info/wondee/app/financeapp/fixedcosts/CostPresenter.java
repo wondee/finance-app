@@ -1,5 +1,7 @@
 package info.wondee.app.financeapp.fixedcosts;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -16,8 +18,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public abstract class CostPresenter<T extends Cost> {
+public abstract class CostPresenter<T extends Cost> implements Serializable {
 
+  private static final long serialVersionUID = 1L;
+  
   @Min(0)
   @Max(100)
   private Integer id;

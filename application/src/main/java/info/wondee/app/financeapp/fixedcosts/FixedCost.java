@@ -11,6 +11,8 @@ import lombok.Getter;
 @Getter
 public abstract class FixedCost extends Cost {
 
+  private static final long serialVersionUID = 1L;
+  
   private FinanceMonth from;
   private FinanceMonth to;
 

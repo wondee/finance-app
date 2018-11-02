@@ -1,5 +1,6 @@
 package info.wondee.app.financeapp;
 
+import java.io.Serializable;
 import java.time.Month;
 import java.time.YearMonth;
 
@@ -12,8 +13,10 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode
 @ToString
-public class FinanceMonth implements Comparable<FinanceMonth> {
+public class FinanceMonth implements Comparable<FinanceMonth>, Serializable {
 
+  private static final long serialVersionUID = 1L;
+  
   private Month month;
   private int year;
   

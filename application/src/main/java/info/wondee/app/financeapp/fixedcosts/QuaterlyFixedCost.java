@@ -16,6 +16,8 @@ import lombok.ToString;
 @ToString
 public class QuaterlyFixedCost extends FixedCost implements Comparable<QuaterlyFixedCost> {
   
+  private static final long serialVersionUID = 1L;
+  
   private int dueMonth;
   
   @PersistenceConstructor

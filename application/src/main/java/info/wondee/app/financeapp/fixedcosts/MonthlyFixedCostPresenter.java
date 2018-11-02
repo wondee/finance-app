@@ -10,6 +10,8 @@ import lombok.Setter;
 @Setter
 public class MonthlyFixedCostPresenter extends FixedCostPresenter<MonthlyFixedCost> {
   
+  private static final long serialVersionUID = 1L;
+  
   public MonthlyFixedCostPresenter(MonthlyFixedCost object) {
     super(object);
     

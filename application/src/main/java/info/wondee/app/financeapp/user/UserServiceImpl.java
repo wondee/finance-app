@@ -3,6 +3,7 @@ package info.wondee.app.financeapp.user;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import info.wondee.app.financeapp.financedata.FinanceData;
@@ -21,6 +22,7 @@ public class UserServiceImpl implements UserService {
   private FinanceDataRepository financeDataRepository;
   
   @Override
+  @Cacheable(cacheNames="userCache", key="#name")
   public Optional<? extends UserLogin> findByName(String name) {
 
     Optional<FinanceUser> oldUserDocument = financeUserRepository.findByName(name);

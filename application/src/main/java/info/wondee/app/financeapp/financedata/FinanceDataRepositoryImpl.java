@@ -52,26 +52,26 @@ public class FinanceDataRepositoryImpl implements FinanceDataCustomRepository {
   
   @Override
   public void deleteMonthlyFixedCost(FinanceData financeData, int id) {
-    // TODO Auto-generated method stub
-    
+    financeData.getMonthlyFixedCosts().remove(id);
+    repository.save(financeData);
   }
 
   @Override
   public void deleteQuaterlyFixedCost(FinanceData financeData, int id) {
-    // TODO Auto-generated method stub
-    
+    financeData.getQuaterlyFixedCosts().remove(id);
+    repository.save(financeData);
   }
 
   @Override
   public void deleteYearlyFixedCost(FinanceData financeData, int id) {
-    // TODO Auto-generated method stub
-    
+    financeData.getYearlyFixedCosts().remove(id);
+    repository.save(financeData);
   }
 
   @Override
   public void deleteSpecialCost(FinanceData financeData, int id) {
-    // TODO Auto-generated method stub
-    
+    financeData.getSpecialCosts().remove(id);
+    repository.save(financeData);
   }
 
 

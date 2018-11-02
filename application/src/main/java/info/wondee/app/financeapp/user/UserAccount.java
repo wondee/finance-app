@@ -11,6 +11,8 @@ import lombok.Setter;
 @Getter
 public class UserAccount extends UserLogin {
 
+  private static final long serialVersionUID = 1L;
+  
   @Setter
   private ObjectId dataId;
 

@@ -15,6 +15,8 @@ import lombok.Setter;
 @Setter
 public class QuaterlyFixedCostPresenter extends FixedCostPresenter<QuaterlyFixedCost> {
 
+  private static final long serialVersionUID = 1L;
+  
   @Min(0)
   @Max(2)
   private int dueMonth;

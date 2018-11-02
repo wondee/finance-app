@@ -56,7 +56,7 @@ node {
     if (changes.nginx) {
       sh "sudo docker build -t wondee/finance-frontproxy deploy/nginx" 
     } else {
-      echo "skipping application docker build"
+      echo "skipping nginx docker build"
     }
   }
   stage('Deployment') {

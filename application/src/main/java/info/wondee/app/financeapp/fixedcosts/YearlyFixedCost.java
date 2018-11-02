@@ -15,6 +15,8 @@ import lombok.ToString;
 @ToString
 public class YearlyFixedCost extends FixedCost implements Comparable<YearlyFixedCost> {
 
+  private static final long serialVersionUID = 1L;
+  
   private Month month;
 
   @PersistenceConstructor

@@ -18,6 +18,13 @@ services:
     image: wondee/finance-application
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongo/financeapp
+      - SPRING_REDIS_HOST=redis
+      - SPRING_REDIS_PORT=6379
+    networks:
+      - app
+  
+  redis:
+    image: redis
     networks:
       - app
 

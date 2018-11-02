@@ -17,6 +17,8 @@ import lombok.Setter;
 @Setter
 public abstract class FixedCostPresenter<T extends FixedCost> extends CostPresenter<T> {
 
+  private static final long serialVersionUID = 1L;
+  
   @Min(1)
   @Max(12)
   private int fromMonth;

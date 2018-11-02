@@ -1,5 +1,6 @@
 package info.wondee.app.financeapp.overview;
 
+import java.io.Serializable;
 import java.time.YearMonth;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,7 +16,9 @@ import info.wondee.app.financeapp.fixedcosts.FixedCost;
 import lombok.Getter;
 
 @Getter
-public class OverviewEntry {
+public class OverviewEntry implements Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   private static final Comparator<CostPresenter<? extends Cost>> amountComparator 
         = ((o1, o2) -> Integer.compare(o2.getAmount(), o1.getAmount()));

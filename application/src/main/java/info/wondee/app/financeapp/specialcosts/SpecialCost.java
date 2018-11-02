@@ -10,6 +10,8 @@ import lombok.Getter;
 @Getter
 public class SpecialCost extends Cost implements Comparable<SpecialCost> {
 
+  private static final long serialVersionUID = 1L;
+  
   private FinanceMonth dueDate;
   
   @PersistenceConstructor

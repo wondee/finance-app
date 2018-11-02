@@ -1,5 +1,7 @@
 package info.wondee.app.financeapp.user;
 
+import java.io.Serializable;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 
@@ -8,7 +10,10 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public abstract class UserLogin {
+public abstract class UserLogin implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
   @Id
   private String id;
   

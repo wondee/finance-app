@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.resource.VersionResourceResolver;
 @Configuration
 @EnableWebMvc
 @EnableCaching
+@EnableRedisHttpSession
 public class WebConfig implements WebMvcConfigurer {
  
   @Autowired
@@ -39,8 +41,6 @@ public class WebConfig implements WebMvcConfigurer {
       .setCacheControl(CacheControl.maxAge(5, TimeUnit.DAYS))
       .resourceChain(true)
       .addResolver(versionResourceResolver);
-    
-    registry.addResourceHandler("/.well-known/acme-challenge/**").addResourceLocations("classpath:/static/");
     
   }
   

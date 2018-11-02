@@ -1,5 +1,6 @@
 package info.wondee.app.financeapp.financedata;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -23,7 +24,9 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FinanceData {
+public class FinanceData implements Serializable{
+
+  private static final long serialVersionUID = 1L;
 
   @Id
   private ObjectId id;

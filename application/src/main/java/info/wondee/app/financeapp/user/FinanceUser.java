@@ -22,6 +22,8 @@ import lombok.Setter;
 @Getter
 public class FinanceUser extends UserLogin {
 
+  private static final long serialVersionUID = 1L;
+  
   @Setter
   private int currentAmount;
   
