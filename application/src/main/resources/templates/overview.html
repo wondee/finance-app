@@ -99,7 +99,7 @@
                 <div class="modal-body">
                   <img id="modal_load_indicator" class="load_indicator" alt="" th:src="@{/resources/load_indicator.gif}">
 
-                  <div v-if="specialCosts">
+                  <div v-if="specialCosts.length > 0">
                     <h6>Sonderkosten:</h6>
                     <table class="table table-striped">
                       <tbody>
@@ -122,7 +122,7 @@
                   </div>
 
                   <p>
-                  <div v-if="fixedCosts">
+                  <div v-if="fixedCosts.length > 0">
                     <h6>Fixkosten:</h6>
                     <table class="table table-striped">
                       <tbody>
