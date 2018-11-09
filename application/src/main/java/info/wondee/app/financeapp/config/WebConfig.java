@@ -6,8 +6,11 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -26,6 +29,7 @@ public class WebConfig implements WebMvcConfigurer {
   @Autowired
   private RequestMappingHandlerAdapter requestMappingHandlerAdapter;
 
+  
   @PostConstruct
   public void init() {
       requestMappingHandlerAdapter.setIgnoreDefaultModelOnRedirect(true);
@@ -50,4 +54,10 @@ public class WebConfig implements WebMvcConfigurer {
     registry.addViewController("/legal/impressum").setViewName("impressum");
     registry.addViewController("/legal/datenschutz").setViewName("datenschutz");
   }
+  
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
+  
 }
