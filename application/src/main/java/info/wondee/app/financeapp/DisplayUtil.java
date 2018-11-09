@@ -67,8 +67,6 @@ public class DisplayUtil {
     
     if (bindingResult.hasErrors()) {
       
-      bindingResult.getAllErrors().forEach(System.out::println);
-      
       model.addAttribute("model", presenter);
       model.addAttribute("type", type);
       

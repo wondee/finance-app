@@ -4,8 +4,11 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import info.wondee.app.financeapp.BusinessException;
 import info.wondee.app.financeapp.financedata.FinanceData;
 import info.wondee.app.financeapp.financedata.FinanceDataRepository;
 
@@ -20,6 +23,21 @@ public class UserServiceImpl implements UserService {
   
   @Autowired
   private FinanceDataRepository financeDataRepository;
+  
+  @Autowired
+  private PasswordEncoder passwordEncoder;
+
+  @Override
+  public void createUser(String name, String password) {
+    
+    if (findByName(name).isPresent()) {
+      throw new BusinessException("Der Name '%s' ist bereits vergeben", name);
+    }
+    
+    userAccountRespository.insert(
+        new UserAccount(null, name, passwordEncoder.encode(password), findFinanceData().getId()));
+    
+  }
   
   @Override
   @Cacheable(cacheNames="userCache", key="#name")
@@ -69,5 +87,6 @@ public class UserServiceImpl implements UserService {
     
     return created;
   }
+
   
 }

@@ -9,5 +9,7 @@ public interface UserService {
   Optional<? extends UserLogin> findByName(String name);
 
   FinanceData findFinanceData();
+
+  void createUser(String name, String password);
   
 }

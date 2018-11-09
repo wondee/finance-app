@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+<body>
+
+<div layout:fragment="content" class="container" >
+<div class="container">
+  <h4>Einstellungen</h4>
+  
+  
+  <form method="post" th:action="@{/settings/user}" th:object="${newUserModel}">
+    <p>Füge einen neuen Nutzer hinzu, der auch Zugriff auf diese Finanzdaten haben soll.</p>
+    <div th:if="${#fields.hasGlobalErrors()}" th:each="err : ${#fields.errors('global')}" class="alert alert-danger" role="alert">
+			  <span th:text="${err}"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    
+    <div th:if="${addUserSuccessMsg != null}" class="alert alert-success" role="alert">
+        <span th:text="${addUserSuccessMsg}"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    
+    <div class="form-group row">
+       <label for="name" class="col-sm-2 col-form-label">Name</label>
+       <div class="col-sm-10">
+	       <input id="name" name="name" th:field="*{name}"
+	          type="text" pattern=".{4,100}" required="required"
+	          class="form-control" th:classappend="${#fields.hasErrors('name')} ? 'is-invalid': ''"
+	          title="Der Name muss mindestens die Länge 4 haben">
+	     </div>
+    </div>
+    <div class="form-group row">
+       <label for="password" class="col-sm-2 col-form-label">Passwort</label>
+       <div class="col-sm-10">
+	       <input id="password" name="password" th:field="*{password}"
+	          type="password" pattern=".{8,100}" required="required"
+	          class="form-control" th:classappend="${#fields.hasErrors('password')} ? 'is-invalid': ''"
+	          title="Das Passwort muss mindestens die Länge 8 haben">
+	       <div class="invalid-feedback">Passwort darf nicht leer sein.</div>
+       </div>
+    </div>
+    <div class="form-group row">
+       <label for="passwordRepeat" class="col-sm-2 col-form-label">Passwort Wiederholen</label>
+       <div class="col-sm-10">
+	       <input id="passwordRepeat" name="passwordRepeat" th:field="*{passwordRepeat}"
+	          type="password" pattern=".{8,100}" required="required"
+	          class="form-control" th:classappend="${#fields.hasErrors('passwordRepeat')} ? 'is-invalid': ''"
+	          title="Das Passwort muss mindestens die Länge 8 haben">
+	       <div class="invalid-feedback">Passwort darf nicht leer sein.</div>
+       </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Hinzufügen</button>
+  </form>
+  
+  
+</div>
+  
+  
+</div>
+</body>
