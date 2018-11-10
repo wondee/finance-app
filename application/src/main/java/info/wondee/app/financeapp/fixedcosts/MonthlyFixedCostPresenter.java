@@ -25,8 +25,8 @@ public class MonthlyFixedCostPresenter extends FixedCostPresenter<MonthlyFixedCo
   @Override
   public MonthlyFixedCost toPersistentObject() {
     return new MonthlyFixedCost(getName(), getRealAmount(), 
-          DisplayUtil.toDate(getFromMonth(), getFromYear()), 
-          DisplayUtil.toDate(getToMonth(), getToYear())
+          DisplayUtil.parseToDate(getFromYearMonth()), 
+          DisplayUtil.parseToDate(getToYearMonth())
         );
   }
   

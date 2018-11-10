@@ -3,13 +3,15 @@ package info.wondee.app.financeapp;
 import java.text.DateFormatSymbols;
 import java.time.Month;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.common.collect.ImmutableMap;
 
@@ -20,10 +22,31 @@ import info.wondee.app.financeapp.fixedcosts.FixedCostPresenter;
 
 public class DisplayUtil {
 
+  private static DateTimeFormatter formatter = new DateTimeFormatterBuilder().appendPattern("MM/yyyy").toFormatter();
+  
+  public static String format(YearMonth yearMonth) {
+    return formatter.format(yearMonth);
+  }
+
+  public static String format(FinanceMonth dueDate) {
+    return format(dueDate.toDate());
+  }
+  
+  public static YearMonth parse(String string) {
+    if (string == null) return null;
+    return YearMonth.parse(string, formatter);
+  }
+  
+
+  public static FinanceMonth parseToDate(String string) {
+    if (string == null) return null;
+    return new FinanceMonth(parse(string));
+  }
+  
   public static String createDisplayMonth(int month) {
     return createDisplayMonth(toMonth(month));
   }
-  
+
   public static String createDisplayMonth(Month month) {
     
     DateFormatSymbols dfs = new DateFormatSymbols();
@@ -31,6 +54,10 @@ public class DisplayUtil {
     
   }
 
+  public static String createDisplayMonthAndYear(String string) {
+    return createDisplayMonthAndYear(parse(string));
+  }
+  
   public static String createDisplayMonthAndYear(YearMonth yearMonth) {
     return createDisplayMonth(yearMonth.getMonth()) + " / " + yearMonth.getYear();
   }
@@ -62,15 +89,22 @@ public class DisplayUtil {
   }
   
 
-  public static String processSaving(Model model, CostPresenter<?> presenter, 
+  public static String processSaving(RedirectAttributes attr, CostPresenter<?> presenter, 
       BindingResult bindingResult, String type, Runnable action) {
     
     if (bindingResult.hasErrors()) {
       
-      model.addAttribute("model", presenter);
-      model.addAttribute("type", type);
+      attr.addFlashAttribute("model", presenter);
+      attr.addFlashAttribute("org.springframework.validation.BindingResult.model", bindingResult);
       
-      return "fixedcostform";
+      attr.addAttribute("type", type);
+      attr.addAttribute("target", presenter.getTarget());
+      
+      if (presenter.getId() != null) {
+        attr.addAttribute("id", presenter.getId());
+      }
+      
+      return "redirect:/fixedcosts/edit";
     }
     
     action.run();
@@ -98,5 +132,7 @@ public class DisplayUtil {
       return Target.valueOf(target.toUpperCase()).getUri();
     }
   }
+
+
   
 }

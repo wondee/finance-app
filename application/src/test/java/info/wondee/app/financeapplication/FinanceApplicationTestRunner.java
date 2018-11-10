@@ -1,4 +1,4 @@
-package info.wondee.app.financeapp;
+package info.wondee.app.financeapplication;
 
 import java.util.Optional;
 
@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import info.wondee.app.financeapp.FinanceApplication;
 import info.wondee.app.financeapp.user.FinanceUser;
 import info.wondee.app.financeapp.user.FinanceUserRepository;
 import info.wondee.app.financeapp.user.UserAccount;

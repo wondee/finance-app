@@ -23,16 +23,17 @@
       
     
     </div>
-    <div th:fragment="yearmonth">
-         <div  th:include="fragments/components :: month(prefix=${prefix}, monthTitle=${monthTitle})"></div>
-         <label for="deuYear" th:text="${yearTitle} + ':'"></label>
-         <input type="number" class="form-control" min="2018" max="2199" th:classappend="${#fields.hasErrors(prefix + 'Year')} ? 'is-invalid': ''"  
-            th:attr="id=${prefix + 'Year'}, name=${prefix + 'Year'}" th:field="*{__${prefix + 'Year'}__}" 
-            aria-describedby="dueYearHelp" placeholder="z.B. 2019">
-         <small id="dueYearHelp" class="form-text text-muted" th:if="${!#fields.hasErrors(prefix + 'Year')}">Wählen Sie einen Monat / Jahr in der Zukunft aus.</small>
-         <div class="invalid-feedback">Das Jahr muss zwischen 2018 und 2199 liegen.</div>
+
+    <div th:fragment="globalErrors">
+     <div th:if="${#fields.hasGlobalErrors()}" th:each="err : ${#fields.errors('global')}" class="alert alert-danger" role="alert">
+        <span th:text="${err}"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-  
+    
+    </div>
+    
     <div th:fragment="deletionDialog">
         <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			    <div class="modal-dialog">

@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.time.Month;
 import java.time.YearMonth;
 
-import lombok.AllArgsConstructor;
+import org.springframework.data.annotation.PersistenceConstructor;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-@AllArgsConstructor
 @Getter
 @EqualsAndHashCode
 @ToString
@@ -20,6 +20,19 @@ public class FinanceMonth implements Comparable<FinanceMonth>, Serializable {
   private Month month;
   private int year;
   
+  @PersistenceConstructor
+  public FinanceMonth(Month month, int year) {
+    super();
+    this.month = month;
+    this.year = year;
+  }
+  
+  
+  public FinanceMonth(YearMonth yearMonth) {
+    month = yearMonth.getMonth();
+    year = yearMonth.getYear();
+  }
+  
   public YearMonth toDate() {
     return YearMonth.of(year, month);
   }
@@ -28,5 +41,6 @@ public class FinanceMonth implements Comparable<FinanceMonth>, Serializable {
   public int compareTo(FinanceMonth o) {
     return toDate().compareTo(o.toDate());
   }
+
   
 }

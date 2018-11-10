@@ -1,73 +1,62 @@
 package info.wondee.app.financeapp.fixedcosts;
 
-import java.time.YearMonth;
-
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 
 import info.wondee.app.financeapp.DisplayUtil;
 import info.wondee.app.financeapp.FinanceMonth;
+import info.wondee.app.financeapp.FutureDateString;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@DateRange
+@DateRange(message="Das 'Ab-Datum' muss vor dem 'Bis-Datum' liegen")
 @NoArgsConstructor
 @Getter
 @Setter
 public abstract class FixedCostPresenter<T extends FixedCost> extends CostPresenter<T> {
 
+  private static final String FUTURE_DATE_MESSAGE = "Das Datum muss in der Zukunft liegen.";
+
   private static final long serialVersionUID = 1L;
+
+  @Pattern(regexp="[0-9]{2}\\/[0-9]{4}")
+  @FutureDateString(message=FUTURE_DATE_MESSAGE)
+  private String fromYearMonth;
   
-  @Min(1)
-  @Max(12)
-  private int fromMonth;
-
-  @Min(2000)
-  @Max(2199)
-  private Integer fromYear;
-
-  @Min(1)
-  @Max(12)
-  private int toMonth;
-
-  @Min(2000)
-  @Max(2199)
-  private Integer toYear;
+  @Pattern(regexp="[0-9]{2}\\/[0-9]{4}")
+  @FutureDateString(message=FUTURE_DATE_MESSAGE)
+  private String toYearMonth;
 
   public FixedCostPresenter(T object) {
     super(object);
     FinanceMonth from = object.getFrom();
 
     if (from != null) {
-      fromMonth = from.getMonth().getValue();
-      fromYear = from.getYear();
+      fromYearMonth = DisplayUtil.format(from);
     }
 
     FinanceMonth to = object.getTo();
 
     if (to != null) {
-      toMonth = to.getMonth().getValue();
-      toYear = to.getYear();
+      toYearMonth = DisplayUtil.format(to);
     }
 
   }
 
-
-  private String getDisplayDate(Integer year, int month) {
-    return (year == null) ? "-" : DisplayUtil.createDisplayMonthAndYear(YearMonth.of(year, month));
+  private String getDisplayDate(String date) {
+    return (date == null) ? "-" : DisplayUtil.createDisplayMonthAndYear(date);
   }
 
   public String getDisplayFromDate() {
-    return getDisplayDate(fromYear, fromMonth);
+    return getDisplayDate(fromYearMonth);
   }
 
   public String getDisplayToDate() {
-    return getDisplayDate(toYear, toMonth);
+    return getDisplayDate(toYearMonth);
   }
 
   public boolean isBounded() {
-    return fromYear != null || toYear != null;
+    return fromYearMonth != null || toYearMonth != null;
   }
 
 }

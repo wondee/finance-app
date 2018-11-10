@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import info.wondee.app.financeapp.DisplayUtil;
 import info.wondee.app.financeapp.DisplayUtil.Target;
@@ -49,8 +50,7 @@ public class SpecialCostController {
     
     SpecialCostPresenter presenter = new SpecialCostPresenter();
     
-    presenter.setDueMonth(month);
-    presenter.setDueYear(year);
+    presenter.setDueYearMonth(month, year);
 
     presenter.setTargetAsString(target);
     
@@ -61,11 +61,10 @@ public class SpecialCostController {
   }
   
   @PostMapping
-  public String postSpecialCosts(Model model, 
-      @Valid @ModelAttribute("model") SpecialCostPresenter presenter, 
-      BindingResult bindingResult) {
+  public String postSpecialCosts(@Valid @ModelAttribute("model") SpecialCostPresenter presenter, 
+      BindingResult bindingResult, RedirectAttributes attr) {
     
-    return processSaving(model, presenter, bindingResult, "special", 
+    return processSaving(attr, presenter, bindingResult, "special", 
         (() -> repository.save(service.findFinanceData(), presenter.toPersistentObject(), presenter.getId())));
   }
   

@@ -33,8 +33,8 @@ public class YearlyFixedCostPresenter extends FixedCostPresenter<YearlyFixedCost
   @Override
   public YearlyFixedCost toPersistentObject() {
     return new YearlyFixedCost(getName(), getRealAmount(), DisplayUtil.toMonth(dueMonth), 
-          DisplayUtil.toDate(getFromMonth(), getFromYear()), 
-          DisplayUtil.toDate(getToMonth(), getToYear())
+          DisplayUtil.parseToDate(getFromYearMonth()), 
+          DisplayUtil.parseToDate(getToYearMonth())
         );
   }
 

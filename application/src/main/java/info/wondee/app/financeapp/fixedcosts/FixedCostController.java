@@ -75,19 +75,23 @@ public class FixedCostController {
 
   @GetMapping("/edit")
   public String editFixedCost(Model model, @RequestParam("type") String type, @RequestParam("id") Optional<Integer> optionalId,
-      @RequestParam(value = "target", defaultValue="manage") String target) {
+      @RequestParam(value = "target", defaultValue="overview") String target) {
     
-    CostType costType = CostType.valueOf(type.toUpperCase());
+    if (!model.containsAttribute("model")) {
     
-    CostPresenter<? extends Cost> presenter = optionalId
-        .map(id -> retrieveExistingPresenter(costType, id))
-        .orElse(costType.createInstance());
-
-    presenter.setTargetAsString(target);
+      CostType costType = CostType.valueOf(type.toUpperCase());
+      
+      CostPresenter<? extends Cost> presenter = optionalId
+          .map(id -> retrieveExistingPresenter(costType, id))
+          .orElse(costType.createInstance());
+  
+      presenter.setTargetAsString(target);
+      
+      model.addAttribute("model", presenter);
+    }
     
     model.addAttribute("type", type);
-    model.addAttribute("model", presenter);
-    
+
     return "fixedcostform";
   }
 
@@ -124,11 +128,11 @@ public class FixedCostController {
   }
   
   @PostMapping("/monthly")
-  public String postMonthlyFixedCost(Model model, 
+  public String postMonthlyFixedCost(RedirectAttributes attr, 
       @Valid @ModelAttribute("model") MonthlyFixedCostPresenter presenter, 
       BindingResult bindingResult) {
     
-    return processSaving(model, presenter, bindingResult, "monthly", 
+    return processSaving(attr, presenter, bindingResult, "monthly", 
         (() -> financeDataRepository.save(userService.findFinanceData(), presenter.toPersistentObject(), presenter.getId())));
   }
   
@@ -139,11 +143,11 @@ public class FixedCostController {
   }
   
   @PostMapping("/quaterly")
-  public String postQuaterlyFixedCost(Model model, 
+  public String postQuaterlyFixedCost(RedirectAttributes attr, 
       @Valid @ModelAttribute("model") QuaterlyFixedCostPresenter presenter, 
       BindingResult bindingResult) {
     
-    return processSaving(model, presenter, bindingResult, "quaterly", 
+    return processSaving(attr, presenter, bindingResult, "quaterly", 
         (() -> financeDataRepository.save(userService.findFinanceData(), presenter.toPersistentObject(), presenter.getId())));
   }
   
@@ -154,11 +158,11 @@ public class FixedCostController {
   }
   
   @PostMapping("/yearly")
-  public String postYearlyFixedCost(Model model, 
+  public String postYearlyFixedCost(RedirectAttributes attr, 
       @Valid @ModelAttribute("model") YearlyFixedCostPresenter presenter, 
       BindingResult bindingResult) {
     
-    return processSaving(model, presenter, bindingResult, "yearly", 
+    return processSaving(attr, presenter, bindingResult, "yearly", 
         (() -> financeDataRepository.save(userService.findFinanceData(), presenter.toPersistentObject(), presenter.getId())));
   }
   

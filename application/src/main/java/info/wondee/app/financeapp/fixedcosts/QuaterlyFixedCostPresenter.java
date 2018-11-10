@@ -36,8 +36,8 @@ public class QuaterlyFixedCostPresenter extends FixedCostPresenter<QuaterlyFixed
   public QuaterlyFixedCost toPersistentObject() {
     
     return new QuaterlyFixedCost(getName(), getRealAmount(), dueMonth,  
-        DisplayUtil.toDate(getFromMonth(), getFromYear()), 
-        DisplayUtil.toDate(getToMonth(), getToYear()));
+        DisplayUtil.parseToDate(getFromYearMonth()), 
+        DisplayUtil.parseToDate(getToYearMonth()));
   }
 
   @Override
