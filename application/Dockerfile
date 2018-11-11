@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM adoptopenjdk/openjdk11:alpine-slim
 COPY ./target/finance-application.jar /usr/src/finapp/
 WORKDIR /usr/src/finapp
 EXPOSE 8080
