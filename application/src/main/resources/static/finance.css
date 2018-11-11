@@ -16,7 +16,7 @@ body {
 
 button.btn.btn-link.nav-link {
   color: rgba(255,255,255,.5);
-/*   padding-left: 0px; */
+  padding-left: 0px;
 }
 button.btn.btn-link.nav-link:hover {
   color: rgba(255,255,255,.75);
