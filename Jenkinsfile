@@ -26,7 +26,6 @@ def findChanged(build) {
 node {
   def mvnHome
 
-
   stage('Pull Repository') { 
     git 'https://github.com/wondee/finance-app.git'
   }
@@ -39,6 +38,10 @@ node {
     if (changes.app) {
       dir ("application") {
         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+        dir ("target") {
+          sh "(mkdir dependency; cd dependency)"
+          sh "tar -zxf ../finance-application.jar"
+        }
       }
     } else {
       echo "skipping maven build"

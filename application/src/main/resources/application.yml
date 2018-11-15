@@ -1,0 +1,22 @@
+spring:
+  data: 
+    mongodb:
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb://local.docker/financeapp}
+      database: financeapp
+
+  cache.type: redis
+  redis:
+    host: ${SPRING_REDIS_HOST:local.docker}
+    port: ${SPRING_REDIS_PORT:32768}
+
+  session.redis: 
+    flush-mode: on-save
+    namespace: spring:session
+
+  jmx.enabled: false
+
+server.servlet.session.timeout: 15
+
+#logging.level: 
+#  org.springframework.data.mongodb: DEBUG
+#  info.wondee: DEBUG
