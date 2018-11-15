@@ -39,8 +39,8 @@ node {
       dir ("application") {
         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
         dir ("target") {
-          sh "(mkdir dependency; cd dependency)"
-          sh "tar -zxf ../finance-application.jar"
+          sh "mkdir dependency"
+          sh "tar -zxf ../finance-application.jar -C dependency"
         }
       }
     } else {
