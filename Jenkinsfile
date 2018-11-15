@@ -40,7 +40,7 @@ node {
         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
         dir ("target") {
           sh "mkdir dependency"
-          sh "tar -zxf finance-application.jar -C dependency"
+          sh "unzip finance-application.jar -d dependency/"
         }
       }
     } else {
