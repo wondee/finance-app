@@ -49,8 +49,8 @@ Vue.component('message-panel', {
 Vue.component('validating-input', {
   template: `
   <div class="form-group row">
-    <label for="password" class="col-sm-2 col-form-label">{{ label }}</label>
-    <div class="col-sm-10">
+    <label for="password" class="col-sm-4 col-form-label">{{ label }}</label>
+    <div class="col-sm-8">
       <input 
           v-bind:type="type" 
           class="form-control"
@@ -91,8 +91,8 @@ Vue.component('new-password-input',{
     <div>
       <validating-input :label="label" type="password" min="8" max="40" v-model="value"></validating-input>
       <div class="form-group row">
-      <label for="password" class="col-sm-2 col-form-label">{{ label }} Wiederholen</label>
-      <div class="col-sm-10">
+      <label for="password" class="col-sm-4 col-form-label">{{ label }} Wiederholen</label>
+      <div class="col-sm-8">
         <input 
             type="password" 
             class="form-control"
