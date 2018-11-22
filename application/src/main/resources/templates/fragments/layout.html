@@ -15,7 +15,10 @@
 		<meta name="theme-color" content="#212529">
 		<meta name="msapplication-navbutton-color" content="#212529">
 		<meta name="apple-mobile-web-app-status-bar-style" content="#212529">
-    
+
+		<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
     <title>Die ultimative Finanzapp!</title>
 
     <link rel="icon" type="image/png" th:href="${@mvcResourceUrlProvider.getForLookupPath('/resources/favicon.png')}"/>
@@ -62,8 +65,8 @@
       </div>
       </div>
     </nav>
-
-    <main role="main" class="container">
+   
+    <main role="main" class="container-fluid">
 	    <div id="the-content" layout:fragment="content" class="container">
 	        <!-- include here the content of the current page visited by the user -->
 	    </div>

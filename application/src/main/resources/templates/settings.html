@@ -5,58 +5,67 @@
       layout:decorator="fragments/layout">
 <body>
 
-<div layout:fragment="content" class="container" >
-<div class="container">
-  <h4>Einstellungen</h4>
+<div layout:fragment="content" id="settings-app" v-cloak>
+  <div class="row">
   
-  
-  <form method="post" th:action="@{/settings/user}" th:object="${newUserModel}">
-    <p>Füge einen neuen Nutzer hinzu, der auch Zugriff auf diese Finanzdaten haben soll.</p>
-    <div th:include="fragments/components :: globalErrors"></div>
-    
-    <div th:if="${addUserSuccessMsg != null}" class="alert alert-success" role="alert">
-        <span th:text="${addUserSuccessMsg}"></span>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    
-    <div class="form-group row">
-       <label for="name" class="col-sm-2 col-form-label">Name</label>
-       <div class="col-sm-10">
-	       <input id="name" name="name" th:field="*{name}"
-	          type="text" pattern=".{4,100}" required="required"
-	          class="form-control" th:classappend="${#fields.hasErrors('name')} ? 'is-invalid': ''"
-	          title="Der Name muss mindestens die Länge 4 haben">
-	     </div>
-    </div>
-    <div class="form-group row">
-       <label for="password" class="col-sm-2 col-form-label">Passwort</label>
-       <div class="col-sm-10">
-	       <input id="password" name="password" th:field="*{password}"
-	          type="password" pattern=".{8,100}" required="required"
-	          class="form-control" th:classappend="${#fields.hasErrors('password')} ? 'is-invalid': ''"
-	          title="Das Passwort muss mindestens die Länge 8 haben">
-	       <div class="invalid-feedback">Passwort darf nicht leer sein.</div>
-       </div>
-    </div>
-    <div class="form-group row">
-       <label for="passwordRepeat" class="col-sm-2 col-form-label">Passwort Wiederholen</label>
-       <div class="col-sm-10">
-	       <input id="passwordRepeat" name="passwordRepeat" th:field="*{passwordRepeat}"
-	          type="password" pattern=".{8,100}" required="required"
-	          class="form-control" th:classappend="${#fields.hasErrors('passwordRepeat')} ? 'is-invalid': ''"
-	          title="Das Passwort muss mindestens die Länge 8 haben">
-	       <div class="invalid-feedback">Passwort darf nicht leer sein.</div>
-       </div>
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Hinzufügen</button>
-  </form>
+  <div class="col-12 col-md-3">
+    <nav class="nav navbar navbar-light bg-light" role="tablist" aria-orientation="vertical" >
+      <a class="navbar-brand" href="">Einstellungen</a>
+      <a class="nav-link active" id="change-limit-tab" data-toggle="pill" href="#change-limit" role="tab" aria-controls="change-limit" aria-selected="true">Limit anpassen</a>
+      <a class="nav-link" id="change-password-tab" data-toggle="pill" href="#change-password" role="tab" aria-controls="change-password" aria-selected="false">Passwort ändern</a>
+		  <a class="nav-link" id="add-user-tab" data-toggle="pill" href="#add-user" role="tab" aria-controls="add-user" aria-selected="false">Nutzer hinzufügen</a>
+		</nav>
+  </div>
+  <div class="col-12 col-md-9">
+    <div class="row  tab-content settings-content">
+	    <div id="change-limit" role="tabpanel" class="tab-pane show active" aria-labelledby="change-limit-tab">
+	      <p>Setze hier das Betragslimit ab dem in der Übersicht der Saldo eingefährt werden soll.</p>
+	      
+	      <i>Coming soon...</i>
+	    </div>
+	    
+	    <div id="change-password" role="tabpanel" class="tab-pane" aria-labelledby="change-password-tab">
+ 	    <change-password-form inline-template>
+        <form @submit="changePasswordSubmit">
+		      
+	        <message-panel :messages="globalMessages"></message-panel>
+		      <p>Gebe ein neues Passwort ein und bestätige mit deinem aktuellen Passwort.</p>
+		      <validating-input label="Aktuelles Passwort" type="password" min="8" max="40" v-model="oldPassword"></validating-input>
+		      
+		      <new-password-input label="Neues Passwort" ref="passwordInput" v-model="newPassword"></new-password-input>
+          
+	        <button type="submit" class="btn btn-primary" v-bind:disabled="!valid || disabled">Speichern</button>
+		    </form>
+		  </change-password-form>
+	    </div>
+	    
+	    <div id="add-user" role="tabpanel" class="tab-pane" aria-labelledby="add-user-tab">
+	    <add-user-form inline-template>
+			  <form @submit="addUserSubmit">
+
+		      <message-panel :messages="globalMessages"></message-panel>
+		      
+			    <p>Füge einen neuen Nutzer hinzu, der auch Zugriff auf diese Finanzdaten haben soll.</p>
+			    
+			    <validating-input label="Name" type="text" min="4" max="40" v-model="name"></validating-input>
+			    
+				  <new-password-input label="Password" ref="passwordInput" v-model="password"></new-password-input>
+			    
+			    <button type="submit" class="btn btn-primary" v-bind:disabled="!valid || disabled">Hinzufügen</button>
+			  </form>
+		  </add-user-form>
+	  </div>
+	</div>
+  </div>
+</div>
+</div>
+<div layout:fragment="script">
+  <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/settings.js')}"></script>
+  <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/test.js')}"></script>
   
   
 </div>
-  
-  
-</div>
+
 </body>
+
+

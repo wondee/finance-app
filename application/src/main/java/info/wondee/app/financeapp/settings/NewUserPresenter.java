@@ -8,19 +8,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@PasswordEquals(message="Das Passwort stimmt nicht überein")
-public class UserPresenter {
+public class NewUserPresenter {
 
   @NotNull
   @Size(min=4, max=100)
   private String name;
   
   @NotNull
-  @Size(min=8, max=100)
+  @Size(min=8, max=40)
   private String password;
   
-  @NotNull
-  @Size(min=8, max=100)
-  private String passwordRepeat;
   
 }

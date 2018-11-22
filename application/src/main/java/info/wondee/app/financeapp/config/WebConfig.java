@@ -53,6 +53,8 @@ public class WebConfig implements WebMvcConfigurer {
     registry.addViewController("/error").setViewName("error");
     registry.addViewController("/legal/impressum").setViewName("impressum");
     registry.addViewController("/legal/datenschutz").setViewName("datenschutz");
+    
+    registry.addViewController("/settings").setViewName("settings");
   }
   
   @Bean

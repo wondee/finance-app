@@ -128,7 +128,7 @@ var app = new Vue(
 			  $('#modal_load_indicator').show();
 
 			  this.specialCosts = Array();
-	          this.fixedCosts = Array();
+	      this.fixedCosts = Array();
 
 			  // GET /someUrl
 			  this.$http.get('/overview/detail', {params: {'index': index}}).then(

@@ -11,5 +11,7 @@ public interface UserService {
   FinanceData findFinanceData();
 
   void createUser(String name, String password);
+
+  void changePassword(String oldPassword, String newPassword);
   
 }

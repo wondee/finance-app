@@ -3,17 +3,18 @@ package info.wondee.app.financeapp.settings;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import info.wondee.app.financeapp.BusinessException;
+import info.wondee.app.financeapp.JsonResponse;
+import info.wondee.app.financeapp.Message.Severity;
 import info.wondee.app.financeapp.user.UserService;
 
 @Controller
@@ -23,40 +24,50 @@ public class SettingsController {
   @Autowired
   private UserService userService;
   
-  @GetMapping
-  public String initSettings(Model model) {
+  @PostMapping(value="/user")
+  public ResponseEntity<JsonResponse> addNewUser(
+      @Valid @RequestBody NewUserPresenter presenter, 
+      BindingResult bindingResult) {
+
+    if (bindingResult.hasErrors()) {
+      return new ResponseEntity<JsonResponse>(
+          new JsonResponse(Severity.ERROR, "Validierungsfehler!"), HttpStatus.BAD_REQUEST);
+    }
     
-    model.addAttribute("newUserModel", new UserPresenter());
+    userService.createUser(presenter.getName(), presenter.getPassword());
     
-    return "settings";
+    return 
+        new ResponseEntity<JsonResponse>(new JsonResponse(
+              Severity.INFO, String.format("Nutzer '%s' wurde erfolgreich hinzugefügt", presenter.getName())
+          ), HttpStatus.CREATED);
+      
+    
+  }
+  
+  @PostMapping(value="/password")
+  public ResponseEntity<JsonResponse> changePassword(
+      @Valid @RequestBody ChangePasswordPresenter presenter, 
+      BindingResult bindingResult) {
+
+    if (bindingResult.hasErrors()) {
+      return new ResponseEntity<JsonResponse>(
+          new JsonResponse(Severity.ERROR, "Validierungsfehler!"), HttpStatus.BAD_REQUEST);
+    }
+    
+    userService.changePassword(presenter.getOldPassword(), presenter.getNewPassword());
+    
+    return 
+        new ResponseEntity<JsonResponse>(new JsonResponse(
+              Severity.INFO, "Passwort wurde erfolgreich geändert"), HttpStatus.CREATED);
+      
+    
   }
   
   
-  @PostMapping("/user")
-  public String editFixedCost(Model model, 
-      @Valid @ModelAttribute("newUserModel") UserPresenter presenter, 
-      BindingResult bindingResult, 
-      RedirectAttributes redirectAttributes) {
-
-    if (bindingResult.hasErrors()) {
-      model.addAttribute("newUserModel", presenter);
-      return "settings";
-    }
-    
-    try {
-      userService.createUser(presenter.getName(), presenter.getPassword());
-      redirectAttributes.addFlashAttribute("addUserSuccessMsg", String.format("Nutzer '%s' wurde erfolgreich hinzugefügt", presenter.getName()));
-      
-      return "redirect:/settings";
-    } catch (BusinessException e) {
-      bindingResult.addError(new ObjectError("businessError", e.getMessage()));
-      model.addAttribute("newUserModel", presenter);
-      
-      return "settings";
-    }
-    
-    
-    
+  @ExceptionHandler(BusinessException.class)
+  public ResponseEntity<JsonResponse> handleBusinessError(BusinessException e) {
+    return new ResponseEntity<JsonResponse>(new JsonResponse(
+        Severity.ERROR, e.getMessage()), HttpStatus.BAD_REQUEST);
   }
   
 }

@@ -39,6 +39,20 @@ public class UserServiceImpl implements UserService {
   }
   
   @Override
+  public void changePassword(String oldPassword, String newPassword) {
+    UserAccount currentUser = userAccountRespository.findCurrentUser();
+    
+    if (!passwordEncoder.matches(oldPassword, currentUser.getPassword())) {
+      throw new BusinessException("Passwort ist nicht korrekt");
+    }
+    
+    currentUser.setPassword(passwordEncoder.encode(newPassword));
+    
+    userAccountRespository.save(currentUser);
+    
+  }
+  
+  @Override
   @Cacheable(cacheNames="userCache", key="#name")
   public Optional<? extends UserLogin> findByName(String name) {
 
@@ -86,6 +100,7 @@ public class UserServiceImpl implements UserService {
     
     return created;
   }
+
 
   
 }
