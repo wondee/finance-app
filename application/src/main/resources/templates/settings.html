@@ -19,9 +19,18 @@
   <div class="col-12 col-md-9">
     <div class="row  tab-content settings-content">
 	    <div id="change-limit" role="tabpanel" class="tab-pane show active" aria-labelledby="change-limit-tab">
-	      <p>Setze hier das Betragslimit ab dem in der Übersicht der Saldo eingefährt werden soll.</p>
 	      
-	      <i>Coming soon...</i>
+	    <change-limit-form inline-template>
+        <form @submit="changeLimitSubmit">
+          
+          <message-panel :messages="globalMessages"></message-panel>
+		      <p>Setze hier das Betragslimit ab dem in der Übersicht der Saldo eingefährt werden soll.</p>
+          <i>(Funktioniert aktuell nicht...)</i>
+          <currency-input label="Betragsgrenze" v-model="limit"></currency-input>
+          
+          <button type="submit" class="btn btn-primary" v-bind:disabled="disabled">Speichern</button>
+        </form>
+      </change-limit-form>
 	    </div>
 	    
 	    <div id="change-password" role="tabpanel" class="tab-pane" aria-labelledby="change-password-tab">
@@ -60,8 +69,9 @@
 </div>
 </div>
 <div layout:fragment="script">
+  <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/shared.js')}"></script>
   <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/settings.js')}"></script>
-  <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/test.js')}"></script>
+
   
   
 </div>

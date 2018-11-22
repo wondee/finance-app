@@ -1,8 +1,4 @@
 
-function toCurrency(string) {
-  return string.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " €";
-}
-
 Vue.component('line-chart', {
   extends: VueChartJs.Line,
   props: ["data", "options"],

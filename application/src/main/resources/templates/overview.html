@@ -147,6 +147,7 @@
 <div layout:fragment="script">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-chartjs@3.4.0/dist/vue-chartjs.min.js"></script>
+    <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/shared.js')}"></script>
     <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/resources/overview.js')}"></script>
 </div>
 </body>

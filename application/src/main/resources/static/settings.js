@@ -1,5 +1,11 @@
 
-//Vue.config.devtools = true;
+Vue.config.devtools = true;
+
+var ajaxResponseMessage = function(response) {
+  this.globalMessages = response.data.messages || [{severity: 'ERROR', text: 'Technischer Fehler!'}];
+  
+  this.disabled = false;
+}
 
 function isValid(field) {
   return !field.error && field.text !== "";
@@ -86,6 +92,49 @@ Vue.component('validating-input', {
   
 });
 
+Vue.component('currency-input', {
+  template: `
+  <div class="form-group row">
+    <label class="col-sm-4 col-form-label">{{ label }}</label>
+    <div class="col-sm-8">
+      <input 
+          type="text" 
+          class="form-control"
+          :class="{ 'is-invalid': value.error }"
+          :value="displayValue"
+          @blur="inputChanged"
+          @focus="cleanInput"
+       ></input>
+       <div class="invalid-feedback">{{ value.error }}</div>
+
+    </div>
+  </div>
+   `, 
+  props: ['label', 'value'],
+  computed: {
+    displayValue: function() {
+      return toCurrency(this.value.value);
+    }
+  },
+  methods: {
+    inputChanged(e) {
+      
+      var newValue = Number(e.target.value);
+      
+      this.value.value = isNaN(newValue) ? 0 : newValue; 
+      this.$emit('input', this.value);
+      
+      if (newValue === this.value.value) {
+        e.target.value = toCurrency(this.value.value);
+      }
+    },
+    cleanInput(e) {
+      e.target.value = this.value.value;
+    }
+  }
+  
+});
+
 Vue.component('new-password-input',{
   template: `
     <div>
@@ -129,6 +178,30 @@ Vue.component('new-password-input',{
 });
 
 
+Vue.component('change-limit-form', {
+  data() {
+    return {
+        disabled: false,
+        globalMessages: [],
+        limit: {value: 0, error: null}
+      };
+  },
+  methods: {
+    changeLimitSubmit(e) {
+      e.preventDefault();
+      
+      let changeLimit = {
+          limit: this.limit.value
+      };
+      
+      this.disabled = true;
+      
+      this.$http.post('/settings/limit', changeLimit)
+          .then(ajaxResponseMessage, ajaxResponseMessage);
+    }
+  }
+});
+
 Vue.component('change-password-form', {
   data() {
     return {
@@ -155,14 +228,8 @@ Vue.component('change-password-form', {
       
       this.disabled = true;
       
-      this.$http.post('/settings/password', changePassword).then(
-          function(response) {
-            this.globalMessages = response.data.messages;
-            this.disabled = false;
-          }, function(response) {
-            this.globalMessages = response.data.messages;
-            this.disabled = false;
-          });
+      this.$http.post('/settings/password', changePassword)
+          .then(ajaxResponseMessage, ajaxResponseMessage);
     }
   }
 });
@@ -196,14 +263,8 @@ Vue.component('add-user-form', {
       
       this.disabled = true;
       
-      this.$http.post('/settings/user', newUser).then(
-          function(response) {
-            this.globalMessages = response.data.messages;
-            this.disabled = false;
-          }, function(response) {
-            this.globalMessages = response.data.messages;
-            this.disabled = false;
-          });
+      this.$http.post('/settings/user', newUser)
+          .then(ajaxResponseMessage, ajaxResponseMessage);
     },
     getClass(severity) {
       return classMap[severity];
