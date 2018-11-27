@@ -124,9 +124,7 @@ Vue.component('currency-input', {
       this.value.value = isNaN(newValue) ? 0 : newValue; 
       this.$emit('input', this.value);
       
-      if (newValue === this.value.value) {
-        e.target.value = toCurrency(this.value.value);
-      }
+      e.target.value = toCurrency(this.value.value);
     },
     cleanInput(e) {
       e.target.value = this.value.value;
