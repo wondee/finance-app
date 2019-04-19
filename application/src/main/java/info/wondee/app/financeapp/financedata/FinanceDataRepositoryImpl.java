@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import info.wondee.app.financeapp.fixedcosts.Cost;
 import info.wondee.app.financeapp.fixedcosts.MonthlyFixedCost;
@@ -74,5 +76,9 @@ public class FinanceDataRepositoryImpl implements FinanceDataCustomRepository {
     repository.save(financeData);
   }
 
+  @Scheduled(cron = "1 0 1 * *") // schedule eviction every month at 00:01
+  @CacheEvict(value = {"financeDataCache", "overviewCache"})
+  public void clearCache() {      
+  }
 
 }
