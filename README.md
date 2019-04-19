@@ -10,7 +10,8 @@ Production Link: https://finance.wondee.info  (Demo Credentials: Demo/Demo; Alte
 Run mongo server locally:
 
 ```
-docker run -d -p 27017:27017 -v ~/data:/data/db mongo
+docker volume create --name=mongodata
+docker run -d -p 27017:27017 -v mongodata:/data/db mongo
 ```
 
 Running
