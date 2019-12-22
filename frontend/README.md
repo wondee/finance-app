@@ -25,5 +25,16 @@ npm run test
 npm run lint
 ```
 
+### mockserver
+```
+npm i -g mockserver
+mockserver -p 8081 -m .\mockdata\
+```
+
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## TODOs:
+
+- center loading indicator in details popup 

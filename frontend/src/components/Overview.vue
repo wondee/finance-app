@@ -1,15 +1,16 @@
 <template>
-  <b-container>
-    <b-row>
-      <h1>Überblick</h1>
-    </b-row>
-		<b-row>
-			<b-card v-if="loaded">
+  <loadable-page 
+    title="Überblick" 
+    endpoint="/api/overview/all"
+    v-on:loaded="loaded"
+  >
+  		<b-row>
+			<b-card>
 				<OverviewChart :entries="entries"/>
 			</b-card>
 		</b-row>
     <b-row>
-      <b-card v-if="loaded">
+      <b-card>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -41,12 +42,12 @@
                 </a>
               </td>
               <td>
-                <a
-                  :href="'/specialcosts/add?target=overview&month=' + entry.yearMonth[1] + '&year=' + entry.yearMonth[0]"
+                <router-link
+                  :to="'/specialcosts/add?target=overview&month=' + entry.yearMonth[1] + '&year=' + entry.yearMonth[0]"
                   class="icon-link"
                 >
                   <font-awesome-icon icon="plus-square" />
-                </a>
+                </router-link>
               </td>
             </tr>
           </tbody>
@@ -64,20 +65,20 @@
               <td>{{ cost.name }}</td>
               <td>{{ cost.displayAmount }}</td>
               <td>
-                <a
-                  v-bind:href="'/fixedcosts/edit?target=overview&id=' + cost.id + '&type=special'"
+                <router-link
+                  :to="'/fixedcosts/edit?target=overview&id=' + cost.id + '&type=special'"
                   class="icon-link"
                 >
-                  <i class="fas fa-edit"></i>
-                </a>
+									<font-awesome-icon icon="edit" />
+                </router-link>
               </td>
               <td>
-                <a
-                  v-bind:href="'/specialcosts/delete?target=overview&id=' + cost.id"
+                <router-link 
+                  :to="'/specialcosts/delete?target=overview&id=' + cost.id"
                   class="icon-link"
                 >
-                  <i class="fas fa-trash-alt"></i>
-                </a>
+									<font-awesome-icon icon="trash-alt" />
+                </router-link>
               </td>
             </tr>
           </tbody>
@@ -98,12 +99,12 @@
         </table>
       </div>
     </b-modal>
-  </b-container>
+  </loadable-page>
 </template>
 
 
 <script>
-import OverviewChart from './OverviewChart.vue';
+import OverviewChart from './OverviewChart';
 
 export default {
 	components: {
@@ -124,7 +125,7 @@ export default {
         labels: [],
         data: []
       },
-      loaded: false,
+      
       detailsLoaded: false
     };
   },
@@ -132,17 +133,6 @@ export default {
     showChart() {
       return this.loaded && this.config.showChart;
     }
-  },
-  created: async function() {
-    var storageShowChart = localStorage.getItem("finance-config.showChart");
-    this.config.showChart = storageShowChart == "true";
-
-    const response = await fetch("/api/overview/all");
-    const result = await response.json();
-
-    this.entries = result;
-
-    this.loaded = true;
   },
   filters: {
     displayMonth: entry =>
@@ -161,6 +151,12 @@ export default {
     }
   },
   methods: {
+    loaded: function(result) {
+      var storageShowChart = localStorage.getItem("finance-config.showChart");
+      this.config.showChart = storageShowChart == "true";
+      
+      this.entries = result;
+    },
     showGraphic: function() {
       this.config.showChart = true;
       localStorage.setItem("finance-config.showChart", "true");
@@ -193,9 +189,5 @@ export default {
 </script>
 
 <style>
-.card {
-	width: 100%;
-	margin-bottom: 10px;
-}
 
 </style>

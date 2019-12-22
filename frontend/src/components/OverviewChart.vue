@@ -1,14 +1,13 @@
 <script>
 import { Line } from "vue-chartjs";
-import { toCurrency } from './Utils';
+import { toCurrency } from "./Utils";
 
 export default {
   extends: Line,
   props: ["entries"],
   mounted() {
-
     const chartData = { labels: [], data: [] };
-    
+
     this.entries.forEach(entry => {
       chartData.data.push(entry.currentAmount);
       chartData.labels.push(entry.displayMonth);

@@ -6,12 +6,12 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item href="#">Übersicht</b-nav-item>
-        <b-nav-item href="#">Fixkosten</b-nav-item>
-				<b-nav-item href="#">Sonderkosten</b-nav-item>
+        <b-nav-item to="/">Übersicht</b-nav-item>
+        <b-nav-item to="/fixedcosts">Fixkosten</b-nav-item>
+				<b-nav-item to="/specialcosts">Sonderkosten</b-nav-item>
 				
         <b-nav-item-dropdown text="Sonstiges">
-          <b-dropdown-item href="#"><font-awesome-icon icon="cog"/> Einstellungen</b-dropdown-item>
+          <b-dropdown-item to="/settings"><font-awesome-icon icon="cog"/> Einstellungen</b-dropdown-item>
 					<b-dropdown-divider></b-dropdown-divider>
           <b-dropdown-item href="#">Impressum</b-dropdown-item>
           <b-dropdown-item href="#">Datenschutzerklärung</b-dropdown-item>
