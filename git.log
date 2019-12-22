@@ -1,0 +1,1724 @@
+user:wondee
+1537107234
+:000000 100644 0000000 82eca33 A	finance-application/.gitignore
+:000000 100644 0000000 5e7ef89 A	finance-application/pom.xml
+:000000 100644 0000000 2582181 A	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:000000 100644 0000000 a5db1f9 A	finance-application/src/main/java/info/wondee/app/financeapp/FinanceApplication.java
+:000000 100644 0000000 edae011 A	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:000000 100644 0000000 d29b505 A	finance-application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+:000000 100644 0000000 4b2a86f A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:000000 100644 0000000 7468762 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:000000 100644 0000000 baca814 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostRepository.java
+:000000 100644 0000000 1bf82b6 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:000000 100644 0000000 b1fe8fc A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCost.java
+:000000 100644 0000000 302f27d A	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:000000 100644 0000000 5909224 A	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:000000 100644 0000000 190e947 A	finance-application/src/main/java/info/wondee/app/financeapp/overview/SpecialCost.java
+:000000 100644 0000000 e69de29 A	finance-application/src/main/resources/application.properties
+:000000 100644 0000000 dce1a70 A	finance-application/src/main/resources/templates/fixedCosts.html
+:000000 100644 0000000 a178531 A	finance-application/src/main/resources/templates/login.html
+:000000 100644 0000000 2a50076 A	finance-application/src/main/resources/templates/overview.html
+:000000 100644 0000000 0ad4788 A	finance-application/src/test/java/info/wondee/app/financeapplication/FinanceApplicationTests.java
+
+user:wondee
+1537119842
+:100644 100644 5e7ef89 b7f6ec2 M	finance-application/pom.xml
+:100644 100644 edae011 a628c69 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 4b2a86f 989de08 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:100644 100644 7468762 495fc94 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 100644 baca814 ebaddc3 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostRepository.java
+:100644 100644 1bf82b6 0e821dc M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:100644 100644 b1fe8fc 05a3ce0 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCost.java
+:100644 100644 190e947 e2905b9 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/SpecialCost.java
+:100644 100644 dce1a70 2397370 M	finance-application/src/main/resources/templates/fixedCosts.html
+
+user:wondee
+1537211532
+:100644 100644 b7f6ec2 e834bfe M	finance-application/pom.xml
+:100644 100644 a628c69 ecc0022 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 495fc94 ae121e1 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 100644 2397370 e9bd9f4 M	finance-application/src/main/resources/templates/fixedCosts.html
+:000000 100644 0000000 6e47100 A	finance-application/src/main/resources/templates/layout.html
+:100644 100644 2a50076 0ba3f69 M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1537293739
+:100644 100644 2582181 22bcf09 M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:100644 100644 ecc0022 5814adf M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:000000 100644 0000000 11bf8cc A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:100644 000000 989de08 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:100644 100644 ae121e1 a022f07 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 100644 ebaddc3 d348df7 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostRepository.java
+:100644 100644 0e821dc 24bfede M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:100644 100644 05a3ce0 7868323 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCost.java
+:100644 100644 302f27d 33ee3d7 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 5909224 83098ef M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 000000 e2905b9 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/overview/SpecialCost.java
+:000000 100644 0000000 31efb0e A	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCost.java
+:000000 100644 0000000 bfb520d A	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:000000 100644 0000000 2f06aa2 A	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostRepository.java
+:000000 100644 0000000 fd27244 A	finance-application/src/main/resources/templates/error.html
+:100644 100644 e9bd9f4 6f70530 M	finance-application/src/main/resources/templates/fixedCosts.html
+:100644 100644 6e47100 0531e60 M	finance-application/src/main/resources/templates/layout.html
+:000000 100644 0000000 042e06d A	finance-application/src/main/resources/templates/specialcosts.html
+
+user:wondee
+1537709800
+:000000 100644 0000000 7caf160 A	finance-application/Dockerfile
+:000000 100644 0000000 4c5360e A	finance-application/README.md
+:100644 100644 e834bfe cfc3f70 M	finance-application/pom.xml
+:100644 100644 22bcf09 b3c3481 M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:100644 100644 a5db1f9 3ea8ce0 M	finance-application/src/main/java/info/wondee/app/financeapp/FinanceApplication.java
+:000000 100644 0000000 e18be6c A	finance-application/src/main/java/info/wondee/app/financeapp/config/MongoConfig.java
+:100644 100644 5814adf 20fe863 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 d29b505 4e35f04 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+:100644 100644 11bf8cc 8b35018 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:100644 100644 a022f07 4e2fe0d M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 000000 d348df7 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostRepository.java
+:100644 100644 24bfede 361d044 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:100644 100644 7868323 4ba8597 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCost.java
+:100644 100644 33ee3d7 61a09a7 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 31efb0e 965db8a M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCost.java
+:100644 100644 bfb520d 9cf206f M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:100644 000000 2f06aa2 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostRepository.java
+:000000 100644 0000000 6840b0e A	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:000000 100644 0000000 478e044 A	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:000000 100644 0000000 3365382 A	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserDetailsService.java
+:000000 100644 0000000 5afd730 A	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepository.java
+:000000 100644 0000000 3ec6879 A	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:100644 100644 e69de29 de84cde M	finance-application/src/main/resources/application.properties
+:100644 100644 6f70530 48b5c82 M	finance-application/src/main/resources/templates/fixedCosts.html
+:100644 100644 0531e60 3cfe404 M	finance-application/src/main/resources/templates/layout.html
+:100644 100644 042e06d 38386c3 M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:wondee
+1537709800
+:000000 100644 0000000 7caf160 A	finance-application/Dockerfile
+:000000 100644 0000000 4c5360e A	finance-application/README.md
+:100644 100644 e834bfe cfc3f70 M	finance-application/pom.xml
+:100644 100644 22bcf09 b3c3481 M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:100644 100644 a5db1f9 3ea8ce0 M	finance-application/src/main/java/info/wondee/app/financeapp/FinanceApplication.java
+:000000 100644 0000000 e18be6c A	finance-application/src/main/java/info/wondee/app/financeapp/config/MongoConfig.java
+:100644 100644 5814adf 20fe863 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 d29b505 4e35f04 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+:100644 100644 11bf8cc 8b35018 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:100644 100644 a022f07 4e2fe0d M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 000000 d348df7 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostRepository.java
+:100644 100644 24bfede 361d044 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:100644 100644 7868323 4ba8597 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCost.java
+:100644 100644 33ee3d7 61a09a7 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 31efb0e 965db8a M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCost.java
+:100644 100644 bfb520d 9cf206f M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:100644 000000 2f06aa2 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostRepository.java
+:000000 100644 0000000 6840b0e A	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:000000 100644 0000000 478e044 A	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:000000 100644 0000000 3365382 A	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserDetailsService.java
+:000000 100644 0000000 5afd730 A	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepository.java
+:000000 100644 0000000 3ec6879 A	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:100644 100644 e69de29 de84cde M	finance-application/src/main/resources/application.properties
+:100644 100644 6f70530 48b5c82 M	finance-application/src/main/resources/templates/fixedCosts.html
+:100644 100644 0531e60 3cfe404 M	finance-application/src/main/resources/templates/layout.html
+:100644 100644 042e06d 38386c3 M	finance-application/src/main/resources/templates/specialcosts.html
+:000000 100644 0000000 315d9a9 A	finance-application/src/test/java/info/wondee/app/financeapplication/PasswordCreator.java
+
+user:wondee
+1539277148
+:100644 100644 b3c3481 8d17667 M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:000000 100644 0000000 80298b3 A	finance-application/src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+:000000 100644 0000000 6b92cb6 A	finance-application/src/main/java/info/wondee/app/financeapp/FinanceMonth.java
+:100644 100644 8b35018 6b87eee M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:000000 100644 0000000 221e84d A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:000000 100644 0000000 48d4f20 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostType.java
+:000000 100644 0000000 74e462b A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:100644 100644 4e2fe0d 27cb0ea M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:000000 100644 0000000 fa4d170 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostPresenter.java
+:100644 100644 361d044 6e2d9a0 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:000000 100644 0000000 6a39f49 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCostPresenter.java
+:100644 100644 4ba8597 c968abd M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCost.java
+:000000 100644 0000000 3012702 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCostPresenter.java
+:100644 100644 61a09a7 63ce257 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 83098ef 0c6ba26 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 965db8a 3c9102b M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCost.java
+:100644 100644 9cf206f 973cfa6 M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:000000 100644 0000000 ca6690c A	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostPresenter.java
+:100644 100644 6840b0e 0bf80d8 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:100644 100644 478e044 2c9325f M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:100644 100644 3ec6879 9df9189 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:100644 100644 de84cde 7d07850 M	finance-application/src/main/resources/application.properties
+:100644 000000 48b5c82 0000000 D	finance-application/src/main/resources/templates/fixedCosts.html
+:000000 100644 0000000 bc1902f A	finance-application/src/main/resources/templates/fixedcostform.html
+:000000 100644 0000000 ef0423d A	finance-application/src/main/resources/templates/fixedcosts.html
+:000000 100644 0000000 cf80e00 A	finance-application/src/main/resources/templates/fragments/components.html
+:100644 100644 0ba3f69 788a0dd M	finance-application/src/main/resources/templates/overview.html
+:100644 100644 38386c3 1400c1c M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:wondee
+1539277148
+:100644 100644 b3c3481 8d17667 M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:000000 100644 0000000 80298b3 A	finance-application/src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+:000000 100644 0000000 6b92cb6 A	finance-application/src/main/java/info/wondee/app/financeapp/FinanceMonth.java
+:100644 100644 8b35018 6b87eee M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:000000 100644 0000000 221e84d A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:000000 100644 0000000 48d4f20 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostType.java
+:000000 100644 0000000 74e462b A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:100644 100644 4e2fe0d 27cb0ea M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:000000 100644 0000000 fa4d170 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostPresenter.java
+:100644 100644 361d044 6e2d9a0 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:000000 100644 0000000 6a39f49 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCostPresenter.java
+:100644 100644 4ba8597 c968abd M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCost.java
+:000000 100644 0000000 3012702 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCostPresenter.java
+:100644 100644 61a09a7 63ce257 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 83098ef 0c6ba26 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 965db8a 3c9102b M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCost.java
+:100644 100644 9cf206f 973cfa6 M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:000000 100644 0000000 ca6690c A	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostPresenter.java
+:100644 100644 6840b0e 0bf80d8 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:100644 100644 478e044 2c9325f M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:100644 100644 3ec6879 9df9189 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:100644 100644 de84cde 7d07850 M	finance-application/src/main/resources/application.properties
+:100644 000000 48b5c82 0000000 D	finance-application/src/main/resources/templates/fixedCosts.html
+:000000 100644 0000000 bc1902f A	finance-application/src/main/resources/templates/fixedcostform.html
+:000000 100644 0000000 ef0423d A	finance-application/src/main/resources/templates/fixedcosts.html
+:000000 100644 0000000 cf80e00 A	finance-application/src/main/resources/templates/fragments/components.html
+:100644 100644 0ba3f69 788a0dd M	finance-application/src/main/resources/templates/overview.html
+:100644 100644 38386c3 1400c1c M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:wondee
+1539277392
+:100644 100644 6a39f49 03b7345 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCostPresenter.java
+:100644 100644 ef0423d 27a305f M	finance-application/src/main/resources/templates/fixedcosts.html
+
+user:wondee
+1539277392
+:100644 100644 6a39f49 03b7345 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCostPresenter.java
+:100644 100644 ef0423d 27a305f M	finance-application/src/main/resources/templates/fixedcosts.html
+
+user:wondee
+1539285625
+:100644 100644 8d17667 bea9ee8 M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:000000 100644 0000000 03be520 A	finance-application/src/main/java/info/wondee/app/financeapp/export/ExportImportController.java
+:100644 100644 63ce257 6920d3c M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 2c9325f d0c0b81 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:100644 100644 9df9189 da9c57d M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:100644 100644 bc1902f 15717c6 M	finance-application/src/main/resources/templates/fixedcostform.html
+:100644 100644 cf80e00 5338e24 M	finance-application/src/main/resources/templates/fragments/components.html
+
+user:wondee
+1539285625
+:100644 100644 8d17667 bea9ee8 M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:000000 100644 0000000 03be520 A	finance-application/src/main/java/info/wondee/app/financeapp/export/ExportImportController.java
+:100644 100644 63ce257 6920d3c M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 2c9325f d0c0b81 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:100644 100644 9df9189 da9c57d M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:100644 100644 bc1902f 15717c6 M	finance-application/src/main/resources/templates/fixedcostform.html
+:100644 100644 cf80e00 5338e24 M	finance-application/src/main/resources/templates/fragments/components.html
+
+user:wondee
+1539371482
+:100644 100644 03be520 9bd0e47 M	finance-application/src/main/java/info/wondee/app/financeapp/export/ExportImportController.java
+:100644 100644 6920d3c b1a80f4 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 0bf80d8 884f87c M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:100644 100644 788a0dd 777da98 M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1539371482
+:100644 100644 03be520 9bd0e47 M	finance-application/src/main/java/info/wondee/app/financeapp/export/ExportImportController.java
+:100644 100644 6920d3c b1a80f4 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 0bf80d8 884f87c M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:100644 100644 788a0dd 777da98 M	finance-application/src/main/resources/templates/overview.html
+
+user:azure-pipelines[bot]
+1539375236
+:000000 100644 0000000 4704600 A	azure-pipelines.yml
+
+user:azure-pipelines[bot]
+1539375236
+:000000 100644 0000000 4704600 A	azure-pipelines.yml
+
+user:Markus
+1539376305
+:000000 100644 0000000 e500bd2 A	README.md
+
+user:Markus
+1539376305
+:000000 100644 0000000 e500bd2 A	README.md
+
+user:Markus
+1539418530
+:100644 100644 4704600 1044071 M	azure-pipelines.yml
+
+user:Markus
+1539418530
+:100644 100644 4704600 1044071 M	azure-pipelines.yml
+
+user:wondee
+1539419096
+:100644 100644 0ad4788 ba3f9bb M	finance-application/src/test/java/info/wondee/app/financeapplication/FinanceApplicationTests.java
+
+user:wondee
+1539419096
+:100644 100644 0ad4788 ba3f9bb M	finance-application/src/test/java/info/wondee/app/financeapplication/FinanceApplicationTests.java
+
+user:wondee
+1539419116
+user:wondee
+1539419116
+user:Markus
+1539428836
+:100644 000000 1044071 0000000 D	azure-pipelines.yml
+
+user:Markus
+1539428836
+:100644 000000 1044071 0000000 D	azure-pipelines.yml
+
+user:wondee
+1539444662
+:100644 100644 4c5360e 0031ba8 M	finance-application/README.md
+
+user:wondee
+1539444662
+:100644 100644 4c5360e 0031ba8 M	finance-application/README.md
+
+user:wondee
+1539444689
+user:wondee
+1539444689
+user:wondee
+1539507977
+:000000 100644 0000000 90d4625 A	.travis.yml
+
+user:wondee
+1539507977
+:000000 100644 0000000 90d4625 A	.travis.yml
+
+user:Markus
+1539509224
+:100644 100644 90d4625 077e915 M	.travis.yml
+
+user:Markus
+1539509224
+:100644 100644 90d4625 077e915 M	.travis.yml
+
+user:Markus
+1539509308
+:100644 100644 e500bd2 36edcbe M	README.md
+
+user:Markus
+1539509308
+:100644 100644 e500bd2 36edcbe M	README.md
+
+user:Markus
+1539509358
+:100644 100644 077e915 8fd3db2 M	.travis.yml
+
+user:Markus
+1539509358
+:100644 100644 077e915 8fd3db2 M	.travis.yml
+
+user:wondee
+1539523640
+:100644 100644 7caf160 8627ee4 M	finance-application/Dockerfile
+:100644 100644 0031ba8 7a4d1f5 M	finance-application/README.md
+:100644 100644 80298b3 7981d53 M	finance-application/src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+:100644 100644 7d07850 635f095 M	finance-application/src/main/resources/application.properties
+:100644 100644 27a305f 509a47f M	finance-application/src/main/resources/templates/fixedcosts.html
+:100644 100644 3cfe404 85f38dc M	finance-application/src/main/resources/templates/layout.html
+
+user:wondee
+1539523640
+:100644 100644 7caf160 8627ee4 M	finance-application/Dockerfile
+:100644 100644 0031ba8 7a4d1f5 M	finance-application/README.md
+:100644 100644 80298b3 7981d53 M	finance-application/src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+:100644 100644 7d07850 635f095 M	finance-application/src/main/resources/application.properties
+:100644 100644 27a305f 509a47f M	finance-application/src/main/resources/templates/fixedcosts.html
+:100644 100644 3cfe404 85f38dc M	finance-application/src/main/resources/templates/layout.html
+
+user:wondee
+1539524830
+:100644 100644 8fd3db2 8d28483 M	.travis.yml
+:000000 100644 0000000 1f174c7 A	finance-application/build_docker.sh
+
+user:wondee
+1539524830
+:100644 100644 8fd3db2 8d28483 M	.travis.yml
+:000000 100644 0000000 1f174c7 A	finance-application/build_docker.sh
+
+user:wondee
+1539525049
+:100644 100644 8d28483 ff0ef3e M	.travis.yml
+
+user:wondee
+1539525049
+:100644 100644 8d28483 ff0ef3e M	.travis.yml
+
+user:wondee
+1539525477
+:100644 100644 ff0ef3e a503aad M	.travis.yml
+:100644 000000 1f174c7 0000000 D	finance-application/build_docker.sh
+:000000 100644 0000000 1f174c7 A	finance-application/docker_push.sh
+
+user:wondee
+1539525477
+:100644 100644 ff0ef3e a503aad M	.travis.yml
+:100644 000000 1f174c7 0000000 D	finance-application/build_docker.sh
+:000000 100644 0000000 1f174c7 A	finance-application/docker_push.sh
+
+user:Markus
+1539525662
+:100644 100644 a503aad a481427 M	.travis.yml
+
+user:Markus
+1539525662
+:100644 100644 a503aad a481427 M	.travis.yml
+
+user:Markus
+1539525933
+:100644 100644 a481427 0a81dd2 M	.travis.yml
+
+user:Markus
+1539525933
+:100644 100644 a481427 0a81dd2 M	.travis.yml
+
+user:wondee
+1539537514
+:100644 100644 20fe863 47e9b22 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:000000 100644 0000000 4b83eb2 A	finance-application/src/main/resources/static/favicon.png
+:000000 100644 0000000 2bbc3de A	finance-application/src/main/resources/static/rNKuN2XotTqXFsdiEthWvrjhPjRMLSASZz-SIo5IDYE
+:100644 100644 85f38dc e97f67a M	finance-application/src/main/resources/templates/layout.html
+
+user:wondee
+1539537514
+:100644 100644 20fe863 47e9b22 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:000000 100644 0000000 4b83eb2 A	finance-application/src/main/resources/static/favicon.png
+:000000 100644 0000000 2bbc3de A	finance-application/src/main/resources/static/rNKuN2XotTqXFsdiEthWvrjhPjRMLSASZz-SIo5IDYE
+:100644 100644 85f38dc e97f67a M	finance-application/src/main/resources/templates/layout.html
+
+user:wondee
+1539537539
+user:wondee
+1539537539
+user:wondee
+1539537705
+:100644 100644 4e35f04 7c60961 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+
+user:wondee
+1539537705
+:100644 100644 4e35f04 7c60961 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+
+user:wondee
+1539540693
+:100644 100644 7a4d1f5 2430733 M	finance-application/README.md
+:100644 100644 cfc3f70 ec2c370 M	finance-application/pom.xml
+:100644 100644 e97f67a a58d5d1 M	finance-application/src/main/resources/templates/layout.html
+:100644 100644 a178531 06d0b9f M	finance-application/src/main/resources/templates/login.html
+
+user:wondee
+1539540693
+:100644 100644 7a4d1f5 2430733 M	finance-application/README.md
+:100644 100644 cfc3f70 ec2c370 M	finance-application/pom.xml
+:100644 100644 e97f67a a58d5d1 M	finance-application/src/main/resources/templates/layout.html
+:100644 100644 a178531 06d0b9f M	finance-application/src/main/resources/templates/login.html
+
+user:Markus
+1539541049
+:100644 100644 36edcbe 5ab4e85 M	README.md
+
+user:Markus
+1539541049
+:100644 100644 36edcbe 5ab4e85 M	README.md
+
+user:Markus
+1539541141
+:100644 100644 5ab4e85 ffedbcc M	README.md
+
+user:Markus
+1539541141
+:100644 100644 5ab4e85 ffedbcc M	README.md
+
+user:wondee
+1539550293
+:100644 100644 47e9b22 17b7989 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 7c60961 df08cf7 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+:000000 100644 0000000 b056830 A	finance-application/src/main/resources/templates/datenschutz.html
+:000000 100644 0000000 3501dfa A	finance-application/src/main/resources/templates/impressum.html
+:100644 100644 a58d5d1 1df84ca M	finance-application/src/main/resources/templates/layout.html
+
+user:wondee
+1539550293
+:100644 100644 47e9b22 17b7989 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 7c60961 df08cf7 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+:000000 100644 0000000 b056830 A	finance-application/src/main/resources/templates/datenschutz.html
+:000000 100644 0000000 3501dfa A	finance-application/src/main/resources/templates/impressum.html
+:100644 100644 a58d5d1 1df84ca M	finance-application/src/main/resources/templates/layout.html
+
+user:wondee
+1539550375
+user:wondee
+1539550375
+user:Markus
+1539582771
+:100644 100644 1df84ca ac77923 M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539582771
+:100644 100644 1df84ca ac77923 M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539586842
+:100644 100644 ac77923 770c24a M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539586842
+:100644 100644 ac77923 770c24a M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539587262
+:100644 100644 770c24a bf2aacc M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539587262
+:100644 100644 770c24a bf2aacc M	finance-application/src/main/resources/templates/layout.html
+
+user:wondee
+1539620533
+:100644 100644 ec2c370 7d339a1 M	finance-application/pom.xml
+:100644 100644 bea9ee8 c2e7b7f M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:100644 100644 7981d53 b9e25af M	finance-application/src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+:100644 100644 6b87eee dfe393f M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:100644 100644 48d4f20 8108ae6 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostType.java
+:100644 100644 74e462b 0104e08 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:100644 100644 27cb0ea ff73f02 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 100644 6e2d9a0 0a55c21 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:000000 100644 0000000 de955e9 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCost.java
+:000000 100644 0000000 35b57a8 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCostPresenter.java
+:100644 100644 884f87c 5e8a410 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:100644 100644 d0c0b81 a1fe6a3 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:100644 100644 5afd730 27b557f M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepository.java
+:100644 100644 da9c57d f353006 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:000000 100644 0000000 3fcf975 A	finance-application/src/main/resources/templates/changelog.html
+:100644 100644 15717c6 86b5dbf M	finance-application/src/main/resources/templates/fixedcostform.html
+:100644 100644 509a47f e2a4346 M	finance-application/src/main/resources/templates/fixedcosts.html
+:100644 100644 bf2aacc 3da6b5c M	finance-application/src/main/resources/templates/layout.html
+
+user:wondee
+1539620533
+:100644 100644 ec2c370 7d339a1 M	finance-application/pom.xml
+:100644 100644 bea9ee8 c2e7b7f M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:100644 100644 7981d53 b9e25af M	finance-application/src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+:100644 100644 6b87eee dfe393f M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:100644 100644 48d4f20 8108ae6 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostType.java
+:100644 100644 74e462b 0104e08 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:100644 100644 27cb0ea ff73f02 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 100644 6e2d9a0 0a55c21 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:000000 100644 0000000 de955e9 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCost.java
+:000000 100644 0000000 35b57a8 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCostPresenter.java
+:100644 100644 884f87c 5e8a410 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:100644 100644 d0c0b81 a1fe6a3 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:100644 100644 5afd730 27b557f M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepository.java
+:100644 100644 da9c57d f353006 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:000000 100644 0000000 3fcf975 A	finance-application/src/main/resources/templates/changelog.html
+:100644 100644 15717c6 86b5dbf M	finance-application/src/main/resources/templates/fixedcostform.html
+:100644 100644 509a47f e2a4346 M	finance-application/src/main/resources/templates/fixedcosts.html
+:100644 100644 bf2aacc 3da6b5c M	finance-application/src/main/resources/templates/layout.html
+
+user:wondee
+1539623200
+:100644 100644 17b7989 78009f1 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 df08cf7 bdbae98 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+:100644 100644 0c6ba26 09365d6 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 3fcf975 ba66d6a M	finance-application/src/main/resources/templates/changelog.html
+:100644 100644 e2a4346 e3fbdf1 M	finance-application/src/main/resources/templates/fixedcosts.html
+:100644 100644 3da6b5c 3239350 M	finance-application/src/main/resources/templates/layout.html
+:100644 100644 777da98 089deb0 M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1539623200
+:100644 100644 17b7989 78009f1 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 df08cf7 bdbae98 M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+:100644 100644 0c6ba26 09365d6 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 3fcf975 ba66d6a M	finance-application/src/main/resources/templates/changelog.html
+:100644 100644 e2a4346 e3fbdf1 M	finance-application/src/main/resources/templates/fixedcosts.html
+:100644 100644 3da6b5c 3239350 M	finance-application/src/main/resources/templates/layout.html
+:100644 100644 777da98 089deb0 M	finance-application/src/main/resources/templates/overview.html
+
+user:Markus
+1539624252
+:100644 100644 7d339a1 3c5d0d2 M	finance-application/pom.xml
+
+user:Markus
+1539624252
+:100644 100644 7d339a1 3c5d0d2 M	finance-application/pom.xml
+
+user:wondee
+1539628139
+:100644 100644 b1a80f4 7d80bbc M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 09365d6 628e3ff M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 089deb0 3d1f8b9 M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1539628139
+:100644 100644 b1a80f4 7d80bbc M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 09365d6 628e3ff M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 089deb0 3d1f8b9 M	finance-application/src/main/resources/templates/overview.html
+
+user:Markus
+1539667493
+:100644 100644 3239350 d5f464a M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539667493
+:100644 100644 3239350 d5f464a M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539672129
+:100644 100644 e3fbdf1 df5228c M	finance-application/src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1539672129
+:100644 100644 e3fbdf1 df5228c M	finance-application/src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1539672152
+:100644 100644 1400c1c e219f05 M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:Markus
+1539672152
+:100644 100644 1400c1c e219f05 M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:Markus
+1539673269
+:100644 100644 d5f464a e6b1d85 M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539673269
+:100644 100644 d5f464a e6b1d85 M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539673867
+:100644 100644 e6b1d85 5e0c659 M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539673867
+:100644 100644 e6b1d85 5e0c659 M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539674240
+:100644 100644 5e0c659 0253ec6 M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539674240
+:100644 100644 5e0c659 0253ec6 M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539674570
+:100644 100644 df5228c c0dc8d8 M	finance-application/src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1539674570
+:100644 100644 df5228c c0dc8d8 M	finance-application/src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1539675271
+:100644 100644 c0dc8d8 4901897 M	finance-application/src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1539675271
+:100644 100644 c0dc8d8 4901897 M	finance-application/src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1539675304
+:100644 100644 e219f05 2f36b28 M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:Markus
+1539675304
+:100644 100644 e219f05 2f36b28 M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:Markus
+1539683867
+:100644 100644 0253ec6 505d4bd M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539683867
+:100644 100644 0253ec6 505d4bd M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1539684007
+:100644 100644 4901897 684abe4 M	finance-application/src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1539684007
+:100644 100644 4901897 684abe4 M	finance-application/src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1539684058
+:100644 100644 2f36b28 2b7f477 M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:Markus
+1539684058
+:100644 100644 2f36b28 2b7f477 M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:Markus
+1539685549
+:100644 100644 0a81dd2 d5471b7 M	.travis.yml
+
+user:Markus
+1539685549
+:100644 100644 0a81dd2 d5471b7 M	.travis.yml
+
+user:Markus
+1539687416
+:100644 100644 d5471b7 13ca6bc M	.travis.yml
+
+user:Markus
+1539687416
+:100644 100644 d5471b7 13ca6bc M	.travis.yml
+
+user:wondee
+1539707921
+:100644 100644 c2e7b7f 549f849 M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:100644 100644 dfe393f 2d275e8 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:100644 100644 221e84d 7349ef0 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:100644 100644 7d80bbc d4670bf M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 628e3ff 999a796 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 684abe4 48ff561 M	finance-application/src/main/resources/templates/fixedcosts.html
+:100644 100644 3d1f8b9 5b2f0a6 M	finance-application/src/main/resources/templates/overview.html
+:100644 100644 2b7f477 71cb625 M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:wondee
+1539707921
+:100644 100644 c2e7b7f 549f849 M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:100644 100644 dfe393f 2d275e8 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:100644 100644 221e84d 7349ef0 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:100644 100644 7d80bbc d4670bf M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 628e3ff 999a796 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 684abe4 48ff561 M	finance-application/src/main/resources/templates/fixedcosts.html
+:100644 100644 3d1f8b9 5b2f0a6 M	finance-application/src/main/resources/templates/overview.html
+:100644 100644 2b7f477 71cb625 M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:wondee
+1539711076
+:100644 100644 5b2f0a6 f292f7b M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1539711076
+:100644 100644 5b2f0a6 f292f7b M	finance-application/src/main/resources/templates/overview.html
+
+user:Markus
+1539716293
+:100644 100644 f292f7b 428460c M	finance-application/src/main/resources/templates/overview.html
+
+user:Markus
+1539716293
+:100644 100644 f292f7b 428460c M	finance-application/src/main/resources/templates/overview.html
+
+user:Markus
+1539762977
+:100644 100644 428460c a54968e M	finance-application/src/main/resources/templates/overview.html
+
+user:Markus
+1539762977
+:100644 100644 428460c a54968e M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1539793408
+:100644 100644 d4670bf 5b9716b M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:000000 100644 0000000 654a07c A	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewService.java
+:100644 100644 5e8a410 69542a6 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:100644 100644 a1fe6a3 57ca455 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:100644 100644 27b557f b1b1dee M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepository.java
+:100644 100644 f353006 f61bf38 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:100644 100644 635f095 e1e7cf6 M	finance-application/src/main/resources/application.properties
+
+user:wondee
+1539793408
+:100644 100644 d4670bf 5b9716b M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:000000 100644 0000000 654a07c A	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewService.java
+:100644 100644 5e8a410 69542a6 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:100644 100644 a1fe6a3 57ca455 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:100644 100644 27b557f b1b1dee M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepository.java
+:100644 100644 f353006 f61bf38 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:100644 100644 635f095 e1e7cf6 M	finance-application/src/main/resources/application.properties
+
+user:wondee
+1539798361
+:100644 100644 78009f1 213bfdd M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 5b9716b 07b64ab M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 654a07c 206333e M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewService.java
+:000000 100644 0000000 ace9038 A	finance-application/src/main/resources/static/load_indicator.gif
+:000000 100644 0000000 9591398 A	finance-application/src/main/resources/static/overview.js
+:100644 100644 505d4bd 8f24467 M	finance-application/src/main/resources/templates/layout.html
+:100644 100644 f292f7b bf13f0f M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1539798361
+:100644 100644 78009f1 213bfdd M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 5b9716b 07b64ab M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 654a07c 206333e M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewService.java
+:000000 100644 0000000 ace9038 A	finance-application/src/main/resources/static/load_indicator.gif
+:000000 100644 0000000 9591398 A	finance-application/src/main/resources/static/overview.js
+:100644 100644 505d4bd 8f24467 M	finance-application/src/main/resources/templates/layout.html
+:100644 100644 f292f7b bf13f0f M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1539798619
+user:wondee
+1539798619
+user:Markus
+1539849862
+user:Markus
+1539849862
+:100644 000000 315d9a9 0000000 D	finance-application/src/test/java/info/wondee/app/financeapplication/PasswordCreator.java
+
+user:Markus
+1539850109
+:100644 100644 9591398 75710e3 M	finance-application/src/main/resources/static/overview.js
+
+user:Markus
+1539850109
+:100644 100644 9591398 75710e3 M	finance-application/src/main/resources/static/overview.js
+
+user:wondee
+1539984390
+user:wondee
+1540141384
+:100644 100644 549f849 ef7f645 M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:100644 100644 7349ef0 6d21483 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:000000 100644 0000000 2cca5f6 A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/DateRange.java
+:000000 100644 0000000 5a09cda A	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/DateRangeValidator.java
+:100644 100644 ff73f02 4737b92 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 100644 fa4d170 a293220 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostPresenter.java
+:100644 100644 03b7345 8b8a67c M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCostPresenter.java
+:100644 100644 35b57a8 d910bc9 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCostPresenter.java
+:100644 100644 3012702 919bdbf M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCostPresenter.java
+:100644 100644 973cfa6 2c878a9 M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:100644 100644 ca6690c 2f21f9f M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostPresenter.java
+:100644 100644 86b5dbf 3ae41ff M	finance-application/src/main/resources/templates/fixedcostform.html
+:100644 100644 5338e24 8f9af9b M	finance-application/src/main/resources/templates/fragments/components.html
+
+user:wondee
+1540142001
+:100644 100644 2c878a9 7bf601d M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:100644 100644 af3477e bb3c779 M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1540147679
+:100644 100644 bb3c779 5e4f40b M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1540149367
+:100644 100644 2d275e8 b7aa1f4 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:100644 100644 6d21483 7175184 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:100644 100644 999a796 9cb8a69 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 206333e 19e52bd M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewService.java
+:100644 100644 3c9102b 7f636d6 M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCost.java
+:100644 100644 48ff561 50f07e4 M	finance-application/src/main/resources/templates/fixedcosts.html
+:100644 100644 5e4f40b 117a979 M	finance-application/src/main/resources/templates/overview.html
+:100644 100644 71cb625 bee8635 M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:Markus
+1540187668
+:100644 100644 3ae41ff 39717dc M	finance-application/src/main/resources/templates/fixedcostform.html
+:100644 100644 117a979 1b6b8ba M	finance-application/src/main/resources/templates/overview.html
+
+user:Markus
+1540207312
+:100644 100644 ffedbcc 784f373 M	README.md
+
+user:Markus
+1540207354
+:100644 100644 13ca6bc d465df1 M	.travis.yml
+
+user:Markus
+1540208342
+:100644 100644 d465df1 13ca6bc M	.travis.yml
+
+user:Markus
+1540209302
+:100644 100644 784f373 8e26d7a M	README.md
+
+user:wondee
+1540222568
+:100644 100644 213bfdd f3b73fb M	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 8f24467 268e8b7 M	finance-application/src/main/resources/templates/layout.html
+:100644 100644 1b6b8ba 0839511 M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1540223592
+:100644 100644 4737b92 20cb54d M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 100644 50f07e4 fc8ebc5 M	finance-application/src/main/resources/templates/fixedcosts.html
+
+user:wondee
+1540236194
+:100644 100644 07b64ab 1b23d09 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 9cb8a69 6adcf6a M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 75710e3 3aa884c M	finance-application/src/main/resources/static/overview.js
+:100644 100644 268e8b7 65e7a10 M	finance-application/src/main/resources/templates/layout.html
+:100644 100644 0839511 31be10d M	finance-application/src/main/resources/templates/overview.html
+
+user:Markus
+1540239199
+:100644 100644 13ca6bc 6ed1f6c M	.travis.yml
+
+user:Markus
+1540275691
+:100644 100644 3aa884c 36f1c46 M	finance-application/src/main/resources/static/overview.js
+
+user:Markus
+1540290895
+:100644 100644 39717dc 3e077f8 M	finance-application/src/main/resources/templates/fixedcostform.html
+:100644 100644 06d0b9f 21d5f9a M	finance-application/src/main/resources/templates/login.html
+
+user:wondee
+1540312223
+:100644 100644 6adcf6a f461596 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 b1b1dee 3b75fe0 M	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepository.java
+:100644 100644 3aa884c 81c28fd M	finance-application/src/main/resources/static/overview.js
+:100644 100644 65e7a10 d24db42 M	finance-application/src/main/resources/templates/layout.html
+:100644 100644 31be10d 9a22e99 M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1540312296
+user:wondee
+1540312666
+:100644 100644 7175184 4c06231 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:100644 100644 1b23d09 f1f86bf M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 9a22e99 25bb5b5 M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1540314039
+:100644 100644 f1f86bf 17cf9af M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 f461596 798cf08 M	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 69f5b00 5d35906 M	finance-application/src/main/resources/static/overview.js
+:100644 100644 25bb5b5 8205bd8 M	finance-application/src/main/resources/templates/overview.html
+
+user:wondee
+1540316014
+:100644 100644 ef7f645 7d97220 M	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:100644 100644 4c06231 0c3239c M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:100644 100644 20cb54d 2e3eaee M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 100644 7bf601d 1910c2d M	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:100644 100644 5d35906 bb2fa4b M	finance-application/src/main/resources/static/overview.js
+:100644 100644 3e077f8 b658caa M	finance-application/src/main/resources/templates/fixedcostform.html
+:100644 100644 fc8ebc5 d26bcd6 M	finance-application/src/main/resources/templates/fixedcosts.html
+:100644 100644 8205bd8 753071b M	finance-application/src/main/resources/templates/overview.html
+:100644 100644 bee8635 2dce841 M	finance-application/src/main/resources/templates/specialcosts.html
+
+user:wondee
+1540316680
+:100644 100644 2e3eaee dd98f62 M	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 100644 d24db42 b9f1df5 M	finance-application/src/main/resources/templates/layout.html
+
+user:wondee
+1540321872
+:100644 100644 bb2fa4b fac94f7 M	finance-application/src/main/resources/static/overview.js
+:100644 100644 753071b 3b91aca M	finance-application/src/main/resources/templates/overview.html
+
+user:Markus
+1540365568
+:100644 100644 31be10d b4dd486 M	finance-application/src/main/resources/templates/overview.html
+
+user:Markus
+1540365651
+user:Markus
+1540365995
+:100644 100644 b9f1df5 6f4d274 M	finance-application/src/main/resources/templates/layout.html
+:100644 100644 505836c f8efa64 M	finance-application/src/main/resources/templates/overview.html
+
+user:Markus
+1540366354
+:100644 100644 6f4d274 7b37bab M	finance-application/src/main/resources/templates/layout.html
+
+user:Markus
+1540368059
+:100644 100644 f8efa64 5c0026d M	finance-application/src/main/resources/templates/overview.html
+
+user:Markus
+1540386749
+:100644 100644 b658caa 01f824d M	finance-application/src/main/resources/templates/fixedcostform.html
+
+user:Markus
+1540399244
+:100644 100644 8e26d7a d0b62a8 M	README.md
+:100644 100644 7b37bab a7d6bf0 M	finance-application/src/main/resources/templates/layout.html
+
+user:wondee
+1540400133
+:000000 100644 0000000 82eca33 A	.gitignore
+:100644 100644 6ed1f6c 309ce5c M	.travis.yml
+:000000 100644 0000000 8627ee4 A	Dockerfile
+:100644 100644 d0b62a8 b86bcea M	README.md
+:000000 100644 0000000 1f174c7 A	docker_push.sh
+:100644 000000 82eca33 0000000 D	finance-application/.gitignore
+:100644 000000 8627ee4 0000000 D	finance-application/Dockerfile
+:100644 000000 2430733 0000000 D	finance-application/README.md
+:100644 000000 1f174c7 0000000 D	finance-application/docker_push.sh
+:100644 000000 3c5d0d2 0000000 D	finance-application/pom.xml
+:100644 000000 7d97220 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:100644 000000 3ea8ce0 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/FinanceApplication.java
+:100644 000000 b9e25af 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+:100644 000000 6b92cb6 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/FinanceMonth.java
+:100644 000000 e18be6c 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/config/MongoConfig.java
+:100644 000000 f3b73fb 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 000000 bdbae98 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+:100644 000000 9bd0e47 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/export/ExportImportController.java
+:100644 000000 b7aa1f4 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:100644 000000 0c3239c 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:100644 000000 8108ae6 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostType.java
+:100644 000000 2cca5f6 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/DateRange.java
+:100644 000000 5a09cda 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/DateRangeValidator.java
+:100644 000000 0104e08 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:100644 000000 dd98f62 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 000000 a293220 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostPresenter.java
+:100644 000000 0a55c21 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:100644 000000 8b8a67c 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCostPresenter.java
+:100644 000000 de955e9 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCost.java
+:100644 000000 d910bc9 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCostPresenter.java
+:100644 000000 c968abd 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCost.java
+:100644 000000 919bdbf 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCostPresenter.java
+:100644 000000 17cf9af 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 000000 798cf08 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 000000 19e52bd 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/overview/OverviewService.java
+:100644 000000 7f636d6 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCost.java
+:100644 000000 1910c2d 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:100644 000000 2f21f9f 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostPresenter.java
+:100644 000000 69542a6 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:100644 000000 57ca455 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:100644 000000 3365382 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserDetailsService.java
+:100644 000000 3b75fe0 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepository.java
+:100644 000000 f61bf38 0000000 D	finance-application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:100644 000000 e1e7cf6 0000000 D	finance-application/src/main/resources/application.properties
+:100644 000000 4b83eb2 0000000 D	finance-application/src/main/resources/static/favicon.png
+:100644 000000 ace9038 0000000 D	finance-application/src/main/resources/static/load_indicator.gif
+:100644 000000 fac94f7 0000000 D	finance-application/src/main/resources/static/overview.js
+:100644 000000 2bbc3de 0000000 D	finance-application/src/main/resources/static/rNKuN2XotTqXFsdiEthWvrjhPjRMLSASZz-SIo5IDYE
+:100644 000000 ba66d6a 0000000 D	finance-application/src/main/resources/templates/changelog.html
+:100644 000000 b056830 0000000 D	finance-application/src/main/resources/templates/datenschutz.html
+:100644 000000 fd27244 0000000 D	finance-application/src/main/resources/templates/error.html
+:100644 000000 01f824d 0000000 D	finance-application/src/main/resources/templates/fixedcostform.html
+:100644 000000 d26bcd6 0000000 D	finance-application/src/main/resources/templates/fixedcosts.html
+:100644 000000 8f9af9b 0000000 D	finance-application/src/main/resources/templates/fragments/components.html
+:100644 000000 3501dfa 0000000 D	finance-application/src/main/resources/templates/impressum.html
+:100644 000000 a7d6bf0 0000000 D	finance-application/src/main/resources/templates/layout.html
+:100644 000000 21d5f9a 0000000 D	finance-application/src/main/resources/templates/login.html
+:100644 000000 5c0026d 0000000 D	finance-application/src/main/resources/templates/overview.html
+:100644 000000 2dce841 0000000 D	finance-application/src/main/resources/templates/specialcosts.html
+:100644 000000 ba3f9bb 0000000 D	finance-application/src/test/java/info/wondee/app/financeapplication/FinanceApplicationTests.java
+:000000 100644 0000000 3c5d0d2 A	pom.xml
+:000000 100644 0000000 7d97220 A	src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:000000 100644 0000000 3ea8ce0 A	src/main/java/info/wondee/app/financeapp/FinanceApplication.java
+:000000 100644 0000000 b9e25af A	src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+:000000 100644 0000000 6b92cb6 A	src/main/java/info/wondee/app/financeapp/FinanceMonth.java
+:000000 100644 0000000 e18be6c A	src/main/java/info/wondee/app/financeapp/config/MongoConfig.java
+:000000 100644 0000000 f3b73fb A	src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:000000 100644 0000000 bdbae98 A	src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+:000000 100644 0000000 9bd0e47 A	src/main/java/info/wondee/app/financeapp/export/ExportImportController.java
+:000000 100644 0000000 b7aa1f4 A	src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:000000 100644 0000000 0c3239c A	src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:000000 100644 0000000 8108ae6 A	src/main/java/info/wondee/app/financeapp/fixedcosts/CostType.java
+:000000 100644 0000000 2cca5f6 A	src/main/java/info/wondee/app/financeapp/fixedcosts/DateRange.java
+:000000 100644 0000000 5a09cda A	src/main/java/info/wondee/app/financeapp/fixedcosts/DateRangeValidator.java
+:000000 100644 0000000 0104e08 A	src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:000000 100644 0000000 dd98f62 A	src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:000000 100644 0000000 a293220 A	src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostPresenter.java
+:000000 100644 0000000 0a55c21 A	src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:000000 100644 0000000 8b8a67c A	src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCostPresenter.java
+:000000 100644 0000000 de955e9 A	src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCost.java
+:000000 100644 0000000 d910bc9 A	src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCostPresenter.java
+:000000 100644 0000000 c968abd A	src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCost.java
+:000000 100644 0000000 919bdbf A	src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCostPresenter.java
+:000000 100644 0000000 17cf9af A	src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:000000 100644 0000000 798cf08 A	src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:000000 100644 0000000 19e52bd A	src/main/java/info/wondee/app/financeapp/overview/OverviewService.java
+:000000 100644 0000000 7f636d6 A	src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCost.java
+:000000 100644 0000000 1910c2d A	src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:000000 100644 0000000 2f21f9f A	src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostPresenter.java
+:000000 100644 0000000 69542a6 A	src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:000000 100644 0000000 57ca455 A	src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:000000 100644 0000000 3365382 A	src/main/java/info/wondee/app/financeapp/user/FinanceUserDetailsService.java
+:000000 100644 0000000 3b75fe0 A	src/main/java/info/wondee/app/financeapp/user/FinanceUserRepository.java
+:000000 100644 0000000 f61bf38 A	src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:000000 100644 0000000 e1e7cf6 A	src/main/resources/application.properties
+:000000 100644 0000000 4b83eb2 A	src/main/resources/static/favicon.png
+:000000 100644 0000000 ace9038 A	src/main/resources/static/load_indicator.gif
+:000000 100644 0000000 fac94f7 A	src/main/resources/static/overview.js
+:000000 100644 0000000 2bbc3de A	src/main/resources/static/rNKuN2XotTqXFsdiEthWvrjhPjRMLSASZz-SIo5IDYE
+:000000 100644 0000000 ba66d6a A	src/main/resources/templates/changelog.html
+:000000 100644 0000000 b056830 A	src/main/resources/templates/datenschutz.html
+:000000 100644 0000000 fd27244 A	src/main/resources/templates/error.html
+:000000 100644 0000000 01f824d A	src/main/resources/templates/fixedcostform.html
+:000000 100644 0000000 d26bcd6 A	src/main/resources/templates/fixedcosts.html
+:000000 100644 0000000 8f9af9b A	src/main/resources/templates/fragments/components.html
+:000000 100644 0000000 3501dfa A	src/main/resources/templates/impressum.html
+:000000 100644 0000000 a7d6bf0 A	src/main/resources/templates/layout.html
+:000000 100644 0000000 21d5f9a A	src/main/resources/templates/login.html
+:000000 100644 0000000 5c0026d A	src/main/resources/templates/overview.html
+:000000 100644 0000000 2dce841 A	src/main/resources/templates/specialcosts.html
+:000000 100644 0000000 ba3f9bb A	src/test/java/info/wondee/app/financeapplication/FinanceApplicationTests.java
+
+user:Markus
+1540447034
+:000000 100644 0000000 97c68d8 A	src/main/resources/static/finance.css
+:100644 100644 d26bcd6 ecdf667 M	src/main/resources/templates/fixedcosts.html
+:100644 100644 a7d6bf0 e7f1632 M	src/main/resources/templates/layout.html
+:100644 100644 5c0026d da24045 M	src/main/resources/templates/overview.html
+:100644 100644 2dce841 319132c M	src/main/resources/templates/specialcosts.html
+
+user:Markus
+1540447321
+:100644 100644 b86bcea 28b4b61 M	README.md
+
+user:Markus
+1540451129
+:100644 100644 97c68d8 610b25f M	src/main/resources/static/finance.css
+:100644 100644 ecdf667 659a0b4 M	src/main/resources/templates/fixedcosts.html
+:100644 100644 319132c 240b15a M	src/main/resources/templates/specialcosts.html
+
+user:Markus
+1540533565
+:100644 100644 659a0b4 41a6e73 M	src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1540534239
+:100644 100644 0104e08 ddfb300 M	src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:100644 100644 a293220 f82083d M	src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostPresenter.java
+:100644 100644 41a6e73 1ce612a M	src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1540535551
+:100644 100644 1ce612a e8516f4 M	src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1540536373
+:100644 100644 610b25f b77b9fb M	src/main/resources/static/finance.css
+
+user:Markus
+1540539026
+:000000 100644 0000000 b31f4c5 A	src/main/resources/static/fixedcosts.js
+:100644 000000 2bbc3de 0000000 D	src/main/resources/static/rNKuN2XotTqXFsdiEthWvrjhPjRMLSASZz-SIo5IDYE
+:100644 100644 e8516f4 fdf35b4 M	src/main/resources/templates/fixedcosts.html
+:100644 100644 da24045 541d7a3 M	src/main/resources/templates/overview.html
+
+user:Markus
+1540539637
+:100644 100644 b31f4c5 4ea40fc M	src/main/resources/static/fixedcosts.js
+:100644 100644 fdf35b4 887e4bc M	src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1540540368
+:100644 100644 887e4bc 3426451 M	src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1540540764
+:100644 100644 3426451 8a64836 M	src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1540541125
+:100644 100644 8a64836 87446c7 M	src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1540541777
+:100644 100644 4ea40fc f5e8d96 M	src/main/resources/static/fixedcosts.js
+:100644 100644 87446c7 9b09e67 M	src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1540542583
+:100644 100644 9b09e67 8577f27 M	src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1540543269
+:100644 100644 f5e8d96 bb99645 M	src/main/resources/static/fixedcosts.js
+:100644 100644 8577f27 c3ff04e M	src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1540543713
+:100644 100644 c3ff04e c78c32d M	src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1540545935
+:100644 100644 bb99645 fb0473a M	src/main/resources/static/fixedcosts.js
+
+user:Markus
+1540548024
+:100644 100644 c78c32d b76c6f4 M	src/main/resources/templates/fixedcosts.html
+
+user:Markus
+1540548539
+:100644 100644 b77b9fb fd53942 M	src/main/resources/static/finance.css
+:100644 100644 b76c6f4 9e9d014 M	src/main/resources/templates/fixedcosts.html
+:100644 100644 240b15a a7cd669 M	src/main/resources/templates/specialcosts.html
+
+user:Markus
+1540549773
+:100644 100644 fac94f7 23daa27 M	src/main/resources/static/overview.js
+:100644 100644 541d7a3 455b92c M	src/main/resources/templates/overview.html
+
+user:Markus
+1540549850
+:100644 100644 23daa27 c03114c M	src/main/resources/static/overview.js
+
+user:Markus
+1540550346
+:100644 100644 455b92c 8f09ba2 M	src/main/resources/templates/overview.html
+
+user:wondee
+1540560044
+:100644 100644 dd98f62 e8a35a6 M	src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 100644 fb0473a c4b9e18 M	src/main/resources/static/fixedcosts.js
+:100644 100644 c03114c 7f75dbe M	src/main/resources/static/overview.js
+:100644 100644 9e9d014 b15fea3 M	src/main/resources/templates/fixedcosts.html
+:100644 100644 8f09ba2 bd45255 M	src/main/resources/templates/overview.html
+
+user:wondee
+1540564788
+:100644 100644 f3b73fb 6af844e M	src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:000000 100644 0000000 6033c86 A	src/main/resources/static/deletionDialog.js
+:100644 100644 c4b9e18 8b7d597 M	src/main/resources/static/fixedcosts.js
+:000000 100644 0000000 eba4819 A	src/main/resources/static/specialcosts.js
+:100644 000000 ba66d6a 0000000 D	src/main/resources/templates/changelog.html
+:100644 100644 b15fea3 6631819 M	src/main/resources/templates/fixedcosts.html
+:100644 100644 8f9af9b 267b631 M	src/main/resources/templates/fragments/components.html
+:100644 100644 e7f1632 2f7ec1c M	src/main/resources/templates/layout.html
+:100644 100644 a7cd669 49f9989 M	src/main/resources/templates/specialcosts.html
+
+user:Markus
+1540630845
+:100644 100644 28b4b61 35d71e1 M	README.md
+
+user:wondee
+1540652553
+:000000 100644 0000000 cf283c2 A	deploy/README.md
+:000000 100644 0000000 d86530d A	deploy/docker-compose.yml
+:000000 100644 0000000 6cf6f2c A	deploy/nginx/Dockerfile
+:000000 100644 0000000 38b69bd A	deploy/nginx/build.cmd
+:000000 100644 0000000 da403f8 A	deploy/nginx/nginx.conf
+
+user:wondee
+1540676183
+:100644 100644 d86530d 33c23e5 M	deploy/docker-compose.yml
+:000000 100644 0000000 7821d1c A	deploy/mongo-seed/Dockerfile
+:000000 100644 0000000 141be0c A	deploy/mongo-seed/build.cmd
+:000000 100644 0000000 e056f4d A	deploy/mongo-seed/init.json
+
+user:wondee
+1540676217
+user:wondee
+1540715988
+:100644 100644 cf283c2 7f24c09 M	deploy/README.md
+:100644 100644 33c23e5 850fa2a M	deploy/docker-compose.yml
+:000000 100644 0000000 7821d1c A	deploy/mongo-import/Dockerfile
+:000000 100644 0000000 41a1f0f A	deploy/mongo-import/import.cmd
+:000000 100644 0000000 467f237 A	deploy/mongo-import/init.json
+:100644 100644 7821d1c 6aa4e54 M	deploy/mongo-seed/Dockerfile
+:100644 000000 141be0c 0000000 D	deploy/mongo-seed/build.cmd
+:100644 000000 e056f4d 0000000 D	deploy/mongo-seed/init.json
+
+user:wondee
+1540747605
+:000000 100644 0000000 6e534aa A	deploy/create_cert.cmd
+:100644 100644 850fa2a 12332ac M	deploy/docker-compose.yml
+:000000 100644 0000000 f830907 A	deploy/letsencrypt/Dockerfile
+:000000 100644 0000000 d2974b3 A	deploy/letsencrypt/build.cmd
+:100644 100644 6cf6f2c 0d947da M	deploy/nginx/Dockerfile
+:100644 100644 da403f8 e028ec8 M	deploy/nginx/nginx.conf
+
+user:wondee
+1540748504
+:100644 100644 6e534aa 132fba1 M	deploy/create_cert.cmd
+:100644 100644 f830907 f8043c3 M	deploy/letsencrypt/Dockerfile
+
+user:wondee
+1540750559
+:100644 100644 132fba1 8fc6e58 M	deploy/create_cert.cmd
+:100644 000000 6aa4e54 0000000 D	deploy/mongo-seed/Dockerfile
+:100644 100644 e028ec8 c5321cd M	deploy/nginx/nginx.conf
+
+user:wondee
+1540755140
+:100644 100644 12332ac 9054e76 M	deploy/docker-compose.yml
+
+user:Markus
+1540801723
+:100644 100644 c5321cd fb1559d M	deploy/nginx/nginx.conf
+
+user:Markus
+1540813375
+:100644 100644 7821d1c 0ad19e1 M	deploy/mongo-import/Dockerfile
+
+user:Markus
+1540813953
+:100644 100644 fb1559d da2add1 M	deploy/nginx/nginx.conf
+
+user:wondee
+1540838688
+:100644 100644 9054e76 4284256 M	deploy/docker-compose.yml
+:100644 100644 da2add1 0b783ac M	deploy/nginx/nginx.conf
+
+user:Markus
+1540883181
+:100644 100644 0b783ac 9b75157 M	deploy/nginx/nginx.conf
+:000000 100644 0000000 0ef36b1 A	deploy/nginx/shared/ssl.conf
+
+user:Markus
+1540889803
+:100644 100644 35d71e1 56ed4a1 M	README.md
+
+user:Markus
+1540890292
+:100644 100644 56ed4a1 950046e M	README.md
+
+user:Markus
+1540890461
+:100644 100644 7f24c09 f94fb80 M	deploy/README.md
+
+user:Markus
+1540890469
+user:Ubuntu
+1540898991
+:100644 100644 0d947da cc79072 M	deploy/nginx/Dockerfile
+:100644 100644 9b75157 945a0e6 M	deploy/nginx/nginx.conf
+
+user:Ubuntu
+1540899023
+user:wondee
+1540922001
+:000000 100644 0000000 878446e A	deploy/jenkins/Dockerfile
+:000000 100644 0000000 b3f9380 A	deploy/jenkins/run_jenkins.sh
+
+user:wondee
+1540923024
+:100644 100644 878446e e91f886 M	deploy/jenkins/Dockerfile
+
+user:wondee
+1540924567
+:100644 100644 e91f886 7c98da6 M	deploy/jenkins/Dockerfile
+
+user:Markus
+1540926093
+:100644 100644 950046e 00f428b M	README.md
+
+user:wondee
+1540927725
+:100644 100644 7c98da6 8190b40 M	deploy/jenkins/Dockerfile
+
+user:wondee
+1540931739
+user:wondee
+1541001098
+:100644 100644 21d5f9a 28006f3 M	src/main/resources/templates/login.html
+
+user:wondee
+1541005021
+:100644 100644 28006f3 42da053 M	src/main/resources/templates/login.html
+
+user:wondee
+1541009626
+:100644 100644 42da053 28006f3 M	src/main/resources/templates/login.html
+
+user:wondee
+1541009669
+:100644 000000 309ce5c 0000000 D	.travis.yml
+
+user:wondee
+1541010312
+:100644 100644 00f428b 69202f2 M	README.md
+:100644 100644 8fc6e58 55e0caa M	deploy/create_cert.cmd
+:100644 100644 b3f9380 2408d79 M	deploy/jenkins/run_jenkins.sh
+
+user:Markus
+1541010778
+:100644 100644 69202f2 a73e1a5 M	README.md
+
+user:Markus
+1541010834
+:100644 100644 a73e1a5 0a69ba8 M	README.md
+
+user:wondee
+1541011884
+:100644 000000 55e0caa 0000000 D	deploy/create_cert.cmd
+:000000 100644 0000000 eb2717a A	deploy/create_cert.sh
+:100644 000000 d2974b3 0000000 D	deploy/letsencrypt/build.cmd
+:000000 100644 0000000 e1aca26 A	deploy/letsencrypt/build.sh
+:100644 000000 41a1f0f 0000000 D	deploy/mongo-import/import.cmd
+:000000 100644 0000000 05ca55d A	deploy/mongo-import/import.sh
+:100644 000000 38b69bd 0000000 D	deploy/nginx/build.cmd
+:000000 100644 0000000 1272146 A	deploy/nginx/build.sh
+:100644 100644 945a0e6 3156d93 M	deploy/nginx/nginx.conf
+
+user:wondee
+1541011914
+user:wondee
+1541012859
+:000000 100644 0000000 30b827f A	Jenkinsfile
+
+user:Markus
+1541016118
+:100644 000000 1f174c7 0000000 D	docker_push.sh
+
+user:Markus
+1541052389
+:100644 100644 3156d93 a0ed971 M	deploy/nginx/nginx.conf
+
+user:Markus
+1541052756
+:100644 100644 a0ed971 f6cb282 M	deploy/nginx/nginx.conf
+
+user:Markus
+1541053413
+:100644 100644 f6cb282 d2a265b M	deploy/nginx/nginx.conf
+
+user:wondee
+1541090268
+:100644 100644 82eca33 657f1dc M	.gitignore
+:100644 000000 8627ee4 0000000 D	Dockerfile
+:100644 100644 30b827f 01fa6a7 M	Jenkinsfile
+:000000 100644 0000000 8627ee4 A	application/Dockerfile
+:000000 100644 0000000 3c5d0d2 A	application/pom.xml
+:000000 100644 0000000 7d97220 A	application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:000000 100644 0000000 3ea8ce0 A	application/src/main/java/info/wondee/app/financeapp/FinanceApplication.java
+:000000 100644 0000000 b9e25af A	application/src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+:000000 100644 0000000 6b92cb6 A	application/src/main/java/info/wondee/app/financeapp/FinanceMonth.java
+:000000 100644 0000000 e18be6c A	application/src/main/java/info/wondee/app/financeapp/config/MongoConfig.java
+:000000 100644 0000000 6af844e A	application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:000000 100644 0000000 bdbae98 A	application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+:000000 100644 0000000 9bd0e47 A	application/src/main/java/info/wondee/app/financeapp/export/ExportImportController.java
+:000000 100644 0000000 b7aa1f4 A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:000000 100644 0000000 0c3239c A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:000000 100644 0000000 8108ae6 A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostType.java
+:000000 100644 0000000 2cca5f6 A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/DateRange.java
+:000000 100644 0000000 5a09cda A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/DateRangeValidator.java
+:000000 100644 0000000 ddfb300 A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:000000 100644 0000000 e8a35a6 A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:000000 100644 0000000 f82083d A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostPresenter.java
+:000000 100644 0000000 0a55c21 A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:000000 100644 0000000 8b8a67c A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCostPresenter.java
+:000000 100644 0000000 de955e9 A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCost.java
+:000000 100644 0000000 d910bc9 A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCostPresenter.java
+:000000 100644 0000000 c968abd A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCost.java
+:000000 100644 0000000 919bdbf A	application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCostPresenter.java
+:000000 100644 0000000 17cf9af A	application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:000000 100644 0000000 798cf08 A	application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:000000 100644 0000000 19e52bd A	application/src/main/java/info/wondee/app/financeapp/overview/OverviewService.java
+:000000 100644 0000000 7f636d6 A	application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCost.java
+:000000 100644 0000000 1910c2d A	application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:000000 100644 0000000 2f21f9f A	application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostPresenter.java
+:000000 100644 0000000 69542a6 A	application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:000000 100644 0000000 57ca455 A	application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:000000 100644 0000000 3365382 A	application/src/main/java/info/wondee/app/financeapp/user/FinanceUserDetailsService.java
+:000000 100644 0000000 3b75fe0 A	application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepository.java
+:000000 100644 0000000 f61bf38 A	application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:000000 100644 0000000 e1e7cf6 A	application/src/main/resources/application.properties
+:000000 100644 0000000 6033c86 A	application/src/main/resources/static/deletionDialog.js
+:000000 100644 0000000 4b83eb2 A	application/src/main/resources/static/favicon.png
+:000000 100644 0000000 71f81d3 A	application/src/main/resources/static/finance.css
+:000000 100644 0000000 80854b1 A	application/src/main/resources/static/fixedcosts.js
+:000000 100644 0000000 ace9038 A	application/src/main/resources/static/load_indicator.gif
+:000000 100644 0000000 7f75dbe A	application/src/main/resources/static/overview.js
+:000000 100644 0000000 eba4819 A	application/src/main/resources/static/specialcosts.js
+:000000 100644 0000000 b056830 A	application/src/main/resources/templates/datenschutz.html
+:000000 100644 0000000 fd27244 A	application/src/main/resources/templates/error.html
+:000000 100644 0000000 01f824d A	application/src/main/resources/templates/fixedcostform.html
+:000000 100644 0000000 6631819 A	application/src/main/resources/templates/fixedcosts.html
+:000000 100644 0000000 267b631 A	application/src/main/resources/templates/fragments/components.html
+:000000 100644 0000000 3501dfa A	application/src/main/resources/templates/impressum.html
+:000000 100644 0000000 2f7ec1c A	application/src/main/resources/templates/layout.html
+:000000 100644 0000000 28006f3 A	application/src/main/resources/templates/login.html
+:000000 100644 0000000 bd45255 A	application/src/main/resources/templates/overview.html
+:000000 100644 0000000 49f9989 A	application/src/main/resources/templates/specialcosts.html
+:000000 100644 0000000 ba3f9bb A	application/src/test/java/info/wondee/app/financeapplication/FinanceApplicationTests.java
+:100644 000000 3c5d0d2 0000000 D	pom.xml
+:100644 000000 7d97220 0000000 D	src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:100644 000000 3ea8ce0 0000000 D	src/main/java/info/wondee/app/financeapp/FinanceApplication.java
+:100644 000000 b9e25af 0000000 D	src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+:100644 000000 6b92cb6 0000000 D	src/main/java/info/wondee/app/financeapp/FinanceMonth.java
+:100644 000000 e18be6c 0000000 D	src/main/java/info/wondee/app/financeapp/config/MongoConfig.java
+:100644 000000 6af844e 0000000 D	src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 000000 bdbae98 0000000 D	src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+:100644 000000 9bd0e47 0000000 D	src/main/java/info/wondee/app/financeapp/export/ExportImportController.java
+:100644 000000 b7aa1f4 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:100644 000000 0c3239c 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:100644 000000 8108ae6 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/CostType.java
+:100644 000000 2cca5f6 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/DateRange.java
+:100644 000000 5a09cda 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/DateRangeValidator.java
+:100644 000000 ddfb300 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:100644 000000 e8a35a6 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 000000 f82083d 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostPresenter.java
+:100644 000000 0a55c21 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:100644 000000 8b8a67c 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCostPresenter.java
+:100644 000000 de955e9 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCost.java
+:100644 000000 d910bc9 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCostPresenter.java
+:100644 000000 c968abd 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCost.java
+:100644 000000 919bdbf 0000000 D	src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCostPresenter.java
+:100644 000000 17cf9af 0000000 D	src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 000000 798cf08 0000000 D	src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 000000 19e52bd 0000000 D	src/main/java/info/wondee/app/financeapp/overview/OverviewService.java
+:100644 000000 7f636d6 0000000 D	src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCost.java
+:100644 000000 1910c2d 0000000 D	src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:100644 000000 2f21f9f 0000000 D	src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostPresenter.java
+:100644 000000 69542a6 0000000 D	src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:100644 000000 57ca455 0000000 D	src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:100644 000000 3365382 0000000 D	src/main/java/info/wondee/app/financeapp/user/FinanceUserDetailsService.java
+:100644 000000 3b75fe0 0000000 D	src/main/java/info/wondee/app/financeapp/user/FinanceUserRepository.java
+:100644 000000 f61bf38 0000000 D	src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:100644 000000 e1e7cf6 0000000 D	src/main/resources/application.properties
+:100644 000000 6033c86 0000000 D	src/main/resources/static/deletionDialog.js
+:100644 000000 4b83eb2 0000000 D	src/main/resources/static/favicon.png
+:100644 000000 fd53942 0000000 D	src/main/resources/static/finance.css
+:100644 000000 8b7d597 0000000 D	src/main/resources/static/fixedcosts.js
+:100644 000000 ace9038 0000000 D	src/main/resources/static/load_indicator.gif
+:100644 000000 7f75dbe 0000000 D	src/main/resources/static/overview.js
+:100644 000000 eba4819 0000000 D	src/main/resources/static/specialcosts.js
+:100644 000000 b056830 0000000 D	src/main/resources/templates/datenschutz.html
+:100644 000000 fd27244 0000000 D	src/main/resources/templates/error.html
+:100644 000000 01f824d 0000000 D	src/main/resources/templates/fixedcostform.html
+:100644 000000 6631819 0000000 D	src/main/resources/templates/fixedcosts.html
+:100644 000000 267b631 0000000 D	src/main/resources/templates/fragments/components.html
+:100644 000000 3501dfa 0000000 D	src/main/resources/templates/impressum.html
+:100644 000000 2f7ec1c 0000000 D	src/main/resources/templates/layout.html
+:100644 000000 28006f3 0000000 D	src/main/resources/templates/login.html
+:100644 000000 bd45255 0000000 D	src/main/resources/templates/overview.html
+:100644 000000 49f9989 0000000 D	src/main/resources/templates/specialcosts.html
+:100644 000000 ba3f9bb 0000000 D	src/test/java/info/wondee/app/financeapplication/FinanceApplicationTests.java
+
+user:wondee
+1541090677
+:100644 100644 01fa6a7 5e085c0 M	Jenkinsfile
+:100644 100644 b9e25af 25bbf3b M	application/src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+
+user:wondee
+1541090840
+:100644 100644 5e085c0 817817e M	Jenkinsfile
+
+user:wondee
+1541105440
+:100644 100644 25bbf3b 8b2ef60 M	application/src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+:100644 100644 9bd0e47 4257f88 M	application/src/main/java/info/wondee/app/financeapp/export/ExportImportController.java
+:000000 100644 0000000 424eff3 A	application/src/main/java/info/wondee/app/financeapp/financedata/FinanceData.java
+:000000 100644 0000000 cf2055a A	application/src/main/java/info/wondee/app/financeapp/financedata/FinanceDataCustomRepository.java
+:000000 100644 0000000 41b1955 A	application/src/main/java/info/wondee/app/financeapp/financedata/FinanceDataRepository.java
+:000000 100644 0000000 297c3b7 A	application/src/main/java/info/wondee/app/financeapp/financedata/FinanceDataRepositoryImpl.java
+:100644 100644 e8a35a6 2a502db M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 100644 17cf9af 24df337 M	application/src/main/java/info/wondee/app/financeapp/overview/OverviewController.java
+:100644 100644 19e52bd f4cee99 M	application/src/main/java/info/wondee/app/financeapp/overview/OverviewService.java
+:100644 100644 1910c2d f9956b7 M	application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:100644 100644 69542a6 0dd04b9 M	application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:100644 100644 3365382 72ae535 M	application/src/main/java/info/wondee/app/financeapp/user/FinanceUserDetailsService.java
+:000000 100644 0000000 3cfd370 A	application/src/main/java/info/wondee/app/financeapp/user/UserAccount.java
+:000000 100644 0000000 6de63b0 A	application/src/main/java/info/wondee/app/financeapp/user/UserAccountCustomRepository.java
+:000000 100644 0000000 c4e25aa A	application/src/main/java/info/wondee/app/financeapp/user/UserAccountRepository.java
+:000000 100644 0000000 fcfa772 A	application/src/main/java/info/wondee/app/financeapp/user/UserAccountRepositoryImpl.java
+:000000 100644 0000000 4cae66e A	application/src/main/java/info/wondee/app/financeapp/user/UserLogin.java
+:000000 100644 0000000 af8058d A	application/src/main/java/info/wondee/app/financeapp/user/UserService.java
+:000000 100644 0000000 4801c7e A	application/src/main/java/info/wondee/app/financeapp/user/UserServiceImpl.java
+:100644 100644 e1e7cf6 67fc8ba M	application/src/main/resources/application.properties
+
+user:Markus
+1541151759
+:100644 100644 0ef36b1 d6d9561 M	deploy/nginx/shared/ssl.conf
+
+user:Markus
+1541152286
+:100644 100644 bd45255 adc771d M	application/src/main/resources/templates/overview.html
+
+user:wondee
+1541170214
+:100644 100644 817817e 9d6a363 M	Jenkinsfile
+:100644 100644 3c5d0d2 72ef7fe M	application/pom.xml
+:100644 100644 6b92cb6 9db329e M	application/src/main/java/info/wondee/app/financeapp/FinanceMonth.java
+:100644 100644 6af844e 08bc28d M	application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 424eff3 c2deb1a M	application/src/main/java/info/wondee/app/financeapp/financedata/FinanceData.java
+:100644 100644 41b1955 2b87fee M	application/src/main/java/info/wondee/app/financeapp/financedata/FinanceDataRepository.java
+:100644 100644 297c3b7 7c1afbd M	application/src/main/java/info/wondee/app/financeapp/financedata/FinanceDataRepositoryImpl.java
+:100644 100644 b7aa1f4 8aecf7d M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/Cost.java
+:100644 100644 0c3239c 2139b7f M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/CostPresenter.java
+:100644 100644 ddfb300 eb82363 M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCost.java
+:100644 100644 f82083d a4d3495 M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostPresenter.java
+:100644 100644 0a55c21 f872212 M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCost.java
+:100644 100644 8b8a67c d72b0f1 M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCostPresenter.java
+:100644 100644 de955e9 472cbac M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCost.java
+:100644 100644 d910bc9 59eb854 M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCostPresenter.java
+:100644 100644 c968abd 71d7721 M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCost.java
+:100644 100644 919bdbf 2d70cef M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCostPresenter.java
+:100644 100644 798cf08 424dfce M	application/src/main/java/info/wondee/app/financeapp/overview/OverviewEntry.java
+:100644 100644 7f636d6 3ec5cfb M	application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCost.java
+:100644 100644 2f21f9f b09b049 M	application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostPresenter.java
+:100644 100644 0dd04b9 6318eb1 M	application/src/main/java/info/wondee/app/financeapp/user/FinanceUser.java
+:100644 000000 57ca455 0000000 D	application/src/main/java/info/wondee/app/financeapp/user/FinanceUserCustomRespository.java
+:100644 100644 3b75fe0 441ad98 M	application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepository.java
+:100644 000000 f61bf38 0000000 D	application/src/main/java/info/wondee/app/financeapp/user/FinanceUserRepositoryImpl.java
+:100644 100644 3cfd370 095e9e1 M	application/src/main/java/info/wondee/app/financeapp/user/UserAccount.java
+:100644 100644 c4e25aa 09f7240 M	application/src/main/java/info/wondee/app/financeapp/user/UserAccountRepository.java
+:100644 100644 4cae66e 917455a M	application/src/main/java/info/wondee/app/financeapp/user/UserLogin.java
+:100644 100644 4801c7e c494656 M	application/src/main/java/info/wondee/app/financeapp/user/UserServiceImpl.java
+:100644 100644 67fc8ba 5dc96fb M	application/src/main/resources/application.properties
+:100644 100644 f94fb80 a02c75e M	deploy/README.md
+:100644 100644 4284256 b04acfa M	deploy/docker-compose.yml
+
+user:wondee
+1541172125
+user:wondee
+1541788214
+:000000 100644 0000000 8b1fbef A	application/src/main/java/info/wondee/app/financeapp/BusinessException.java
+:100644 100644 7d97220 37270b7 M	application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:000000 100644 0000000 403fb83 A	application/src/main/java/info/wondee/app/financeapp/settings/PasswordEquals.java
+:000000 100644 0000000 72c3ceb A	application/src/main/java/info/wondee/app/financeapp/settings/PasswordEqualsValidator.java
+:000000 100644 0000000 1141b44 A	application/src/main/java/info/wondee/app/financeapp/settings/SettingsController.java
+:000000 100644 0000000 fcd6adb A	application/src/main/java/info/wondee/app/financeapp/settings/UserPresenter.java
+:100644 100644 af8058d 3902f2e M	application/src/main/java/info/wondee/app/financeapp/user/UserService.java
+:100644 100644 c494656 1eef2ec M	application/src/main/java/info/wondee/app/financeapp/user/UserServiceImpl.java
+:100644 100644 2f7ec1c 9650055 M	application/src/main/resources/templates/layout.html
+:000000 100644 0000000 067afde A	application/src/main/resources/templates/settings.html
+
+user:wondee
+1541788998
+:100644 100644 08bc28d d3225c0 M	application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:100644 100644 bdbae98 878295b M	application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+
+user:wondee
+1541869792
+:100644 100644 37270b7 d2a11e3 M	application/src/main/java/info/wondee/app/financeapp/DisplayUtil.java
+:100644 000000 8b2ef60 0000000 D	application/src/main/java/info/wondee/app/financeapp/FinanceApplicationTestRunner.java
+:100644 100644 9db329e cd35cf8 M	application/src/main/java/info/wondee/app/financeapp/FinanceMonth.java
+:000000 100644 0000000 c41c50f A	application/src/main/java/info/wondee/app/financeapp/FutureDateString.java
+:000000 100644 0000000 ab9b0df A	application/src/main/java/info/wondee/app/financeapp/FutureDateStringValidator.java
+:000000 100644 0000000 728a864 A	application/src/main/java/info/wondee/app/financeapp/config/GlobalBindingInitializer.java
+:100644 100644 878295b 9293380 M	application/src/main/java/info/wondee/app/financeapp/config/WebSecurityConfig.java
+:100644 100644 5a09cda 62e5983 M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/DateRangeValidator.java
+:100644 100644 2a502db ba1f9c1 M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostController.java
+:100644 100644 a4d3495 2d99391 M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/FixedCostPresenter.java
+:100644 100644 d72b0f1 ce830ef M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/MonthlyFixedCostPresenter.java
+:100644 100644 59eb854 63c935d M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/QuaterlyFixedCostPresenter.java
+:100644 100644 2d70cef ba5e4ba M	application/src/main/java/info/wondee/app/financeapp/fixedcosts/YearlyFixedCostPresenter.java
+:100644 100644 f9956b7 f9c81fb M	application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostController.java
+:100644 100644 b09b049 218098f M	application/src/main/java/info/wondee/app/financeapp/specialcosts/SpecialCostPresenter.java
+:100644 100644 1eef2ec 5cf7431 M	application/src/main/java/info/wondee/app/financeapp/user/UserServiceImpl.java
+:000000 100644 0000000 1b5d6a2 A	application/src/main/resources/static/bootstrap-datepicker.de.min.js
+:000000 100644 0000000 64fe0f1 A	application/src/main/resources/static/bootstrap-datepicker.min.css
+:000000 100644 0000000 48cb452 A	application/src/main/resources/static/bootstrap-datepicker.min.js
+:100644 100644 71f81d3 2c42112 M	application/src/main/resources/static/finance.css
+:100644 100644 01f824d 5e56d02 M	application/src/main/resources/templates/fixedcostform.html
+:100644 100644 267b631 1c91f6c M	application/src/main/resources/templates/fragments/components.html
+:100644 100644 9650055 c51b81f M	application/src/main/resources/templates/layout.html
+:100644 100644 adc771d baae745 M	application/src/main/resources/templates/overview.html
+:100644 100644 067afde fcf0a14 M	application/src/main/resources/templates/settings.html
+:000000 100644 0000000 de4f573 A	application/src/test/java/info/wondee/app/financeapplication/FinanceApplicationTestRunner.java
+
+user:wondee
+1541930104
+:100644 100644 2c42112 0dbc332 M	application/src/main/resources/static/finance.css
+
+user:wondee
+1541931135
+:100644 100644 b056830 884a790 M	application/src/main/resources/templates/datenschutz.html
+:100644 100644 fd27244 6c9b2aa M	application/src/main/resources/templates/error.html
+:100644 100644 5e56d02 a58d078 M	application/src/main/resources/templates/fixedcostform.html
+:100644 100644 6631819 fe197de M	application/src/main/resources/templates/fixedcosts.html
+:000000 100644 0000000 4dd65ee A	application/src/main/resources/templates/fragments/layout.html
+:100644 100644 3501dfa e24aea9 M	application/src/main/resources/templates/impressum.html
+:100644 000000 c51b81f 0000000 D	application/src/main/resources/templates/layout.html
+:100644 100644 28006f3 94581ea M	application/src/main/resources/templates/login.html
+:100644 100644 baae745 92e10ca M	application/src/main/resources/templates/overview.html
+:100644 100644 fcf0a14 e61d931 M	application/src/main/resources/templates/settings.html
+:100644 100644 49f9989 e0084fb M	application/src/main/resources/templates/specialcosts.html
+
+user:wondee
+1541949957
+:100644 100644 4dd65ee a010cf1 M	application/src/main/resources/templates/fragments/layout.html
+
+user:wondee
+1541951347
+:100644 100644 8627ee4 cf60e61 M	application/Dockerfile
+:100644 100644 72ef7fe 0fa6158 M	application/pom.xml
+
+user:wondee
+1542273560
+:100644 100644 8190b40 49ee0c4 M	deploy/jenkins/Dockerfile
+
+user:wondee
+1542279085
+:100644 100644 9d6a363 901f9de M	Jenkinsfile
+:100644 100644 cf60e61 b601a0f M	application/Dockerfile
+:100644 000000 5dc96fb 0000000 D	application/src/main/resources/application.properties
+:000000 100644 0000000 85a701b A	application/src/main/resources/application.yml
+
+user:wondee
+1542279287
+:100644 100644 901f9de 05bcadb M	Jenkinsfile
+
+user:wondee
+1542279353
+:100644 100644 05bcadb d069984 M	Jenkinsfile
+
+user:wondee
+1542280244
+:100644 100644 d069984 92a8159 M	Jenkinsfile
+
+user:wondee
+1542907440
+:000000 100644 0000000 9501c06 A	application/src/main/java/info/wondee/app/financeapp/JsonResponse.java
+:000000 100644 0000000 148c57f A	application/src/main/java/info/wondee/app/financeapp/Message.java
+:100644 100644 d3225c0 c375482 M	application/src/main/java/info/wondee/app/financeapp/config/WebConfig.java
+:000000 100644 0000000 d086931 A	application/src/main/java/info/wondee/app/financeapp/settings/ChangePasswordPresenter.java
+:000000 100644 0000000 7dcf8c1 A	application/src/main/java/info/wondee/app/financeapp/settings/NewUserPresenter.java
+:100644 000000 403fb83 0000000 D	application/src/main/java/info/wondee/app/financeapp/settings/PasswordEquals.java
+:100644 000000 72c3ceb 0000000 D	application/src/main/java/info/wondee/app/financeapp/settings/PasswordEqualsValidator.java
+:100644 100644 1141b44 f6d3125 M	application/src/main/java/info/wondee/app/financeapp/settings/SettingsController.java
+:100644 000000 fcd6adb 0000000 D	application/src/main/java/info/wondee/app/financeapp/settings/UserPresenter.java
+:100644 100644 917455a 4077aff M	application/src/main/java/info/wondee/app/financeapp/user/UserLogin.java
+:100644 100644 3902f2e b6ca3f6 M	application/src/main/java/info/wondee/app/financeapp/user/UserService.java
+:100644 100644 5cf7431 31b8165 M	application/src/main/java/info/wondee/app/financeapp/user/UserServiceImpl.java
+:100644 100644 85a701b a4b4024 M	application/src/main/resources/application.yml
+:100644 100644 0dbc332 606228e M	application/src/main/resources/static/finance.css
+:100644 100644 7f75dbe 4a14ca5 M	application/src/main/resources/static/overview.js
+:000000 100644 0000000 cbe46ed A	application/src/main/resources/static/settings.js
+:100644 100644 fe197de e16b524 M	application/src/main/resources/templates/fixedcosts.html
+:100644 100644 1c91f6c 79430e5 M	application/src/main/resources/templates/fragments/components.html
+:100644 100644 a010cf1 9066fdc M	application/src/main/resources/templates/fragments/layout.html
+:100644 100644 e61d931 c72379c M	application/src/main/resources/templates/settings.html
+
+user:wondee
+1542908162
+:100644 100644 606228e b47923a M	application/src/main/resources/static/finance.css
+:100644 100644 cbe46ed dd6b89c M	application/src/main/resources/static/settings.js
+
+user:wondee
+1542912716
+:100644 100644 4a14ca5 8cc58ff M	application/src/main/resources/static/overview.js
+:100644 100644 dd6b89c a334e2e M	application/src/main/resources/static/settings.js
+:000000 100644 0000000 a3d567c A	application/src/main/resources/static/shared.js
+:100644 100644 9066fdc 98d1eaf M	application/src/main/resources/templates/fragments/layout.html
+:100644 100644 92e10ca 9bb0499 M	application/src/main/resources/templates/overview.html
+:100644 100644 c72379c 4cb286f M	application/src/main/resources/templates/settings.html
+
+user:Markus
+1543318346
+:100644 100644 a334e2e 4892338 M	application/src/main/resources/static/settings.js
+
+user:wondee
+1549114649
+:100644 100644 d2a265b 47c7fb3 M	deploy/nginx/nginx.conf
+
+user:wondee
+1549114672
+user:wondee
+1549116236
+:000000 100644 0000000 5cc0647 A	deploy/letsencrypt/renew.cmd
+
+user:Markus
+1555588995
+:100644 100644 98d1eaf d299af6 M	application/src/main/resources/templates/fragments/layout.html
+
+user:unknown
+1555675798
+:100644 100644 5cc0647 f4d7c41 M	deploy/letsencrypt/renew.cmd
+
+user:unknown
+1555675875
+user:unknown
+1555676449
+:100644 100644 657f1dc 4d693a2 M	.gitignore
+:100644 100644 7c1afbd 1387ad1 M	application/src/main/java/info/wondee/app/financeapp/financedata/FinanceDataRepositoryImpl.java
+
+user:unknown
+1555677565
+:100644 100644 0a69ba8 7769ac8 M	README.md
+:100644 100644 1387ad1 0df82bc M	application/src/main/java/info/wondee/app/financeapp/financedata/FinanceDataRepositoryImpl.java

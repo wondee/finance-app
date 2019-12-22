@@ -7,11 +7,25 @@ Production Link: https://finance.wondee.info  (Demo Credentials: Demo/Demo; Alte
 
 ## Cheat sheet:
 
+`local.docker` must be mapped to docker host (VM-IP or localhost). 
+
+Create local volumes for nginx:
+
+```
+docker volume create letsencrypt_www
+docker volume create letsencrypt_certs
+```
+
 Run mongo server locally:
 
 ```
 docker volume create --name=mongodata
 docker run -d -p 27017:27017 -v mongodata:/data/db mongo
+```
+
+Run redis server locally:
+```
+docker run -p 32768:6379 redis
 ```
 
 Running
