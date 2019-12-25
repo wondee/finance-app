@@ -5,22 +5,20 @@
       <v-skeleton-loader v-if="!loaded" type="table-tbody" class="mx-auto"></v-skeleton-loader>
       <v-card-text v-if="loaded">
         <div v-if="specialCosts && specialCosts.length > 0">
-          <h4>Sonderkosten:</h4>
+          <h3>Sonderkosten:</h3>
           <v-simple-table>
             <template v-slot:default>
               <tbody>
                 <tr :key="index" v-for="(cost, index) in specialCosts">
                   <td>{{ cost.name }}</td>
                   <td>{{ cost.displayAmount }}</td>
-                  <td>
+                  <td align="right">
                     <v-btn
                       icon
                       :to="'/fixedcosts/edit?target=overview&id=' + cost.id + '&type=special'"
                     >
                       <v-icon>fa-edit</v-icon>
                     </v-btn>
-                  </td>
-                  <td>
                     <v-btn icon :to="'/specialcosts/delete?target=overview&id=' + cost.id">
                       <v-icon>fa-trash-alt</v-icon>
                     </v-btn>
@@ -33,7 +31,7 @@
 
         <p></p>
         <div v-if="specialCosts && fixedCosts.length > 0">
-          <h4>Fixkosten:</h4>
+          <h3>Fixkosten:</h3>
           <v-simple-table fixed-header>
             <template v-slot:default>
               <tbody>

@@ -31,7 +31,6 @@
                   <th>Sonder Kosten</th>
                   <th>Saldo</th>
                   <th />
-                  <th />
                 </tr>
               </thead>
               <tbody>
@@ -43,12 +42,11 @@
                     class="amount"
                     :class="{ 'negative-amount': entry.currentAmount < 0}"
                   >{{ entry.displayCurrentAmount | responsive }}</td>
-                  <td>
-                    <v-btn icon @click="showModal($event, index)" v-if="!entry.empty">
+                  <td align="right">
+                    <v-btn icon @click="showModal($event, index)" 
+                        v-if="!entry.empty">
                       <v-icon>fa-file-alt</v-icon>
                     </v-btn>
-                  </td>
-                  <td>
                     <v-btn
                       icon
                       :to="'/specialcosts/add?target=overview&month=' + entry.yearMonth[1] + '&year=' + entry.yearMonth[0]"
