@@ -1,33 +1,40 @@
 <template>
-  <b-form-input 
-    :id="id" 
-    :value="displayValue" 
-    @blur="inputChanged" 
-    @focus="cleanInput" 
-    required 
+  <v-text-field
+    :value="displayValue"
+    :rules="valueRules"
+    @blur="inputChanged"
+    @focus="focus = true"
+    required
+    :label="label"
   />
 </template>
 <script>
 import { toCurrency } from "./Utils";
 
 export default {
-  props: ['id', 'value'],
+  props: ["id", "label", "value"],
+  data() {
+    return {
+      focus: false,
+
+      valueRules: [
+        v => parseInt(v) > 0 || 'Betrag muss positiv und ungleich 0 sein',
+      ],
+    }
+  },
+  
   computed: {
     displayValue() {
-      return toCurrency(this.value);
+      return this.focus ? this.value : toCurrency(this.value);
     }
   },
   methods: {
     inputChanged(e) {
-      var newValue = Number(e.target.value);
-
-      this.value = isNaN(newValue) ? 0 : newValue;
-      this.$emit("input", this.value);
-
-      e.target.value = toCurrency(this.value);
-    },
-    cleanInput(e) {
-      e.target.value = this.value;
+      const newValue = Number(e.target.value);
+      
+      this.$emit("input", isNaN(newValue) ? 0 : newValue);
+      this.focus = false;
+      //e.target.value = toCurrency(this.value);
     }
   }
 };

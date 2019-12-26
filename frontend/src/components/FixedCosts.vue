@@ -1,71 +1,130 @@
 <template>
-  <loadable-page 
-    title="Fixkosten Verwaltung" 
-    endpoint="/api/costs"
-    v-on:loaded="loaded"
-  >
-    <b-row>
-      <b-card>
-        <p>
-          Aktuelle Bilanz (pro Monat):
-          <strong
-            :class="{ red : currentBalance < 0 }"
-          >{{ currentBalanceDisplay }}</strong>
-        </p>
-      </b-card>
-    </b-row>
-    <b-row>
-      <b-card no-body>
-        <b-tabs card>
-          <b-tab title="Monatliche Kosten">
-            <FixedCostsTable :entries="monthly"/>
-            <b-button variant="link" @click="show('monthlyEdit')">Neuen monatliche Fixkosten erfassen</b-button>
-            <CostEditForm ref="monthlyEdit" title="Monatliche Kosten "/>
-          </b-tab>
-          <b-tab title="Vierteljährliche Kosten">
-            <FixedCostsTable :entries="quaterly" :additionalCols="quaterlyCols"/>
-            <a href="#">Neuen vierteljährliche Fixkosten erfassen</a>
-          </b-tab>
-          <b-tab title="Halbjährliche Kosten">
-            <FixedCostsTable :entries="halfyearly" :additionalCols="halfyearlyCols"/>
-            <a href="#">Neuen halbjährlige Fixkosten erfassen</a>
-          </b-tab>
-          <b-tab title="Jährliche Kosten">
-            <FixedCostsTable :entries="yearly" :additionalCols="yearlyCols"/>
-            <a href="#">Neuen jährliche Fixkosten erfassen</a>
-          </b-tab>
-        </b-tabs>
-      </b-card>
-    </b-row>
-  </loadable-page>
+  <v-container>
+    <v-row>
+      <v-col>
+        <v-skeleton-loader
+          type="card-heading"
+          :loading="!loaded"
+          transition="scale-transition"
+          class="mx-auto"
+        >
+          <v-banner sticky icon="fa-wallet" elevation="4">
+            Aktuelle Bilanz (pro Monat):
+            <strong
+              :class="{ red : currentBalance < 0 }"
+            >{{ currentBalanceDisplay }}</strong>
+          </v-banner>
+        </v-skeleton-loader>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <v-skeleton-loader
+          type="table-tbody"
+          :loading="!loaded"
+          transition="scale-transition"
+          class="mx-auto"
+        >
+          <v-card no-body>
+            <v-tabs v-model="tab" grow>
+              <v-tabs-slider />
+              <v-tab>Monatliche Kosten</v-tab>
+              <v-tab-item>
+                <v-card>
+                  <v-card-text>
+                    <fixed-costs-table
+                      :entries="monthly"
+                      @edit-clicked="openEdit('monthly', $event)"
+                    />
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn small text @click="openEdit('monthly')">Neue Kosten Hinzufügen</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-tab-item>
+              <v-tab>Vierteljährliche Kosten</v-tab>
+              <v-tab-item>
+                <v-card>
+                  <v-card-text>
+                    <fixed-costs-table
+                      :entries="quaterly"
+                      :additionalCols="quaterlyCols"
+                      @edit-clicked="openEdit('quaterly', $event)"
+                    />
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn small text @click="openEdit('quaterlyEdit')">Neue Kosten Hinzufügen</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-tab-item>
+              <v-tab>Halbjährliche Kosten</v-tab>
+              <v-tab-item>
+                <v-card>
+                  <v-card-text>
+                    <fixed-costs-table
+                      :entries="halfyearly"
+                      :additionalCols="halfyearlyCols"
+                      @edit-clicked="openEdit('halfyearly', $event)"
+                    />
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn small text @click="openEdit('halfyearlyEdit')">Neue Kosten Hinzufügen</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-tab-item>
+              <v-tab>Jährliche Kosten</v-tab>
+              <v-tab-item>
+                <v-card>
+                  <v-card-text>
+                    <fixed-costs-table
+                      :entries="yearly"
+                      :additionalCols="yearlyCols"
+                      @edit-clicked="openEdit('yearly', $event)"
+                    />
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn small text @click="openEdit('monthlyEdit')">Neue Kosten Hinzufügen</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-tab-item>
+            </v-tabs>
+          </v-card>
+        </v-skeleton-loader>
+      </v-col>
+    </v-row>
+    <cost-edit-form ref="editForm" />
+  </v-container>
 </template>
 
 
 <script>
-import FixedCostsTable from './FixedCostTable';
-import CostEditForm from './CostEditForm';
-import { toQuaterlyDueDate, toHalfyearlyDueDate, toMonth } from './Utils';
+import FixedCostsTable from "./FixedCostTable";
+import CostEditForm from "./CostEditForm";
+import { toQuaterlyDueDate, toHalfyearlyDueDate, toMonth } from "./Utils";
+import LoadablePage from './LoadablePage';
 
 const quaterlyCols = [
   { name: "dueMonth", label: "Fällig in", transformer: toQuaterlyDueDate }
-]
+];
 
 const halfyearlyCols = [
   { name: "dueMonth", label: "Fällig in", transformer: toHalfyearlyDueDate }
-]
+];
 
 const yearlyCols = [
   { name: "month", label: "Fällig im", transformer: toMonth }
-]
-
+];
 
 export default {
+  mixins: [LoadablePage],
   components: {
     FixedCostsTable,
     CostEditForm
   },
   data() {
     return {
+      tab: null,
+
       monthly: [],
       quaterly: [],
       halfyearly: [],
@@ -83,17 +142,18 @@ export default {
       return `${this.currentBalance} €`;
     }
   },
-  methods: {
-    loaded(data) {
-      this.monthly = data.monthly;
-      this.quaterly = data.quaterly;
-      this.halfyearly = data.halfyearly;
-      this.yearly = data.yearly;
+  created: async function() {
+    const data = await this.fetchData("/api/costs");
+    this.monthly = data.monthly;
+    this.quaterly = data.quaterly;
+    this.halfyearly = data.halfyearly;
+    this.yearly = data.yearly;
 
-      this.currentBalance = data.currentBalance;
-    },
-    show(ref) {
-      this.$refs[ref].showModal();
+    this.currentBalance = data.currentBalance;
+  },
+  methods: {
+    openEdit(type, cost) {
+      this.$refs["editForm"].openEdit(type, cost);
     }
   }
 };
@@ -104,6 +164,6 @@ strong.red {
   color: red;
 }
 .tabs {
-  width: 100%
+  width: 100%;
 }
 </style>

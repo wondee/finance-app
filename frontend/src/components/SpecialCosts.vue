@@ -1,5 +1,5 @@
 <template>
-  <LoadablePage title="Sonderkosten Verwaltung" />
+  <loadable-page />
 </template>
 
 <script>

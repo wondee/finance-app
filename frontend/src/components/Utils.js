@@ -1,5 +1,5 @@
-export const toCurrency = (string) =>
-  string.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " €";
+export const toCurrency = (number) =>
+  number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " €";
 
 
 const monthMap = [
@@ -16,6 +16,12 @@ const monthMap = [
   'November',
   'Dezember',
 ] 
+
+export const monthStringToString = (str) => {
+  if (!str) return null;
+  const elems = str.split('-');
+  return monthToString({ month: elems[1], year: elems[0] })
+}
 
 export const monthToString = ({ month, year } = {month: 0, year: 0}) => 
   (month == 0) ?  '-' : `${monthMap[month - 1]} / ${year}`;

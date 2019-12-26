@@ -6,7 +6,7 @@ Response-Delay: 500
   "currentBalance": 200,
   "monthly": [
     {"id": "1234", "name": "Gehalt", "amount": "500"},
-    {"id": "1235", "name": "Miete", "from": {"month": 2, "year": 2020}, "amount": "-400"} 
+    {"id": "1235", "name": "Miete", "from": "2021-02", "amount": "-400"} 
   ],
   "quaterly": [
     {"id": "2", "name": "Gehalt", "dueMonth": 2,  "amount": "-300"}
