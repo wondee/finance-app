@@ -34,6 +34,7 @@
                   <v-card-text>
                     <fixed-costs-table
                       :entries="monthly"
+                      :cols="monthlyCols"
                       @edit-clicked="openEdit('monthly', $event)"
                     />
                   </v-card-text>
@@ -48,7 +49,7 @@
                   <v-card-text>
                     <fixed-costs-table
                       :entries="quaterly"
-                      :additionalCols="quaterlyCols"
+                      :cols="quaterlyCols"
                       @edit-clicked="openEdit('quaterly', $event)"
                     />
                   </v-card-text>
@@ -63,7 +64,7 @@
                   <v-card-text>
                     <fixed-costs-table
                       :entries="halfyearly"
-                      :additionalCols="halfyearlyCols"
+                      :cols="halfyearlyCols"
                       @edit-clicked="openEdit('halfyearly', $event)"
                     />
                   </v-card-text>
@@ -78,7 +79,7 @@
                   <v-card-text>
                     <fixed-costs-table
                       :entries="yearly"
-                      :additionalCols="yearlyCols"
+                      :cols="yearlyCols"
                       @edit-clicked="openEdit('yearly', $event)"
                     />
                   </v-card-text>
@@ -101,19 +102,39 @@
 import FixedCostsTable from "./FixedCostTable";
 import CostEditForm from "./CostEditForm";
 import { toQuaterlyDueDate, toHalfyearlyDueDate, toMonth } from "./Utils";
-import LoadablePage from './LoadablePage';
+import LoadablePage from "./LoadablePage";
+import { monthStringToString, toCurrency } from "./Utils";
 
-const quaterlyCols = [
+
+const monthTranformer = m => monthStringToString(m) || "-";
+
+const defaultCols = [
+  { name: "name", label: "Bezeichnung" },
+  { name: "amount", label: "Betrag", transformer: toCurrency },
+  { name: "from", label: "Gültig ab", transformer: monthTranformer },
+  { name: "to", label: "Gültig bis", transformer: monthTranformer }
+];
+
+function cols(additionalCols = false) {
+  if (!additionalCols) {
+    return defaultCols;
+  }
+  const cols = [...defaultCols];
+  cols.splice(1, 0, ...additionalCols);
+  return cols;
+}
+
+const quaterlyCols = cols([
   { name: "dueMonth", label: "Fällig in", transformer: toQuaterlyDueDate }
-];
+]);
 
-const halfyearlyCols = [
+const halfyearlyCols = cols([
   { name: "dueMonth", label: "Fällig in", transformer: toHalfyearlyDueDate }
-];
+]);
 
-const yearlyCols = [
+const yearlyCols = cols([
   { name: "month", label: "Fällig im", transformer: toMonth }
-];
+]);
 
 export default {
   mixins: [LoadablePage],
@@ -132,6 +153,7 @@ export default {
 
       currentBalance: -1,
 
+      monthlyCols: cols(),
       quaterlyCols,
       halfyearlyCols,
       yearlyCols

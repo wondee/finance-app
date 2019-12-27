@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" max-width="800">
+  <v-dialog v-model="dialog" max-width="800" persistent>
     <v-card v-if="dialog">
       <v-card-title>
         <span>{{ title }}</span>
@@ -42,14 +42,15 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text @click="dialog = false">Abbrechen</v-btn>
-        <v-btn text @click="dialog = false" :disabled="!valid">Speichern</v-btn>
+        <v-btn text @click="dialog = false" :disabled="!valid || !changed">Speichern</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
 <script>
 import CurrencyInput from "./CurrencyInput";
-import MonthDatePicker from './MonthDatePicker';
+import MonthDatePicker from "./MonthDatePicker";
+import { equals } from './Utils';
 
 const Type = {
   monthly: {
@@ -64,7 +65,7 @@ const Type = {
   yearly: {
     title: "Jährliche Kosten"
   }
-}; 
+};
 
 export default {
   components: {
@@ -76,46 +77,58 @@ export default {
       valid: false,
       dialog: false,
 
-      form: {
-        name: "",
-        amount: 0,
-        incoming: false,
-        from: null,
-        to: null
-      },
+      cost: null,
+
+      form: null,
 
       nameRules: [
         v => !!v || "Bezeichnung darf nicht leer sein",
         v => v.length <= 20 || "Bezeichnung muss weniger als 20 Zeichen haben"
       ],
 
-      toDateRules: [d => 
-        !d || !this.form.from || new Date(d) >= new Date(this.form.from) || 
-        "'Gültig bis' darf nicht kleiner als 'Gültig ab' sein" ]
+      toDateRules: [
+        d =>
+          !d ||
+          !this.form.from ||
+          new Date(d) >= new Date(this.form.from) ||
+          "'Gültig bis' darf nicht kleiner als 'Gültig ab' sein"
+      ]
     };
   },
   computed: {
     title() {
       return `${this.type.title} ${this.cost ? "ändern" : "hinzufügen"}`;
     },
+    changed() {
+      return !equals(this.form, costToForm(this.cost));
+    }
   },
   methods: {
     openEdit(type, cost) {
       this.type = Type[type];
       this.cost = cost;
-
-      if (cost) {
-        this.form.name = cost.name;
-        this.form.amount = Math.abs(cost.amount);
-        this.form.incoming = cost.amount > 0;
-        this.form.from = cost.from;
-        this.form.to = cost.to;
-      }
-
+      this.form = costToForm(this.cost);
       this.dialog = true;
     },
     onSubmit() {},
     onReset() {}
   }
 };
+
+const costToForm = cost =>
+  cost
+    ? {
+        name: cost.name,
+        amount: Math.abs(cost.amount),
+        incoming: cost.amount > 0,
+        from: cost.from,
+        to: cost.to
+      }
+    : {
+        name: "",
+        amount: 0,
+        incoming: false,
+        from: null,
+        to: null
+      };
 </script>

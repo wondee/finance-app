@@ -19,7 +19,7 @@
               <v-btn icon @click="$emit('edit-clicked', entry)">
                 <v-icon>fa-edit</v-icon>
               </v-btn>
-              <v-btn icon :to="'/specialcosts/delete?target=overview&id=' + entry.id">
+              <v-btn icon @click="$emit('delete-clicked', entry)">
                 <v-icon>fa-trash-alt</v-icon>
               </v-btn>
             </td>
@@ -32,19 +32,8 @@
 </template>
 
 <script>
-import { monthStringToString, toCurrency } from "./Utils";
-
-const monthTranformer = (m) => monthStringToString(m) || '-'
-
-const defaultCols = [
-  { name: "name", label: "Bezeichnung" },
-  { name: "amount", label: "Betrag", transformer: toCurrency },
-  { name: "from", label: "Gültig ab", transformer: monthTranformer },
-  { name: "to", label: "Gültig bis", transformer: monthTranformer }
-];
-
 export default {
-  props: ["entries", "additionalCols"],
+  props: ["entries", "cols"],
   methods: {
     transform: (f, v) => (f ? f(v) : v)
   },
@@ -52,14 +41,6 @@ export default {
     empty() {
       return !this.entries || this.entries.length == 0;
     },
-    cols() {
-      if (!this.additionalCols) {
-        return defaultCols;
-      }
-      const cols = [...defaultCols];
-      cols.splice(1, 0, ...this.additionalCols);
-      return cols;
-    }
   }
 };
 </script>
