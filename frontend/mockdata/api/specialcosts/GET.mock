@@ -3,6 +3,6 @@ Content-Type: application/json; charset=utf-8
 Response-Delay: 500
 
 [
-    {"id": "1234", "name": "Geschenk", "amount": "500", "dueDate": "2020-04"},
-    {"id": "1235", "name": "Urlaub", "amount": "-2000", "dueDate": "2020-07"} 
+    {"id": "1234", "name": "Geschenk", "amount": 500, "dueDate": "2020-04"},
+    {"id": "1235", "name": "Urlaub", "amount": -2000, "dueDate": "2020-07"} 
   ]

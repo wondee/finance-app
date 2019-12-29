@@ -1,5 +1,5 @@
 <template>
-  <cost-edit-form name="Monatliche Kosten" ref="editForm" :changed="changed">
+  <cost-edit-form :title="title('Monatliche Kosten')" ref="editForm" :changed="changed">
     <v-row>
       <v-col>
         <name-text-field v-model="form.name" />

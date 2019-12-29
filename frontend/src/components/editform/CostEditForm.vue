@@ -21,17 +21,12 @@
 </template>
 <script>
 export default {
-  props: ["name", "changed"],
+  props: ["title", "changed"],
   data() {
     return {
       valid: false,
       dialog: false,
     };
-  },
-  computed: {
-    title() {
-      return `${this.name} ${this.cost ? "ändern" : "hinzufügen"}`;
-    },
   },
   methods: {
     openEdit() {

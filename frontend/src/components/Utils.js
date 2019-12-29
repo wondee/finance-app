@@ -98,5 +98,8 @@ export const CommonForm = (costToForm) => ({
       this.form = this.costToForm(cost)
       this.$refs["editForm"].openEdit();
     },
+    title(name) {
+      return `${name} ${this.cost ? "ändern" : "hinzufügen"}`
+    }
   }
 });
