@@ -18,7 +18,7 @@
             <v-list-item-title>Fixkosten</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link to="/specialcosts">
           <v-list-item-action>
             <v-icon>fa-money-bill-wave</v-icon>
           </v-list-item-action>
@@ -76,12 +76,12 @@ import VueRouter from "vue-router";
 
 const Overview = () => import("./components/overview/Overview.vue");
 const FixedCosts = () => import('./components/FixedCosts.vue');
-//const SpecialCosts = () => import('./components/SpecialCosts.vue');
+const SpecialCosts = () => import('./components/SpecialCosts.vue');
 
 const routes = [
   { path: "/", component: Overview },
   { path: '/fixedcosts', component: FixedCosts },
-  //{ path: '/specialcosts', component: SpecialCosts },
+  { path: '/specialcosts', component: SpecialCosts },
 ];
 
 const router = new VueRouter({

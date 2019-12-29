@@ -35,11 +35,12 @@
                     <fixed-costs-table
                       :entries="monthly"
                       :cols="monthlyCols"
-                      @edit-clicked="openEdit('monthly', $event)"
+                      @edit-clicked="openEdit('monthlyEdit', $event)"
                     />
                   </v-card-text>
                   <v-card-actions>
-                    <v-btn small text @click="openEdit('monthly')">Neue Kosten Hinzufügen</v-btn>
+                    <v-btn small text @click="openEdit('monthlyEdit')">Neue Kosten Hinzufügen</v-btn>
+                    <monthly-cost-edit-form ref="monthlyEdit" />
                   </v-card-actions>
                 </v-card>
               </v-tab-item>
@@ -50,11 +51,12 @@
                     <fixed-costs-table
                       :entries="quaterly"
                       :cols="quaterlyCols"
-                      @edit-clicked="openEdit('quaterly', $event)"
+                      @edit-clicked="openEdit('quaterlyEdit', $event)"
                     />
                   </v-card-text>
                   <v-card-actions>
                     <v-btn small text @click="openEdit('quaterlyEdit')">Neue Kosten Hinzufügen</v-btn>
+                    <quaterly-cost-edit-form ref="quaterlyEdit" />
                   </v-card-actions>
                 </v-card>
               </v-tab-item>
@@ -93,18 +95,23 @@
         </v-skeleton-loader>
       </v-col>
     </v-row>
-    <cost-edit-form ref="editForm" />
   </v-container>
 </template>
 
 
 <script>
 import FixedCostsTable from "./FixedCostTable";
-import CostEditForm from "./CostEditForm";
-import { toQuaterlyDueDate, toHalfyearlyDueDate, toMonth } from "./Utils";
 import LoadablePage from "./LoadablePage";
-import { monthStringToString, toCurrency } from "./Utils";
+import {
+  monthStringToString,
+  toCurrency,
+  toQuaterlyDueDate,
+  toHalfyearlyDueDate,
+  toMonth
+} from "./Utils";
 
+import MonthlyCostEditForm from "./editform/MonthlyFixedCostEditForm";
+import QuaterlyCostEditForm from "./editform/QuaterlyFixedCostEditForm";
 
 const monthTranformer = m => monthStringToString(m) || "-";
 
@@ -140,7 +147,8 @@ export default {
   mixins: [LoadablePage],
   components: {
     FixedCostsTable,
-    CostEditForm
+    MonthlyCostEditForm,
+    QuaterlyCostEditForm
   },
   data() {
     return {
@@ -174,8 +182,8 @@ export default {
     this.currentBalance = data.currentBalance;
   },
   methods: {
-    openEdit(type, cost) {
-      this.$refs["editForm"].openEdit(type, cost);
+    openEdit(name, cost) {
+      this.$refs[name].openEdit(cost);
     }
   }
 };

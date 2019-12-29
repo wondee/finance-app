@@ -10,7 +10,7 @@
     <template v-slot:activator="{ on }">
       <v-text-field
         :value="displayDate"
-        label="Gültig ab"
+        :label="label"
         prepend-icon="fa-calendar-week"
         :error-messages="errorMessages"
         clearable
@@ -30,12 +30,12 @@
   </v-menu>
 </template>
 <script>
-import { monthStringToString } from "./Utils";
+import { monthStringToString } from "../Utils";
 
 const nowDate = new Date();
 
 export default {
-  props: ["value", "min", "max", "rules"],
+  props: ["value", "min", "max", "label", "rules"],
 
   data() {
     return {

@@ -25,7 +25,7 @@
   </v-banner>
 </template>
 <script>
-import CurrencyInput from "../CurrencyInput";
+import CurrencyInput from "../editform/CurrencyInput";
 
 export default {
   components: {

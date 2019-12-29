@@ -9,7 +9,7 @@
   />
 </template>
 <script>
-import { toCurrency } from "./Utils";
+import { toCurrency } from "../Utils";
 
 export default {
   props: ["id", "label", "value"],
@@ -34,7 +34,6 @@ export default {
       
       this.$emit("input", isNaN(newValue) ? 0 : newValue);
       this.focus = false;
-      //e.target.value = toCurrency(this.value);
     }
   }
 };
