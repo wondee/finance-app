@@ -27,7 +27,7 @@
 </template>
 <script>
 import CurrencyInput from "./CurrencyInput";
-import { CommonForm, monthlyCostToForm, quaterlyStrings } from "../Utils";
+import { CommonForm, monthlyCostToForm, quaterlyStrings, toSelectItems } from "../Utils";
 import CostEditForm from "./CostEditForm";
 import NameTextField from "./NameTextField";
 import FromToDateFields from "./FromToDateFields";
@@ -55,7 +55,7 @@ export default {
   },
   data() {
     return {
-      items: quaterlyStrings.map((text, value) => ({ text, value: value }))
+      items: toSelectItems(quaterlyStrings)
     };
   }
 };

@@ -72,6 +72,7 @@
                   </v-card-text>
                   <v-card-actions>
                     <v-btn small text @click="openEdit('halfyearlyEdit')">Neue Kosten Hinzufügen</v-btn>
+                    <halfyearly-cost-edit-form ref="halfyearlyEdit" />
                   </v-card-actions>
                 </v-card>
               </v-tab-item>
@@ -82,11 +83,12 @@
                     <fixed-costs-table
                       :entries="yearly"
                       :cols="yearlyCols"
-                      @edit-clicked="openEdit('yearly', $event)"
+                      @edit-clicked="openEdit('yearlyEdit', $event)"
                     />
                   </v-card-text>
                   <v-card-actions>
-                    <v-btn small text @click="openEdit('monthlyEdit')">Neue Kosten Hinzufügen</v-btn>
+                    <v-btn small text @click="openEdit('yearlyEdit')">Neue Kosten Hinzufügen</v-btn>
+                    <yearly-cost-edit-form ref="yearlyEdit" />
                   </v-card-actions>
                 </v-card>
               </v-tab-item>
@@ -110,8 +112,10 @@ import {
   toMonth
 } from "./Utils";
 
-import MonthlyCostEditForm from "./editform/MonthlyFixedCostEditForm";
-import QuaterlyCostEditForm from "./editform/QuaterlyFixedCostEditForm";
+import MonthlyCostEditForm from "./editform/MonthlyCostEditForm";
+import QuaterlyCostEditForm from "./editform/QuaterlyCostEditForm";
+import HalfyearlyCostEditForm from './editform/HalfyearlyCostEditForm';
+import YearlyCostEditForm from './editform/YearlyCostEditForm';
 
 const monthTranformer = m => monthStringToString(m) || "-";
 
@@ -148,7 +152,9 @@ export default {
   components: {
     FixedCostsTable,
     MonthlyCostEditForm,
-    QuaterlyCostEditForm
+    QuaterlyCostEditForm,
+    HalfyearlyCostEditForm,
+    YearlyCostEditForm
   },
   data() {
     return {

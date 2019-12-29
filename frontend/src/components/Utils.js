@@ -2,7 +2,7 @@ export const toCurrency = (number) =>
   number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " €";
 
 
-const monthMap = [
+export const monthMap = [
   'Januar',
   'Februar',
   'März',
@@ -27,19 +27,22 @@ export const monthToString = ({ month, year } = { month: 0, year: 0 }) =>
   (month == 0) ? '-' : `${monthMap[month - 1]} / ${year}`;
 
 
+const delimiter = (list) => list.length > 2 ? ', ' : ' und ';
+
 const createMonthStrings = p =>
   [...Array(12 / p).keys()]
     .map(i => [...Array(p).keys()].map(n => n * (12 / p) + i + 1))
-    .map(list => list.map(month => monthMap[month - 1]).join(', '));
+    .map(list => list.map(month => monthMap[month - 1]).join(delimiter(list)));
 
 
 export const quaterlyStrings = createMonthStrings(4);
-const healfyearlyStrings = createMonthStrings(2);
+export const healfyearlyStrings = createMonthStrings(2);
 
 export const toQuaterlyDueDate = dueDate => quaterlyStrings[dueDate - 1];
 export const toHalfyearlyDueDate = dueDate => healfyearlyStrings[dueDate - 1];
 export const toMonth = month => monthMap[month - 1];
 
+export const toSelectItems = (list) => list.map((text, value) => ({ text, value }))
 
 // works only for "flat" objects (no arrays or objects as properties)
 export const equals = (o1, o2) => {
