@@ -3,11 +3,20 @@ module.exports = {
     "vuetify"
   ],
   devServer: {
-    proxy:  {
+    proxy: {
       "/api": {
         target: 'http://localhost:8081'
       }
     }
+  }, 
+  pages: {
+    index: {
+      entry: 'src/main.js',
+      template: 'public/index.html',
+      filename: 'index.html',
+      title: 'Index Page',
+      chunks: ['chunk-vendors', 'chunk-common', 'index']
+    },
+    login: 'src/login/login.js'
   }
-
 }

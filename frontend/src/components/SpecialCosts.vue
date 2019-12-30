@@ -17,7 +17,7 @@
               />
             </v-card-text>
             <v-card-actions>
-              <v-btn small text @click="openEdit()">Neue Kosten Hinzufügen</v-btn>
+              <v-btn small text @click="openEdit()">Neue Sonderkosten Hinzufügen</v-btn>
               <cost-edit-form :name="title('Sonderkosten Kosten')" ref="editForm" :changed="changed">
                 <v-row>
                   <v-col>
