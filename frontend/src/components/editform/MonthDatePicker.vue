@@ -30,7 +30,8 @@
   </v-menu>
 </template>
 <script>
-import { monthStringToString } from "../Utils";
+import { displayLongMonth } from "../Utils";
+
 
 const nowDate = new Date();
 
@@ -46,7 +47,9 @@ export default {
   },
   computed: {
     displayDate() {
-      return monthStringToString(this.value);
+      if (!this.value) return null;
+      const elems = this.value.split("-");
+      return displayLongMonth(elems);
     },
     minDate() {
       return this.min || this.now;

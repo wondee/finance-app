@@ -17,12 +17,6 @@ export const monthMap = [
   'Dezember',
 ]
 
-export const monthStringToString = (str) => {
-  if (!str) return null;
-  const elems = str.split('-');
-  return monthToString(elems)
-}
-
 export const monthToString = ([ year, month ] = [ 0, 0 ]) =>
   (month == 0) ? '-' : displayMonth([ year, month ]);
 

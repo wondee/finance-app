@@ -17,7 +17,7 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-checkbox v-model="form.incoming" label="Eingehend" color="primary" />
+        <incoming-select v-model="form.incoming" />
       </v-col>
     </v-row>
     <v-row>
@@ -31,6 +31,7 @@ import { CommonForm, monthlyCostToForm, toSelectItems, healfyearlyStrings } from
 import CostEditForm from "./CostEditForm";
 import NameTextField from "./NameTextField";
 import FromToDateFields from "./FromToDateFields";
+import IncomingSelect from './IncomingSelect';
 
 const costToForm = cost => {
   const form = monthlyCostToForm(cost);
@@ -51,7 +52,8 @@ export default {
     CostEditForm,
     NameTextField,
     CurrencyInput,
-    FromToDateFields
+    FromToDateFields,
+    IncomingSelect
   },
   data() {
     return {

@@ -31,7 +31,7 @@
                 </v-row>
                 <v-row>
                   <v-col>
-                    <v-checkbox v-model="form.incoming" label="Eingehend" color="primary" />
+                    <incoming-select v-model="form.incoming" />
                   </v-col>
                 </v-row>
                 <v-row>
@@ -64,6 +64,7 @@ import CurrencyInput from "./editform/CurrencyInput";
 import CostEditForm from "./editform/CostEditForm";
 import NameTextField from "./editform/NameTextField";
 import MonthDatePicker from './editform/MonthDatePicker';
+import IncomingSelect from './editform/IncomingSelect';
 
 const cols = [
   { name: "name", label: "Bezeichnung" },
@@ -92,7 +93,8 @@ export default {
     CostEditForm,
     NameTextField,
     CurrencyInput,
-    MonthDatePicker
+    MonthDatePicker,
+    IncomingSelect
   },
   data() {
     return {

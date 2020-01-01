@@ -12,7 +12,7 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-checkbox v-model="form.incoming" label="Eingehend" color="primary" />
+        <incoming-select v-model="form.incoming" />
       </v-col>
     </v-row>
     <v-row>
@@ -26,6 +26,7 @@ import { CommonForm, monthlyCostToForm } from "../Utils";
 import CostEditForm from "./CostEditForm";
 import NameTextField from "./NameTextField";
 import FromToDateFields from './FromToDateFields';
+import IncomingSelect from './IncomingSelect';
 
 export default {
   mixins: [CommonForm(monthlyCostToForm)],
@@ -33,7 +34,8 @@ export default {
     CostEditForm,
     NameTextField,
     CurrencyInput,
-    FromToDateFields
+    FromToDateFields,
+    IncomingSelect
   }
 };
 </script>
