@@ -21,9 +21,28 @@
               <v-btn icon @click="$emit('edit-clicked', entry)">
                 <v-icon small>fa-edit</v-icon>
               </v-btn>
-              <v-btn icon @click="$emit('delete-clicked', entry)">
-                <v-icon small>fa-trash-alt</v-icon>
-              </v-btn>
+              <v-dialog v-model="showDelete" max-width="600">
+                <template v-slot:activator="{ on }">
+                  <v-btn icon v-on="on">
+                    <v-icon small>fa-trash-alt</v-icon>
+                  </v-btn>
+                </template>
+                <v-card>
+                  <v-card-title>
+                    <span>'{{ entry.name }}' Löschen</span>
+                  </v-card-title>
+                  <v-card-text>
+                    <p>Die Kosten <strong>{{ entry.name }}</strong> wird unwiderruflich gelöscht.</p>
+                    
+                    <p>Sind Sie sich sicher?</p>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn text @click="showDelete = false">Abbrechen</v-btn>
+                    <v-btn color="error" @click="showDelete = false; $emit('delete-clicked', entry)">Löschen</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
             </td>
           </tr>
         </tbody>
@@ -36,16 +55,21 @@
 <script>
 export default {
   props: ["entries", "cols"],
+  data() {
+    return {
+      showDelete: false
+    }
+  },
   methods: {
     transform: (f, v) => (f ? f(v) : v),
     filter(cols) {
-      return cols.filter(col => !col.hide || this.$vuetify.breakpoint.mdAndUp)
+      return cols.filter(col => !col.hide || this.$vuetify.breakpoint.mdAndUp);
     }
   },
   computed: {
     empty() {
       return !this.entries || this.entries.length == 0;
-    },
-  }, 
+    }
+  }
 };
 </script>
