@@ -20,11 +20,16 @@ export const monthMap = [
 export const monthStringToString = (str) => {
   if (!str) return null;
   const elems = str.split('-');
-  return monthToString({ month: elems[1], year: elems[0] })
+  return monthToString(elems)
 }
 
-export const monthToString = ({ month, year } = { month: 0, year: 0 }) =>
-  (month == 0) ? '-' : `${monthMap[month - 1]} / ${year}`;
+export const monthToString = ([ year, month ] = [ 0, 0 ]) =>
+  (month == 0) ? '-' : displayMonth([ year, month ]);
+
+export const displayMonth = ([ year, month ]) =>
+  `${window.innerWidth < 768 ? month : monthMap[month - 1]} / ${year}`
+    
+export const displayLongMonth = ([ year, month ]) => `${monthMap[month - 1]} / ${year}`
 
 
 const delimiter = (list) => list.length > 2 ? ', ' : ' und ';
@@ -53,6 +58,8 @@ export const equals = (o1, o2) => {
   return diff.length === 0 && !keys1.some(key => o1[key] !== o2[key]);
 }
 
+export const toClientDate = date => date ? date.join('-') : null
+
 export const monthlyCostToForm = cost =>
   cost
     ? {
@@ -60,8 +67,8 @@ export const monthlyCostToForm = cost =>
       amount: Math.abs(cost.amount),
       incoming: cost.amount > 0,
       fromTo: {
-        from: cost.from,
-        to: cost.to
+        from: toClientDate(cost.from),
+        to: toClientDate(cost.to)
       }
     }
     : {

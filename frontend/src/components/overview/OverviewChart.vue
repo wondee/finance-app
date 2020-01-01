@@ -37,8 +37,8 @@ export default {
           labels,
           datasets: [
             {
-              backgroundColor: "#DDDDDD",
-              borderColor: "#555555",
+              backgroundColor: "#DDDDFF",
+              borderColor: "#777777",
               borderWidth: 1,
               pointRadius: 2,
               pointHoverRadius: 5,

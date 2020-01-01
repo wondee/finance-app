@@ -1,0 +1,12 @@
+
+td.action-cell {
+  white-space:nowrap;
+}
+
+.tight-table td, .tight-table th {
+  padding: 0 7px !important;
+}
+
+
+.amount { font-weight: bold; }
+.negative-amount { color:red; }

@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-simple-table fixed-header>
+    <v-simple-table fixed-header :class="{ 'tight-table': $vuetify.breakpoint.xs }">
       <template v-slot:default>
         <thead>
           <tr>
@@ -14,21 +14,21 @@
         <tbody>
           <tr :key="index" v-for="(entry, index) in entries">
             <td>{{ entry | displayMonth }}</td>
-            <td>{{ entry.displayFixedAmount }}</td>
+            <td>{{ entry.displayFixedAmount | responsive }}</td>
             <td>{{ entry.displaySpecialAmount | responsive }}</td>
             <td
               class="amount"
               :class="{ 'negative-amount': entry.currentAmount < 0}"
             >{{ entry.displayCurrentAmount | responsive }}</td>
-            <td align="right">
+            <td align="right" class="action-cell">
               <v-btn icon @click="showModal($event, index)" v-if="!entry.empty">
-                <v-icon>fa-file-alt</v-icon>
+                <v-icon small>fa-file-alt</v-icon>
               </v-btn>
               <v-btn
                 icon
                 :to="'/specialcosts/add?target=overview&month=' + entry.yearMonth[1] + '&year=' + entry.yearMonth[0]"
               >
-                <v-icon>fa-plus-square</v-icon>
+                <v-icon small>fa-plus-square</v-icon>
               </v-btn>
             </td>
           </tr>
@@ -40,6 +40,7 @@
 </template>
 <script>
 import OverviewDetails from './OverviewDetails';
+import { displayMonth } from '../Utils';
 
 export default {
   props: ["entries"],
@@ -53,10 +54,7 @@ export default {
     };
   },
   filters: {
-    displayMonth: entry =>
-      window.innerWidth < 768
-        ? entry.yearMonth[1] + " / " + entry.yearMonth[0]
-        : entry.displayMonth,
+    displayMonth: ({ yearMonth }) => displayMonth(yearMonth),
 
     responsive: function(value) {
       if (value.length > 5 && window.innerWidth < 768) {

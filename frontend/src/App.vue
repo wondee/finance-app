@@ -29,13 +29,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.v-card.div {
-  width: 100%;
-}
-h2 {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-</style>

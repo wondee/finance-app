@@ -56,7 +56,8 @@ import {
   CommonForm,
   toCurrency,
   monthlyCostToForm,
-  monthStringToString
+  monthToString,
+  toClientDate
 } from "./Utils";
 
 import CurrencyInput from "./editform/CurrencyInput";
@@ -67,7 +68,7 @@ import MonthDatePicker from './editform/MonthDatePicker';
 const cols = [
   { name: "name", label: "Bezeichnung" },
   { name: "amount", label: "Betrag", transformer: toCurrency },
-  { name: "dueDate", label: "Fällig am", transformer: monthStringToString }
+  { name: "dueDate", label: "Fällig am", transformer: monthToString }
 ];
 
 const costToForm = cost => {
@@ -80,7 +81,7 @@ const costToForm = cost => {
       }
     : {
         ...form,
-        dueDate: cost.dueDate
+        dueDate: toClientDate(cost.dueDate)
       };
 };
 

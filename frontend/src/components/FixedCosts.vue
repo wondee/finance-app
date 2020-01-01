@@ -36,7 +36,14 @@
                       :entries="monthly"
                       :cols="monthlyCols"
                       @edit-clicked="openEdit('monthlyEdit', $event)"
-                    />
+                    >
+                      <template v-if="$vuetify.breakpoint.smAndDown" v-slot:header>
+                        <th />
+                      </template>
+                      <template v-if="$vuetify.breakpoint.smAndDown" v-slot:content="slotProps">
+                        <responsive-date-col :entry="slotProps.entry" />
+                      </template>
+                    </fixed-costs-table>
                   </v-card-text>
                   <v-card-actions>
                     <v-btn small text @click="openEdit('monthlyEdit')">Neue Kosten Hinzufügen</v-btn>
@@ -105,7 +112,7 @@
 import FixedCostsTable from "./FixedCostTable";
 import LoadablePage from "./LoadablePage";
 import {
-  monthStringToString,
+  monthToString,
   toCurrency,
   toQuaterlyDueDate,
   toHalfyearlyDueDate,
@@ -114,16 +121,22 @@ import {
 
 import MonthlyCostEditForm from "./editform/MonthlyCostEditForm";
 import QuaterlyCostEditForm from "./editform/QuaterlyCostEditForm";
-import HalfyearlyCostEditForm from './editform/HalfyearlyCostEditForm';
-import YearlyCostEditForm from './editform/YearlyCostEditForm';
+import HalfyearlyCostEditForm from "./editform/HalfyearlyCostEditForm";
+import YearlyCostEditForm from "./editform/YearlyCostEditForm";
+import ResponsiveDateCol from './ResponsiveDateCol';
 
-const monthTranformer = m => monthStringToString(m) || "-";
+const monthTranformer = m => monthToString(m) || "-";
 
 const defaultCols = [
   { name: "name", label: "Bezeichnung" },
   { name: "amount", label: "Betrag", transformer: toCurrency },
-  { name: "from", label: "Gültig ab", transformer: monthTranformer },
-  { name: "to", label: "Gültig bis", transformer: monthTranformer }
+  {
+    name: "from",
+    label: "Gültig ab",
+    transformer: monthTranformer,
+    hide: true
+  },
+  { name: "to", label: "Gültig bis", transformer: monthTranformer, hide: true }
 ];
 
 function cols(additionalCols = false) {
@@ -154,7 +167,8 @@ export default {
     MonthlyCostEditForm,
     QuaterlyCostEditForm,
     HalfyearlyCostEditForm,
-    YearlyCostEditForm
+    YearlyCostEditForm,
+    ResponsiveDateCol
   },
   data() {
     return {

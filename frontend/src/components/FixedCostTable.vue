@@ -4,7 +4,8 @@
       <template v-slot:default>
         <thead>
           <tr>
-            <th :key="col.name" v-for="col in cols" :class="col.styleClass">{{ col.label }}</th>
+            <th :key="col.name" v-for="col in filter(cols)" :class="col.styleClass">{{ col.label }}</th>
+            <slot name="header" />
             <th></th>
           </tr>
         </thead>
@@ -12,15 +13,16 @@
           <tr :key="index" v-for="(entry, index) in entries">
             <td
               :key="col.name"
-              v-for="col in cols"
+              v-for="col in filter(cols)"
               :class="col.styleClass"
             >{{ transform(col.transformer, entry[col.name]) }}</td>
-            <td align="right">
+            <slot name="content" :entry="entry" />
+            <td align="right" class="action-cell">
               <v-btn icon @click="$emit('edit-clicked', entry)">
-                <v-icon>fa-edit</v-icon>
+                <v-icon small>fa-edit</v-icon>
               </v-btn>
               <v-btn icon @click="$emit('delete-clicked', entry)">
-                <v-icon>fa-trash-alt</v-icon>
+                <v-icon small>fa-trash-alt</v-icon>
               </v-btn>
             </td>
           </tr>
@@ -35,12 +37,15 @@
 export default {
   props: ["entries", "cols"],
   methods: {
-    transform: (f, v) => (f ? f(v) : v)
+    transform: (f, v) => (f ? f(v) : v),
+    filter(cols) {
+      return cols.filter(col => !col.hide || this.$vuetify.breakpoint.mdAndUp)
+    }
   },
   computed: {
     empty() {
       return !this.entries || this.entries.length == 0;
     },
-  }
+  }, 
 };
 </script>
