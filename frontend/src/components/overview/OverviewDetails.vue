@@ -55,8 +55,8 @@
 
 <script>
 import LoadablePage from "../LoadablePage";
-import DeleteButton from '../DeleteButton';
-import SpecialCostForm from '../editform/SpecialCostForm';
+import DeleteButton from "../DeleteButton";
+import SpecialCostForm from "../editform/SpecialCostForm";
 export default {
   mixins: [LoadablePage],
   components: { DeleteButton, SpecialCostForm },
@@ -85,7 +85,7 @@ export default {
       this.specialCosts = result.specialCosts || [];
     },
     deleteSpecialCost(id) {
-      window.console.log('delete', id)
+      window.console.log("delete", id);
     }
   }
 };

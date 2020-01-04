@@ -33,6 +33,8 @@ mockserver -p 8081 -m .\mockdata\
 ```
 
 
+## TODOs
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Ändern aktueller Betrag in Textfeld
+- Sonderkosten auf Übersicht Titel fehlt
+- Fehlerhandling Loginseite

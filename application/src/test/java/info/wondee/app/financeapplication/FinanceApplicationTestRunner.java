@@ -31,7 +31,9 @@ public class FinanceApplicationTestRunner implements CommandLineRunner{
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     String encode = encoder.encode("Demo");
-    
+
+
+
     UserAccount entity = new UserAccount(null, "Demo", encode, null);
     repository.insert(entity );
     
@@ -41,7 +43,13 @@ public class FinanceApplicationTestRunner implements CommandLineRunner{
 
   
   public static void main(String[] args) {
-    SpringApplication.run(FinanceApplication.class, args);
+    // SpringApplication.run(FinanceApplication.class, args);
+
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    String encode = encoder.encode("Demo");
+
+    System.out.println(encode);
 
   }
 

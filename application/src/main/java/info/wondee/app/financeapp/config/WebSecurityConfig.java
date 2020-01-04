@@ -17,19 +17,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
       http
         .authorizeRequests()
-          .antMatchers(
-              "/public/**", 
-              "/.well-known/**", 
-              "/resources/**",
-              "/legal/**").permitAll()
-          .anyRequest().authenticated()
+          .antMatchers("/api", "/")
+              .authenticated()
+              .anyRequest()
+              .permitAll()
           .and()
         .formLogin()
           .loginPage("/login")
           .permitAll()
           .and()
         .logout()
-          .permitAll();
+          .permitAll()
+          .and()
+      .csrf().disable();
   }
 
   @Autowired

@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -23,6 +24,7 @@ public class OverviewEntry implements Serializable {
   private static final Comparator<CostPresenter<? extends Cost>> amountComparator 
         = ((o1, o2) -> Integer.compare(o2.getAmount(), o1.getAmount()));
 
+  @JsonFormat(shape = JsonFormat.Shape.ARRAY)
   private YearMonth yearMonth;
   private int currentAmount;
   

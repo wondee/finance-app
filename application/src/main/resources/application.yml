@@ -7,7 +7,7 @@ spring:
   cache.type: redis
   redis:
     host: ${SPRING_REDIS_HOST:local.docker}
-    port: ${SPRING_REDIS_PORT:32768}
+    port: ${SPRING_REDIS_PORT:6379}
 
   session.redis: 
     flush-mode: on-save
@@ -17,6 +17,6 @@ spring:
 
 server.servlet.session.timeout: 15
 
-#logging.level: 
-#  org.springframework: DEBUG
+logging.level:
+  org.springframework: DEBUG
 #  info.wondee: DEBUG

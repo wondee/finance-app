@@ -12,6 +12,7 @@ import org.springframework.http.CacheControl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -19,44 +20,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.resource.ContentVersionStrategy;
 import org.springframework.web.servlet.resource.VersionResourceResolver;
+import org.springframework.web.servlet.view.InternalResourceView;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 @Configuration
-@EnableWebMvc
 @EnableCaching
 @EnableRedisHttpSession
 public class WebConfig implements WebMvcConfigurer {
- 
-  @Autowired
-  private RequestMappingHandlerAdapter requestMappingHandlerAdapter;
 
-  
-  @PostConstruct
-  public void init() {
-      requestMappingHandlerAdapter.setIgnoreDefaultModelOnRedirect(true);
-  }
-  
-  @Override
-  public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
-    VersionResourceResolver versionResourceResolver = new VersionResourceResolver()
-        .addVersionStrategy(new ContentVersionStrategy(), "/**");
- 
-    registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/static/")
-      .setCacheControl(CacheControl.maxAge(5, TimeUnit.DAYS))
-      .resourceChain(true)
-      .addResolver(versionResourceResolver);
-    
-  }
-  
   public void addViewControllers(ViewControllerRegistry registry) {
-    registry.addViewController("/login").setViewName("login");
-    registry.addViewController("/error").setViewName("error");
-    registry.addViewController("/legal/impressum").setViewName("impressum");
-    registry.addViewController("/legal/datenschutz").setViewName("datenschutz");
-    
-    registry.addViewController("/settings").setViewName("settings");
+    registry.addViewController("/").setViewName("index.html");
+    registry.addViewController("/login").setViewName("login.html");
   }
-  
+
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
