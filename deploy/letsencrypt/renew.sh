@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 sudo certbot certonly --webroot -w /var/lib/docker/volumes/deploy_letsencrypt_www/_data -d finance.wondee.info -d jenkins.wondee.info
 sudo su
