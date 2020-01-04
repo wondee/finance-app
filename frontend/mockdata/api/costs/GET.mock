@@ -11,10 +11,12 @@ Response-Delay: 500
     {"id": "1235", "name": "Test2", "to": [2021, 7], "amount": -400} 
   ],
   "quaterly": [
-    {"id": "2", "name": "Gehalt", "dueMonth": 2,  "amount": -300}
+    {"id": "2", "name": "Gehalt", "dueMonth": 2,  "amount": -300},
+    {"id": "2", "name": "Blabla", "dueMonth": 2, "from": [2021, 2], "amount": -300}
   ],
   "halfyearly": [
-    {"id": "4", "name": "Versicherung", "dueMonth": 4,  "amount": -1000}
+    {"id": "4", "name": "Versicherung", "dueMonth": 4,  "amount": -1000},
+    {"id": "4", "name": "Irgendwas anderes", "dueMonth": 4, "from": [2022, 2], "amount": -1000}
   ]
 
 }

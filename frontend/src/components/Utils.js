@@ -79,10 +79,10 @@ export const monthlyCostToForm = cost =>
 
 export const CommonForm = (costToForm) => ({
 
+  props: ['cost'],
   data() {
     return {
-      form: {},
-      cost: null
+      form: costToForm(this.cost)
     }
   },
 
@@ -94,11 +94,6 @@ export const CommonForm = (costToForm) => ({
 
   methods: {
     costToForm,
-    openEdit(cost) {
-      this.cost = cost;
-      this.form = this.costToForm(cost)
-      this.$refs["editForm"].openEdit();
-    },
     title(name) {
       return `${name} ${this.cost ? "ändern" : "hinzufügen"}`
     }

@@ -1,75 +1,43 @@
 <template>
-  <div>
-    <v-simple-table fixed-header v-if="!empty">
-      <template v-slot:default>
-        <thead>
-          <tr>
-            <th :key="col.name" v-for="col in filter(cols)" :class="col.styleClass">{{ col.label }}</th>
-            <slot name="header" />
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr :key="index" v-for="(entry, index) in entries">
-            <td
-              :key="col.name"
-              v-for="col in filter(cols)"
-              :class="col.styleClass"
-            >{{ transform(col.transformer, entry[col.name]) }}</td>
-            <slot name="content" :entry="entry" />
-            <td align="right" class="action-cell">
-              <v-btn icon @click="$emit('edit-clicked', entry)">
-                <v-icon small>fa-edit</v-icon>
-              </v-btn>
-              <v-dialog v-model="showDelete" max-width="600">
-                <template v-slot:activator="{ on }">
-                  <v-btn icon v-on="on">
-                    <v-icon small>fa-trash-alt</v-icon>
-                  </v-btn>
-                </template>
-                <v-card>
-                  <v-card-title>
-                    <span>'{{ entry.name }}' Löschen</span>
-                  </v-card-title>
-                  <v-card-text>
-                    <p>Die Kosten <strong>{{ entry.name }}</strong> wird unwiderruflich gelöscht.</p>
-                    
-                    <p>Sind Sie sich sicher?</p>
-                  </v-card-text>
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn text @click="showDelete = false">Abbrechen</v-btn>
-                    <v-btn color="error" @click="showDelete = false; $emit('delete-clicked', entry)">Löschen</v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
-            </td>
-          </tr>
-        </tbody>
-      </template>
-    </v-simple-table>
-    <p v-if="empty">Keine Einträge bisher</p>
-  </div>
-</template>
+  <v-card>
+    <v-card-text>
+      <cost-table :entries="entries" :cols="cols">
+        <template v-if="$vuetify.breakpoint.smAndDown" v-slot:header>
+          <th />
+        </template>
+        <template v-if="$vuetify.breakpoint.smAndDown" v-slot:content="slotProps">
+          <responsive-date-col :entry="slotProps.entry" />
+        </template>
+        <template v-slot:edit-button="slotProps">
+          <component :is="formComponent" :cost="slotProps.entry" />
+        </template>
+      </cost-table>
+    </v-card-text>
 
+    <v-card-actions>
+      <component :is="formComponent" btn-text="Neue Kosten Hinzufügen" />
+    </v-card-actions>
+  </v-card>
+</template>
 <script>
+import CostTable from "./CostTable";
+import ResponsiveDateCol from "./ResponsiveDateCol";
+import MonthlyCostEditForm from "./editform/MonthlyCostEditForm";
+import QuaterlyCostEditForm from "./editform/QuaterlyCostEditForm";
+import HalfyearlyCostEditForm from "./editform/HalfyearlyCostEditForm";
+import YearlyCostEditForm from "./editform/YearlyCostEditForm";
+
+
 export default {
-  props: ["entries", "cols"],
-  data() {
-    return {
-      showDelete: false
-    }
-  },
-  methods: {
-    transform: (f, v) => (f ? f(v) : v),
-    filter(cols) {
-      return cols.filter(col => !col.hide || this.$vuetify.breakpoint.mdAndUp);
-    }
-  },
-  computed: {
-    empty() {
-      return !this.entries || this.entries.length == 0;
-    }
+  props: ["entries", "cols", "formComponent"],
+
+  components: {
+    CostTable,
+    ResponsiveDateCol,
+    MonthlyCostEditForm,
+    QuaterlyCostEditForm,
+    HalfyearlyCostEditForm,
+    YearlyCostEditForm
   }
 };
 </script>

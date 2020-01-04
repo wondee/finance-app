@@ -1,5 +1,5 @@
 <template>
-  <td>
+  <td  align="right">
     <v-dialog v-model="dialog" width="500" v-if="visible">
       <template v-slot:activator="{ on }">
         <v-icon small v-on="on">fa-calendar-alt</v-icon>

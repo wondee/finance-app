@@ -1,9 +1,9 @@
 <template>
   <cost-edit-form
-    :title="title('Halbjährige Kosten')"
-    ref="editForm"
+    :name="title('Sonderkosten Kosten')"
     :changed="changed"
     :btn-text="btnText"
+    :icon="icon"
   >
     <v-row>
       <v-col>
@@ -17,42 +17,35 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-select :items="items" v-model="form.dueMonth" label="Fällig in" />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
         <incoming-select v-model="form.incoming" />
       </v-col>
     </v-row>
     <v-row>
-      <from-to-date-fields v-model="form.fromTo" />
+      <v-col>
+        <month-date-picker v-model="form.dueDate" label="Fällig am" />
+      </v-col>
     </v-row>
   </cost-edit-form>
 </template>
 <script>
-import CurrencyInput from "./CurrencyInput";
-import {
-  CommonForm,
-  monthlyCostToForm,
-  toSelectItems,
-  healfyearlyStrings
-} from "../Utils";
 import CostEditForm from "./CostEditForm";
 import NameTextField from "./NameTextField";
-import FromToDateFields from "./FromToDateFields";
+import CurrencyInput from "./CurrencyInput";
 import IncomingSelect from "./IncomingSelect";
+import MonthDatePicker from "./MonthDatePicker";
+import { monthlyCostToForm, toClientDate, CommonForm } from "../Utils";
 
 const costToForm = cost => {
   const form = monthlyCostToForm(cost);
+
   return !cost
     ? {
         ...form,
-        dueMonth: null
+        dueDate: null
       }
     : {
         ...form,
-        dueMonth: cost.dueMonth - 1
+        dueDate: toClientDate(cost.dueDate)
       };
 };
 
@@ -62,14 +55,10 @@ export default {
     CostEditForm,
     NameTextField,
     CurrencyInput,
-    FromToDateFields,
-    IncomingSelect
+    IncomingSelect,
+    MonthDatePicker
   },
-  props: ["btnText"],
-  data() {
-    return {
-      items: toSelectItems(healfyearlyStrings)
-    };
-  }
+
+  props: ["btnText", "icon"]
 };
 </script>

@@ -10,36 +10,18 @@
         >
           <v-card>
             <v-card-text>
-              <fixed-cost-table
+              <cost-table
                 :entries="entries"
                 :cols="cols"
                 @edit-clicked="openEdit($event)"
-              />
+              >
+                <template v-slot:edit-button="slotProps">
+                  <special-cost-form :cost="slotProps.entry"/>    
+                </template>
+              </cost-table>
             </v-card-text>
             <v-card-actions>
-              <v-btn small text @click="openEdit()">Neue Sonderkosten Hinzufügen</v-btn>
-              <cost-edit-form :name="title('Sonderkosten Kosten')" ref="editForm" :changed="changed">
-                <v-row>
-                  <v-col>
-                    <name-text-field v-model="form.name" />
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col>
-                    <currency-input label="Betrag" v-model="form.amount" />
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col>
-                    <incoming-select v-model="form.incoming" />
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col>
-                    <month-date-picker v-model="form.dueDate" label="Fällig am" />
-                  </v-col>
-                </v-row>
-              </cost-edit-form>
+              <special-cost-form btn-text="Neue Sonderkosten Hinzufügen" />
             </v-card-actions>
           </v-card>
         </v-skeleton-loader>
@@ -50,7 +32,7 @@
 
 <script>
 import LoadablePage from "./LoadablePage";
-import FixedCostTable from "./FixedCostTable";
+import CostTable from "./CostTable";
 
 import {
   CommonForm,
@@ -59,12 +41,7 @@ import {
   monthToString,
   toClientDate
 } from "./Utils";
-
-import CurrencyInput from "./editform/CurrencyInput";
-import CostEditForm from "./editform/CostEditForm";
-import NameTextField from "./editform/NameTextField";
-import MonthDatePicker from './editform/MonthDatePicker';
-import IncomingSelect from './editform/IncomingSelect';
+import SpecialCostForm from './editform/SpecialCostForm.vue';
 
 const cols = [
   { name: "name", label: "Bezeichnung" },
@@ -89,12 +66,8 @@ const costToForm = cost => {
 export default {
   mixins: [LoadablePage, CommonForm(costToForm)],
   components: {
-    FixedCostTable,
-    CostEditForm,
-    NameTextField,
-    CurrencyInput,
-    MonthDatePicker,
-    IncomingSelect
+    CostTable,
+    SpecialCostForm
   },
   data() {
     return {

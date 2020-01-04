@@ -1,5 +1,10 @@
 <template>
-  <cost-edit-form :tiele="title('Vierteljährliche Kosten')" ref="editForm" :changed="changed">
+  <cost-edit-form
+    :tiele="title('Vierteljährliche Kosten')"
+    ref="editForm"
+    :changed="changed"
+    :btn-text="btnText"
+  >
     <v-row>
       <v-col>
         <name-text-field v-model="form.name" />
@@ -27,11 +32,16 @@
 </template>
 <script>
 import CurrencyInput from "./CurrencyInput";
-import { CommonForm, monthlyCostToForm, quaterlyStrings, toSelectItems } from "../Utils";
+import {
+  CommonForm,
+  monthlyCostToForm,
+  quaterlyStrings,
+  toSelectItems
+} from "../Utils";
 import CostEditForm from "./CostEditForm";
 import NameTextField from "./NameTextField";
 import FromToDateFields from "./FromToDateFields";
-import IncomingSelect from './IncomingSelect';
+import IncomingSelect from "./IncomingSelect";
 
 const costToForm = cost => {
   const form = monthlyCostToForm(cost);
@@ -55,6 +65,7 @@ export default {
     FromToDateFields,
     IncomingSelect
   },
+  props: ["btnText"],
   data() {
     return {
       items: toSelectItems(quaterlyStrings)

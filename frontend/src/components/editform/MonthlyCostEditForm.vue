@@ -1,5 +1,9 @@
 <template>
-  <cost-edit-form :title="title('Monatliche Kosten')" ref="editForm" :changed="changed">
+  <cost-edit-form
+    :title="title('Monatliche Kosten')"
+    :changed="changed"
+    :btn-text="btnText"
+  >
     <v-row>
       <v-col>
         <name-text-field v-model="form.name" />
@@ -25,8 +29,8 @@ import CurrencyInput from "./CurrencyInput";
 import { CommonForm, monthlyCostToForm } from "../Utils";
 import CostEditForm from "./CostEditForm";
 import NameTextField from "./NameTextField";
-import FromToDateFields from './FromToDateFields';
-import IncomingSelect from './IncomingSelect';
+import FromToDateFields from "./FromToDateFields";
+import IncomingSelect from "./IncomingSelect";
 
 export default {
   mixins: [CommonForm(monthlyCostToForm)],
@@ -36,6 +40,7 @@ export default {
     CurrencyInput,
     FromToDateFields,
     IncomingSelect
-  }
+  },
+  props: ["btnText"]
 };
 </script>

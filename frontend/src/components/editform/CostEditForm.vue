@@ -1,5 +1,11 @@
 <template>
   <v-dialog v-model="dialog" max-width="800" persistent>
+    <template v-slot:activator="{ on }">
+      <v-btn :icon="!btnText" :text="!!btnText" small v-on="on">
+        <v-icon v-if="!btnText" small>{{ btnIcon }}</v-icon>
+        <span v-if="!!btnText">{{ btnText }}</span>
+      </v-btn>
+    </template>
     <v-card v-if="dialog">
       <v-card-title>
         <span>{{ title }}</span>
@@ -21,19 +27,17 @@
 </template>
 <script>
 export default {
-  props: ["title", "changed"],
+  props: ["title", "changed", "btnText", "icon"],
   data() {
     return {
       valid: false,
-      dialog: false,
+      dialog: false
     };
   },
-  methods: {
-    openEdit() {
-      this.dialog = true;
-    },
-    onSubmit() {},
-    onReset() {}
+  computed: {
+    btnIcon() {
+      return this.icon || "fa-edit";
+    }
   }
 };
 </script>

@@ -1,7 +1,12 @@
 <template>
   <v-dialog v-model="show">
+    <template v-slot:activator="{ on }">
+      <v-btn icon v-on="on">
+        <v-icon small>fa-file-alt</v-icon>
+      </v-btn>
+    </template>
     <v-card v-if="detail">
-      <v-card-title class="healine">{{ 'Details vom ' + detail.month }}</v-card-title>
+      <v-card-title class="healine">{{ 'Details vom ' + detail.displayMonth }}</v-card-title>
       <v-skeleton-loader
         :loading="!loaded"
         transition="scale-transition"
@@ -16,17 +21,10 @@
                 <tbody>
                   <tr :key="index" v-for="(cost, index) in specialCosts">
                     <td>{{ cost.name }}</td>
-                    <td>{{ cost.displayAmount }}</td>
+                    <td>{{ cost.amount | currency }}</td>
                     <td align="right">
-                      <v-btn
-                        icon
-                        :to="'/fixedcosts/edit?target=overview&id=' + cost.id + '&type=special'"
-                      >
-                        <v-icon>fa-edit</v-icon>
-                      </v-btn>
-                      <v-btn icon :to="'/specialcosts/delete?target=overview&id=' + cost.id">
-                        <v-icon>fa-trash-alt</v-icon>
-                      </v-btn>
+                      <special-cost-form :cost="cost" />
+                      <delete-button :name="cost.name" @confirm="deleteSpecialCost(cost.id)" />
                     </td>
                   </tr>
                 </tbody>
@@ -57,35 +55,24 @@
 
 <script>
 import LoadablePage from "../LoadablePage";
+import DeleteButton from '../DeleteButton';
+import SpecialCostForm from '../editform/SpecialCostForm';
 export default {
   mixins: [LoadablePage],
+  components: { DeleteButton, SpecialCostForm },
   props: ["detail"],
   data() {
     return {
+      show: false,
       fixedCosts: null,
       specialCosts: null
     };
   },
-  computed: {
-    show: {
-      get() {
-        return !!this.detail;
-      },
-      set(val) {
-        if (!val) {
-          this.$emit("close");
-          this.loaded = false;
-        }
-      }
-    }
-  },
   watch: {
-    detail(val) {
-      this.fixedCosts = null;
-      this.specialCosts = null;
-
-      if (val) {
-        this.loadData(val.index);
+    show(val) {
+      window.console.log(this.detail);
+      if (val && !this.fixedCosts && !this.specialCosts) {
+        this.loadData(this.detail.index);
       }
     }
   },
@@ -96,6 +83,9 @@ export default {
       );
       this.fixedCosts = result.fixedCosts || [];
       this.specialCosts = result.specialCosts || [];
+    },
+    deleteSpecialCost(id) {
+      window.console.log('delete', id)
     }
   }
 };
