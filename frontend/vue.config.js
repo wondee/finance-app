@@ -5,7 +5,11 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: 'http://localhost:8081'
+        target: 'http://localhost:8080'
+      },
+      "/doLogin": {
+        target: 'http://localhost:8080',
+        hostRewrite: 'localhost:8081'
       }
     }
   }, 

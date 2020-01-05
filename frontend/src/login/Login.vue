@@ -7,8 +7,13 @@
             <v-toolbar flat>
               <v-toolbar-title>Login form</v-toolbar-title>
             </v-toolbar>
-            <v-form action="/login" method="post" v-model="valid">
+
+            <v-form action="/doLogin" method="post" v-model="valid">
               <v-card-text>
+                <v-alert type="error" v-if="error" transition="scale-transition" >
+                  Name oder Passwort ungültig. 
+                </v-alert>
+
                 <v-text-field
                   label="Name"
                   name="username"
@@ -30,7 +35,11 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
-                <v-btn text type="submit" :disabled="!valid || !username || !password">Login</v-btn>
+                <v-btn
+                  text
+                  type="submit"
+                  :disabled="!valid || !username || !password"
+                >Login</v-btn>
               </v-card-actions>
             </v-form>
           </v-card>
@@ -44,7 +53,7 @@
 import Layout from "../Layout";
 import VueRouter from "vue-router";
 
-const router = new VueRouter({});
+const router = new VueRouter({ mode: 'history'});
 
 export default {
   router,
@@ -54,13 +63,13 @@ export default {
   data() {
     return {
       valid: false,
+      error: "error" in this.$route.query,
       username: "",
-      password: "",
+      password: ""
     };
   },
   methods: {
-    requiredRule: (field) => [
-        v => !!v || `${field} darf nicht leer sein`],
+    requiredRule: field => [v => !!v || `${field} darf nicht leer sein`],
   }
 };
 </script>

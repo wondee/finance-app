@@ -10,4 +10,4 @@ RUN ls -l /app/
 
 EXPOSE 8081
 
-ENTRYPOINT ["mockserver", "-p 8081", "-m /app/"]
+ENTRYPOINT ["mockserver", "-m /app/"]
