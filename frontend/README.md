@@ -37,4 +37,4 @@ mockserver -p 8081 -m .\mockdata\
 
 - Ändern aktueller Betrag in Textfeld
 - Sonderkosten auf Übersicht Titel fehlt
-- Fehlerhandling Loginseite
+- fix current balance in fix 

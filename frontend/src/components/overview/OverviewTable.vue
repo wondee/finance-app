@@ -14,12 +14,12 @@
         <tbody>
           <tr :key="index" v-for="(entry, index) in entries">
             <td>{{ entry | displayMonth }}</td>
-            <td>{{ entry.displayFixedAmount | responsive }}</td>
-            <td>{{ entry.displaySpecialAmount | responsive }}</td>
+            <td>{{ entry.sumFixedCosts | currency | responsive }}</td>
+            <td>{{ entry.sumSpecialCosts | currency | responsive }}</td>
             <td
               class="amount"
               :class="{ 'negative-amount': entry.currentAmount < 0}"
-            >{{ entry.displayCurrentAmount | responsive }}</td>
+            >{{ entry.currentAmount | currency | responsive }}</td>
             <td align="right" class="action-cell">
               <overview-details v-if="!entry.empty" :detail="{...entry, index}" />
               <special-cost-form :cost="cost(index, entry.yearMonth)" icon="fa-plus-square"/>
@@ -60,12 +60,12 @@ export default {
     }
   },
   methods: {
-    cost(index, dueDate) {
+    cost(index, dueYearMonth) {
       return {
         index,
         name: "",
         amount: 0,
-        dueDate
+        dueYearMonth
       };
     }
   }

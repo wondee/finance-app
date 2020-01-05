@@ -5,7 +5,7 @@ import vuetify from './plugins/vuetify';
 import VueRouter from 'vue-router'
 
 import LoadablePage from './components/LoadablePage'
-import { toCurrency, displayMonth } from './components/Utils' 
+import { toCurrency, displayMonth, displayLongMonth } from './components/Utils' 
 
 
 Vue.use(VueRouter);
@@ -15,6 +15,7 @@ Vue.component('loadable-page', LoadablePage);
 
 Vue.filter('currency', toCurrency);
 Vue.filter('displayMonth', ({ yearMonth }) => displayMonth(yearMonth));
+Vue.filter('displayLongMonth',  yearMonth  => displayLongMonth(yearMonth));
 
 
 new Vue({

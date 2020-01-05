@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import info.wondee.app.financeapp.specialcosts.SpecialCostUi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
@@ -28,15 +29,15 @@ public class OverviewService {
   private static final Logger LOG = LoggerFactory.getLogger(OverviewService.class);
 
   
-  @Cacheable(cacheNames="overviewCache", key="#data.id")
-  public List<OverviewEntry> createOverviewEntries(FinanceData data, int maxEntries) {
+  //@Cacheable(cacheNames="overviewCache", key="#data.id + '-new'")
+  public List<OverviewEntryUi> createOverviewEntries(FinanceData data, int maxEntries) {
     
     Multimap<Month, FixedCost> fixedCostMap = createFixedCostMap(data);
-    Multimap<YearMonth, Cost> specialCostMap = createSpecialCostMap(data);
+    Multimap<YearMonth, SpecialCostUi> specialCostMap = createSpecialCostMap(data);
     
     LocalDate entryDate = LocalDate.now();
 
-    List<OverviewEntry> overviewEntries = Lists.newLinkedList();
+    List<OverviewEntryUi> overviewEntries = Lists.newLinkedList();
     
     int tmpAmount = data.getCurrentAmount();
     
@@ -50,7 +51,7 @@ public class OverviewService {
       
       int sumFixedCosts = sumCosts(appliableFixedCosts);
       
-      Collection<Cost> appliableSpecialCosts = specialCostMap.get(currentMonth);
+      Collection<SpecialCostUi> appliableSpecialCosts = specialCostMap.get(currentMonth);
       
       int sumSpecialCosts = sumCosts(appliableSpecialCosts);
       
@@ -60,12 +61,12 @@ public class OverviewService {
       LOG.trace("calculating {}: FixedCosts: {}", currentMonth, appliableFixedCosts);
       
       
-      OverviewEntry entry = new OverviewEntry(
+      OverviewEntryUi entry = new OverviewEntryUi(
             YearMonth.from(entryDate), 
-            tmpAmount, 
-            DisplayUtil.toPresenter(appliableFixedCosts), 
+            tmpAmount,
+            appliableFixedCosts,
             sumFixedCosts,
-            DisplayUtil.toPresenter(appliableSpecialCosts),
+            Lists.newArrayList(appliableSpecialCosts),
             sumSpecialCosts
           );
       
@@ -106,7 +107,7 @@ public class OverviewService {
     return costMap;
   }
   
-  private Multimap<YearMonth, Cost> createSpecialCostMap(FinanceData data) {
+  private Multimap<YearMonth, SpecialCostUi> createSpecialCostMap(FinanceData data) {
     
     List<SpecialCost> allSpecialCosts = data.getSpecialCosts();
     
@@ -114,10 +115,10 @@ public class OverviewService {
       allSpecialCosts.get(i).setId(i);
     }
     
-    Multimap<YearMonth, Cost> specialCostMap = HashMultimap.create();
+    Multimap<YearMonth, SpecialCostUi> specialCostMap = HashMultimap.create();
     
     for (SpecialCost specialCost : allSpecialCosts) {
-      specialCostMap.put(specialCost.getDueDate().toDate(), specialCost);
+      specialCostMap.put(specialCost.getDueDate().toDate(), new SpecialCostUi(specialCost));
     }
     
     return specialCostMap;

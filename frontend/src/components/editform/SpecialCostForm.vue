@@ -1,6 +1,6 @@
 <template>
   <cost-edit-form
-    :name="title('Sonderkosten Kosten')"
+    :title="title('Sonderkosten Kosten')"
     :changed="changed"
     :btn-text="btnText"
     :icon="icon"
@@ -22,7 +22,7 @@
     </v-row>
     <v-row>
       <v-col>
-        <month-date-picker v-model="form.dueDate" label="Fällig am" />
+        <month-date-picker v-model="form.dueYearMonth" label="Fällig am" />
       </v-col>
     </v-row>
   </cost-edit-form>
@@ -33,19 +33,18 @@ import NameTextField from "./NameTextField";
 import CurrencyInput from "./CurrencyInput";
 import IncomingSelect from "./IncomingSelect";
 import MonthDatePicker from "./MonthDatePicker";
-import { monthlyCostToForm, toClientDate, CommonForm } from "../Utils";
+import { monthlyCostToForm, CommonForm } from "../Utils";
 
 const costToForm = cost => {
   const form = monthlyCostToForm(cost);
-
   return !cost
     ? {
         ...form,
-        dueDate: null
+        dueYearMonth: null
       }
     : {
         ...form,
-        dueDate: toClientDate(cost.dueDate)
+        dueYearMonth: cost.dueYearMonth
       };
 };
 

@@ -30,7 +30,7 @@ public class FinanceApplicationTestRunner implements CommandLineRunner{
     
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    String encode = encoder.encode("Demo");
+    String encode = encoder.encode("Demo!");
 
 
 

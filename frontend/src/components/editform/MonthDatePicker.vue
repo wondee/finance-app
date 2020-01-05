@@ -47,9 +47,8 @@ export default {
   },
   computed: {
     displayDate() {
-      if (!this.value) return null;
-      const elems = this.value.split("-");
-      return displayLongMonth(elems);
+      window.console.log(this.value)
+      return displayLongMonth(this.value);
     },
     minDate() {
       return this.min || this.now;

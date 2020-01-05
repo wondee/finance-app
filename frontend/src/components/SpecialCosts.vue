@@ -38,8 +38,7 @@ import {
   CommonForm,
   toCurrency,
   monthlyCostToForm,
-  monthToString,
-  toClientDate
+  monthToString
 } from "./Utils";
 import SpecialCostForm from './editform/SpecialCostForm.vue';
 
@@ -55,11 +54,11 @@ const costToForm = cost => {
   return !cost
     ? {
         ...form,
-        dueDate: null
+        dueYearMonth: null
       }
     : {
         ...form,
-        dueDate: toClientDate(cost.dueDate)
+        dueYearMonth: cost.dueYearMonth
       };
 };
 

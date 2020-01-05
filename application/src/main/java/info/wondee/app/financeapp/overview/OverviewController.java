@@ -42,7 +42,7 @@ public class OverviewController {
   public HttpEntity<Map<String, Object>> getOverview() {
     FinanceData data = userService.findFinanceData();
 
-    List<OverviewEntry> allEntries = overviewService.createOverviewEntries(data, MAX_ENTRIES);
+    List<OverviewEntryUi> allEntries = overviewService.createOverviewEntries(data, MAX_ENTRIES);
 
     return new HttpEntity<>(of(
             "currentAmount", data.getCurrentAmount(),
@@ -51,17 +51,21 @@ public class OverviewController {
   }
 
   @GetMapping(path = "/detail", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  public HttpEntity<Map<String, List<? extends CostPresenter<? extends Cost>>>> getOverviewDetail(@RequestParam("index") int index) {
+  public HttpEntity<Map<String, Object>> getOverviewDetail(@RequestParam("index") int index) {
 
     FinanceData data = userService.findFinanceData();
 
-    List<OverviewEntry> entries = overviewService.createOverviewEntries(data, MAX_ENTRIES);
-    OverviewEntry entry = entries.get(index);
+    List<OverviewEntryUi> entries = overviewService.createOverviewEntries(data, MAX_ENTRIES);
+    OverviewEntryUi entry = entries.get(index);
 
-    ImmutableMap<String, List<? extends CostPresenter<? extends Cost>>> result =
-        of("fixedCosts", entry.getFixedCosts(), "specialCosts", entry.getSpecialCosts());
+    System.out.println("--- " + entry);
 
-    return new HttpEntity<>(result);
+    return new HttpEntity<>(
+        of(
+          "fixedCosts", entry.getFixedCosts(),
+          "specialCosts", entry.getSpecialCosts()
+        )
+    );
 
   }
 

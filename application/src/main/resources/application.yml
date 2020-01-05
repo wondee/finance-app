@@ -17,6 +17,6 @@ spring:
 
 server.servlet.session.timeout: 15
 
-logging.level:
-  org.springframework: DEBUG
+#logging.level:
+#  org.springframework: DEBUG
 #  info.wondee: DEBUG

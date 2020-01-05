@@ -24,7 +24,6 @@ public class OverviewEntry implements Serializable {
   private static final Comparator<CostPresenter<? extends Cost>> amountComparator 
         = ((o1, o2) -> Integer.compare(o2.getAmount(), o1.getAmount()));
 
-  @JsonFormat(shape = JsonFormat.Shape.ARRAY)
   private YearMonth yearMonth;
   private int currentAmount;
   

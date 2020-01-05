@@ -6,7 +6,7 @@
       </v-btn>
     </template>
     <v-card v-if="detail">
-      <v-card-title class="healine">{{ 'Details vom ' + detail.displayMonth }}</v-card-title>
+      <v-card-title class="healine">Details vom {{ detail.yearMonth | displayLongMonth }}</v-card-title>
       <v-skeleton-loader
         :loading="!loaded"
         transition="scale-transition"
@@ -40,7 +40,7 @@
                 <tbody>
                   <tr :key="index" v-for="(cost, index) in fixedCosts">
                     <td>{{ cost.name }}</td>
-                    <td>{{ cost.displayAmount }}</td>
+                    <td>{{ cost.amount | currency }}</td>
                     <td>{{ cost.displayType }}</td>
                   </tr>
                 </tbody>
@@ -70,7 +70,6 @@ export default {
   },
   watch: {
     show(val) {
-      window.console.log(this.detail);
       if (val && !this.fixedCosts && !this.specialCosts) {
         this.loadData(this.detail.index);
       }
