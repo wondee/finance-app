@@ -73,14 +73,12 @@
 import FixedCostsTable from "./FixedCostTable";
 import LoadablePage from "./LoadablePage";
 import {
-  monthToString,
+  displayMonth,
   toCurrency,
   toQuaterlyDueDate,
   toHalfyearlyDueDate,
   toMonth
 } from "./Utils";
-
-const monthTranformer = m => monthToString(m) || "-";
 
 const defaultCols = [
   { name: "name", label: "Bezeichnung" },
@@ -88,10 +86,10 @@ const defaultCols = [
   {
     name: "from",
     label: "Gültig ab",
-    transformer: monthTranformer,
+    transformer: displayMonth,
     hide: true
   },
-  { name: "to", label: "Gültig bis", transformer: monthTranformer, hide: true }
+  { name: "to", label: "Gültig bis", transformer: displayMonth, hide: true }
 ];
 
 function cols(additionalCols = false) {

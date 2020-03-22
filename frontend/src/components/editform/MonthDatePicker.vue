@@ -20,7 +20,7 @@
       />
     </template>
     <v-date-picker
-      :value="value"
+      :value="date"
       @input="input"
       type="month"
       color="blue"
@@ -30,8 +30,7 @@
   </v-menu>
 </template>
 <script>
-import { displayLongMonth } from "../Utils";
-
+import { displayMonth } from "../Utils";
 
 const nowDate = new Date();
 
@@ -47,8 +46,10 @@ export default {
   },
   computed: {
     displayDate() {
-      window.console.log(this.value)
-      return displayLongMonth(this.value);
+      return displayMonth(this.value, false, null);
+    },
+    date() {
+      return this.value ? this.value.join('-') : null;
     },
     minDate() {
       return this.min || this.now;
@@ -56,7 +57,8 @@ export default {
   },
   methods: {
     input(e) {
-      this.$emit("input", e);
+      const inputYearMonth = e ? e.split('-') : e;
+      this.$emit("input", inputYearMonth);
       this.menu = false;
 
       this.errorMessages = [];

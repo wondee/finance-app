@@ -1,7 +1,7 @@
 <template>
   <cost-edit-form
+    :successMsg="successMsg('Halbjährige Kosten')"
     :title="title('Halbjährige Kosten')"
-    ref="editForm"
     :changed="changed"
     :btn-text="btnText"
   >

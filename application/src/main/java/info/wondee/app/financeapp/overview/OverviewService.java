@@ -18,6 +18,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
 import info.wondee.app.financeapp.DisplayUtil;
+import info.wondee.app.financeapp.FinanceMonth;
 import info.wondee.app.financeapp.financedata.FinanceData;
 import info.wondee.app.financeapp.fixedcosts.Cost;
 import info.wondee.app.financeapp.fixedcosts.FixedCost;
@@ -62,7 +63,7 @@ public class OverviewService {
       
       
       OverviewEntryUi entry = new OverviewEntryUi(
-            YearMonth.from(entryDate), 
+            new FinanceMonth(YearMonth.from(entryDate)), 
             tmpAmount,
             appliableFixedCosts,
             sumFixedCosts,

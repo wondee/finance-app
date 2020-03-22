@@ -22,17 +22,13 @@
   </td>
 </template>
 <script>
-import { displayLongMonth } from './Utils';
+
 export default {
   props: ["entry"],
   computed: {
     visible() {
       return this.entry.from || this.entry.to;
     }
-  },
-
-  filters: {
-    displayLongMonth
   },
   data() {
     return {

@@ -25,7 +25,7 @@ docker run -d -p 27017:27017 -v mongodata:/data/db mongo
 
 Run redis server locally:
 ```
-docker run -p 6379:6379 redis
+docker run -d -p 6379:6379 redis
 ```
 
 Running

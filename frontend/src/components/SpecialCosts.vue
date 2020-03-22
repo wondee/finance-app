@@ -38,14 +38,14 @@ import {
   CommonForm,
   toCurrency,
   monthlyCostToForm,
-  monthToString
+  displayMonth
 } from "./Utils";
 import SpecialCostForm from './editform/SpecialCostForm.vue';
 
 const cols = [
   { name: "name", label: "Bezeichnung" },
   { name: "amount", label: "Betrag", transformer: toCurrency },
-  { name: "dueDate", label: "Fällig am", transformer: monthToString }
+  { name: "dueDate", label: "Fällig am", transformer: displayMonth }
 ];
 
 const costToForm = cost => {

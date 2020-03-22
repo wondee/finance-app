@@ -1,25 +1,18 @@
-package info.wondee.app.financeapplication;
+package info.wondee.app.financeapp;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import info.wondee.app.financeapp.FinanceApplication;
-import info.wondee.app.financeapp.user.FinanceUser;
-import info.wondee.app.financeapp.user.FinanceUserRepository;
 import info.wondee.app.financeapp.user.UserAccount;
 import info.wondee.app.financeapp.user.UserAccountRepository;
 
 
 // uncomment and run for adding a new user to the DB
 //@SpringBootApplication
-@ComponentScan("info.wondee.app.financeapp")
-public class FinanceApplicationTestRunner implements CommandLineRunner{
+public class FinanceApplicationUserCreator implements CommandLineRunner{
   
   @Autowired
   private UserAccountRepository repository;

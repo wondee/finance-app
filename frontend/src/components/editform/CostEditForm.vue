@@ -5,6 +5,7 @@
         <v-icon v-if="!btnText" small>{{ btnIcon }}</v-icon>
         <span v-if="!!btnText">{{ btnText }}</span>
       </v-btn>
+      <v-snackbar v-model="snackbar" bottom color="success" :timeout="7000">{{ successMsg(name) }}</v-snackbar>
     </template>
     <v-card v-if="dialog">
       <v-card-title>
@@ -19,24 +20,38 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn text @click="dialog = false">Abbrechen</v-btn>
-        <v-btn text @click="dialog = false" :disabled="!valid || !changed">Speichern</v-btn>
+        <v-btn text @click="dialog = false" :disbaled="saving">Abbrechen</v-btn>
+        <v-btn
+          text
+          @click="$emit('save'); saving = true"
+          :disabled="!valid || !changed"
+          :loading="saving"
+        >Speichern</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
 <script>
 export default {
-  props: ["title", "changed", "btnText", "icon"],
+  props: ["title", "changed", "btnText", "icon", "successMsg", "name"],
   data() {
     return {
       valid: false,
-      dialog: false
+      dialog: false,
+      saving: false,
+      snackbar: false
     };
   },
   computed: {
     btnIcon() {
       return this.icon || "fa-edit";
+    }
+  },
+  methods: {
+    success() {
+      this.dialog = false;
+      this.saving = false;
+      this.snackbar = true;
     }
   }
 };

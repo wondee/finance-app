@@ -17,19 +17,16 @@ export const monthMap = [
   'Dezember',
 ]
 
-const split = str => str && str.split('-')
+export const displayMonth = (yearMonth, responsive = true, empty = '-') => {
+  if (!yearMonth) return empty;
 
-export const monthToString = str => monthToStringImpl(split(str))
-const monthToStringImpl = ([ year, month ] = [ 0, 0 ]) =>
-  (month == 0) ? '-' : displayMonth([ year, month ]);
+  const [year, month] = yearMonth;
 
-export const displayMonth = str => displayMonthImpl(split(str))
-const displayMonthImpl = ([ year, month ]) =>
-  `${window.innerWidth < 768 ? month : monthMap[month - 1]} / ${year}`
-    
-export const displayLongMonth = str => displayLongMonthImpl(split(str))
-const displayLongMonthImpl = ([ year, month ]) => `${monthMap[month - 1]} / ${year}`
+  const displayMonth = responsive && window.innerWidth < 768 ?
+    month : monthMap[month - 1];
 
+  return `${displayMonth} / ${year}`;
+} 
 
 const delimiter = (list) => list.length > 2 ? ', ' : ' und ';
 
@@ -78,11 +75,17 @@ export const monthlyCostToForm = cost =>
       }
     };
 
+export const baseFormToCost = form => ({
+  id: form.id,
+  name: form.name,
+  amount: form.amount * (form.incoming ? 1 : -1),
+})
 
 
-export const CommonForm = (costToForm) => ({
 
-  props: ['cost'],
+export const CommonForm = (costToForm, formToCost, endpoint) => ({
+
+  props: ['cost', 'add'],
   data() {
     return {
       form: costToForm(this.cost)
@@ -97,8 +100,25 @@ export const CommonForm = (costToForm) => ({
 
   methods: {
     costToForm,
+    formToCost,
     title(name) {
-      return `${name} ${this.cost ? "ändern" : "hinzufügen"}`
+      return `${name} ${this.cost && this.cost.name ? "ändern" : "hinzufügen"}`
+    },
+    successMsg(name) {
+      return costName => `${name} '${costName}' erfolgreich ${this.cost && this.cost.name ? "geändert" : "hinzugefügt"}`
+    },
+    saveCost: async function () {
+      const cost = formToCost(this.form)
+      const response = await fetch(endpoint, {
+        method: 'post', body: JSON.stringify(cost), headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+
+      window.console.log(response)
+
+      this.$refs.editform.success();
     }
+
   }
 });

@@ -76,9 +76,6 @@ public class FinanceDataRepositoryImpl implements FinanceDataCustomRepository {
     repository.save(financeData);
   }
 
-  @Scheduled(cron = "1 0 1 * * *") // schedule eviction every month at 00:01
-  @CacheEvict(value = {"financeDataCache", "overviewCache"})
-  public void clearCache() {      
-  }
+  
 
 }

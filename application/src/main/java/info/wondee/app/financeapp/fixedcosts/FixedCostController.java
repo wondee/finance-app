@@ -27,6 +27,7 @@ import info.wondee.app.financeapp.financedata.FinanceData;
 import info.wondee.app.financeapp.financedata.FinanceDataRepository;
 import info.wondee.app.financeapp.user.UserService;
 
+@Deprecated
 @Controller
 @RequestMapping("/fixedcosts")
 public class FixedCostController {
