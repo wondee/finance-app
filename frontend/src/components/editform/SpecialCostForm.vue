@@ -26,7 +26,7 @@
     </v-row>
     <v-row>
       <v-col>
-        <month-date-picker v-model="form.dueYearMonth" label="Fällig am" />
+        <month-date-picker v-model="form.dueDate" label="Fällig am" />
       </v-col>
     </v-row>
   </cost-edit-form>
@@ -44,17 +44,17 @@ const costToForm = cost => {
   return !cost
     ? {
         ...form,
-        dueYearMonth: null
+        dueDate: null
       }
     : {
         ...form,
-        dueYearMonth: cost.dueYearMonth
+        dueDate: cost.dueDate
       };
 };
 
 const formToCost = form => ({
   ...baseFormToCost(form),
-  dueYearMonth: form.dueYearMonth
+  dueDate: form.dueDate
 })
 
 

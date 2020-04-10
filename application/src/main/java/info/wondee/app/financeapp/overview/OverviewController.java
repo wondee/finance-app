@@ -1,5 +1,7 @@
 package info.wondee.app.financeapp.overview;
 
+import static com.google.common.collect.ImmutableMap.of;
+
 import java.util.List;
 import java.util.Map;
 
@@ -7,21 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.google.common.collect.ImmutableMap;
-
 import info.wondee.app.financeapp.financedata.FinanceData;
 import info.wondee.app.financeapp.financedata.FinanceDataRepository;
-import info.wondee.app.financeapp.fixedcosts.Cost;
-import info.wondee.app.financeapp.fixedcosts.CostPresenter;
 import info.wondee.app.financeapp.user.UserService;
-
-import static com.google.common.collect.ImmutableMap.of;
 
 @Controller
 @RequestMapping("api/overview")
@@ -50,7 +45,7 @@ public class OverviewController {
     );
   }
 
-  @GetMapping(path = "/detail", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+  @GetMapping(path = "/detail", produces = MediaType.APPLICATION_JSON_VALUE)
   public HttpEntity<Map<String, Object>> getOverviewDetail(@RequestParam("index") int index) {
 
     FinanceData data = userService.findFinanceData();

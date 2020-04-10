@@ -57,6 +57,7 @@ export const equals = (o1, o2) => {
 export const monthlyCostToForm = cost =>
   cost
     ? {
+      id: cost.id,
       name: cost.name,
       amount: Math.abs(cost.amount),
       incoming: cost.amount > 0,
@@ -66,6 +67,7 @@ export const monthlyCostToForm = cost =>
       }
     }
     : {
+      id: null,
       name: "",
       amount: 0,
       incoming: false,
@@ -108,14 +110,14 @@ export const CommonForm = (costToForm, formToCost, endpoint) => ({
       return costName => `${name} '${costName}' erfolgreich ${this.cost && this.cost.name ? "geändert" : "hinzugefügt"}`
     },
     saveCost: async function () {
+      
       const cost = formToCost(this.form)
-      const response = await fetch(endpoint, {
+      
+      await fetch(endpoint, {
         method: 'post', body: JSON.stringify(cost), headers: {
           'Content-Type': 'application/json'
         }
       })
-
-      window.console.log(response)
 
       this.$refs.editform.success();
     }

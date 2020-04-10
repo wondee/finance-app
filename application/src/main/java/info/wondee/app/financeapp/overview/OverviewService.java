@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import info.wondee.app.financeapp.specialcosts.SpecialCostUi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
@@ -17,7 +16,6 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
-import info.wondee.app.financeapp.DisplayUtil;
 import info.wondee.app.financeapp.FinanceMonth;
 import info.wondee.app.financeapp.financedata.FinanceData;
 import info.wondee.app.financeapp.fixedcosts.Cost;
@@ -30,11 +28,11 @@ public class OverviewService {
   private static final Logger LOG = LoggerFactory.getLogger(OverviewService.class);
 
   
-  //@Cacheable(cacheNames="overviewCache", key="#data.id + '-new'")
+  @Cacheable(cacheNames="overviewCache", key="#data.id + '-new'")
   public List<OverviewEntryUi> createOverviewEntries(FinanceData data, int maxEntries) {
     
     Multimap<Month, FixedCost> fixedCostMap = createFixedCostMap(data);
-    Multimap<YearMonth, SpecialCostUi> specialCostMap = createSpecialCostMap(data);
+    Multimap<YearMonth, SpecialCost> specialCostMap = createSpecialCostMap(data);
     
     LocalDate entryDate = LocalDate.now();
 
@@ -52,7 +50,7 @@ public class OverviewService {
       
       int sumFixedCosts = sumCosts(appliableFixedCosts);
       
-      Collection<SpecialCostUi> appliableSpecialCosts = specialCostMap.get(currentMonth);
+      Collection<SpecialCost> appliableSpecialCosts = specialCostMap.get(currentMonth);
       
       int sumSpecialCosts = sumCosts(appliableSpecialCosts);
       
@@ -108,7 +106,7 @@ public class OverviewService {
     return costMap;
   }
   
-  private Multimap<YearMonth, SpecialCostUi> createSpecialCostMap(FinanceData data) {
+  private Multimap<YearMonth, SpecialCost> createSpecialCostMap(FinanceData data) {
     
     List<SpecialCost> allSpecialCosts = data.getSpecialCosts();
     
@@ -116,10 +114,10 @@ public class OverviewService {
       allSpecialCosts.get(i).setId(i);
     }
     
-    Multimap<YearMonth, SpecialCostUi> specialCostMap = HashMultimap.create();
+    Multimap<YearMonth, SpecialCost> specialCostMap = HashMultimap.create();
     
     for (SpecialCost specialCost : allSpecialCosts) {
-      specialCostMap.put(specialCost.getDueDate().toDate(), new SpecialCostUi(specialCost));
+      specialCostMap.put(specialCost.getDueDate().toDate(), specialCost);
     }
     
     return specialCostMap;

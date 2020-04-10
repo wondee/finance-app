@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import info.wondee.app.financeapp.FinanceMonth;
 import info.wondee.app.financeapp.fixedcosts.FixedCost;
-import info.wondee.app.financeapp.specialcosts.SpecialCostUi;
+import info.wondee.app.financeapp.specialcosts.SpecialCost;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
@@ -29,7 +29,7 @@ public class OverviewEntryUi implements Serializable {
   private int sumFixedCosts;
 
   @JsonIgnore
-  private List<SpecialCostUi> specialCosts;
+  private List<SpecialCost> specialCosts;
 
   private int sumSpecialCosts;
 

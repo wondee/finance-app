@@ -2,18 +2,23 @@ package info.wondee.app.financeapp.specialcosts;
 
 import org.springframework.data.annotation.PersistenceConstructor;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import info.wondee.app.financeapp.FinanceMonth;
 import info.wondee.app.financeapp.fixedcosts.Cost;
 import info.wondee.app.financeapp.fixedcosts.CostType;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
+@EqualsAndHashCode(callSuper = true)
 public class SpecialCost extends Cost implements Comparable<SpecialCost> {
 
   private static final long serialVersionUID = 1L;
   
   private FinanceMonth dueDate;
   
+  @JsonCreator
   @PersistenceConstructor
   public SpecialCost(Integer id, String name, int amount, FinanceMonth dueDate) {
     super(id, name, amount);

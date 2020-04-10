@@ -1,7 +1,7 @@
 <template>
   <v-text-field
     :value="value"
-    @change="$emit('change', $event)"
+    @change="$emit('input', $event)"
     :rules="nameRules"
     :counter="20"
     label="Bezeichnung"

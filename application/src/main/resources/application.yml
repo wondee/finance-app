@@ -3,7 +3,8 @@ spring:
     mongodb:
       uri: ${SPRING_DATA_MONGODB_URI:mongodb://local.docker/financeapp}
       database: financeapp
-
+      auto-index-creation: true
+      
   cache.type: redis
   redis:
     host: ${SPRING_REDIS_HOST:local.docker}

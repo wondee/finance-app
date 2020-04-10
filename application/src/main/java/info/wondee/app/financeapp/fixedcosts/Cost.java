@@ -3,6 +3,7 @@ package info.wondee.app.financeapp.fixedcosts;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.wondee.app.financeapp.DisplayUtil;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -11,6 +12,7 @@ import java.io.Serializable;
 @Getter
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode
 public abstract class Cost implements Serializable {
 
   private static final long serialVersionUID = 1L;

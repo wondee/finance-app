@@ -11,15 +11,18 @@ import java.util.function.Predicate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.wondee.app.financeapp.financedata.FinanceData;
 import info.wondee.app.financeapp.financedata.FinanceDataRepository;
+import info.wondee.app.financeapp.specialcosts.SpecialCost;
 import info.wondee.app.financeapp.user.UserService;
 
 @RestController
-@RequestMapping("/api/costs")
+@RequestMapping("/api")
 public class CostController {
 
 	@Autowired
@@ -28,7 +31,7 @@ public class CostController {
 	@Autowired
 	private FinanceDataRepository financeDataRepository;
 
-	@GetMapping
+	@GetMapping("/costs")
 	public Map<String, Object> getFixedCosts() {
 
 		
@@ -48,6 +51,22 @@ public class CostController {
 
 	}
 
+
+  @GetMapping("/specialcosts")
+  public List<SpecialCost> getSpecialCosts() {
+    return userService.findFinanceData().getSpecialCosts();
+  }
+  
+  @PostMapping("/specialcosts")
+  public SpecialCost postSpecialCosts(@RequestBody SpecialCost cost) {
+  	
+  	financeDataRepository.save(userService.findFinanceData(), cost, cost.getId());
+  	
+    return cost;
+  }
+  
+  
+	
   
   private int calculateCurrentBalance(
       List<MonthlyFixedCost> monthly, 
