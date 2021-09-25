@@ -6,6 +6,6 @@ RUN npm install -g mockserver
 
 COPY ./ /app/
 
-EXPOSE 8081
+EXPOSE 8080
 
-ENTRYPOINT ["mockserver", "-m /app/"]
+ENTRYPOINT ["mockserver", "-p 8080", "-m /app/"]
