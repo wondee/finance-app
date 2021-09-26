@@ -28,12 +28,16 @@ func CurrentYearMonth() *YearMonth {
 }
 
 func NextYearMonth(yearMonth *YearMonth) *YearMonth {
-	nextMonth := yearMonth.Month + 1
+	return AddMonths(yearMonth, 1)
+}
+
+func AddMonths(yearMonth *YearMonth, n int) *YearMonth {
+	nextMonth := yearMonth.Month + n
 	nextYear := yearMonth.Year
 
 	if nextMonth > 12 {
-		nextMonth = 1
-		nextYear = nextYear + 1
+		nextYear = nextYear + (nextMonth / 12)
+		nextMonth = nextMonth % 12
 	}
 
 	return &YearMonth{Year: nextYear, Month: nextMonth}

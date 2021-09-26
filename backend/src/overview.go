@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,8 +21,92 @@ type OverviewEntry struct {
 	SumSpecialCosts int       `json:"sumSpecialCosts"`
 }
 
+type CostDetail struct {
+	Name   string `json:"name"`
+	Amount int    `json:"amount"`
+}
+
+type FixedCostDetail struct {
+	CostDetail
+	DisplayType string `json:"displayType"`
+}
+
+type OverviewDetail struct {
+	FixedCosts   []FixedCostDetail `json:"fixedCosts"`
+	SpecialCosts []CostDetail      `json:"specialCosts"`
+}
+
 func GetOverview(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, createOverview())
+}
+
+func GetOverviewDetail(c *gin.Context) {
+	n, err := strconv.Atoi(c.Query("index"))
+
+	if err != nil {
+		c.AbortWithStatus(http.StatusBadRequest)
+		return
+	}
+
+	c.IndentedJSON(
+		http.StatusOK,
+		createOverviewDetail(n),
+	)
+}
+
+func createOverviewDetail(n int) OverviewDetail {
+	if n > MAX_ENTRIES {
+		return OverviewDetail{}
+	}
+
+	relevantFixedCostsMap := createRelevantMap()
+	specialCostMap := createSpecialCostMap()
+
+	yearMonth := AddMonths(CurrentYearMonth(), n)
+
+	fixedCosts := make([]FixedCostDetail, 0)
+	specialCosts := make([]CostDetail, 0)
+
+	for _, cost := range relevantFixedCostsMap[yearMonth.Month] {
+		if IsRelevant(yearMonth, cost.From, cost.To) {
+
+			costDetail := FixedCostDetail{}
+			costDetail.Amount = cost.Amount
+			costDetail.Name = cost.Name
+			costDetail.DisplayType = determineDisplayType(cost.DueMonth)
+
+			fixedCosts = append(fixedCosts, costDetail)
+		}
+	}
+
+	if costs := specialCostMap[*yearMonth]; costs != nil {
+		for _, cost := range costs {
+			specialCosts = append(specialCosts, CostDetail{
+				Name:   cost.Name,
+				Amount: cost.Amount,
+			})
+		}
+	}
+
+	return OverviewDetail{
+		FixedCosts:   fixedCosts,
+		SpecialCosts: specialCosts,
+	}
+}
+
+func determineDisplayType(dueMonth []int) string {
+	switch len(dueMonth) {
+	case 1:
+		return "jährlich"
+	case 2:
+		return "halbjährlich"
+	case 4:
+		return "vierteljährlich"
+	case 12:
+		return "monatlich"
+	default:
+		return "ILLEGAL"
+	}
 }
 
 func createOverview() Overview {
@@ -30,33 +115,8 @@ func createOverview() Overview {
 	currentAmount := 3000
 	entries := make([]OverviewEntry, MAX_ENTRIES)
 
-	fixedCosts := LoadFixedCosts()
-
-	relevantFixedCostsMap := make(map[int][]FixedCost)
-
-	for _, cost := range fixedCosts {
-		for _, dueMonth := range cost.DueMonth {
-			if relevantFixedCostsMap[dueMonth] == nil {
-				relevantFixedCostsMap[dueMonth] = []FixedCost{cost}
-			} else {
-				relevantFixedCostsMap[dueMonth] =
-					append(relevantFixedCostsMap[dueMonth], cost)
-			}
-		}
-	}
-
-	specialCosts := LoadSpecialCosts()
-
-	specialCostMap := make(map[YearMonth][]SpecialCost)
-
-	for _, cost := range specialCosts {
-		if specialCostMap[cost.DueDate] == nil {
-			specialCostMap[cost.DueDate] = []SpecialCost{cost}
-		} else {
-			specialCostMap[cost.DueDate] =
-				append(specialCostMap[cost.DueDate], cost)
-		}
-	}
+	relevantFixedCostsMap := createRelevantMap()
+	specialCostMap := createSpecialCostMap()
 
 	tmpAmount := currentAmount
 	tmpYearMonth := CurrentYearMonth()
@@ -92,4 +152,34 @@ func createOverview() Overview {
 		Entries:       entries,
 	}
 
+}
+
+func createRelevantMap() map[int][]FixedCost {
+	result := make(map[int][]FixedCost)
+	for _, cost := range LoadFixedCosts() {
+		for _, dueMonth := range cost.DueMonth {
+			if result[dueMonth] == nil {
+				result[dueMonth] = []FixedCost{cost}
+			} else {
+				result[dueMonth] =
+					append(result[dueMonth], cost)
+			}
+		}
+	}
+
+	return result
+}
+
+func createSpecialCostMap() map[YearMonth][]SpecialCost {
+	result := make(map[YearMonth][]SpecialCost)
+	for _, cost := range LoadSpecialCosts() {
+		if result[cost.DueDate] == nil {
+			result[cost.DueDate] = []SpecialCost{cost}
+		} else {
+			result[cost.DueDate] =
+				append(result[cost.DueDate], cost)
+		}
+	}
+
+	return result
 }
