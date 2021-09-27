@@ -1,13 +1,49 @@
 package main
 
 import (
+	"database/sql/driver"
 	"errors"
+	"strconv"
+	"strings"
 	"time"
 )
 
 type YearMonth struct {
 	Year  int `json:"year"`
 	Month int `json:"month"`
+}
+
+func (this *YearMonth) Scan(value interface{}) error {
+	str := value.(string)
+
+	if len(str) == 0 {
+		return nil
+	}
+
+	elems := strings.Split(str, " ")
+
+	year, err := strconv.Atoi(elems[0])
+	if err != nil {
+		return err
+	}
+
+	month, err := strconv.Atoi(elems[1])
+	if err != nil {
+		return err
+	}
+
+	this.Year = year
+	this.Month = month
+
+	return nil
+}
+
+func (this *YearMonth) Value() (driver.Value, error) {
+	if this == nil {
+		return nil, nil
+	}
+
+	return strconv.Itoa(this.Year) + " " + strconv.Itoa(this.Month), nil
 }
 
 func New(year, month int) (*YearMonth, error) {

@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -25,6 +26,24 @@ type JsonFixedCost struct {
 
 func GetFixedCosts(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, createFixedCosts())
+}
+
+func SaveMonthlyFixedCosts(c *gin.Context) {
+	var cost JsonFixedCost
+	err := c.ShouldBindJSON(&cost)
+
+	if err != nil {
+		c.Status(http.StatusBadRequest)
+		return
+	}
+
+	dbObject := ToDBStruct(&cost, func(_ int) []int {
+		return ALL_MONTHS
+	})
+
+	SaveFixedObject(&dbObject)
+
+	c.Status(http.StatusOK)
 }
 
 func createFixedCosts() Response {
@@ -53,7 +72,7 @@ func createFixedCosts() Response {
 		case 12:
 			monthly = append(monthly, ToJsonStruct(&cost))
 		default:
-			panic("only 1, 2, 4 and 12 is valid ")
+			panic("only 1, 2, 4 and 12 is valid, but was " + strconv.Itoa(month))
 		}
 
 	}
@@ -75,5 +94,16 @@ func ToJsonStruct(dbObject *FixedCost) JsonFixedCost {
 		From:     dbObject.From,
 		To:       dbObject.To,
 		DueMonth: dbObject.DueMonth[0],
+	}
+}
+
+func ToDBStruct(jsonObject *JsonFixedCost, dueMonthCreator func(int) []int) FixedCost {
+	return FixedCost{
+		ID:       jsonObject.ID,
+		Name:     jsonObject.Name,
+		Amount:   jsonObject.Amount,
+		From:     jsonObject.From,
+		To:       jsonObject.To,
+		DueMonth: dueMonthCreator(jsonObject.DueMonth),
 	}
 }

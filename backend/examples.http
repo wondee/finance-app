@@ -1,0 +1,14 @@
+POST http://localhost:8082/api/costs/monthly
+content-type: application/json
+
+{
+  "name": "Miete",
+  "amount": -500,
+  "from": null,
+  "to": null,
+  "dueMonth": null
+}
+
+###
+
+GET http://localhost:8082/api/costs
