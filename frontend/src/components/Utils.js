@@ -20,7 +20,7 @@ export const monthMap = [
 export const displayMonth = (yearMonth, responsive = true, empty = '-') => {
   if (!yearMonth) return empty;
 
-  const [year, month] = yearMonth;
+  const {year, month} = yearMonth;
 
   const displayMonth = responsive && window.innerWidth < 768 ?
     month : monthMap[month - 1];

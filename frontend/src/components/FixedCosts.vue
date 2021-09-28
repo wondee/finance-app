@@ -110,7 +110,7 @@ const halfyearlyCols = cols([
 ]);
 
 const yearlyCols = cols([
-  { name: "month", label: "Fällig im", transformer: toMonth }
+  { name: "dueMonth", label: "Fällig im", transformer: toMonth }
 ]);
 
 export default {
