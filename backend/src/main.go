@@ -20,7 +20,7 @@ func ConnectDataBase() {
 		panic("Failed to connect to database!")
 	}
 
-	err = database.AutoMigrate(&FixedCost{})
+	err = database.AutoMigrate(&FixedCost{}, &SpecialCost{})
 
 	if err != nil {
 		panic(err)
@@ -36,9 +36,17 @@ func main() {
 
 	router.GET("/api/overview/all", GetOverview)
 	router.GET("/api/overview/detail", GetOverviewDetail)
+
 	router.GET("/api/costs", GetFixedCosts)
+	router.DELETE("/api/costs/:id", DeleteFixedCosts)
 	router.POST("/api/costs/monthly", SaveMonthlyFixedCosts)
+	router.POST("/api/costs/halfyearly", SaveHalfYearlyFixedCosts)
+	router.POST("/api/costs/yearly", SaveYearlyFixedCosts)
+	router.POST("/api/costs/quaterly", SaveQuaterlyFixedCosts)
+
 	router.GET("/api/specialcosts", GetSpecialCosts)
+	router.POST("/api/specialcosts", SaveSpecialCosts)
+	router.DELETE("/api/specialcosts/:id", DeleteSpecialCosts)
 
 	router.Run("localhost:8082")
 

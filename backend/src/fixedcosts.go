@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"net/http"
 	"strconv"
 
@@ -28,7 +29,54 @@ func GetFixedCosts(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, createFixedCosts())
 }
 
+func DeleteFixedCosts(c *gin.Context) {
+	param := c.Param("id")
+	id, err := strconv.Atoi(param)
+
+	if err != nil {
+		c.Status(http.StatusBadRequest)
+		return
+	}
+
+	DeleteFixedCost(id)
+}
+
+func SaveYearlyFixedCosts(c *gin.Context) {
+	saveFixedCost(c, func(dueMonth int) ([]int, error) {
+		if dueMonth < 0 || dueMonth > 12 {
+			return nil, errors.New("dueMonth for yearly must be between 1 and 12")
+		}
+		return []int{dueMonth}, nil
+	})
+}
+
+func SaveHalfYearlyFixedCosts(c *gin.Context) {
+	saveFixedCost(c, func(dueMonth int) ([]int, error) {
+		if dueMonth < 0 || dueMonth > 6 {
+			return nil, errors.New("dueMonth for halfyearly must be between 1 and 6")
+		}
+
+		return []int{dueMonth, dueMonth + 6}, nil
+	})
+}
+
+func SaveQuaterlyFixedCosts(c *gin.Context) {
+	saveFixedCost(c, func(dueMonth int) ([]int, error) {
+		if dueMonth < 0 || dueMonth > 3 {
+			return nil, errors.New("dueMonth for halfyearly must be between 1 and 3")
+		}
+
+		return []int{dueMonth, dueMonth + 3, dueMonth + 6, dueMonth + 9}, nil
+	})
+}
+
 func SaveMonthlyFixedCosts(c *gin.Context) {
+	saveFixedCost(c, func(_ int) ([]int, error) {
+		return ALL_MONTHS, nil
+	})
+}
+
+func saveFixedCost(c *gin.Context, dueMonthConverter func(int) ([]int, error)) {
 	var cost JsonFixedCost
 	err := c.ShouldBindJSON(&cost)
 
@@ -37,13 +85,14 @@ func SaveMonthlyFixedCosts(c *gin.Context) {
 		return
 	}
 
-	dbObject := ToDBStruct(&cost, func(_ int) []int {
-		return ALL_MONTHS
-	})
+	dbObject, err := ToDBStruct(&cost, dueMonthConverter)
 
-	SaveFixedObject(&dbObject)
+	if err != nil {
+		c.Status(http.StatusBadRequest)
+		return
+	}
 
-	c.Status(http.StatusOK)
+	SaveFixedObject(dbObject)
 }
 
 func createFixedCosts() Response {
@@ -57,7 +106,7 @@ func createFixedCosts() Response {
 	halfyearly := make([]JsonFixedCost, 0)
 	yearly := make([]JsonFixedCost, 0)
 
-	for _, cost := range costs {
+	for _, cost := range *costs {
 		if IsRelevant(currentYearMonth, cost.From, cost.To) {
 			currentBalance += cost.Amount
 		}
@@ -97,13 +146,22 @@ func ToJsonStruct(dbObject *FixedCost) JsonFixedCost {
 	}
 }
 
-func ToDBStruct(jsonObject *JsonFixedCost, dueMonthCreator func(int) []int) FixedCost {
-	return FixedCost{
+func ToDBStruct(
+	jsonObject *JsonFixedCost,
+	dueMonthCreator func(int) ([]int, error),
+) (*FixedCost, error) {
+	value, err := dueMonthCreator(jsonObject.DueMonth)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &FixedCost{
 		ID:       jsonObject.ID,
 		Name:     jsonObject.Name,
 		Amount:   jsonObject.Amount,
 		From:     jsonObject.From,
 		To:       jsonObject.To,
-		DueMonth: dueMonthCreator(jsonObject.DueMonth),
-	}
+		DueMonth: value,
+	}, nil
 }

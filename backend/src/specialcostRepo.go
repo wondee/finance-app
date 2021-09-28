@@ -1,33 +1,26 @@
 package main
 
 type SpecialCost struct {
-	ID      int
+	ID      int `gorm:primary_key`
 	Name    string
 	Amount  int
-	DueDate YearMonth
+	DueDate *YearMonth
 }
 
-var specialCosts = []SpecialCost{
-	{
-		ID:      1,
-		Name:    "Steuer",
-		Amount:  100,
-		DueDate: YearMonth{2022, 2},
-	},
-	{
-		ID:      2,
-		Name:    "Urlaub",
-		Amount:  -2500,
-		DueDate: YearMonth{2021, 12},
-	},
-	{
-		ID:      3,
-		Name:    "Waschmaschine",
-		Amount:  -300,
-		DueDate: YearMonth{2022, 2},
-	},
+func LoadSpecialCosts() *[]SpecialCost {
+	var specialCosts []SpecialCost
+	DB.Find(&specialCosts)
+	return &specialCosts
 }
 
-func LoadSpecialCosts() []SpecialCost {
-	return specialCosts
+func SaveSpecialCost(cost *SpecialCost) {
+	if cost.ID == 0 {
+		DB.Create(cost)
+	} else {
+		DB.Save(cost)
+	}
+}
+
+func DeleteSpecialCost(id int) {
+	DB.Delete(&SpecialCost{}, id)
 }

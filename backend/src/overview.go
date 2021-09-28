@@ -156,7 +156,7 @@ func createOverview() Overview {
 
 func createRelevantMap() map[int][]FixedCost {
 	result := make(map[int][]FixedCost)
-	for _, cost := range LoadFixedCosts() {
+	for _, cost := range *LoadFixedCosts() {
 		for _, dueMonth := range cost.DueMonth {
 			if result[dueMonth] == nil {
 				result[dueMonth] = []FixedCost{cost}
@@ -172,12 +172,12 @@ func createRelevantMap() map[int][]FixedCost {
 
 func createSpecialCostMap() map[YearMonth][]SpecialCost {
 	result := make(map[YearMonth][]SpecialCost)
-	for _, cost := range LoadSpecialCosts() {
-		if result[cost.DueDate] == nil {
-			result[cost.DueDate] = []SpecialCost{cost}
+	for _, cost := range *LoadSpecialCosts() {
+		if result[*cost.DueDate] == nil {
+			result[*cost.DueDate] = []SpecialCost{cost}
 		} else {
-			result[cost.DueDate] =
-				append(result[cost.DueDate], cost)
+			result[*cost.DueDate] =
+				append(result[*cost.DueDate], cost)
 		}
 	}
 

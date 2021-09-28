@@ -1,14 +1,32 @@
-POST http://localhost:8082/api/costs/monthly
+POST http://localhost:8082/api/costs/halfyearly
 content-type: application/json
 
 {
-  "name": "Miete",
-  "amount": -500,
+  "id": null,
+  "name": "Sportverein",
+  "amount": -10,
   "from": null,
   "to": null,
-  "dueMonth": null
+  "dueMonth": 5
 }
-
 ###
+POST http://localhost:8082/api/specialcosts
+content-type: application/json
 
+{
+  "id": null,
+  "name": "Urlaub",
+  "amount": -2000,
+  "dueDate": {
+    "year": 2021,
+    "month": 12
+  }
+}
+###
 GET http://localhost:8082/api/costs
+###
+GET http://localhost:8082/api/specialcosts
+###
+DELETE http://localhost:8082/api/costs/4
+###
+GET http://localhost:8082/api/overview/all

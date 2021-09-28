@@ -19,12 +19,12 @@ type months []int
 
 var ALL_MONTHS = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
 
-func LoadFixedCosts() []FixedCost {
+func LoadFixedCosts() *[]FixedCost {
 	//return costs
 	var costs []FixedCost
 	DB.Find(&costs)
 
-	return costs
+	return &costs
 }
 
 func SaveFixedObject(cost *FixedCost) {
@@ -35,6 +35,10 @@ func SaveFixedObject(cost *FixedCost) {
 		DB.Save(cost)
 	}
 
+}
+
+func DeleteFixedCost(id int) {
+	DB.Delete(&FixedCost{}, id)
 }
 
 func (this *months) Scan(value interface{}) error {
