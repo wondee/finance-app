@@ -23,6 +23,11 @@ content-type: application/json
   }
 }
 ###
+GET http://localhost:8082/api/user
+#X-MS-CLIENT-PRINCIPAL-ID: testeeWithout@gmail.com
+###
+PUT http://localhost:8082/api/user
+###
 GET http://localhost:8082/api/costs
 ###
 DELETE http://localhost:8082/api/costs/4

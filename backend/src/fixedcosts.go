@@ -16,6 +16,12 @@ type Response struct {
 	Yearly         []JsonFixedCost `json:"yearly"`
 }
 
+type Balance struct {
+	From    *YearMonth `json:"from"`
+	To      *YearMonth `json:"to"`
+	Balance int        `json:"balance"`
+}
+
 type JsonFixedCost struct {
 	ID       int        `json:"id"`
 	Name     string     `json:"name"`
@@ -26,7 +32,9 @@ type JsonFixedCost struct {
 }
 
 func GetFixedCosts(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, createFixedCosts())
+	c.IndentedJSON(http.StatusOK,
+		createFixedCosts(LoadCurrentFinanceId(c)),
+	)
 }
 
 func DeleteFixedCosts(c *gin.Context) {
@@ -38,7 +46,7 @@ func DeleteFixedCosts(c *gin.Context) {
 		return
 	}
 
-	DeleteFixedCost(id)
+	DeleteFixedCost(id, LoadCurrentFinanceId(c))
 }
 
 func SaveYearlyFixedCosts(c *gin.Context) {
@@ -92,12 +100,14 @@ func saveFixedCost(c *gin.Context, dueMonthConverter func(int) ([]int, error)) {
 		return
 	}
 
+	dbObject.FinanceID = LoadCurrentFinanceId(c)
+
 	SaveFixedObject(dbObject)
 }
 
-func createFixedCosts() Response {
+func createFixedCosts(financeId int) Response {
 
-	costs := LoadFixedCosts()
+	costs := LoadFixedCosts(financeId)
 	currentBalance := 0
 	currentYearMonth := CurrentYearMonth()
 

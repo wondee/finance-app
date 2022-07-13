@@ -15,7 +15,7 @@ type JsonSpecialCost struct {
 }
 
 func GetSpecialCosts(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, createSpecialCosts())
+	c.IndentedJSON(http.StatusOK, createSpecialCosts(LoadCurrentFinanceId(c)))
 }
 
 func SaveSpecialCosts(c *gin.Context) {
@@ -28,10 +28,11 @@ func SaveSpecialCosts(c *gin.Context) {
 	}
 
 	dbObject := SpecialCost{
-		ID:      cost.ID,
-		Name:    cost.Name,
-		Amount:  cost.Amount,
-		DueDate: cost.DueDate,
+		ID:        cost.ID,
+		Name:      cost.Name,
+		Amount:    cost.Amount,
+		DueDate:   cost.DueDate,
+		FinanceID: LoadCurrentFinanceId(c),
 	}
 
 	SaveSpecialCost(&dbObject)
@@ -46,13 +47,13 @@ func DeleteSpecialCosts(c *gin.Context) {
 		return
 	}
 
-	DeleteSpecialCost(id)
+	DeleteSpecialCost(id, LoadCurrentFinanceId(c))
 }
 
-func createSpecialCosts() (result []JsonSpecialCost) {
+func createSpecialCosts(financeId int) (result []JsonSpecialCost) {
 	result = make([]JsonSpecialCost, 0)
 
-	specialCosts := LoadSpecialCosts()
+	specialCosts := LoadSpecialCosts(financeId)
 
 	for _, cost := range *specialCosts {
 		result = append(result, JsonSpecialCost{

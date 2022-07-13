@@ -49,7 +49,7 @@ export default {
       return displayMonth(this.value, false, null);
     },
     date() {
-      return this.value ? this.value.join('-') : null;
+      return this.value ? this.value.year + '-' + this.value.month : null;
     },
     minDate() {
       return this.min || this.now;
@@ -57,7 +57,13 @@ export default {
   },
   methods: {
     input(e) {
-      const inputYearMonth = e ? e.split('-') : e;
+
+      const createYearMonth = () => {
+        const elems = e.split('-')
+        return {year: elems[0], month: elems[1]}
+      }
+
+      const inputYearMonth = e ? createYearMonth() : e;
       this.$emit("input", inputYearMonth);
       this.menu = false;
 

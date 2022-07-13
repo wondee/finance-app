@@ -1,0 +1,59 @@
+[
+  {
+    "access_token": "some_jwt",
+    "expires_on": "2021-11-27T20:43:06.1414902Z",
+    "id_token": "some_token",
+    "provider_name": "google",
+    "user_claims": [
+      {
+        "typ": "iss",
+        "val": "https:\/\/accounts.google.com"
+      },
+      {
+        "typ": "http:\/\/schemas.xmlsoap.org\/ws\/2005\/05\/identity\/claims\/nameidentifier",
+        "val": "104675057162887146263"
+      },
+      {
+        "typ": "http:\/\/schemas.xmlsoap.org\/ws\/2005\/05\/identity\/claims\/emailaddress",
+        "val": "testee@googlemail.com"
+      },
+      {
+        "typ": "email_verified",
+        "val": "true"
+      },
+      {
+        "typ": "at_hash",
+        "val": "_YlXEpXRqQim1TdujA0BfA"
+      },
+      {
+        "typ": "name",
+        "val": "Alex Meier"
+      },
+      {
+        "typ": "picture",
+        "val": "https:\/\/lh3.googleusercontent.com\/a\/AATXAJw0yeszsQZYmmjQWHKiRhIM6ESPfxnm5Jtixq-0=s96-c"
+      },
+      {
+        "typ": "http:\/\/schemas.xmlsoap.org\/ws\/2005\/05\/identity\/claims\/givenname",
+        "val": "Alex"
+      },
+      {
+        "typ": "http:\/\/schemas.xmlsoap.org\/ws\/2005\/05\/identity\/claims\/surname",
+        "val": "Meier"
+      },
+      {
+        "typ": "locale",
+        "val": "de"
+      },
+      {
+        "typ": "iat",
+        "val": "1638042187"
+      },
+      {
+        "typ": "exp",
+        "val": "1638045787"
+      }
+    ],
+    "user_id": "testee@googlemail.com"
+  }
+]

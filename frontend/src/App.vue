@@ -1,6 +1,13 @@
 <template>
 <layout>
-  <router-view />
+  <router-view v-if="user"/>
+  <v-container>
+    <v-row>
+      <v-col>
+        <h1>Loading User...</h1> 
+      </v-col>
+    </v-row>
+  </v-container>
 </layout>
 </template>
 
@@ -27,5 +34,15 @@ export default {
   components: {
     Layout
   },
+  data() {
+    return {
+      user: null
+    }
+  },
+  created: async function() {
+    const data = await fetch("/api/user");
+    console.log(data)
+
+  }
 };
 </script>

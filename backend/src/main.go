@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -8,6 +10,27 @@ import (
 )
 
 var DB *gorm.DB
+
+const MOCK_USER = "testee@gmail.com"
+
+func UserMiddleware(c *gin.Context) {
+	userId := c.Request.Header.Get("X-MS-CLIENT-PRINCIPAL-ID")
+
+	if gin.Mode() == "debug" && userId == "" {
+		userId = MOCK_USER
+	}
+
+	if userId == "" {
+		c.Writer.WriteHeader(401)
+		c.Abort()
+		return
+	}
+
+	fmt.Println("User found ", userId)
+
+	c.Set("currentUser", userId)
+
+}
 
 func ConnectDataBase() {
 	dsn := "host=localhost user=postgres password=admin dbname=postgres port=5432 sslmode=disable"
@@ -20,7 +43,12 @@ func ConnectDataBase() {
 		panic("Failed to connect to database!")
 	}
 
-	err = database.AutoMigrate(&FixedCost{}, &SpecialCost{})
+	err = database.AutoMigrate(
+		&FixedCost{},
+		&SpecialCost{},
+		&User{},
+		&Finance{},
+	)
 
 	if err != nil {
 		panic(err)
@@ -30,9 +58,15 @@ func ConnectDataBase() {
 }
 
 func main() {
+
 	router := gin.Default()
 
+	router.Use(UserMiddleware)
+
 	ConnectDataBase()
+
+	router.GET("/api/user", GetUser)
+	router.PUT("/api/user", PutUser)
 
 	router.GET("/api/overview/all", GetOverview)
 	router.GET("/api/overview/detail", GetOverviewDetail)

@@ -37,7 +37,7 @@ type OverviewDetail struct {
 }
 
 func GetOverview(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, createOverview())
+	c.IndentedJSON(http.StatusOK, createOverview(LoadCurrentFinanceId(c)))
 }
 
 func GetOverviewDetail(c *gin.Context) {
@@ -50,17 +50,17 @@ func GetOverviewDetail(c *gin.Context) {
 
 	c.IndentedJSON(
 		http.StatusOK,
-		createOverviewDetail(n),
+		createOverviewDetail(LoadCurrentFinanceId(c), n),
 	)
 }
 
-func createOverviewDetail(n int) OverviewDetail {
+func createOverviewDetail(financeId int, n int) OverviewDetail {
 	if n > MAX_ENTRIES {
 		return OverviewDetail{}
 	}
 
-	relevantFixedCostsMap := createRelevantMap()
-	specialCostMap := createSpecialCostMap()
+	relevantFixedCostsMap := createRelevantMap(financeId)
+	specialCostMap := createSpecialCostMap(financeId)
 
 	yearMonth := AddMonths(CurrentYearMonth(), n)
 
@@ -109,14 +109,14 @@ func determineDisplayType(dueMonth []int) string {
 	}
 }
 
-func createOverview() Overview {
+func createOverview(financeId int) Overview {
 	// TODO retrieve current amount
 
 	currentAmount := 3000
 	entries := make([]OverviewEntry, MAX_ENTRIES)
 
-	relevantFixedCostsMap := createRelevantMap()
-	specialCostMap := createSpecialCostMap()
+	relevantFixedCostsMap := createRelevantMap(financeId)
+	specialCostMap := createSpecialCostMap(financeId)
 
 	tmpAmount := currentAmount
 	tmpYearMonth := CurrentYearMonth()
@@ -154,9 +154,9 @@ func createOverview() Overview {
 
 }
 
-func createRelevantMap() map[int][]FixedCost {
+func createRelevantMap(financeId int) map[int][]FixedCost {
 	result := make(map[int][]FixedCost)
-	for _, cost := range *LoadFixedCosts() {
+	for _, cost := range *LoadFixedCosts(financeId) {
 		for _, dueMonth := range cost.DueMonth {
 			if result[dueMonth] == nil {
 				result[dueMonth] = []FixedCost{cost}
@@ -170,9 +170,9 @@ func createRelevantMap() map[int][]FixedCost {
 	return result
 }
 
-func createSpecialCostMap() map[YearMonth][]SpecialCost {
+func createSpecialCostMap(financeId int) map[YearMonth][]SpecialCost {
 	result := make(map[YearMonth][]SpecialCost)
-	for _, cost := range *LoadSpecialCosts() {
+	for _, cost := range *LoadSpecialCosts(financeId) {
 		if result[*cost.DueDate] == nil {
 			result[*cost.DueDate] = []SpecialCost{cost}
 		} else {
